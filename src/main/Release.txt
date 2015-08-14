@@ -1,0 +1,36 @@
+Release Notes.
+
+06.08.2015 Thursday
+    - widgetsCreation (improving setting colors, possibility to choose color)
+
+10.08.2015 Monday
+    - pagesCreation (creation of pages)
+    -
+
+
+Ideas for further tests
+- Creation of Organization with some Name and Template
+- Choose Organization with particular Name
+- Edit Organization
+- Adding All users from the properties to the Organization
+
+- Get List of Organizations for User
+- Calcualte Number of Pages, Widgets for each User Organization
+- Archive Boards
+- Show Archived Boards Check
+
+- Infinite Adding Lanes
+- Adding Cards to TODO List (number of cards)
+- Assign Cards to me with randomizer
+- Delete Widgets. All existed
+- Adding tags (Random names)
+- Add user
+- Adding Tasks
+- Adding Comments
+- Adding Pages (with Names)
+
+
+
+
+
+
