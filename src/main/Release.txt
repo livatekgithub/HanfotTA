@@ -5,6 +5,9 @@ Release Notes.
 
 10.08.2015 Monday
     - pagesCreation (creation of pages)
+
+14.08.2015 Friday
+    - columnsAdding was broken. Xpath for adding columns became constant.
     -
 
 
@@ -28,6 +31,10 @@ Ideas for further tests
 - Adding Tasks
 - Adding Comments
 - Adding Pages (with Names)
+
+Idea for using Java
+- Properties. Move Login and other credentials to properties
+Collapsing All Widgets
 
 
 

@@ -1,4 +1,8 @@
-import enums.*;
+import enums.PageSharingMode;
+import enums.TodoCardStatus;
+import enums.WidgetColor;
+import enums.WidgetState;
+import enums.LogType;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -78,7 +82,7 @@ public class General implements AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void pagesCreation(WebDriver driver, int number, PageSharingMode pageSharingMode) {
+    public static void pagesCreation(WebDriver driver, int number, PageSharingMode pageSharingMode, boolean isLogged) {
 
         final String ADD_PAGE_XPATH = "html/body/div[2]/div[2]/div[1]/img";
         final String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[5]";
@@ -89,7 +93,7 @@ public class General implements AccessData {
         for (int i = 1; i <= number; i++) {
             name = "Page" + Integer.toString(i);
             driver.findElement(By.xpath(ADD_PAGE_XPATH)).click();
-//            System.out.println(nowTime() + " Page " + i + " was created:");
+            if (isLogged) System.out.println(nowTime() + " Page " + i + " was created:");
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).clear();
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).sendKeys(name);
             if (pageSharingMode == PageSharingMode.PUBLIC) driver.findElement(By.xpath(SHARE_WITHORG_XPATH)).click();
@@ -98,7 +102,7 @@ public class General implements AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void pagesRemoving(WebDriver driver, int number) {
+    public static void pagesRemoving(WebDriver driver, int number, boolean isLogged) {
 
         final String OPEN_PAGEMENU_XPATH = "html/body/div[2]/div[2]/div[2]/div[1]/div/div/div[1]";
         final String DELETE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[1]";
@@ -109,7 +113,7 @@ public class General implements AccessData {
             driver.findElement(By.xpath(OPEN_PAGEMENU_XPATH)).click();
             driver.findElement(By.xpath(DELETE_BUTTON_XPATH)).click();
             driver.findElement(By.xpath(DELETE_BUTTON_XPATH)).click();
-//            System.out.println(nowTime() + " Page " + i + " was removed:");
+            if (isLogged) System.out.println(nowTime() + " Page " + i + " was removed:");
             try {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
@@ -119,7 +123,7 @@ public class General implements AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void pagesArchiving(WebDriver driver, int number) {
+    public static void pagesArchiving(WebDriver driver, int number, boolean isLogged) {
 
         final String ADD_PAGE_XPATH = "html/body/div[2]/div[2]/div[1]/img";
         final String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[5]";
@@ -130,7 +134,7 @@ public class General implements AccessData {
         for (int i = 1; i <= number; i++) {
             name = "PageArch" + Integer.toString(i);
             driver.findElement(By.xpath(ADD_PAGE_XPATH)).click();
-//            System.out.println(nowTime() + " PageArch " + i + " was created:");
+            if (isLogged) System.out.println(nowTime() + " PageArch " + i + " was created:");
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).clear();
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).sendKeys(name);
             driver.findElement(By.xpath(DONE_BUTTON_XPATH)).click();
@@ -138,6 +142,26 @@ public class General implements AccessData {
             driver.findElement(By.xpath(PAGE_ARCHIVE_XPATH)).click();
             driver.findElement(By.xpath(PAGE_ARCHIVE_XPATH)).click();
         }
+    }
+
+    public static void addUserToOrganization(WebDriver driver) throws InterruptedException {
+        String[] usernames = {"livatek.user1@gmail.com", "livatek.user2@gmail.com", "livatek.user4@gmail.com"};
+        try {
+            driver.findElement(By.cssSelector(".avatar-initials")).click();
+
+        } catch (NoSuchElementException e) {
+            driver.findElement(By.cssSelector("..avatar-image")).click();
+        }
+        driver.findElement(By.cssSelector("div.app-menu-choice.js-org-invite")).click();
+        driver.findElement(By.id("invitations")).click();
+        System.out.println("Waiting");
+        Thread.sleep(5000);
+        driver.findElement(By.cssSelector(".fastcardpopup-userfield.fastcardpopup-taskinput-input.js-workspacedit-invitation")).sendKeys(usernames[0]);
+        System.out.println("Waiting2");
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("//div[@id='js-workspacedit-invitations']/div/div/button")).click();
+
+
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -198,7 +222,7 @@ public class General implements AccessData {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void firstIdeaCardsGeneration(WebDriver driver, int number) {
+    public static void firstIdeaCardsGeneration(WebDriver driver, int number, boolean isLogged) {
         String name;
         String dynamicPart;
         final String IDEA_CARD_X_PATH_FIRST_PART = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/";
@@ -218,21 +242,23 @@ public class General implements AccessData {
         for (int i = 3; i <= number; i++) {
             name = Integer.toString(i);
             dynamicPart = "div[" + name + "]";
-//            System.out.println(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_ADD_CARD);
+            if (isLogged) System.out.println(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_ADD_CARD);
             driver.findElement(By.xpath(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_ADD_CARD)).click();
 
-//            System.out.println(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_TEXT);
+            if (isLogged) System.out.println(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_TEXT);
             driver.findElement(By.xpath(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_TEXT)).sendKeys("Idea Card " + name);
 
-//            System.out.println(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_BUTTON);
+            if (isLogged) System.out.println(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_BUTTON);
             driver.findElement(By.xpath(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_BUTTON)).click();
         }
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void columnsCreation(WebDriver driver, int number) {
+    public static void columnsCreation(WebDriver driver, int number, boolean isLogged) {
 
-        final String ADD_COLUMN_X_PATH_FIRST_PART = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div/div/";
+        //Deprecated - XPATH for Adding column became constant for all columns
+        final String ADD_COLUMN_X_PATH_FIRST_PART_OBS = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div/div/";
+        final String ADD_COULMN_XPATH_FIRSTPART_NEW = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[2]/div";
         final String RENAME_COLUMN_X_PATH_SECOND_PART = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div/div/";
 
         String counterString;
@@ -245,20 +271,23 @@ public class General implements AccessData {
             shiftedValue = i + 2;
             counterString = Integer.toString(shiftedValue);
             dynamicPart = "div[" + counterString + "]";
-            currentXpathForAdding = ADD_COLUMN_X_PATH_FIRST_PART + dynamicPart + "/div";
+
+            //Deprecated - XPATH for Adding column became constant for all columns
+//            currentXpathForAdding = ADD_COLUMN_X_PATH_FIRST_PART + dynamicPart + "/div";
+            currentXpathForAdding = ADD_COULMN_XPATH_FIRSTPART_NEW;
             currentXpathForRenaming = RENAME_COLUMN_X_PATH_SECOND_PART + dynamicPart + "/div[1]/input";
 
-//            System.out.println("Log: " + currentXpathForAdding);
+            if (isLogged) System.out.println("Log: " + currentXpathForAdding);
             driver.findElement(By.xpath(currentXpathForAdding)).click();
 
-//            System.out.println("Log: " + currentXpathForRenaming);
+            if (isLogged) System.out.println("Log: " + currentXpathForRenaming);
             driver.findElement(By.xpath(currentXpathForRenaming)).sendKeys("Column " + shiftedValue);
-//            System.out.println("Column" + counterString + " created. Xpath=" + currentXpathForAdding);
+            if (isLogged) System.out.println("Column" + counterString + " created. Xpath=" + currentXpathForAdding);
         }
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------
 
-    public static void firstBoardCardsGeneration(WebDriver driver, int numberX, int numberY) {
+    public static void firstBoardCardsGeneration(WebDriver driver, int numberX, int numberY, boolean isLogged) {
         String stringCounterX;
         String stringCounterY;
         String dynamicPartX;
@@ -274,7 +303,7 @@ public class General implements AccessData {
         final String BOARD_CARD_X_PATH_BUTTON = "/div/div[1]/button";
         final String BOARD_CARD_X_PATH_MEDIUM = "/div[2]/";
 
-        if (numberY > 2) columnsCreation(driver, numberY - 2);
+        if (numberY > 2) columnsCreation(driver, numberY - 2, isLogged);
 
         for (int i = 1; i <= numberX; i++) {
             stringCounterX = Integer.toString(i);
@@ -289,13 +318,13 @@ public class General implements AccessData {
                 currentXpathForNaming = BOARD_CARD_X_PATH_FIRST_PART_V2 + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_TEXT;
                 currentXpathForSaving = BOARD_CARD_X_PATH_FIRST_PART_V2 + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_BUTTON;
 
-//                System.out.println(currentXpathForAdding);
+                if (isLogged) System.out.println(currentXpathForAdding);
                 driver.findElement(By.xpath(currentXpathForAdding)).click();
 
-//                System.out.println(currentXpathForNaming);
+                if (isLogged) System.out.println(currentXpathForNaming);
                 driver.findElement(By.xpath(currentXpathForNaming)).sendKeys("Board Card " + stringCounterX + stringCounterY);
 
-//                System.out.println(currentXpathForSaving);
+                if (isLogged) System.out.println(currentXpathForSaving);
                 driver.findElement(By.xpath(currentXpathForSaving)).click();
 
             }
@@ -303,7 +332,72 @@ public class General implements AccessData {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void todoCardCreation(WebDriver driver, int number, TodoCardStatus todoCardStatus) throws InterruptedException {
+    public static void todoCardRemoval(WebDriver driver, TodoCardStatus todoCardStatus, LogType logType) throws InterruptedException {
+
+        String cardName;
+
+        final String TODO_UNFINISHED_CARD_STATUS = "html/body/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/div/div[1]/div/div[1]/div";
+        final String TODO_FINISHED_CARD_STATUS = "html/body/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div[1]/div/div[1]/div";
+
+        final String TODO_UNFINISHED_FIRST_CARD = "html/body/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/div/div[1]/div/div[3]";
+        final String TODO_FINISHED_FIRST_CARD = "html/body/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div[1]/div/div[3]";
+
+        final String TODO_UNFINISHED_CARD_STATUS_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[1]/div[2]/div[1]";
+        final String TODO_SHOWALL_LINK_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[1]/div[2]/div[2]";
+
+
+        if ((todoCardStatus == TodoCardStatus.REMOVEALLUNFINISHED)) {
+            driver.findElement(By.xpath(TODO_UNFINISHED_CARD_STATUS_XPATH)).click();
+            if (logType == LogType.XPATHLOG)
+                System.out.println("TODO_UNFINISHED_CARD_STATUS : " + TODO_UNFINISHED_CARD_STATUS);
+            try {
+                if ((logType == LogType.ACTIONLOG) || (logType == LogType.XPATHLOG))
+                    System.out.println("CONDITION, Are they Presented?=" + driver.findElement(By.xpath(TODO_UNFINISHED_CARD_STATUS)).isDisplayed());
+                while (driver.findElement(By.xpath(TODO_UNFINISHED_CARD_STATUS)).isDisplayed()) {
+                    if (logType == LogType.XPATHLOG) System.out.println(By.xpath(TODO_UNFINISHED_FIRST_CARD));
+                    {
+                        cardName = driver.findElement(By.xpath(TODO_UNFINISHED_FIRST_CARD)).getText();
+
+                        driver.findElement(By.xpath(TODO_UNFINISHED_FIRST_CARD)).click();
+                        driver.findElement(By.cssSelector(".popup-window-toolbar-button.mod-remove.js-tap-indication.js-popup-remove")).click();
+                        Thread.sleep(300);
+                        if ((logType == LogType.ACTIONLOG) || (logType == LogType.XPATHLOG))
+                            System.out.println("Log: " + General.nowTime() + " UnFinished TODO Card [ " + cardName + " ]were removed");
+                    }
+
+                }
+            } catch (NoSuchElementException e) {
+                System.out.println("Nothing to Remove!");
+            }
+        }
+
+        if (todoCardStatus == TodoCardStatus.REMOVEALLFINISHED) {
+            driver.findElement(By.xpath(TODO_SHOWALL_LINK_XPATH)).click();
+            Thread.sleep(300);
+            if (logType == LogType.XPATHLOG) System.out.println("TODO_SHOWALL_LINK_XPATH : " + TODO_SHOWALL_LINK_XPATH);
+            try {
+                if ((logType == LogType.ACTIONLOG) || (logType == LogType.XPATHLOG))
+                    System.out.println("CONDITION=" + driver.findElement(By.xpath(TODO_FINISHED_CARD_STATUS)).isDisplayed());
+                while (driver.findElement(By.xpath(TODO_FINISHED_CARD_STATUS)).isDisplayed()) {
+
+                    if (logType == LogType.XPATHLOG) System.out.println(By.xpath(TODO_FINISHED_FIRST_CARD));
+                    cardName = driver.findElement(By.xpath(TODO_FINISHED_FIRST_CARD)).getText();
+                    driver.findElement(By.xpath(TODO_FINISHED_FIRST_CARD)).click();
+
+                    Thread.sleep(300);
+                    driver.findElement(By.cssSelector(".popup-window-toolbar-button.mod-remove.js-tap-indication.js-popup-remove")).click();
+                    Thread.sleep(300);
+                    if ((logType == LogType.ACTIONLOG) || (logType == LogType.XPATHLOG))
+                        System.out.println("Log: " + General.nowTime() + " Finished TODO Card [ " + cardName + " ]were removed");
+                }
+            } catch (NoSuchElementException e) {
+                System.out.println("Nothing to Remove!");
+            }
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void todoCardCreation(WebDriver driver, int number, TodoCardStatus todoCardStatus, LogType logType) throws InterruptedException {
 
         String currentXpathForAdding;
         String currentXpathForNaming;
@@ -319,12 +413,22 @@ public class General implements AccessData {
         final String TODO_ENTERCARD_XPATH_LAST = "/div/textarea";
         final String TODO_SAVECARD_XPATH_LAST = "/div/div[1]/button";
 
+        final String TODO_FINISHED_CARD_STATUS_CSS = ".card-task-statusbutton.card-task-statusbutton-on";
+        final String TODO_UNFINISHED_CARD_STATUS_CSS = ".card-task-statusbutton.card-task-statusbutton-off";
+
+        final String TODO_UNFINISHED_CARD_STATUS_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[1]/div[2]/div[1]";
+        final String TODO_SHOWALL_LINK_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[1]/div[2]/div[2]";
+
+        final String TODO_SHOW_ALL_CSS = ".todo-filter-box.js-todo-all.js-tap-indication.js-tap-direct.todo-checked";
+        final String TODO_UNFINISHED_CSS = ".todo-filter-box.js-todo-notdone.js-tap-indication.js-tap-direct.todo-checked";
+
         if (!driver.findElement(By.cssSelector(".workspace-sidepanel-title-content")).isDisplayed())
             driver.findElement(By.xpath(TODO_BUTTON_XPATH)).click();
 
-        Thread.sleep(3000);
-        if (todoCardStatus != TodoCardStatus.MARKFINISHED)
+        Thread.sleep(500);
+        if ((todoCardStatus == TodoCardStatus.CREATEUNFINISHED) || (todoCardStatus == TodoCardStatus.CREATEFINISHED))
             for (int i = 1; i <= number; i++) {
+
                 stringNumber = Integer.toString(i);
                 cardName = "TODO Card " + stringNumber;
                 dynamicPart = "div[" + i + "]";
@@ -332,26 +436,35 @@ public class General implements AccessData {
                 if (i == 1) currentXpathForAdding = TODO_ADDCARD_XPATH + "div" + TODO_ADDCARD_XPATH_LAST;
                 else currentXpathForAdding = TODO_ADDCARD_XPATH + dynamicPart + TODO_ADDCARD_XPATH_LAST;
 
+                driver.findElement(By.xpath(TODO_UNFINISHED_CARD_STATUS_XPATH)).click();
+
                 driver.findElement(By.xpath(currentXpathForAdding)).click();
+                if (logType == LogType.XPATHLOG)
+                    System.out.println("Log: " + General.nowTime() + " ADD_CARD_XPATH:" + currentXpathForAdding);
                 Thread.sleep(300);
-                System.out.println("Log: " + General.nowTime() + " " + currentXpathForAdding);
 
                 currentXpathForNaming = TODO_ADDCARD_XPATH + dynamicPart + TODO_ENTERCARD_XPATH_LAST;
                 driver.findElement(By.xpath(currentXpathForNaming)).sendKeys(cardName);
+                if (logType == LogType.XPATHLOG)
+                    System.out.println("Log: " + General.nowTime() + " " + currentXpathForNaming);
                 Thread.sleep(300);
-                System.out.println("Log: " + General.nowTime() + " " + currentXpathForNaming);
 
                 currentXpathForSaving = TODO_ADDCARD_XPATH + dynamicPart + TODO_SAVECARD_XPATH_LAST;
                 driver.findElement(By.xpath(currentXpathForSaving)).click();
                 Thread.sleep(300);
-                System.out.println("Log: " + General.nowTime() + " " + currentXpathForSaving);
-                System.out.println("TODO Card " + stringNumber + " were created");
+
+                if (logType == LogType.XPATHLOG)
+                    System.out.println("Log: " + General.nowTime() + " " + currentXpathForSaving);
+                if ((logType == LogType.ACTIONLOG) || (logType == LogType.XPATHLOG))
+                    System.out.println("Log: " + General.nowTime() + " : UnFinished TODO Card " + stringNumber + " were created");
             }
 
-        if (todoCardStatus != TodoCardStatus.CREATEUNFINISHED)
+        if ((todoCardStatus == TodoCardStatus.CREATEFINISHED) || (todoCardStatus == TodoCardStatus.MARKFINISHED))
             for (int i = 1; i <= number; i++) {
                 Thread.sleep(1000);
                 driver.findElement(By.xpath(TODO_MARK_AS_COMPLETED_XPATH)).click();
+                if ((logType == LogType.ACTIONLOG) || (logType == LogType.XPATHLOG))
+                    System.out.println("Log: " + General.nowTime() + " : Unfinished TODO Card " + i + " were marked as Completed");
             }
     }
 

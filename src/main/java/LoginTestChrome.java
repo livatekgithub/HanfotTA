@@ -36,7 +36,11 @@ public class LoginTestChrome {
         //Usual Operation Block
 
         General.loginUser(driver);
-        driver.manage().window().maximize();
+        Point point = new Point(10,10);
+        Dimension dimension = new Dimension(1900,700);
+        driver.manage().window().setPosition(point);
+        driver.manage().window().setSize(dimension);
+        Thread.sleep(5000);
         Run.Run(driver);
         General.userSignOut(driver);
 
