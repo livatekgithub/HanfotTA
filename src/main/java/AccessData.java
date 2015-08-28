@@ -3,7 +3,7 @@
  */
 public interface AccessData {
     String TESTURL = "https://test.hansoftx.com/login";
-    String WRONGTESTLOGIN = "livatek.user15@ukr.net";
+    String WRONGTESTLOGIN = "livatek.user6@ukr.net";
     String WRONGTESTPASSWORD = "";
 
     String TESTLOGIN = "livatek.user13@gmail.com";
