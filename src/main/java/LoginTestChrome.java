@@ -25,7 +25,7 @@ public class LoginTestChrome {
         System.setProperty("webdriver.chrome.driver", "D://Java/selenium/chrome/chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = AccessData.TESTURL;
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class LoginTestChrome {
         Dimension dimension = new Dimension(1900,700);
         driver.manage().window().setPosition(point);
         driver.manage().window().setSize(dimension);
-        Thread.sleep(5000);
+//        Thread.sleep(5000);
         Run.Run(driver);
         General.userSignOut(driver);
 

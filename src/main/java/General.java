@@ -38,9 +38,14 @@ public class General implements AccessData {
         driver.findElement(By.id("form-email")).sendKeys(TESTLOGIN);
         driver.findElement(By.id("form-psw")).clear();
         driver.findElement(By.id("form-psw")).sendKeys(TESTPASSWORD);
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         driver.findElement(By.cssSelector("button.btn-submit.js-tap-indication")).click();
-        assertTrue(isElementPresent(By.cssSelector("span.avatar-initials"), driver));
+
+        try {
+            assertTrue(isElementPresent(By.cssSelector(".avatar-initials"), driver));
+        } catch (AssertionError e) {
+            assertTrue(isElementPresent(By.cssSelector(".avatar-image"), driver));
+        }
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -77,7 +82,11 @@ public class General implements AccessData {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void userSignOut(WebDriver driver) {
-        driver.findElement(By.cssSelector("span.avatar-initials")).click();
+        try {
+            driver.findElement(By.cssSelector(".avatar-initials")).click();
+        } catch (NoSuchElementException e) {
+            driver.findElement(By.cssSelector(".avatar-image")).click();
+        }
         driver.findElement(By.cssSelector("div.app-menu-choice.js-signout")).click();
     }
 
@@ -91,9 +100,9 @@ public class General implements AccessData {
         String name;
 
         for (int i = 1; i <= number; i++) {
-            name = "Page" + Integer.toString(i);
+            name = "Collection" + Integer.toString(i);
             driver.findElement(By.xpath(ADD_PAGE_XPATH)).click();
-            if (isLogged) System.out.println(nowTime() + " Page " + i + " was created:");
+            if (isLogged) System.out.println(nowTime() + " Collection " + i + " was created:");
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).clear();
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).sendKeys(name);
             if (pageSharingMode == PageSharingMode.PUBLIC) driver.findElement(By.xpath(SHARE_WITHORG_XPATH)).click();
@@ -109,11 +118,11 @@ public class General implements AccessData {
         String name;
 
         for (int i = 1; i <= number; i++) {
-            name = "Page" + Integer.toString(i);
+            name = "Collection" + Integer.toString(i);
             driver.findElement(By.xpath(OPEN_PAGEMENU_XPATH)).click();
             driver.findElement(By.xpath(DELETE_BUTTON_XPATH)).click();
             driver.findElement(By.xpath(DELETE_BUTTON_XPATH)).click();
-            if (isLogged) System.out.println(nowTime() + " Page " + i + " was removed:");
+            if (isLogged) System.out.println(nowTime() + " Collection " + i + " was removed:");
             try {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
@@ -132,9 +141,9 @@ public class General implements AccessData {
         final String PAGE_ARCHIVE_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[2]";
         String name;
         for (int i = 1; i <= number; i++) {
-            name = "PageArch" + Integer.toString(i);
+            name = "CollectionArch" + Integer.toString(i);
             driver.findElement(By.xpath(ADD_PAGE_XPATH)).click();
-            if (isLogged) System.out.println(nowTime() + " PageArch " + i + " was created:");
+            if (isLogged) System.out.println(nowTime() + " CollectionArch " + i + " was created:");
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).clear();
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).sendKeys(name);
             driver.findElement(By.xpath(DONE_BUTTON_XPATH)).click();
@@ -169,12 +178,28 @@ public class General implements AccessData {
 
         final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div/div[4]/img";
         final String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div/div[4]/img";
+        final String WIDGET_BOARD_OPTIONS_CSS=".widget-menu-choice.js-widget-showboardoptionsmenu.js-tap-indication";
 
         String name;
         String colorId;
+        String colorName="";
         int colorCode = 0;
-        for (int i = 1; i <= number; i++) {
-            name = Integer.toString(i);
+        for (int i = 11; i < 11 + number; i++) {
+
+            if (widgetColor == WidgetColor.RANDOM) {
+                if (i % 10 == 0) colorCode = 10;
+                else colorCode = i % 10;
+                colorId = Integer.toString(colorCode);
+                colorName=     WidgetColor.values()[colorCode].toString();
+            } else if (widgetColor == WidgetColor.DEFAULT) {
+                colorId = "1";
+                colorName=WidgetColor.values()[colorCode].toString();
+            } else {
+                colorId = Integer.toString(widgetColor.ordinal());
+                colorName=widgetColor.toString();
+            }
+
+            name = Integer.toString(i - 10) + " " + colorName;
             //Create Idea Widget with Sequential Name 1,2,..
             driver.findElement(By.cssSelector("img.xaddbutton-icon")).click();
             driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/input")).sendKeys("Idea " + name);
@@ -194,24 +219,16 @@ public class General implements AccessData {
                 if (isLogged) System.out.println(nowTime() + " Board " + name + " was collapsed:");
             }
 
-            if (widgetColor == WidgetColor.RANDOM) {
-                if (i % 7 == 0) colorCode = 8;
-                else colorCode = i % 7;
-                colorId = Integer.toString(colorCode);
-            } else if (widgetColor == WidgetColor.DEFAULT) {
-                colorId = "1";
-            } else {
-                colorId = Integer.toString(widgetColor.ordinal());
-            }
-
             if (isLogged)
-                System.out.println(nowTime() + " Color=" + WidgetColor.values()[colorCode] + " Set up for Board");
+                System.out.println(nowTime() + " Color=" + WidgetColor.values()[colorCode] + " Set up for Board" + colorId);
             driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
+            driver.findElement(By.cssSelector(WIDGET_BOARD_OPTIONS_CSS)).click();
             driver.findElement(By.id(colorId)).click();
 
             if (isLogged)
                 System.out.println(nowTime() + " Color=" + WidgetColor.values()[colorCode] + " Set up for Idea");
             driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
+            driver.findElement(By.cssSelector(WIDGET_BOARD_OPTIONS_CSS)).click();
             driver.findElement(By.id(colorId)).click();
         }
     }

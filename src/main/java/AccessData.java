@@ -7,5 +7,5 @@ public interface AccessData {
     String WRONGTESTPASSWORD = "";
 
     String TESTLOGIN = "livatek.user13@gmail.com";
-    String TESTPASSWORD = "";
+    String TESTPASSWORD = "2015user02";
 }
