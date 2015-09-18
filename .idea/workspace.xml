@@ -29,24 +29,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoginTestChrome.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/LoginTestChrome.java">
+      <file leaf-file-name="Run.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="877" max-vertical-offset="1496">
-              <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="2193">
+              <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+              <folding>
+                <marker date="1442579500947" expanded="true" signature="181:659" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Run.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Run.java">
+      <file leaf-file-name="AccessData.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/AccessData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6429725" vertical-offset="435" max-vertical-offset="2023">
-              <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
-              <folding>
-                <marker date="1442421045431" expanded="true" signature="183:677" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="0.24717286" vertical-offset="0" max-vertical-offset="619">
+              <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,8 +54,8 @@
       <file leaf-file-name="General.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/General.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3551" max-vertical-offset="8296">
-              <caret line="241" column="66" selection-start-line="241" selection-start-column="66" selection-end-line="241" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5608" max-vertical-offset="8296">
+              <caret line="351" column="23" selection-start-line="351" selection-start-column="23" selection-end-line="351" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -155,12 +155,12 @@
         <option value="$PROJECT_DIR$/src/main/java/new_things/GetPropertyTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/enums/LogType.java" />
         <option value="$PROJECT_DIR$/src/main/Release.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/AccessData.java" />
         <option value="$PROJECT_DIR$/src/main/java/enums/WidgetColor.java" />
         <option value="$PROJECT_DIR$/src/main/java/General.java" />
         <option value="$PROJECT_DIR$/src/main/java/LoginTestChrome.java" />
         <option value="$PROJECT_DIR$/src/main/java/enums/TodoCardStatus.java" />
         <option value="$PROJECT_DIR$/src/main/java/Run.java" />
+        <option value="$PROJECT_DIR$/src/main/java/AccessData.java" />
       </list>
     </option>
   </component>
@@ -739,12 +739,12 @@
       <workItem from="1439542247902" duration="1961000" />
       <workItem from="1439545300922" duration="52000000" />
       <workItem from="1440498141230" duration="26307000" />
-      <workItem from="1442228617984" duration="6425000" />
+      <workItem from="1442228617984" duration="13607000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158799000" />
+    <option name="totallyTimeSpent" value="165981000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -819,7 +819,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1955">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1442421045431" expanded="true" signature="183:677" placeholder="..." />
+            <marker date="1442579500947" expanded="true" signature="181:659" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -927,7 +927,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="577" max-vertical-offset="1411">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
-            <marker date="1442421045431" expanded="true" signature="183:677" placeholder="..." />
+            <marker date="1442579500947" expanded="true" signature="181:659" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1013,7 +1013,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1343">
           <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
           <folding>
-            <marker date="1442421045431" expanded="true" signature="183:677" placeholder="..." />
+            <marker date="1442579500947" expanded="true" signature="181:659" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1133,14 +1133,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AccessData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/LoginTestChrome.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="877" max-vertical-offset="1496">
@@ -1209,19 +1201,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/General.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3551" max-vertical-offset="8296">
-          <caret line="241" column="66" selection-start-line="241" selection-start-column="66" selection-end-line="241" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5608" max-vertical-offset="8296">
+          <caret line="351" column="23" selection-start-line="351" selection-start-column="23" selection-end-line="351" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Run.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6429725" vertical-offset="435" max-vertical-offset="2023">
-          <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="2193">
+          <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
           <folding>
-            <marker date="1442421045431" expanded="true" signature="183:677" placeholder="..." />
+            <marker date="1442579500947" expanded="true" signature="181:659" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AccessData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24717286" vertical-offset="0" max-vertical-offset="619">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
