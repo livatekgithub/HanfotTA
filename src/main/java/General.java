@@ -362,12 +362,16 @@ public class General implements AccessData {
         final String TODO_UNFINISHED_CARD_STATUS_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[1]/div[2]/div[1]";
         final String TODO_SHOWALL_LINK_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[1]/div[2]/div[2]";
 
+        final String TODO_BUTTON_XPATH="//div/div/div[3]";
+
+        if (!driver.findElement(By.cssSelector(".workspace-sidepanel-title-content")).isDisplayed())
+            driver.findElement(By.xpath(TODO_BUTTON_XPATH)).click();
 
         if ((todoCardStatus == TodoCardStatus.REMOVEALLUNFINISHED)) {
             driver.findElement(By.xpath(TODO_UNFINISHED_CARD_STATUS_XPATH)).click();
+            try {
             if (logType == LogType.XPATHLOG)
                 System.out.println("TODO_UNFINISHED_CARD_STATUS : " + TODO_UNFINISHED_CARD_STATUS);
-            try {
                 if ((logType == LogType.ACTIONLOG) || (logType == LogType.XPATHLOG))
                     System.out.println("CONDITION, Are they Presented?=" + driver.findElement(By.xpath(TODO_UNFINISHED_CARD_STATUS)).isDisplayed());
                 while (driver.findElement(By.xpath(TODO_UNFINISHED_CARD_STATUS)).isDisplayed()) {

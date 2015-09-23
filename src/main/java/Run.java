@@ -5,8 +5,8 @@ public class Run {
     public static void runTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException {
 
         System.out.println(General.nowTime() + " : 1. Pages Creation(10)");
-        General.pagesCreation(driver, 20, PageSharingMode.PRIVATE, false);
-        General.pagesCreation(driver, 20, PageSharingMode.PUBLIC, false);
+        General.pagesCreation(driver, 8, PageSharingMode.PRIVATE, false);
+        General.pagesCreation(driver, 8, PageSharingMode.PUBLIC, false);
 
         System.out.println(General.nowTime() + " : 2. Pages Archiving(10)");
         General.pagesArchiving(driver, 20, false);
@@ -68,56 +68,11 @@ public class Run {
 
     public static void Run(WebDriver driver) throws InterruptedException {
 
-
-
-        General.firstBoardCardsGeneration(driver,40,5,false);
-
 //        runTestAllMethods(driver, false);
 
-//        General.addUserToOrganization(driver);
+        General.pagesCreation(driver,10,PageSharingMode.PUBLIC,true);
+        General.pagesArchiving(driver,5,true);
 
-//        General.todoCardRemoval(driver,TodoCardStatus.REMOVEALLUNFINISHED,LogType.XPATHLOG);
-//        General.todoCardRemoval(driver,TodoCardStatus.REMOVEALLFINISHED,LogType.XPATHLOG);
-//
-//        General.todoCardCreation(driver, 5, TodoCardStatus.CREATEFINISHED, LogType.XPATHLOG);
-//        General.todoCardCreation(driver, 5, TodoCardStatus.CREATEUNFINISHED, LogType.XPATHLOG);
-
-
-//        General.todoCardCreation(driver,0,TodoCardStatus.REMOVEALLUNFINISHED,true);
-//        General.todoCardCreation(driver,15,TodoCardStatus.CREATEUNFINISHED,true);
-//        General.todoCardCreation(driver,0,TodoCardStatus.REMOVEALLUNFINISHED,true);
-//        General.todoCardCreation(driver,30,TodoCardStatus.CREATEUNFINISHED,true);
-//        General.todoCardCreation(driver,0,TodoCardStatus.REMOVEALLUNFINISHED,true);
-//        General.todoCardCreation(driver,30,TodoCardStatus.CREATEUNFINISHED,true);
-
-//        General.todoCardCreation(driver,0,TodoCardStatus.REMOVEALLUNFINISHED,true);
-
-//        General.todoCardCreation(driver,0,TodoCardStatus.REMOVEALLFINISHED,true);
-
-//        General.todoCardCreation(driver,10,TodoCardStatus.REMOVEALL,true);
-
-
-//        General.todoCardCreation(driver, 10, TodoCardStatus.MARKFINISHED);
-
-//        General.widgetsCreation(driver,14,WidgetState.EXPANDED);
-
-//        General.widgetsCreation(driver,7,WidgetState.EXPANDED,WidgetColor.BLUE);
-//        General.firstBoardCardsGeneration(driver,200,10);
-//        General.firstIdeaCardsGeneration(driver,200);
-
-
-//        General.pagesArchiving(driver,50);
-//        General.pagesCreation(driver,10, PageSharingMode.PUBLIC);
-//        General.pagesRemoving(driver,50);
-
-
-//        General.widgetsCreation(driver, 2, WidgetState.EXPANDED, WidgetColor.YELLOW);
-//        General.firstBoardCardsGeneration(driver, 10, 2);
-//        General.firstIdeaCardsGeneration(driver, 10);
-
-//        General.widgetsCreation(driver,2,WidgetState.EXPANDED,WidgetColor.ORANGE);
-//        General.firstBoardCardsGeneration(driver,40,8);
-//        General.firstIdeaCardsGeneration(driver,40);
 
     }
 
