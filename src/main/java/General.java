@@ -91,22 +91,30 @@ public class General implements AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void pagesCreation(WebDriver driver, int number, PageSharingMode pageSharingMode, boolean isLogged) {
+    public static void pagesCreation(WebDriver driver, int number, PageSharingMode pageSharingMode, boolean isLogged) throws InterruptedException {
 
         final String ADD_PAGE_XPATH = "html/body/div[2]/div[2]/div[1]/img";
-        final String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[5]";
+//        final String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[5]"; without integrations button in menu
+        final String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[6]";
+        final String DONE_BUTTON_CSS = ".popup-window-toolbar-button.mod-done.js-popup-done";
+
         final String TYPE_PAGENAME_XPATH = "html/body/div[3]/div/div/div[1]/div[1]/div[1]/input";
         final String SHARE_WITHORG_XPATH = "html/body/div[3]/div/div/div[1]/div[1]/div[3]/div[5]/div/img";
         String name;
+        String nameTemplate;
+
+        if (pageSharingMode == PageSharingMode.PUBLIC) nameTemplate = "Collection.Public";
+        else nameTemplate = "Collection.Private";
 
         for (int i = 1; i <= number; i++) {
-            name = "Collection" + Integer.toString(i);
+            name = nameTemplate + " " + Integer.toString(i);
             driver.findElement(By.xpath(ADD_PAGE_XPATH)).click();
-            if (isLogged) System.out.println(nowTime() + " Collection " + i + " was created:");
+            if (isLogged) System.out.println(nowTime() + name + " was created:");
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).clear();
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).sendKeys(name);
             if (pageSharingMode == PageSharingMode.PUBLIC) driver.findElement(By.xpath(SHARE_WITHORG_XPATH)).click();
-            driver.findElement(By.xpath(DONE_BUTTON_XPATH)).click();
+            driver.findElement(By.cssSelector(DONE_BUTTON_CSS)).click();
+//            driver.findElement(By.xpath(DONE_BUTTON_XPATH)).click(); xpath Done-button
         }
     }
 
@@ -135,10 +143,14 @@ public class General implements AccessData {
     public static void pagesArchiving(WebDriver driver, int number, boolean isLogged) {
 
         final String ADD_PAGE_XPATH = "html/body/div[2]/div[2]/div[1]/img";
-        final String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[5]";
+//        final String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[5]"; without integrations button in menu
+        final String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[6]";
+        final String DONE_BUTTON_CSS = ".popup-window-toolbar-button.mod-done.js-popup-done";
+
         final String TYPE_PAGENAME_XPATH = "html/body/div[3]/div/div/div[1]/div[1]/div[1]/input";
         final String OPEN_PAGEMENU_XPATH = "html/body/div[2]/div[2]/div[2]/div[1]/div/div/div[1]";
         final String PAGE_ARCHIVE_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[2]";
+
         String name;
         for (int i = 1; i <= number; i++) {
             name = "CollectionArch" + Integer.toString(i);
@@ -146,7 +158,8 @@ public class General implements AccessData {
             if (isLogged) System.out.println(nowTime() + " CollectionArch " + i + " was created:");
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).clear();
             driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).sendKeys(name);
-            driver.findElement(By.xpath(DONE_BUTTON_XPATH)).click();
+//            driver.findElement(By.xpath(DONE_BUTTON_XPATH)).click(); xpath Done-button
+            driver.findElement(By.cssSelector(DONE_BUTTON_CSS)).click();
             driver.findElement(By.xpath(OPEN_PAGEMENU_XPATH)).click();
             driver.findElement(By.xpath(PAGE_ARCHIVE_XPATH)).click();
             driver.findElement(By.xpath(PAGE_ARCHIVE_XPATH)).click();
@@ -178,11 +191,11 @@ public class General implements AccessData {
 
         final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div/div[4]/img";
         final String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div/div[4]/img";
-        final String WIDGET_BOARD_OPTIONS_CSS=".widget-menu-choice.js-widget-showboardoptionsmenu.js-tap-indication";
+        final String WIDGET_BOARD_OPTIONS_CSS = ".widget-menu-choice.js-widget-showboardoptionsmenu.js-tap-indication";
 
         String name;
         String colorId;
-        String colorName="";
+        String colorName = "";
         int colorCode = 0;
         for (int i = 11; i < 11 + number; i++) {
 
@@ -190,13 +203,13 @@ public class General implements AccessData {
                 if (i % 10 == 0) colorCode = 10;
                 else colorCode = i % 10;
                 colorId = Integer.toString(colorCode);
-                colorName=     WidgetColor.values()[colorCode].toString();
+                colorName = WidgetColor.values()[colorCode].toString();
             } else if (widgetColor == WidgetColor.DEFAULT) {
                 colorId = "1";
-                colorName=WidgetColor.values()[colorCode].toString();
+                colorName = WidgetColor.values()[colorCode].toString();
             } else {
                 colorId = Integer.toString(widgetColor.ordinal());
-                colorName=widgetColor.toString();
+                colorName = widgetColor.toString();
             }
 
             name = Integer.toString(i - 10) + " " + colorName;
@@ -362,7 +375,7 @@ public class General implements AccessData {
         final String TODO_UNFINISHED_CARD_STATUS_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[1]/div[2]/div[1]";
         final String TODO_SHOWALL_LINK_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[1]/div[2]/div[2]";
 
-        final String TODO_BUTTON_XPATH="//div/div/div[3]";
+        final String TODO_BUTTON_XPATH = "//div/div/div[3]";
 
         if (!driver.findElement(By.cssSelector(".workspace-sidepanel-title-content")).isDisplayed())
             driver.findElement(By.xpath(TODO_BUTTON_XPATH)).click();
@@ -370,8 +383,8 @@ public class General implements AccessData {
         if ((todoCardStatus == TodoCardStatus.REMOVEALLUNFINISHED)) {
             driver.findElement(By.xpath(TODO_UNFINISHED_CARD_STATUS_XPATH)).click();
             try {
-            if (logType == LogType.XPATHLOG)
-                System.out.println("TODO_UNFINISHED_CARD_STATUS : " + TODO_UNFINISHED_CARD_STATUS);
+                if (logType == LogType.XPATHLOG)
+                    System.out.println("TODO_UNFINISHED_CARD_STATUS : " + TODO_UNFINISHED_CARD_STATUS);
                 if ((logType == LogType.ACTIONLOG) || (logType == LogType.XPATHLOG))
                     System.out.println("CONDITION, Are they Presented?=" + driver.findElement(By.xpath(TODO_UNFINISHED_CARD_STATUS)).isDisplayed());
                 while (driver.findElement(By.xpath(TODO_UNFINISHED_CARD_STATUS)).isDisplayed()) {

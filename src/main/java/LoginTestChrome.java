@@ -34,18 +34,12 @@ public class LoginTestChrome {
 //        General.userNotFound(driver);
 
         //Usual Operation Block
-
         General.loginUser(driver);
-        Point point = new Point(10,10);
-        Dimension dimension = new Dimension(1900,700);
-        driver.manage().window().setPosition(point);
-        driver.manage().window().setSize(dimension);
-//        Thread.sleep(5000);
+        WindowOperations.resizeWindowfoIdea(driver);
+
         Run.Run(driver);
-        General.userSignOut(driver);
-
+//        General.userSignOut(driver);
 //        General.loginUserWithCash(driver,10);
-
     }
 
     @After

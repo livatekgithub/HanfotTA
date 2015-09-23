@@ -30,11 +30,15 @@ public class LoginTestFirefox {
     public void testLogin() throws Exception {
 
         General.loginUser(driver);
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
+        WindowOperations.resizeWindowfoIdea(driver);
+
         Run.Run(driver);
         Thread.sleep(3000);
-        General.userSignOut(driver);
+//        General.userSignOut(driver);
     }
+
+
 
     @After
     public void tearDown() throws Exception {
