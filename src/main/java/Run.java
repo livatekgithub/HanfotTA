@@ -68,7 +68,23 @@ public class Run {
 
     public static void Run(WebDriver driver) throws InterruptedException {
 
-        runTestAllMethods(driver, false);
+//        runTestAllMethods(driver, false);
+
+        System.out.println(General.nowTime() + " : 4a. Widgets Creation(2). COLLAPSED. Fixed Color ");
+        General.widgetsCreation(driver, 10, WidgetState.COLLAPSED, WidgetColor.EMERALD, true);
+
+        System.out.println(General.nowTime() + " : 4b. Widgets Creation(2). EXPANDED. Random ");
+        General.widgetsCreation(driver, 10, WidgetState.EXPANDED, WidgetColor.RANDOM, true);
+
+        General.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.EMERALD, true);
+        System.out.println(General.nowTime() + " : 5. Columns Creation(3)");
+        General.columnsCreation(driver, 8, false);
+
+        System.out.println(General.nowTime() + " : 6. Cards Creation(4*8)");
+        General.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
+        General.firstBoardCardsGeneration(driver, 30, 3, false);
+        General.firstIdeaCardsGeneration(driver, 30, false);
+
 
 //        General.addUserToOrganization(driver,true);
 

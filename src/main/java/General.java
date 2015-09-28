@@ -239,8 +239,8 @@ public class General implements AccessData {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetsCreation(WebDriver driver, int number, WidgetState widgetState, WidgetColor widgetColor, boolean isLogged) {
 
-        final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div/div[4]/img";
-        final String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div/div[4]/img";
+        final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[3]/img";
+        final String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[3]/img";
         final String WIDGET_BOARD_OPTIONS_CSS = ".widget-menu-choice.js-widget-showboardoptionsmenu.js-tap-indication";
 
         String name;
