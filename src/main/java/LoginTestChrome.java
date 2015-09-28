@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,7 +34,7 @@ public class LoginTestChrome {
 
         //Usual Operation Block
         General.loginUser(driver);
-        WindowOperations.resizeWindowfoIdea(driver);
+        WindowOperations.resizeWindowforIdea(driver);
 
         Run.Run(driver);
 //        General.userSignOut(driver);

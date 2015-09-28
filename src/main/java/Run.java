@@ -68,11 +68,10 @@ public class Run {
 
     public static void Run(WebDriver driver) throws InterruptedException {
 
-//        runTestAllMethods(driver, false);
+        runTestAllMethods(driver, false);
 
-        General.pagesCreation(driver,10,PageSharingMode.PUBLIC,true);
-        General.pagesCreation(driver,10,PageSharingMode.PRIVATE,true);
-        General.pagesArchiving(driver,5,true);
+//        General.addUserToOrganization(driver,true);
+
 
 
     }

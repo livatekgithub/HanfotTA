@@ -31,7 +31,7 @@ public class LoginTestFirefox {
 
         General.loginUser(driver);
 //        driver.manage().window().maximize();
-        WindowOperations.resizeWindowfoIdea(driver);
+        WindowOperations.resizeWindowforIdea(driver);
 
         Run.Run(driver);
         Thread.sleep(3000);
