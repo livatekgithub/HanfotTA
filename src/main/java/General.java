@@ -1,8 +1,4 @@
-import enums.PageSharingMode;
-import enums.TodoCardStatus;
-import enums.WidgetColor;
-import enums.WidgetState;
-import enums.LogType;
+import enums.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -166,44 +162,13 @@ public class General implements AccessData {
         }
     }
 
-    public static void addUserToOrganization(WebDriver driver, boolean isLogged) throws InterruptedException {
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void addUserToOrganization(WebDriver driver, int numberOfUsers, boolean isLogged) throws InterruptedException {
 
-        final String ADD_USER_FIELD_XPATH_BEGIN = "html/body/div[4]/div/div/div[2]/div[3]/div[2]/";
+        final String ADD_USER_FIELD_XPATH_BEGIN = "html/body/div[4]/div/div/div[1]/div/div[2]/div[3]/div[2]/";
         final String ADD_USER_FIELD_XPATH_END = "/div[1]/input";
-
         String name;
         String dynamicPart;
-
-        /*
-        html/body/div[4]/div/div/div[2]/div[3]/div[2]/div[0]/div[1]/input
-        html/body/div[4]/div/div/div[2]/div[3]/div[2]/div[1]/div[1]/input
-        html/body/div[4]/div/div/div[2]/div[3]/div[2]/div[2]/div[1]/input
-        html/body/div[4]/div/div/div[2]/div[3]/div[2]/div[3]/div[1]/input
-         */
-
-        String[] usernames =
-                {
-                        "livatek.user1@gmail.com",
-                        "livatek.user2@gmail.com",
-                        "livatek.user3@ukr.net",
-                        "livatek.user4@gmail.com",
-                        "livatek.user5@ukr.net",
-                        "livatek.user6@ukr.net",
-                        "livatek.user7@gmail.com",
-                        "livatek.user8@ukr.net",
-                        "livatek.user9@gmail.com",
-                        "livatek.user10@gmail.com",
-                        "livatek.user11@gmail.com",
-                        "livatek.user12@ukr.net",
-                        "livatek.user13@gmail.com",
-                        "livatek.user14@ukr.net",
-                        "livatek.user15@ukr.net",
-                        "livatek.user16@ukr.net",
-                        "livatek.user17@ukr.net",
-                        "livatek.user18@gmail.com",
-                        "livatek.user19@ukr.net",
-                        "livatek.user20@gmail.com",
-                };
 
         try {
             driver.findElement(By.cssSelector(".avatar-initials")).click();
@@ -211,29 +176,48 @@ public class General implements AccessData {
         } catch (NoSuchElementException e) {
             driver.findElement(By.cssSelector(".avatar-image")).click();
         }
-
         driver.findElement(By.cssSelector("div.app-menu-choice.js-org-invite")).click();
         driver.findElement(By.id("invitations")).click();
-//        Thread.sleep(5000);
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < numberOfUsers; i++) {
             name = Integer.toString(i + 1);
-            dynamicPart = "div[" + name + "]";
-            System.out.println(usernames[i]);
-
-//            driver.findElement(By.cssSelector(".fastcardpopup-userfield.fastcardpopup-taskinput-input.js-workspacedit-invitation")).sendKeys(usernames[i]);
+            if (i == 0) dynamicPart = "div";
+            else dynamicPart = "div[" + name + "]";
+            System.out.println(TestUsers.usernames[i]);
             if (isLogged) System.out.println(ADD_USER_FIELD_XPATH_BEGIN + dynamicPart + ADD_USER_FIELD_XPATH_END);
-            driver.findElement(By.xpath(ADD_USER_FIELD_XPATH_BEGIN + dynamicPart + ADD_USER_FIELD_XPATH_END)).sendKeys(usernames[i]);
-
-            System.out.println(nowTime() + " User" + (i + 1) + ": " + usernames[i] + " was added:");
+            driver.findElement(By.xpath(ADD_USER_FIELD_XPATH_BEGIN + dynamicPart + ADD_USER_FIELD_XPATH_END)).sendKeys(TestUsers.usernames[i]);
+            System.out.println(nowTime() + " User" + (i + 1) + ": " + TestUsers.usernames[i] + " was added:");
             driver.findElement(By.cssSelector(".fastcardpopup-taskinput-button.workspaceedit-add-button.js-workspacedit-add-invitation")).click();
         }
-//        }
-//        driver.findElement(By.id("Add")).click();
         driver.findElement(By.cssSelector(".xsolidbutton.mod-blue.workspaceedit-sendinvitations.js-workspacedit-sendinvitations")).click();
-//        Thread.sleep(5000);
+        driver.findElement(By.cssSelector(".popup-window-toolbar-button.mod-cancel.js-popup-cancel")).click();
+        driver.findElement(By.cssSelector(".toolpopup-popup-bg")).click();
+    }
 
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void removeAllUsersFromOrganization(WebDriver driver, boolean isLogged) throws InterruptedException {
 
+        String userName;
+        final String LAST_USER_NAME = "html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
+        final String SECOND_USER_CAN = "html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[2]/div[2]/div[2]/div";
+
+        try {
+            driver.findElement(By.cssSelector(".avatar-image")).click();
+        } catch (NoSuchElementException e) {
+            driver.findElement(By.cssSelector(".avatar-initials")).click();
+        }
+        driver.findElement(By.cssSelector("div.app-menu-choice.js-org-admin")).click();
+
+        while (isElementPresent(By.xpath(SECOND_USER_CAN), driver)) {
+            userName = driver.findElement(By.xpath(LAST_USER_NAME)).getText();
+            System.out.println(userName + " was removed " + driver.findElement(By.xpath(SECOND_USER_CAN)).isDisplayed());
+            Thread.sleep(500);
+            driver.findElement(By.xpath("html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div[2]/div")).click();
+            Thread.sleep(500);
+            driver.findElement(By.xpath("html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div")).click();
+        }
+        driver.findElement(By.cssSelector(".popup-window-toolbar-button.mod-cancel.js-popup-cancel")).click();
+        driver.findElement(By.cssSelector(".toolpopup-popup-bg")).click();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
