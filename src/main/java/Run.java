@@ -5,11 +5,11 @@ public class Run {
     public static void runTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException {
 
         System.out.println(General.nowTime() + " : 1. Add Users to Organization(20)");
-        General.addUserToOrganization(driver,5,true);
+        General.addUserToOrganization(driver, 5, true);
 
         System.out.println(General.nowTime() + " : 2. Remove Users from Organization(10)");
-        General.removeAllUsersFromOrganization(driver,true);
-        General.addUserToOrganization(driver,10,true);
+        General.removeAllUsersFromOrganization(driver, true);
+        General.addUserToOrganization(driver, 10, true);
 
         System.out.println(General.nowTime() + " : 3. Pages Creation(10)");
         General.pagesCreation(driver, 8, PageSharingMode.PRIVATE, false);
@@ -22,17 +22,20 @@ public class Run {
         General.pagesRemoving(driver, 5, false);
 
         System.out.println(General.nowTime() + " : 6a. Widgets Creation(2). COLLAPSED. Fixed Color ");
-        General.widgetsCreation(driver, 10, WidgetState.COLLAPSED, WidgetColor.EMERALD, false);
+        General.renameCurrentPage(driver,"MANY WIDGETS COLLECTION");
+        General.widgetsCreation(driver, 5, WidgetState.COLLAPSED, WidgetColor.EMERALD, false);
 
         System.out.println(General.nowTime() + " : 6b. Widgets Creation(2). EXPANDED. Random ");
         General.widgetsCreation(driver, 10, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
 
-        General.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.EMERALD, false);
         System.out.println(General.nowTime() + " : 7. Columns Creation(3)");
+        General.currentWidgetsRename(driver,"MANY СOLUMNS BOARD",WidgetType.BOARD);
         General.columnsCreation(driver, 8, false);
 
         System.out.println(General.nowTime() + " : 8. Cards Creation(4*8)");
         General.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
+        General.currentWidgetsRename(driver,"MANY CARDS IDEA",WidgetType.IDEA);
+        General.currentWidgetsRename(driver,"MANY CARDS BOARD",WidgetType.BOARD);
         General.firstBoardCardsGeneration(driver, 30, 3, false);
         General.firstIdeaCardsGeneration(driver, 30, false);
 

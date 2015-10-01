@@ -1,14 +1,22 @@
 Release Notes.
 
+
+01.10.2015 Thursday
+    - Rename Board and Page methods
+14.08.2015 Friday
+    - columnsAdding was broken. Xpath for adding columns became constant.
+10.08.2015 Monday
+    - pagesCreation (creation of pages)
 06.08.2015 Thursday
     - widgetsCreation (improving setting colors, possibility to choose color)
 
-10.08.2015 Monday
-    - pagesCreation (creation of pages)
 
-14.08.2015 Friday
-    - columnsAdding was broken. Xpath for adding columns became constant.
-    -
+
+Ideas for Refactoring
+Create Classes for TODO, Pages etc.. = PageObjects
+Remove all xpath and css locators to constants
+
+
 
 
 Ideas for further tests

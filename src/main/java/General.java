@@ -137,7 +137,6 @@ public class General implements AccessData {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void pagesArchiving(WebDriver driver, int number, boolean isLogged) {
-
         final String ADD_PAGE_XPATH = "html/body/div[2]/div[2]/div[1]/img";
 //        final String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[5]"; without integrations button in menu
         final String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[6]";
@@ -160,6 +159,17 @@ public class General implements AccessData {
             driver.findElement(By.xpath(PAGE_ARCHIVE_XPATH)).click();
             driver.findElement(By.xpath(PAGE_ARCHIVE_XPATH)).click();
         }
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void renameCurrentPage(WebDriver driver,String name){
+        final String OPEN_PAGEMENU_XPATH = "html/body/div[2]/div[2]/div[2]/div[1]/div/div/div[1]";
+        final String TYPE_PAGENAME_XPATH = "html/body/div[3]/div/div/div[1]/div[1]/div[1]/input";
+        final String DONE_BUTTON_CSS = ".popup-window-toolbar-button.mod-done.js-popup-done";
+
+        driver.findElement(By.xpath(OPEN_PAGEMENU_XPATH)).click();
+        driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).clear();
+        driver.findElement(By.xpath(TYPE_PAGENAME_XPATH)).sendKeys(name);
+        driver.findElement(By.cssSelector(DONE_BUTTON_CSS)).click();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -223,8 +233,16 @@ public class General implements AccessData {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetsCreation(WebDriver driver, int number, WidgetState widgetState, WidgetColor widgetColor, boolean isLogged) {
 
+        final String IDEA_ADD_CSS = "img.xaddbutton-icon";
+        final String IDEA_NAME_FIELD = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/input";
+        final String IDEA_SAVE_BUTTON = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/button";
         final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[3]/img";
+        final String IDEA_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]";
+        final String BOARD_ADD_CSS = "div.xaddbutton-maindiv.js-workspace-tracking-add-board > img.xaddbutton-icon";
+        final String BOARD_NAME_FIELD = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/input";
         final String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[3]/img";
+        final String BOARD_SAVE_BUTTON = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/button";
+        final String BOARD_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div";
         final String WIDGET_BOARD_OPTIONS_CSS = ".widget-menu-choice.js-widget-showboardoptionsmenu.js-tap-indication";
 
         String name;
@@ -248,21 +266,22 @@ public class General implements AccessData {
 
             name = Integer.toString(i - 10) + " " + colorName;
             //Create Idea Widget with Sequential Name 1,2,..
-            driver.findElement(By.cssSelector("img.xaddbutton-icon")).click();
-            driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/input")).sendKeys("Idea " + name);
-            driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/button")).click();
+            driver.findElement(By.cssSelector(IDEA_ADD_CSS)).click();
+            driver.findElement(By.xpath(IDEA_NAME_FIELD)).sendKeys("Idea " + name);
+            driver.findElement(By.xpath(IDEA_SAVE_BUTTON)).click();
             if (isLogged) System.out.println(nowTime() + " Idea " + name + " was created:");
 
             //Create Board Widget with Sequential Name 1,2,..
-            driver.findElement(By.cssSelector("div.xaddbutton-maindiv.js-workspace-tracking-add-board > img.xaddbutton-icon")).click();
-            driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/input")).sendKeys("Board " + name);
-            driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/button")).click();
+
+            driver.findElement(By.cssSelector(BOARD_ADD_CSS)).click();
+            driver.findElement(By.xpath(BOARD_NAME_FIELD)).sendKeys("Board " + name);
+            driver.findElement(By.xpath(BOARD_SAVE_BUTTON)).click();
             if (isLogged) System.out.println(nowTime() + " Board " + name + " was created:");
 
             if (widgetState == WidgetState.COLLAPSED) {
-                driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]")).click();
+                driver.findElement(By.xpath(IDEA_HEADER_XPATH)).click();
                 if (isLogged) System.out.println(nowTime() + " Idea " + name + " was collapsed:");
-                driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div")).click();
+                driver.findElement(By.xpath(BOARD_HEADER_XPATH)).click();
                 if (isLogged) System.out.println(nowTime() + " Board " + name + " was collapsed:");
             }
 
@@ -281,7 +300,34 @@ public class General implements AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void widgetsRemoval(WebDriver driver) {
+    public static void currentWidgetsRename(WebDriver driver, String name, WidgetType widgetType) throws InterruptedException {
+        final String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[3]/img";
+        final String BOARD_RENAME_MENU_ITEM = "html/body/div[3]/div/div[3]/div/div[3]/div[2]";
+        final String BOARD_NAME_FIELD = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/input";
+        final String BOARD_SAVE_BUTTON = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/button";
+
+        final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[3]/img";
+        final String IDEA_RENAME_MENU_ITEM = "html/body/div[3]/div/div[3]/div/div[3]/div[2]";
+        final String IDEA_NAME_FIELD = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/input";
+        final String IDEA_SAVE_BUTTON = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/button";
+
+        if (widgetType == WidgetType.BOARD) {
+            driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
+            driver.findElement(By.xpath(BOARD_RENAME_MENU_ITEM)).click();
+            driver.findElement(By.xpath(BOARD_NAME_FIELD)).clear();
+            driver.findElement(By.xpath(BOARD_NAME_FIELD)).sendKeys("Board " + name);
+            driver.findElement(By.xpath(BOARD_SAVE_BUTTON)).click();
+        } else {
+            driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
+            driver.findElement(By.xpath(IDEA_RENAME_MENU_ITEM)).click();
+            driver.findElement(By.xpath(IDEA_NAME_FIELD)).clear();
+            driver.findElement(By.xpath(IDEA_NAME_FIELD)).sendKeys("Idea " + name);
+            driver.findElement(By.xpath(IDEA_SAVE_BUTTON)).click();
+        }
+    }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void widgetsRemoval(WebDriver driver, int number) {
 
     }
 
@@ -545,4 +591,3 @@ public class General implements AccessData {
         }
     }
 }
-
