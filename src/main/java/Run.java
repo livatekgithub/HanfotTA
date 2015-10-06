@@ -82,6 +82,7 @@ public class Run {
     public static void Run(WebDriver driver) throws InterruptedException {
 
         runTestAllMethods(driver, false);
+        //
 /*
         General.widgetsCreation(driver, 5, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
         Thread.sleep(3000);
