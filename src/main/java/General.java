@@ -1,6 +1,7 @@
 import enums.*;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
@@ -160,8 +161,9 @@ public class General implements AccessData {
             driver.findElement(By.xpath(PAGE_ARCHIVE_XPATH)).click();
         }
     }
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void renameCurrentPage(WebDriver driver,String name){
+    public static void pageRenameCurrent(WebDriver driver, String name) {
         final String OPEN_PAGEMENU_XPATH = "html/body/div[2]/div[2]/div[2]/div[1]/div/div/div[1]";
         final String TYPE_PAGENAME_XPATH = "html/body/div[3]/div/div/div[1]/div[1]/div[1]/input";
         final String DONE_BUTTON_CSS = ".popup-window-toolbar-button.mod-done.js-popup-done";
@@ -173,7 +175,7 @@ public class General implements AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void addUserToOrganization(WebDriver driver, int numberOfUsers, boolean isLogged) throws InterruptedException {
+    public static void usersAddToOrganization(WebDriver driver, int numberOfUsers, boolean isLogged) throws InterruptedException {
 
         final String ADD_USER_FIELD_XPATH_BEGIN = "html/body/div[4]/div/div/div[1]/div/div[2]/div[3]/div[2]/";
         final String ADD_USER_FIELD_XPATH_END = "/div[1]/input";
@@ -181,9 +183,9 @@ public class General implements AccessData {
         String dynamicPart;
 
         try {
+            Thread.sleep(5000);
             driver.findElement(By.cssSelector(".avatar-initials")).click();
-
-        } catch (NoSuchElementException e) {
+        }catch(ElementNotVisibleException|NoSuchElementException e2){
             driver.findElement(By.cssSelector(".avatar-image")).click();
         }
         driver.findElement(By.cssSelector("div.app-menu-choice.js-org-invite")).click();
@@ -193,10 +195,10 @@ public class General implements AccessData {
             name = Integer.toString(i + 1);
             if (i == 0) dynamicPart = "div";
             else dynamicPart = "div[" + name + "]";
-            System.out.println(TestUsers.usernames[i]);
+            if (isLogged) System.out.println(TestUsers.usernames[i]);
             if (isLogged) System.out.println(ADD_USER_FIELD_XPATH_BEGIN + dynamicPart + ADD_USER_FIELD_XPATH_END);
             driver.findElement(By.xpath(ADD_USER_FIELD_XPATH_BEGIN + dynamicPart + ADD_USER_FIELD_XPATH_END)).sendKeys(TestUsers.usernames[i]);
-            System.out.println(nowTime() + " User" + (i + 1) + ": " + TestUsers.usernames[i] + " was added:");
+            if (isLogged) System.out.println(nowTime() + " User" + (i + 1) + ": " + TestUsers.usernames[i] + " was added:");
             driver.findElement(By.cssSelector(".fastcardpopup-taskinput-button.workspaceedit-add-button.js-workspacedit-add-invitation")).click();
         }
         driver.findElement(By.cssSelector(".xsolidbutton.mod-blue.workspaceedit-sendinvitations.js-workspacedit-sendinvitations")).click();
@@ -205,7 +207,7 @@ public class General implements AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void removeAllUsersFromOrganization(WebDriver driver, boolean isLogged) throws InterruptedException {
+    public static void usersRemoveAllFromOrganization(WebDriver driver, boolean isLogged) throws InterruptedException {
 
         String userName;
         final String LAST_USER_NAME = "html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
@@ -220,7 +222,7 @@ public class General implements AccessData {
 
         while (isElementPresent(By.xpath(SECOND_USER_CAN), driver)) {
             userName = driver.findElement(By.xpath(LAST_USER_NAME)).getText();
-            System.out.println(userName + " was removed " + driver.findElement(By.xpath(SECOND_USER_CAN)).isDisplayed());
+            if (isLogged) System.out.println(userName + " was removed " + driver.findElement(By.xpath(SECOND_USER_CAN)).isDisplayed());
             Thread.sleep(500);
             driver.findElement(By.xpath("html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div[2]/div")).click();
             Thread.sleep(500);
@@ -300,39 +302,133 @@ public class General implements AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void currentWidgetsRename(WebDriver driver, String name, WidgetType widgetType) throws InterruptedException {
-        final String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[3]/img";
-        final String BOARD_RENAME_MENU_ITEM = "html/body/div[3]/div/div[3]/div/div[3]/div[2]";
-        final String BOARD_NAME_FIELD = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/input";
-        final String BOARD_SAVE_BUTTON = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/button";
-
+    public static void widgetsCurrentRename(WebDriver driver, String name, WidgetType widgetType) throws InterruptedException {
         final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[3]/img";
         final String IDEA_RENAME_MENU_ITEM = "html/body/div[3]/div/div[3]/div/div[3]/div[2]";
         final String IDEA_NAME_FIELD = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/input";
         final String IDEA_SAVE_BUTTON = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/button";
+        final String IDEA_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]";
+
+        final String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[3]/img";
+        final String BOARD_RENAME_MENU_ITEM = "html/body/div[3]/div/div[3]/div/div[3]/div[2]";
+        final String BOARD_NAME_FIELD = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/input";
+        final String BOARD_SAVE_BUTTON = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/button";
+        final String BOARD_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div";
+
+        String widgetName;
 
         if (widgetType == WidgetType.BOARD) {
+            widgetName = driver.findElement(By.xpath(BOARD_HEADER_XPATH)).getText();
             driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
             driver.findElement(By.xpath(BOARD_RENAME_MENU_ITEM)).click();
             driver.findElement(By.xpath(BOARD_NAME_FIELD)).clear();
             driver.findElement(By.xpath(BOARD_NAME_FIELD)).sendKeys("Board " + name);
             driver.findElement(By.xpath(BOARD_SAVE_BUTTON)).click();
+            System.out.println("  " + nowTime() + "Board:'" + widgetName + "' was renamed to 'Board " + name);
         } else {
+            widgetName = driver.findElement(By.xpath(IDEA_HEADER_XPATH)).getText();
             driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
             driver.findElement(By.xpath(IDEA_RENAME_MENU_ITEM)).click();
             driver.findElement(By.xpath(IDEA_NAME_FIELD)).clear();
             driver.findElement(By.xpath(IDEA_NAME_FIELD)).sendKeys("Idea " + name);
             driver.findElement(By.xpath(IDEA_SAVE_BUTTON)).click();
+            System.out.println("  " + nowTime() + "Idea:'" + widgetName + "' was renamed to 'Idea " + name);
         }
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void widgetsRemoval(WebDriver driver, int number) {
+    public static void widgetsRemoval(WebDriver driver, int number, boolean isLogged) throws InterruptedException {
+        final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[3]/img";
+        final String IDEA_MENU_OPTIONS_ITEM = "html/body/div[3]/div/div[3]/div/div[7]/div[2]";
+        final String IDEA_MENU_DELETE_ITEM = "html/body/div[4]/div/div/div/div[3]/div[2]";
+        final String IDEA_MENU_CONFIRM_DELETE_ITEM = "html/body/div[4]/div/div/div/div[4]/div[1]";
+        final String IDEA_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]";
 
+        final String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[3]/img";
+        final String BOARD_MENU_OPTIONS_ITEM = "html/body/div[3]/div/div[3]/div/div[9]/div[2]";
+        final String BOARD_MENU_DELETE_ITEM = "html/body/div[4]/div/div/div/div[3]";
+        final String BOARD_MENU_CONFIRM_DELETE_ITEM = "html/body/div[4]/div/div/div/div[4]/div[1]";
+        final String BOARD_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div";
+
+        String boardName;
+        String ideaName;
+
+        for (int i = 1; i <= number; i++) {
+            ideaName = driver.findElement(By.xpath(IDEA_HEADER_XPATH)).getText();
+            driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
+            driver.findElement(By.xpath(IDEA_MENU_OPTIONS_ITEM)).click();
+            driver.findElement(By.xpath(IDEA_MENU_DELETE_ITEM)).click();
+            driver.findElement(By.xpath(IDEA_MENU_CONFIRM_DELETE_ITEM)).click();
+            System.out.println("  " + nowTime() + " Idea:'" + ideaName + "' was removed");
+
+            boardName = driver.findElement(By.xpath(BOARD_HEADER_XPATH)).getText();
+            driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
+            driver.findElement(By.xpath(BOARD_MENU_OPTIONS_ITEM)).click();
+            driver.findElement(By.xpath(BOARD_MENU_DELETE_ITEM)).click();
+            driver.findElement(By.xpath(BOARD_MENU_CONFIRM_DELETE_ITEM)).click();
+            System.out.println("  " + nowTime() + " Board:'" + boardName + "' was removed");
+        }
+    }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void widgetsArchive(WebDriver driver, int number, WidgetOperation widgetOperation) throws InterruptedException {
+        final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[3]/img";
+        final String IDEA_MENU_OPTIONS_ITEM = "html/body/div[3]/div/div[3]/div/div[7]/div[2]";
+        final String IDEA_MENU_ARCHIVE_ITEM = "html/body/div[4]/div/div/div/div[2]/div[2]";
+        final String IDEA_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]";
+
+        final String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[3]/img";
+        final String BOARD_MENU_OPTIONS_ITEM = "html/body/div[3]/div/div[3]/div/div[9]/div[2]";
+        final String BOARD_MENU_ARCHIVE_ITEM = "html/body/div[4]/div/div/div/div[2]/div[2]";
+        final String BOARD_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div";
+
+        String boardName;
+        String ideaName;
+
+        if (widgetOperation == WidgetOperation.UNARCHIVE) {
+            widgetsShowArchived(driver);
+        }
+
+        for (int i = 1; i <= number; i++) {
+            ideaName = driver.findElement(By.xpath(IDEA_HEADER_XPATH)).getText();
+            driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
+            driver.findElement(By.xpath(IDEA_MENU_OPTIONS_ITEM)).click();
+            driver.findElement(By.xpath(IDEA_MENU_ARCHIVE_ITEM)).click();
+            System.out.println("  " + nowTime() + " Idea:'" + ideaName + "' was archived");
+
+            boardName = driver.findElement(By.xpath(BOARD_HEADER_XPATH)).getText();
+            driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
+            driver.findElement(By.xpath(BOARD_MENU_OPTIONS_ITEM)).click();
+            driver.findElement(By.xpath(BOARD_MENU_ARCHIVE_ITEM)).click();
+            System.out.println("  " + nowTime() + " Board:'" + boardName + "' was archived");
+        }
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void firstIdeaCardsGeneration(WebDriver driver, int number, boolean isLogged) {
+    public static void widgetsShowArchived(WebDriver driver) throws InterruptedException {
+        final String BOARD_CHECKBOX_MENU = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[1]/img";
+        final String BOARD_CHECKBOX_SHOWARCHIVED = "html/body/div[3]/div/div/div/div/div[1]/div";
+        final String IDEA_CHECKBOX_MENU = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[1]/div/div[1]/img";
+        final String IDEA_CHECKBOX_SHOWARCHIVED = "html/body/div[3]/div/div/div/div/div[1]/div";
+
+        driver.findElement(By.xpath(BOARD_CHECKBOX_MENU)).click();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath(BOARD_CHECKBOX_SHOWARCHIVED)).click();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath(BOARD_CHECKBOX_MENU)).click();
+        Thread.sleep(5000);
+        System.out.println("  " + nowTime() + " Archived Boards are / arent shown");
+        driver.findElement(By.xpath(IDEA_CHECKBOX_MENU)).click();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath(IDEA_CHECKBOX_SHOWARCHIVED)).click();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath(IDEA_CHECKBOX_MENU)).click();
+        Thread.sleep(5000);
+        System.out.println("  " + nowTime() + " Archived Ideas are / arent shown");
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardsFirstIdeaGeneration(WebDriver driver, int number, boolean isLogged) {
         String name;
         String dynamicPart;
         final String IDEA_CARD_X_PATH_FIRST_PART = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/";
@@ -397,7 +493,7 @@ public class General implements AccessData {
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------
 
-    public static void firstBoardCardsGeneration(WebDriver driver, int numberX, int numberY, boolean isLogged) {
+    public static void cardsFirstBoardGeneration(WebDriver driver, int numberX, int numberY, boolean isLogged) {
         String stringCounterX;
         String stringCounterY;
         String dynamicPartX;

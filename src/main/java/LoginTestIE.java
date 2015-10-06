@@ -31,17 +31,9 @@ public class LoginTestIE {
 
     @Test
     public void testLogin() throws Exception {
-        driver.get(AccessData.TESTURL);
-        driver.findElement(By.id("form-email")).clear();
-        driver.findElement(By.id("form-email")).sendKeys("livatek.user15@ukr.net");
-        driver.findElement(By.id("form-psw")).clear();
-        driver.findElement(By.id("form-psw")).sendKeys("User0215");
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector("button.btn-submit.js-tap-indication")).click();
-        assertTrue(isElementPresent(By.cssSelector("span.avatar-initials")));
-        driver.findElement(By.cssSelector("span.avatar-initials")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector("div.app-menu-choice.js-signout")).click();
+        General.loginUser(driver);
+        WindowOperations.resizeWindowforIdea(driver);
+        Run.Run(driver);
     }
 
     @After
