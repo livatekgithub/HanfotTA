@@ -185,7 +185,7 @@ public class General implements AccessData {
         try {
             Thread.sleep(5000);
             driver.findElement(By.cssSelector(".avatar-initials")).click();
-        }catch(ElementNotVisibleException|NoSuchElementException e2){
+        } catch (ElementNotVisibleException | NoSuchElementException e2) {
             driver.findElement(By.cssSelector(".avatar-image")).click();
         }
         driver.findElement(By.cssSelector("div.app-menu-choice.js-org-invite")).click();
@@ -198,7 +198,8 @@ public class General implements AccessData {
             if (isLogged) System.out.println(TestUsers.usernames[i]);
             if (isLogged) System.out.println(ADD_USER_FIELD_XPATH_BEGIN + dynamicPart + ADD_USER_FIELD_XPATH_END);
             driver.findElement(By.xpath(ADD_USER_FIELD_XPATH_BEGIN + dynamicPart + ADD_USER_FIELD_XPATH_END)).sendKeys(TestUsers.usernames[i]);
-            if (isLogged) System.out.println(nowTime() + " User" + (i + 1) + ": " + TestUsers.usernames[i] + " was added:");
+            if (isLogged)
+                System.out.println(nowTime() + " User" + (i + 1) + ": " + TestUsers.usernames[i] + " was added:");
             driver.findElement(By.cssSelector(".fastcardpopup-taskinput-button.workspaceedit-add-button.js-workspacedit-add-invitation")).click();
         }
         driver.findElement(By.cssSelector(".xsolidbutton.mod-blue.workspaceedit-sendinvitations.js-workspacedit-sendinvitations")).click();
@@ -222,7 +223,8 @@ public class General implements AccessData {
 
         while (isElementPresent(By.xpath(SECOND_USER_CAN), driver)) {
             userName = driver.findElement(By.xpath(LAST_USER_NAME)).getText();
-            if (isLogged) System.out.println(userName + " was removed " + driver.findElement(By.xpath(SECOND_USER_CAN)).isDisplayed());
+            if (isLogged)
+                System.out.println(userName + " was removed " + driver.findElement(By.xpath(SECOND_USER_CAN)).isDisplayed());
             Thread.sleep(500);
             driver.findElement(By.xpath("html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div[2]/div")).click();
             Thread.sleep(500);
@@ -302,7 +304,7 @@ public class General implements AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void widgetsCurrentRename(WebDriver driver, String name, WidgetType widgetType) throws InterruptedException {
+    public static void widgetsCurrentRename(WebDriver driver, String name, WidgetType widgetType, boolean isLogged) throws InterruptedException {
         final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[3]/img";
         final String IDEA_RENAME_MENU_ITEM = "html/body/div[3]/div/div[3]/div/div[3]/div[2]";
         final String IDEA_NAME_FIELD = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/input";
@@ -324,7 +326,8 @@ public class General implements AccessData {
             driver.findElement(By.xpath(BOARD_NAME_FIELD)).clear();
             driver.findElement(By.xpath(BOARD_NAME_FIELD)).sendKeys("Board " + name);
             driver.findElement(By.xpath(BOARD_SAVE_BUTTON)).click();
-            System.out.println("  " + nowTime() + "Board:'" + widgetName + "' was renamed to 'Board " + name);
+            if (isLogged)
+                System.out.println("  " + nowTime() + "  Board:'" + widgetName + "' was renamed to 'Board " + name);
         } else {
             widgetName = driver.findElement(By.xpath(IDEA_HEADER_XPATH)).getText();
             driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
@@ -332,7 +335,8 @@ public class General implements AccessData {
             driver.findElement(By.xpath(IDEA_NAME_FIELD)).clear();
             driver.findElement(By.xpath(IDEA_NAME_FIELD)).sendKeys("Idea " + name);
             driver.findElement(By.xpath(IDEA_SAVE_BUTTON)).click();
-            System.out.println("  " + nowTime() + "Idea:'" + widgetName + "' was renamed to 'Idea " + name);
+            if (isLogged)
+                System.out.println("  " + nowTime() + "  Idea:'" + widgetName + "' was renamed to 'Idea " + name);
         }
     }
 
@@ -359,19 +363,19 @@ public class General implements AccessData {
             driver.findElement(By.xpath(IDEA_MENU_OPTIONS_ITEM)).click();
             driver.findElement(By.xpath(IDEA_MENU_DELETE_ITEM)).click();
             driver.findElement(By.xpath(IDEA_MENU_CONFIRM_DELETE_ITEM)).click();
-            System.out.println("  " + nowTime() + " Idea:'" + ideaName + "' was removed");
+            if (isLogged) System.out.println("  " + nowTime() + " Idea:'" + ideaName + "' was removed");
 
             boardName = driver.findElement(By.xpath(BOARD_HEADER_XPATH)).getText();
             driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
             driver.findElement(By.xpath(BOARD_MENU_OPTIONS_ITEM)).click();
             driver.findElement(By.xpath(BOARD_MENU_DELETE_ITEM)).click();
             driver.findElement(By.xpath(BOARD_MENU_CONFIRM_DELETE_ITEM)).click();
-            System.out.println("  " + nowTime() + " Board:'" + boardName + "' was removed");
+            if (isLogged) System.out.println("  " + nowTime() + " Board:'" + boardName + "' was removed");
         }
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void widgetsArchive(WebDriver driver, int number, WidgetOperation widgetOperation) throws InterruptedException {
+    public static void widgetsArchive(WebDriver driver, int number, WidgetOperation widgetOperation, boolean isLogged) throws InterruptedException {
         final String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[3]/img";
         final String IDEA_MENU_OPTIONS_ITEM = "html/body/div[3]/div/div[3]/div/div[7]/div[2]";
         final String IDEA_MENU_ARCHIVE_ITEM = "html/body/div[4]/div/div/div/div[2]/div[2]";
@@ -390,41 +394,61 @@ public class General implements AccessData {
         }
 
         for (int i = 1; i <= number; i++) {
+            //Idea Archiving- Unarchiving
             ideaName = driver.findElement(By.xpath(IDEA_HEADER_XPATH)).getText();
+            if (widgetOperation == WidgetOperation.ARCHIVE) {
+                if (isLogged) System.out.println("  " + nowTime() + " Idea:'" + ideaName + "' was archived");
+                widgetsCurrentRename(driver, "ARCHIVED IDEA" + i, WidgetType.IDEA, false);
+            }
+            if (widgetOperation == WidgetOperation.UNARCHIVE) {
+                if (isLogged) System.out.println("  " + nowTime() + " Idea:'" + ideaName + "' was unarchived");
+                widgetsCurrentRename(driver, "UNARCHIVED IDEA" + i, WidgetType.IDEA, false);
+            }
             driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
             driver.findElement(By.xpath(IDEA_MENU_OPTIONS_ITEM)).click();
+            Thread.sleep(500);
             driver.findElement(By.xpath(IDEA_MENU_ARCHIVE_ITEM)).click();
-            System.out.println("  " + nowTime() + " Idea:'" + ideaName + "' was archived");
 
+            //Board Archiving- Unarchiving
             boardName = driver.findElement(By.xpath(BOARD_HEADER_XPATH)).getText();
+            if (widgetOperation == WidgetOperation.ARCHIVE) {
+                if (isLogged) System.out.println("  " + nowTime() + " Board:'" + boardName + "' was archived");
+                widgetsCurrentRename(driver, "ARCHIVED BOARD" + i, WidgetType.BOARD, false);
+            }
+            if (widgetOperation == WidgetOperation.UNARCHIVE) {
+                if (isLogged) System.out.println("  " + nowTime() + " Board:'" + boardName + "' was unarchived");
+                widgetsCurrentRename(driver, "UNARCHIVED BOARD" + i, WidgetType.BOARD, false);
+            }
             driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
             driver.findElement(By.xpath(BOARD_MENU_OPTIONS_ITEM)).click();
+            Thread.sleep(500);
             driver.findElement(By.xpath(BOARD_MENU_ARCHIVE_ITEM)).click();
-            System.out.println("  " + nowTime() + " Board:'" + boardName + "' was archived");
+        }
+
+        if (widgetOperation == WidgetOperation.UNARCHIVE) {
+            widgetsShowArchived(driver);
         }
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetsShowArchived(WebDriver driver) throws InterruptedException {
-        final String BOARD_CHECKBOX_MENU = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[1]/img";
-        final String BOARD_CHECKBOX_SHOWARCHIVED = "html/body/div[3]/div/div/div/div/div[1]/div";
-        final String IDEA_CHECKBOX_MENU = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[1]/div/div[1]/img";
+        final String IDEA_CHECKBOX_MENU = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[1]/img";
         final String IDEA_CHECKBOX_SHOWARCHIVED = "html/body/div[3]/div/div/div/div/div[1]/div";
+        final String BOARD_CHECKBOX_MENU = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[1]/div/div[1]/img";
+        final String BOARD_CHECKBOX_SHOWARCHIVED = "html/body/div[3]/div/div/div/div/div[1]/div";
 
         driver.findElement(By.xpath(BOARD_CHECKBOX_MENU)).click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         driver.findElement(By.xpath(BOARD_CHECKBOX_SHOWARCHIVED)).click();
-        Thread.sleep(5000);
-        driver.findElement(By.xpath(BOARD_CHECKBOX_MENU)).click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("html/body/div[3]")).click();
         System.out.println("  " + nowTime() + " Archived Boards are / arent shown");
         driver.findElement(By.xpath(IDEA_CHECKBOX_MENU)).click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         driver.findElement(By.xpath(IDEA_CHECKBOX_SHOWARCHIVED)).click();
-        Thread.sleep(5000);
-        driver.findElement(By.xpath(IDEA_CHECKBOX_MENU)).click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         System.out.println("  " + nowTime() + " Archived Ideas are / arent shown");
+        driver.findElement(By.xpath("html/body/div[3]")).click();
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
@@ -577,7 +601,7 @@ public class General implements AccessData {
 
                 }
             } catch (NoSuchElementException e) {
-                System.out.println("Nothing to Remove!");
+                if (logType != LogType.NOLOG) System.out.println("Nothing to Remove!");
             }
         }
 
@@ -601,7 +625,7 @@ public class General implements AccessData {
                         System.out.println("Log: " + General.nowTime() + " Finished TODO Card [ " + cardName + " ]were removed");
                 }
             } catch (NoSuchElementException e) {
-                System.out.println("Nothing to Remove!");
+                if (logType != LogType.NOLOG) System.out.println("Nothing to Remove!");
             }
         }
     }
