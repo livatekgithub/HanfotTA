@@ -32,6 +32,7 @@ public class FirefoxTestRun {
         General.loginUser(driver);
 //        driver.manage().window().maximize();
         WindowOperations.resizeWindowforIdea(driver);
+        System.out.println("****** FIREFOX ************************************************************");
 
         Run.Run(driver);
         Thread.sleep(3000);

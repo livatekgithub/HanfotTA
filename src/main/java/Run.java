@@ -88,29 +88,29 @@ public class Run {
 
     public static void Run(WebDriver driver) throws InterruptedException {
 
-        System.out.println(General.nowTime() + " : 8. Cards Creation(4*8) for Board and Idea");
-        General.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
-        General.widgetsCurrentRename(driver, "MANY CARDS IDEA", WidgetType.IDEA, false);
-        General.widgetsCurrentRename(driver, "MANY CARDS BOARD", WidgetType.BOARD, false);
-        General.cardsFirstBoardGeneration(driver, 30, 3, false);
-        General.cardsFirstIdeaGeneration(driver, 30, false);
+//        System.out.println(General.nowTime() + " : 8. Cards Creation(4*8) for Board and Idea");
+//        General.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
+//        General.widgetsCurrentRename(driver, "MANY CARDS IDEA", WidgetType.IDEA, false);
+//        General.widgetsCurrentRename(driver, "MANY CARDS BOARD", WidgetType.BOARD, false);
+//        General.cardsFirstBoardGeneration(driver, 30, 3, false);
+//        General.cardsFirstIdeaGeneration(driver, 30, false);
 
-//        System.out.println(General.nowTime() + " : 9. TODO -Operations Block");
-//        System.out.println(General.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
-//        General.todoCardRemoval(driver, TodoCardStatus.REMOVEALLUNFINISHED, LogType.NOLOG);
-//
-//        System.out.println(General.nowTime() + " : b. Clearing - TODO Remove all Finished Cards");
-//        General.todoCardRemoval(driver, TodoCardStatus.REMOVEALLFINISHED, LogType.NOLOG);
-//
-//        //Testing of Unfinished card creation and removal
-//        System.out.println(General.nowTime() + " : d. TODO Create Unfinished Cards(10)");
-//        General.todoCardCreation(driver, 5, TodoCardStatus.CREATEUNFINISHED, LogType.NOLOG);
-//
-//        System.out.println(General.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
-//        General.todoCardRemoval(driver, TodoCardStatus.REMOVEALLUNFINISHED, LogType.NOLOG);
-//
-//        System.out.println(General.nowTime() + " : f. TODO Create Finished Cards(20)");
-//        General.todoCardCreation(driver, 10, TodoCardStatus.CREATEFINISHED, LogType.NOLOG);
+        System.out.println(General.nowTime() + " : 9. TODO -Operations Block");
+        System.out.println(General.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
+        General.todoCardRemoval(driver, TodoCardStatus.REMOVEALLUNFINISHED, LogType.XPATHLOG);
+
+        System.out.println(General.nowTime() + " : b. Clearing - TODO Remove all Finished Cards");
+        General.todoCardRemoval(driver, TodoCardStatus.REMOVEALLFINISHED, LogType.XPATHLOG);
+
+        //Testing of Unfinished card creation and removal
+        System.out.println(General.nowTime() + " : d. TODO Create Unfinished Cards(10)");
+        General.todoCardCreation(driver, 5, TodoCardStatus.CREATEUNFINISHED, LogType.XPATHLOG);
+
+        System.out.println(General.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
+        General.todoCardRemoval(driver, TodoCardStatus.REMOVEALLUNFINISHED, LogType.XPATHLOG);
+
+        System.out.println(General.nowTime() + " : f. TODO Create Finished Cards(20)");
+        General.todoCardCreation(driver, 3, TodoCardStatus.CREATEFINISHED, LogType.XPATHLOG);
 
 //        runTestAllMethods(driver, false);
 

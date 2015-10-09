@@ -35,6 +35,7 @@ public class ChromeTestRun {
         //Usual Operation Block
         General.loginUser(driver);
         WindowOperations.resizeWindowforIdea(driver);
+        System.out.println("****** CHROME ************************************************************");
 
         Run.Run(driver);
 //        General.userSignOut(driver);

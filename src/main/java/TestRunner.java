@@ -7,11 +7,11 @@ import org.junit.runner.notification.Failure;
  */
 public class TestRunner {
     public static void main(String[] args) {
-        Result result= JUnitCore.runClasses(ChromeTestRun.class,FirefoxTestRun.class,IETestRun.class);
+        Result result= JUnitCore.runClasses(FirefoxTestRun.class,ChromeTestRun.class,IETestRun.class);
         for (Failure failure:result.getFailures()){
             System.out.println(failure.toString());
         }
-        System.out.println(result.wasSuccessful());
+        System.out.println("Overall Tests Result = "+result.wasSuccessful());
     }
 
 }

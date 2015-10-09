@@ -682,7 +682,7 @@ public class General implements AccessData {
                 driver.findElement(By.xpath(currentXpathForAdding)).click();
                 if (logType == LogType.XPATHLOG)
                     System.out.println("Log: " + General.nowTime() + " ADD_CARD_XPATH:" + currentXpathForAdding);
-                Thread.sleep(300);
+                Thread.sleep(500);
 
                 currentXpathForNaming = TODO_ADDCARD_XPATH + dynamicPart + TODO_ENTERCARD_XPATH_LAST;
                 driver.findElement(By.xpath(currentXpathForNaming)).sendKeys(cardName);

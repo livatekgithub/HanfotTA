@@ -33,6 +33,7 @@ public class IETestRun {
     public void testLogin() throws Exception {
         General.loginUser(driver);
         WindowOperations.resizeWindowforIdea(driver);
+        System.out.println("****** IE11 ************************************************************");
         Run.Run(driver);
     }
 
