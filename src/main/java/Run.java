@@ -24,18 +24,16 @@ public class Run {
         System.out.println(General.nowTime() + " : 5a. Pages Renaming(1)");
         General.pageRenameCurrent(driver, "MANY WIDGETS COLLECTION");
 
-        System.out.println(General.nowTime() + " : 6a. Widgets Collapsed Creation(5) / Removal(1). Fixed Color ");
+        System.out.println(General.nowTime() + " : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color ");
         General.widgetsCreation(driver, 6, WidgetState.COLLAPSED, WidgetColor.EMERALD, false);
         General.widgetsRemoval(driver, 1, false);
         General.widgetsArchive(driver, 2, WidgetOperation.ARCHIVE, false);
-        General.widgetsShowArchived(driver);
         General.widgetsArchive(driver, 1, WidgetOperation.UNARCHIVE, false);
 
-        System.out.println(General.nowTime() + " : 6b. Widgets Expanded Creation(10) / Removal(4). Random ");
+        System.out.println(General.nowTime() + " : 6b. Widgets Expanded Creation(10)/Removal(4)/Archive(2)/Unarchive(1). Random ");
         General.widgetsCreation(driver, 10, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
         General.widgetsRemoval(driver, 4, false);
         General.widgetsArchive(driver, 2, WidgetOperation.ARCHIVE, false);
-        General.widgetsShowArchived(driver);
         General.widgetsArchive(driver, 1, WidgetOperation.UNARCHIVE, false);
 
         System.out.println(General.nowTime() + " : 6c. Widgets Renaming");
@@ -46,12 +44,11 @@ public class Run {
 
         System.out.println(General.nowTime() + " : 8. Cards Creation(4*8) for Board and Idea");
         General.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
-        General.widgetsCurrentRename(driver, "MANY CARDS IDEA", WidgetType.IDEA,false);
-        General.widgetsCurrentRename(driver, "MANY CARDS BOARD", WidgetType.BOARD,false);
+        General.widgetsCurrentRename(driver, "MANY CARDS IDEA", WidgetType.IDEA, false);
+        General.widgetsCurrentRename(driver, "MANY CARDS BOARD", WidgetType.BOARD, false);
         General.cardsFirstBoardGeneration(driver, 30, 3, false);
         General.cardsFirstIdeaGeneration(driver, 30, false);
 
-        //Testing of Removal
         System.out.println(General.nowTime() + " : 9. TODO -Operations Block");
         System.out.println(General.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
         General.todoCardRemoval(driver, TodoCardStatus.REMOVEALLUNFINISHED, LogType.NOLOG);
@@ -91,39 +88,31 @@ public class Run {
 
     public static void Run(WebDriver driver) throws InterruptedException {
 
-        /*
-        System.out.println(General.nowTime() + " : 6a. Widgets Collapsed Creation(5) / Removal(1). Fixed Color ");
-        General.widgetsCreation(driver, 10, WidgetState.COLLAPSED, WidgetColor.EMERALD, false);
-        General.widgetsRemoval(driver, 1, false);
+        System.out.println(General.nowTime() + " : 8. Cards Creation(4*8) for Board and Idea");
+        General.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
+        General.widgetsCurrentRename(driver, "MANY CARDS IDEA", WidgetType.IDEA, false);
+        General.widgetsCurrentRename(driver, "MANY CARDS BOARD", WidgetType.BOARD, false);
+        General.cardsFirstBoardGeneration(driver, 30, 3, false);
+        General.cardsFirstIdeaGeneration(driver, 30, false);
 
-        System.out.println(General.nowTime() + " : 6b. Widgets Collapsed Archiving(2)/Unarchiving(1). Show/Hide Archived");
-        General.widgetsArchive(driver, 5, WidgetOperation.ARCHIVE, false);
-        */
-//        General.widgetsArchive(driver, 1, WidgetOperation.UNARCHIVE, false);
+//        System.out.println(General.nowTime() + " : 9. TODO -Operations Block");
+//        System.out.println(General.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
+//        General.todoCardRemoval(driver, TodoCardStatus.REMOVEALLUNFINISHED, LogType.NOLOG);
+//
+//        System.out.println(General.nowTime() + " : b. Clearing - TODO Remove all Finished Cards");
+//        General.todoCardRemoval(driver, TodoCardStatus.REMOVEALLFINISHED, LogType.NOLOG);
+//
+//        //Testing of Unfinished card creation and removal
+//        System.out.println(General.nowTime() + " : d. TODO Create Unfinished Cards(10)");
+//        General.todoCardCreation(driver, 5, TodoCardStatus.CREATEUNFINISHED, LogType.NOLOG);
+//
+//        System.out.println(General.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
+//        General.todoCardRemoval(driver, TodoCardStatus.REMOVEALLUNFINISHED, LogType.NOLOG);
+//
+//        System.out.println(General.nowTime() + " : f. TODO Create Finished Cards(20)");
+//        General.todoCardCreation(driver, 10, TodoCardStatus.CREATEFINISHED, LogType.NOLOG);
 
-//        System.out.println(General.nowTime() + " : 6b. Widgets Expanded Creation(10) / Removal(4). Random ");
-//        General.widgetsCreation(driver, 6, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
-//        General.widgetsRemoval(driver, 1, false);
-//        General.widgetsArchive(driver, 2, WidgetOperation.ARCHIVE, false);
-////        General.widgetsArchive(driver, 1, WidgetOperation.UNARCHIVE, false);
-
-/*
-        General.widgetsCreation(driver, 5, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
-        Thread.sleep(3000);
-        General.widgetsRemoval(driver, 2,true);
-        Thread.sleep(3000);
-        General.widgetsArchive(driver, 3, WidgetOperation.ARCHIVE);
-        Thread.sleep(3000);
-        General.widgetsArchive(driver, 1, WidgetOperation.UNARCHIVE);
-        Thread.sleep(3000);
-        General.widgetsShowArchived(driver);
-        Thread.sleep(3000);
-        General.widgetsCurrentRename(driver, "RENAMED", WidgetType.BOARD);
-        General.widgetsCurrentRename(driver, "RENAMED", WidgetType.IDEA);
-        Thread.sleep(3000);
-        */
-
-        runTestAllMethods(driver, false);
+//        runTestAllMethods(driver, false);
 
     }
 }

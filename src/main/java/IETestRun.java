@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public class LoginTestIE {
+public class IETestRun {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
