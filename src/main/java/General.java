@@ -394,7 +394,7 @@ public class General implements AccessData {
         String ideaName;
 
         if (widgetOperation == WidgetOperation.UNARCHIVE) {
-            widgetsShowArchived(driver,false);
+            widgetsShowArchived(driver, false);
         }
 
         for (int i = 1; i <= number; i++) {
@@ -430,12 +430,12 @@ public class General implements AccessData {
         }
 
         if (widgetOperation == WidgetOperation.UNARCHIVE) {
-            widgetsShowArchived(driver,false);
+            widgetsShowArchived(driver, false);
         }
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void widgetsShowArchived(WebDriver driver,boolean isLogged) throws InterruptedException {
+    public static void widgetsShowArchived(WebDriver driver, boolean isLogged) throws InterruptedException {
         final String IDEA_CHECKBOX_MENU = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[1]/img";
         final String IDEA_CHECKBOX_SHOWARCHIVED = "html/body/div[3]/div/div/div/div/div[1]/div";
         final String BOARD_CHECKBOX_MENU = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[1]/div/div[1]/img";
@@ -489,6 +489,19 @@ public class General implements AccessData {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardOpenIdeaCard(WebDriver driver, int numberX, boolean isLogged) {
+        final String IDEA_CARD_X_PATH_FIRST_PART = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/";
+        final String IDEA_CARD_X_PATH_ADD_CARD = "/div";
+
+        String name;
+        String dynamicPart;
+        name = Integer.toString(numberX);
+        dynamicPart = "div[" + name + "]";
+        if (isLogged) System.out.println(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_ADD_CARD);
+        driver.findElement(By.xpath(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_ADD_CARD)).click();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void columnsCreation(WebDriver driver, int number, boolean isLogged) {
 
         //Deprecated - XPATH for Adding column became constant for all columns
@@ -520,8 +533,233 @@ public class General implements AccessData {
             if (isLogged) System.out.println("Column" + counterString + " created. Xpath=" + currentXpathForAdding);
         }
     }
-    //------------------------------------------------------------------------------------------------------------------------------------------------
 
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardCancel(WebDriver driver) {
+        final String CARD_CANCEL_CSS = ".popup-window-toolbar-button.mod-cancel.js-popup-cancel";
+        driver.findElement(By.cssSelector(CARD_CANCEL_CSS)).click();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardSave(WebDriver driver) {
+        final String CARD_SAVE_CSS = ".popup-window-toolbar-button.mod-done.js-popup-done";
+        driver.findElement(By.cssSelector(CARD_SAVE_CSS)).click();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardDelete(WebDriver driver, boolean isLogged) {
+        final String CARD_DELETE_CSS = ".popup-window-toolbar-button.mod-remove.js-tap-indication.js-popup-remove";
+        driver.findElement(By.cssSelector(CARD_DELETE_CSS)).click();
+        if (isLogged) System.out.println("Card was removed");
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardDeleteMany(WebDriver driver, int number, boolean isLogged) {
+        for (int i = 1; i <= number; i++) {
+            cardOpenIdeaCard(driver, 1, isLogged);
+            cardDelete(driver, isLogged);
+            cardOpenBoardCard(driver, 1, 2, isLogged);
+            cardDelete(driver, isLogged);
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardArchiveUnarchive(WebDriver driver, boolean isLogged) {
+        final String CARD_ARCHIVE_CSS = ".popup-window-toolbar-button.mod-archive.js-tap-indication.js-popup-archive";
+        driver.findElement(By.cssSelector(CARD_ARCHIVE_CSS)).click();
+        if (isLogged) System.out.println("Card was archived / unarchived");
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardArchiveMany(WebDriver driver, int number, boolean isLogged) {
+        for (int i = 1; i <= number; i++) {
+            cardOpenIdeaCard(driver, 1, isLogged);
+            cardArchiveUnarchive(driver, isLogged);
+            cardOpenBoardCard(driver, 1, 2, isLogged);
+            cardArchiveUnarchive(driver, isLogged);
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardSetName(WebDriver driver, String cardName) {
+        final String CARD_NAME_ID = "menu-popup-input-name";
+        driver.findElement(By.id(CARD_NAME_ID)).clear();
+        driver.findElement(By.id(CARD_NAME_ID)).sendKeys(cardName);
+    }//------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // DOESNT WORK CORRECT
+    public static String cardGetName(WebDriver driver) {
+        final String CARD_NAME_ID = "menu-popup-input-name";
+        final String CARD_NAME_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div[1]/div[1]/textarea";
+        String name;
+        name = driver.findElement(By.xpath(CARD_NAME_XPATH)).getText();
+        return name;
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardAddTag(WebDriver driver, String tagName, boolean isLogged) throws InterruptedException {
+        final String CARD_TAGFIELD_ID = "menu-popup-input-labels";
+        final String CARD_ADD_NEWTAG_CSS = ".autocomplete-add";
+        final String CARD_ADD_TAG_FIRST_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div[1]/div[3]/div[2]";
+        final String CARD_ADD_TAGS_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div[1]/div[3]/div[3]";
+
+        if (!driver.findElement(By.xpath(CARD_ADD_TAGS_XPATH)).isDisplayed()) {
+            driver.findElement(By.xpath(CARD_ADD_TAG_FIRST_XPATH)).click();
+            if (isLogged) System.out.println("Press Add tag field");
+        } else {
+            driver.findElement(By.xpath(CARD_ADD_TAGS_XPATH)).click();
+            if (isLogged) System.out.println("Press Add tag field");
+        }
+        driver.findElement(By.id(CARD_TAGFIELD_ID)).sendKeys(tagName);
+        if (isLogged) System.out.println("Enter " + tagName + " to Add tag field");
+        driver.findElement(By.cssSelector(CARD_ADD_NEWTAG_CSS)).click();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardAddManyNewTagsToCard(WebDriver driver, int number) throws InterruptedException {
+        int randomNumber = (int) (Math.random() * 1000);
+        for (int i = 1; i <= number; i++) {
+            General.cardOpenIdeaCard(driver, 1, false);
+            General.cardAddTag(driver, Integer.toString(randomNumber) + "IdeaTag" + Integer.toString(i), false);
+            General.cardSave(driver);
+        }
+        for (int i = 1; i <= number; i++) {
+            General.cardOpenBoardCard(driver, 1, 1, false);
+            General.cardAddTag(driver, Integer.toString(randomNumber) + "BoardTag" + Integer.toString(i), false);
+            General.cardSave(driver);
+        }
+        Thread.sleep(1000);
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardAddTask(WebDriver driver, String taskName, boolean isLogged) {
+        final String CARD_ADD_FIRST_TASK_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div[2]/div[3]/div[3]";
+        final String CARD_ADD_TASKS_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div[2]/div[3]/div[4]";
+        final String CARD_ENTER_TASK_NAME_CSS = ".fastcardpopup-userfield.fastcardpopup-taskinput-input.js-addtask-input";
+        final String CARD_ADD_TASK_BUTTON_CSS = ".fastcardpopup-taskinput-button.js-addtask-button";
+
+        if (!isElementPresent(By.xpath(CARD_ADD_TASKS_XPATH), driver)) {
+            driver.findElement(By.xpath(CARD_ADD_FIRST_TASK_XPATH)).click();
+        } else {
+            driver.findElement(By.xpath(CARD_ADD_TASKS_XPATH)).click();
+        }
+
+        driver.findElement(By.cssSelector(CARD_ENTER_TASK_NAME_CSS)).sendKeys(taskName);
+        driver.findElement(By.cssSelector(CARD_ADD_TASK_BUTTON_CSS)).click();
+        if (isLogged) System.out.println("  Task " + taskName + " was added");
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardAddManyTasks(WebDriver driver, int numberOfTasks, boolean isLogged) throws InterruptedException {
+        for (int i = 1; i <= numberOfTasks; i++) {
+            General.cardOpenIdeaCard(driver, 2, false);
+            General.cardAddTask(driver, "IdeaTask" + Integer.toString(i), false);
+            General.cardSave(driver);
+        }
+        for (int i = 1; i <= numberOfTasks; i++) {
+            General.cardOpenBoardCard(driver, 2, 1, false);
+            General.cardAddTask(driver, "BoardTask" + Integer.toString(i), false);
+            General.cardSave(driver);
+        }
+        Thread.sleep(1000);
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardAddComment(WebDriver driver, String commentText) throws InterruptedException {
+        final String CARD_ADD_COMMENT_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div[6]/div/div[2]/div/div[1]/div";
+        final String CARD_ENTER_COMMENT_CSS = ".redactor-editor.redactor-placeholder";
+        final String CARD_POST_COMMENT_CSS = ".ui-button.mod-strong.js-tap-indication.js-postcomment";
+        Thread.sleep(5000);
+        driver.findElement(By.xpath(CARD_ADD_COMMENT_XPATH)).click();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath(CARD_ENTER_COMMENT_CSS)).sendKeys(commentText);
+        Thread.sleep(5000);
+        driver.findElement(By.cssSelector(CARD_POST_COMMENT_CSS)).click();
+        Thread.sleep(5000);
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardDatesSet(WebDriver driver, String startDate, String finishDate,boolean isLogged) throws InterruptedException {
+        final String CARD_START_OPEN_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div[2]/div[1]/div/div[1]/div[2]";
+        final String CARD_START_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div[2]/div[1]/div/div[1]/div[3]/input";
+        final String CARD_FINISH_OPEN_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div[2]/div[1]/div/div[2]/div[2]";
+        final String CARD_FINISH_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div[2]/div[1]/div/div[2]/div[3]/input";
+
+        if (startDate != null) {
+            driver.findElement(By.xpath(CARD_START_OPEN_XPATH)).click();
+            driver.findElement(By.xpath(CARD_START_XPATH)).sendKeys(startDate);
+        }
+        if (finishDate != null) {
+            driver.findElement(By.xpath(CARD_FINISH_OPEN_XPATH)).click();
+            driver.findElement(By.xpath(CARD_FINISH_XPATH)).sendKeys(finishDate);
+        }
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardDatesAddFew(WebDriver driver, String startDate, String finishDate, boolean isLogged) throws InterruptedException {
+        //Set Dates for Ideas Cards
+        cardOpenIdeaCard(driver, 1, false);
+        cardDatesSet(driver, startDate, finishDate,false);
+        cardSave(driver);
+        cardOpenIdeaCard(driver, 2, false);
+        cardDatesSet(driver, startDate, null,false);
+        cardSave(driver);
+        cardOpenIdeaCard(driver, 3, false);
+        cardDatesSet(driver, null, finishDate,false);
+        cardSave(driver);
+
+        //Set Dates for Board Cards
+        cardOpenBoardCard(driver, 1, 2, false);
+        cardDatesSet(driver, startDate, finishDate,false);
+        cardSave(driver);
+        cardOpenBoardCard(driver, 2, 2, false);
+        cardDatesSet(driver, startDate, null,false);
+        cardSave(driver);
+        cardOpenBoardCard(driver, 3, 2, false);
+        cardDatesSet(driver, null, finishDate,false);
+        cardSave(driver);
+    }
+//------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardDatesAddCalendar(WebDriver driver,String month){
+        String dateField;
+
+
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardAddDescription(WebDriver driver, String descriptionText) throws InterruptedException {
+        final String CARD_DESCRIPTION_CLICK_CSS = ".fastcardpopup-button.fastcardpopup-description-button.js-fastcardpopup-show.js-tap-indication";
+        final String CARD_DESCRIPTION_CSS = ".redactor-editor.redactor-placeholder";
+        driver.findElement(By.cssSelector(CARD_DESCRIPTION_CLICK_CSS)).click();
+        driver.findElement(By.cssSelector(CARD_DESCRIPTION_CSS)).sendKeys(descriptionText);
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardAddPeople(WebDriver driver) {
+
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardOpenBoardCard(WebDriver driver, int numberX, int numberY, boolean isLogged) {
+        String stringCounterX;
+        String stringCounterY;
+        String dynamicPartX;
+        String dynamicPartY;
+        String currentXpathForAdding;
+
+        final String BOARD_CARD_X_PATH_FIRST_PART_V2 = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div/div/";
+        final String BOARD_CARD_X_PATH_ADD_CARD = "/div";
+        final String BOARD_CARD_X_PATH_MEDIUM = "/div[2]/";
+
+        stringCounterX = Integer.toString(numberX);
+        if (numberX == 1) dynamicPartX = "div";
+        else dynamicPartX = "div[" + stringCounterX + "]";
+        stringCounterY = Integer.toString(numberY);
+        dynamicPartY = "div[" + stringCounterY + "]";
+        currentXpathForAdding = BOARD_CARD_X_PATH_FIRST_PART_V2 + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_ADD_CARD;
+        driver.findElement(By.xpath(currentXpathForAdding)).click();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardsFirstBoardGeneration(WebDriver driver, int numberX, int numberY, boolean isLogged) throws InterruptedException {
         String stringCounterX;
         String stringCounterY;
@@ -539,7 +777,6 @@ public class General implements AccessData {
         final String BOARD_CARD_X_PATH_MEDIUM = "/div[2]/";
 
         if (numberY > 2) columnsCreation(driver, numberY - 2, isLogged);
-
         for (int i = 1; i <= numberX; i++) {
             stringCounterX = Integer.toString(i);
             if (i == 1) dynamicPartX = "div";
@@ -548,19 +785,14 @@ public class General implements AccessData {
             for (int j = 1; j <= numberY; j++) {
                 stringCounterY = Integer.toString(j);
                 dynamicPartY = "div[" + stringCounterY + "]";
-
                 currentXpathForAdding = BOARD_CARD_X_PATH_FIRST_PART_V2 + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_ADD_CARD;
                 currentXpathForNaming = BOARD_CARD_X_PATH_FIRST_PART_V2 + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_TEXT;
                 currentXpathForSaving = BOARD_CARD_X_PATH_FIRST_PART_V2 + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_BUTTON;
-
                 Thread.sleep(200);
                 if (isLogged) System.out.println(currentXpathForAdding);
-
                 driver.findElement(By.xpath(currentXpathForAdding)).click();
-
                 if (isLogged) System.out.println(currentXpathForNaming);
                 driver.findElement(By.xpath(currentXpathForNaming)).sendKeys("Board Card " + stringCounterX + stringCounterY);
-
                 if (isLogged) System.out.println(currentXpathForSaving);
                 driver.findElement(By.xpath(currentXpathForSaving)).click();
 
