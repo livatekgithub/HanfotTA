@@ -1,5 +1,13 @@
 Release Notes.
-
+---------------
+390 - Card
+090 - Collection
+150 - Todo
+150 - Users
+260 - Widget
+150 - Run
+---------------
+1190 in Total
 
 01.10.2015 Thursday
     - Rename Board and Page methods
