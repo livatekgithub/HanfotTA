@@ -9,6 +9,7 @@ import tests.Run;
 import utils.Service;
 
 public class Todo {
+
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void todoCardRemoval(WebDriver driver, TodoCardStatus todoCardStatus, LogType logType) throws InterruptedException {
         String cardName;

@@ -7,6 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import utils.AccessData;
 import utils.Service;
+import utils.WindowOperations;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -18,13 +19,15 @@ public class Users implements utils.AccessData {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void loginUser(WebDriver driver) throws InterruptedException {
         driver.get("https://test.hansoftx.com/logout");
+        driver.manage().window().maximize();
+//        WindowOperations.resizeWindowforIdea(driver);
         Thread.sleep(1000);
         driver.get(TESTURL);
         driver.findElement(By.id("form-email")).clear();
         driver.findElement(By.id("form-email")).sendKeys(TESTLOGIN);
         driver.findElement(By.id("form-psw")).clear();
         driver.findElement(By.id("form-psw")).sendKeys(TESTPASSWORD);
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         driver.findElement(By.cssSelector("button.btn-submit.js-tap-indication")).click();
 
         try {

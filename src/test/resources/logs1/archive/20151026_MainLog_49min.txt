@@ -1,3 +1,4 @@
+TOTAL=49min
 ****** FIREFOX ************************************************************
 2015/10/26 16:43:39 : 1. Add Users to Organization(20)
 2015/10/26 16:43:43 : 2. Remove Users from Organization(10)

@@ -29,17 +29,11 @@ public class FirefoxTestRun {
 
     @Test
     public void testLogin() throws Exception {
-
         Users.loginUser(driver);
-//        driver.manage().window().maximize();
-        WindowOperations.resizeWindowforIdea(driver);
-
         tests.Run.Run(driver,browser);
         Thread.sleep(3000);
 //        General.userSignOut(driver);
     }
-
-
 
     @After
     public void tearDown() throws Exception {

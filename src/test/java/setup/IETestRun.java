@@ -17,13 +17,13 @@ import static org.junit.Assert.fail;
 public class IETestRun {
     private WebDriver driver;
     private String baseUrl;
-    private final String browser="IE11";
+    private final String browser = "IE11";
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
     @Before
     public void setUp() throws Exception {
-        System.setProperty("webdriver.ie.driver", "D://Java/selenium/ie/IEDriverServer.exe");
+        System.setProperty("webdriver.ie.driver", AccessData.IE_DRIVER__PATH + "IEDriverServer.exe");
         driver = new InternetExplorerDriver();
         baseUrl = AccessData.TESTURL;
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -32,13 +32,12 @@ public class IETestRun {
     @Test
     public void testLogin() throws Exception {
         Users.loginUser(driver);
-        WindowOperations.resizeWindowforIdea(driver);
-        tests.Run.Run(driver,browser);
+        tests.Run.Run(driver, browser);
     }
 
     @After
     public void tearDown() throws Exception {
-        Service.takeScreenshot(driver,browser+Service.nowTimeForFileName()+"."+".screenshot.png");
+        Service.takeScreenshot(driver, browser + Service.nowTimeForFileName() + "." + ".screenshot.png");
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {

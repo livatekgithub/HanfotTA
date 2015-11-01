@@ -20,14 +20,14 @@ import static org.junit.Assert.fail;
 
 public class ChromeTestRun {
     private WebDriver driver;
-    private final String browser="CHROME";
+    private final String browser = "CHROME";
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
     @Before
     public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "D://Java/selenium/chrome/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", AccessData.CHROME_DRIVER__PATH + "chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = AccessData.TESTURL;
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -35,21 +35,15 @@ public class ChromeTestRun {
 
     @Test
     public void testLogin() throws Exception {
-
-//        General.userNotFound(driver);
-
-        //Usual Operation Block
         Users.loginUser(driver);
-        WindowOperations.resizeWindowforIdea(driver);
-
-        tests.Run.Run(driver,browser);
+        tests.Run.Run(driver, browser);
 //        General.userSignOut(driver);
 //        General.loginUserWithCash(driver,10);
     }
 
     @After
     public void tearDown() throws Exception {
-        Service.takeScreenshot(driver,Service.nowTimeForFileName()+" "+browser+"."+".screenshot.png");
+        Service.takeScreenshot(driver, Service.nowTimeForFileName() + " " + browser + "." + ".screenshot.png");
 
         driver.quit();
         String verificationErrorString = verificationErrors.toString();

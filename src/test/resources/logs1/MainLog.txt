@@ -1,0 +1,111 @@
+****** FIREFOX ************************************************************
+2015/11/01 16:27:36 : 1. Add and Remove Users to Organization(+1-1+1)
+2015/11/01 16:28:23 : 2. Collections Creation(2)
+2015/11/01 16:28:30 : 3. Collections Archiving(2)
+2015/11/01 16:28:48 : 4. Collections Removing(2)
+2015/11/01 16:29:02 : 5. Collections Renaming(1)
+2015/11/01 16:29:02 : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color 
+2015/11/01 16:30:52 : 6b. Widgets Expanded Creation(10)/Removal(4)/Archive(2)/Unarchive(1). Random 
+2015/11/01 16:32:43 : 6c. Widgets Renaming
+2015/11/01 16:32:43 : 6d. Widgets Archiving(2)
+2015/11/01 16:32:43 : 7. Columns Creation(3)
+2015/11/01 16:34:06 : 8b. Cards Creation(3*5) for Board and Idea
+2015/11/01 16:35:30 : 9. Card Pop-Up Operations Block
+2015/11/01 16:35:30 : a. Delete Cards
+2015/11/01 16:35:36 : b. Archive Cards
+2015/11/01 16:35:44 : c. Add many new tags
+2015/11/01 16:36:12 : d. Add many tasks
+2015/11/01 16:37:36 : e. Add many users
+2015/11/01 16:37:51 : f. Add dates
+2015/11/01 16:38:19 : g. Add description
+2015/11/01 16:39:01 : h. Add comments
+2015/11/01 16:39:14 : i. Add files (PNG,TXT)
+2015/11/01 16:40:10 : 10. TODO -Operations Block
+2015/11/01 16:40:10 : a. Clearing - TODO Remove all Unfinished Cards
+2015/11/01 16:41:22 : b. Clearing - TODO Remove all Finished Cards
+2015/11/01 16:42:28 : c. TODO Create Finished Cards(3)
+2015/11/01 16:42:44 : c. TODO Remove all Finished Cards
+2015/11/01 16:43:26 : d. TODO Create Unfinished Cards(10)
+2015/11/01 16:43:37 : a. TODO Remove all Unfinished Cards
+2015/11/01 16:44:32 : d. TODO Create Unfinished Cards(3)
+2015/11/01 16:44:43 : e. TODO Cards Marking as Finished(10)
+2015/11/01 16:44:49 : f. TODO Create Finished Cards(3)
+2015/11/01 16:45:06 : g. TODO Create Unfinished Cards(3)
+****** Time: 17.0 minutes ************************************************************
+*** Save Screenshot ***
+Starting ChromeDriver 2.16.333243 (0bfa1d3575fc1044244f21ddb82bf870944ef961) on port 8551
+Only local connections are allowed.
+****** CHROME ************************************************************
+2015/11/01 16:46:12 : 1. Add and Remove Users to Organization(+1-1+1)
+2015/11/01 16:46:38 : 2. Collections Creation(2)
+2015/11/01 16:46:42 : 3. Collections Archiving(2)
+2015/11/01 16:46:52 : 4. Collections Removing(2)
+2015/11/01 16:46:58 : 5. Collections Renaming(1)
+2015/11/01 16:46:58 : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color 
+2015/11/01 16:47:49 : 6b. Widgets Expanded Creation(10)/Removal(4)/Archive(2)/Unarchive(1). Random 
+2015/11/01 16:48:40 : 6c. Widgets Renaming
+2015/11/01 16:48:40 : 6d. Widgets Archiving(2)
+2015/11/01 16:48:40 : 7. Columns Creation(3)
+2015/11/01 16:49:11 : 8b. Cards Creation(3*5) for Board and Idea
+2015/11/01 16:49:43 : 9. Card Pop-Up Operations Block
+2015/11/01 16:49:43 : a. Delete Cards
+2015/11/01 16:49:44 : b. Archive Cards
+2015/11/01 16:49:49 : c. Add many new tags
+2015/11/01 16:50:04 : d. Add many tasks
+2015/11/01 16:50:52 : e. Add many users
+2015/11/01 16:50:59 : f. Add dates
+2015/11/01 16:51:13 : g. Add description
+2015/11/01 16:51:32 : h. Add comments
+2015/11/01 16:51:37 : i. Add files (PNG,TXT)
+2015/11/01 16:52:19 : 10. TODO -Operations Block
+2015/11/01 16:52:19 : a. Clearing - TODO Remove all Unfinished Cards
+2015/11/01 16:53:11 : b. Clearing - TODO Remove all Finished Cards
+2015/11/01 16:53:38 : c. TODO Create Finished Cards(3)
+2015/11/01 16:53:48 : c. TODO Remove all Finished Cards
+2015/11/01 16:54:12 : d. TODO Create Unfinished Cards(10)
+2015/11/01 16:54:18 : a. TODO Remove all Unfinished Cards
+2015/11/01 16:54:57 : d. TODO Create Unfinished Cards(3)
+2015/11/01 16:55:02 : e. TODO Cards Marking as Finished(10)
+2015/11/01 16:55:06 : f. TODO Create Finished Cards(3)
+2015/11/01 16:55:15 : g. TODO Create Unfinished Cards(3)
+****** Time: 9.0 minutes ************************************************************
+*** Save Screenshot ***
+Started InternetExplorerDriver server (32-bit)
+2.48.0.0
+Listening on port 29059
+****** IE11 ************************************************************
+2015/11/01 16:56:36 : 1. Add and Remove Users to Organization(+1-1+1)
+2015/11/01 16:57:21 : 2. Collections Creation(2)
+2015/11/01 16:57:28 : 3. Collections Archiving(2)
+2015/11/01 16:57:47 : 4. Collections Removing(2)
+2015/11/01 16:58:01 : 5. Collections Renaming(1)
+2015/11/01 16:58:01 : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color 
+2015/11/01 17:00:09 : 6b. Widgets Expanded Creation(10)/Removal(4)/Archive(2)/Unarchive(1). Random 
+2015/11/01 17:02:06 : 6c. Widgets Renaming
+2015/11/01 17:02:06 : 6d. Widgets Archiving(2)
+2015/11/01 17:02:06 : 7. Columns Creation(3)
+2015/11/01 17:03:31 : 8b. Cards Creation(3*5) for Board and Idea
+2015/11/01 17:04:58 : 9. Card Pop-Up Operations Block
+2015/11/01 17:04:58 : a. Delete Cards
+2015/11/01 17:05:03 : b. Archive Cards
+2015/11/01 17:05:11 : c. Add many new tags
+2015/11/01 17:05:47 : d. Add many tasks
+2015/11/01 17:07:17 : e. Add many users
+2015/11/01 17:07:39 : f. Add dates
+2015/11/01 17:08:13 : g. Add description
+2015/11/01 17:09:07 : h. Add comments
+2015/11/01 17:09:23 : i. Add files (PNG,TXT)
+2015/11/01 17:10:22 : 10. TODO -Operations Block
+2015/11/01 17:10:22 : a. Clearing - TODO Remove all Unfinished Cards
+2015/11/01 17:11:35 : b. Clearing - TODO Remove all Finished Cards
+2015/11/01 17:12:28 : c. TODO Create Finished Cards(3)
+2015/11/01 17:12:47 : c. TODO Remove all Finished Cards
+2015/11/01 17:13:30 : d. TODO Create Unfinished Cards(10)
+2015/11/01 17:13:44 : a. TODO Remove all Unfinished Cards
+2015/11/01 17:14:40 : d. TODO Create Unfinished Cards(3)
+2015/11/01 17:14:55 : e. TODO Cards Marking as Finished(10)
+2015/11/01 17:15:00 : f. TODO Create Finished Cards(3)
+2015/11/01 17:15:19 : g. TODO Create Unfinished Cards(3)
+****** Time: 18.0 minutes ************************************************************
+*** Save Screenshot ***
+Overall Tests Result = true

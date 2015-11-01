@@ -290,26 +290,27 @@ public class Card {
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void cardDatesAddFew(WebDriver driver, String startDate, String finishDate, boolean isLogged) throws InterruptedException {
+    public static void cardDatesAddFew(WebDriver driver, int firstCard, int columnNum,
+                                       String startDate, String finishDate, boolean isLogged) throws InterruptedException {
         //Set Dates for Ideas Cards
-        cardOpenIdeaCard(driver, 7, false);
+        cardOpenIdeaCard(driver, firstCard, false);
         cardDatesSet(driver, startDate, finishDate, false);
         cardSave(driver);
-        cardOpenIdeaCard(driver, 8, false);
+        cardOpenIdeaCard(driver, firstCard+1, false);
         cardDatesSet(driver, startDate, null, false);
         cardSave(driver);
-        cardOpenIdeaCard(driver, 9, false);
+        cardOpenIdeaCard(driver, firstCard+2, false);
         cardDatesSet(driver, null, finishDate, false);
         cardSave(driver);
 
         //Set Dates for Board Cards
-        cardOpenBoardCard(driver, 1, 2, false);
+        cardOpenBoardCard(driver, firstCard, columnNum, false);
         cardDatesSet(driver, startDate, finishDate, false);
         cardSave(driver);
-        cardOpenBoardCard(driver, 2, 2, false);
+        cardOpenBoardCard(driver, firstCard+1, columnNum, false);
         cardDatesSet(driver, startDate, null, false);
         cardSave(driver);
-        cardOpenBoardCard(driver, 3, 2, false);
+        cardOpenBoardCard(driver, firstCard+2, columnNum, false);
         cardDatesSet(driver, null, finishDate, false);
         cardSave(driver);
     }
@@ -349,11 +350,11 @@ public class Card {
     public static void cardDescriptionAddtoManyCards(WebDriver driver, String descriptionText, int ideaCardNum, int boardCardX, int boardCardY, boolean isLogged) throws InterruptedException {
         Card.cardOpenIdeaCard(driver, ideaCardNum, false);
         Card.cardSetName(driver, Run.currentBrowser + " Idea Card with Big Description");
-        Card.cardAddDescription(driver, TestData.DESCRIPTION_TEXT);
+        Card.cardAddDescription(driver, descriptionText);
         Card.cardSave(driver);
         Card.cardOpenBoardCard(driver, boardCardX, boardCardY, false);
         Card.cardSetName(driver, Run.currentBrowser + " Board Card with Big Description");
-        Card.cardAddDescription(driver, TestData.DESCRIPTION_TEXT);
+        Card.cardAddDescription(driver, descriptionText);
         Card.cardSave(driver);
     }
 
