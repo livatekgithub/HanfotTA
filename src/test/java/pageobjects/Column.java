@@ -13,7 +13,7 @@ public class Column {
     final static String COLUMN_MENU_SECONDPART_XPATH = "/div[1]/div";
     //Rename column
     final static String COLUMN_RENAME_FIRST_PART_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/";
-    final static String COLUMN_RENAME_SECOND_PART_XPATH = "/div[1]/div/input";
+    final static String COLUMN_RENAME_SECOND_PART_XPATH = "/div[1]/div/div/input";
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static String getOpenColumnMenuXpathByNumber(int number) {

@@ -1,7 +1,7 @@
 package utils;
 
 public interface AccessData {
-    String SRC_SOURCE="C:\\AT\\HanfotTA\\";
+    String SRC_SOURCE="C:\\Users\\kyak\\IdeaProjects\\HanfotTA\\";
     String GRAPHIC_FILE_PATH = SRC_SOURCE+"src\\test\\resources\\files\\screenshot.png";
     String TEXT_FILE_PATH = SRC_SOURCE+"src\\test\\resources\\files\\file.txt";
     String SCREENSHOTS_PATH = "src\\test\\resources\\logs1\\screenshots\\";

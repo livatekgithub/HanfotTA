@@ -38,12 +38,12 @@ public class Widget {
     //basics and creation
 //    final static String IDEA_ADD_CSS = "img.xaddbutton-icon"; cannot be used
     final static String IDEA_ADD_XPATH= "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[2]/div[1]/div/div[1]";
-    final static String IDEA_NAME_FIELD_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/input";
+    final static String IDEA_NAME_FIELD_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div[1]/input";
     final static String IDEA_SAVE_BUTTON_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/button";
     final static String IDEA_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]";
     final static String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div/div[3]/div/img";
     //    final static String BOARD_ADD_CSS = "div.xaddbutton-maindiv.js-workspace-tracking-add-board > img.xaddbutton-icon"; cannot be used
-    final static String BOARD_NAME_FIELD_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/input";
+    final static String BOARD_NAME_FIELD_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div[1]/input";
     final static String BOARD_ADD_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[1]/div/div[2]/div/div/div[1]";
     final static String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div/div[3]/div/img";
     final static String BOARD_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div";
@@ -75,6 +75,7 @@ public class Widget {
         String colorName = "";
         int colorCode = 0;
         driver.navigate().refresh(); //to get constant xpath links
+        Thread.sleep(3000);
         for (int i = 11; i < 11 + number; i++) {
             if (widgetColor == WidgetColor.RANDOM) {
                 if (i % 10 == 0) colorCode = 10;
@@ -91,6 +92,7 @@ public class Widget {
             name = Integer.toString(i - 10) + " " + colorName;
             //Create Idea Widget with Sequential Name 1,2,..
             driver.findElement(By.xpath(IDEA_ADD_XPATH)).click();
+            Thread.sleep(3000);
             driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + "Idea " + name);
             driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
 //            driver.findElement(By.xpath(IDEA_SAVE_BUTTON_XPATH)).click(); Old version of code, doesn't work after some update

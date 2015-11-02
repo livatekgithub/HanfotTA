@@ -8,7 +8,7 @@ public class Main {
 
         Service service=new Service();
         service.startCount();
-        for (int i = 1; i < 3000000; i++) {
+        for (int i = 1; i < 300; i++) {
             System.out.println(i);
         }
         service.stopCount();

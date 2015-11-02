@@ -144,6 +144,7 @@ public class Run {
 
     public static void runTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
+        System.out.println("***France Air Force***");
         System.out.println(Service.nowTime() + " : 1. Add Users to Organization(20)");
         Users.usersAddToOrganization(driver, 5, false);
 
@@ -304,8 +305,8 @@ public class Run {
         System.out.println("****** " + browser + " ************************************************************");
         Service service = new Service();
         service.startCount();
-        runShortTestAllMethods(driver, false);
-//        runTestAllMethods(driver, false);
+//        runShortTestAllMethods(driver, false);
+        runTestAllMethods(driver, false);
         service.stopCount();
         System.out.println("****** Time: " + service.getTimeDuration() + " minutes ************************************************************");
 

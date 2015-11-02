@@ -21,11 +21,11 @@ public class Card {
         String dynamicPart;
         final String IDEA_CARD_X_PATH_FIRST_PART = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/";
         final String IDEA_CARD_X_PATH_BUTTON = "/div[1]/div[1]/div/button";
-        final String IDEA_CARD_X_PATH_TEXT = "/div[1]/div[1]/textarea";
+        final String IDEA_CARD_X_PATH_TEXT = "/div[1]/div[1]/div[1]/textarea";
         final String IDEA_CARD_X_PATH_ADD_CARD = "/div";
 
         driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/div/div")).click();
-        driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/div[1]/div[1]/div[1]/textarea")).sendKeys(Run.currentBrowser + "Idea Card 1");
+        driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/div[1]/div[1]/div[1]/div[1]/textarea")).sendKeys(Run.currentBrowser + "Idea Card 1");
         driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/div[1]/div[1]/div[1]/div/button")).click();
 
         for (int i = 2; i <= number; i++) {
@@ -52,12 +52,15 @@ public class Card {
         String currentXpathForNaming;
         String currentXpathForSaving;
 
-        final String BOARD_CARD_X_PATH_FIRST_PART = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div/div[1]/div[2]/";
-        final String BOARD_CARD_X_PATH_FIRST_PART_V2 = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div/div/";
+        final String BOARD_CARD_X_PATH_FIRST_PART = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/";
         final String BOARD_CARD_X_PATH_ADD_CARD = "/div";
-        final String BOARD_CARD_X_PATH_TEXT = "/div/div[1]/textarea";
-        final String BOARD_CARD_X_PATH_BUTTON = "/div/div[1]/div/button";
-        final String BOARD_CARD_X_PATH_MEDIUM = "/div[2]/";
+        final String BOARD_CARD_X_PATH_TEXT =     "/div/div[1]/div[1]/textarea";
+        final String BOARD_CARD_X_PATH_BUTTON =   "/div/div[1]/div/button";
+        final String BOARD_CARD_X_PATH_MEDIUM =   "/div[2]/";
+
+//        html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/div[1]/div[2]/div/div
+//        html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/div[1]/div[2]/div[1]/div/div[1]/div[1]/textarea
+//        html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/div[1]/div[2]/div[1]/div/div[1]/div[2]/button
 
         if (numberY > 2) Column.columnsCreation(driver, numberY - 2, isLogged);
         for (int i = 1; i <= numberX; i++) {
@@ -68,9 +71,9 @@ public class Card {
             for (int j = 1; j <= numberY; j++) {
                 stringCounterY = Integer.toString(j);
                 dynamicPartY = "div[" + stringCounterY + "]";
-                currentXpathForAdding = BOARD_CARD_X_PATH_FIRST_PART_V2 + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_ADD_CARD;
-                currentXpathForNaming = BOARD_CARD_X_PATH_FIRST_PART_V2 + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_TEXT;
-                currentXpathForSaving = BOARD_CARD_X_PATH_FIRST_PART_V2 + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_BUTTON;
+                currentXpathForAdding = BOARD_CARD_X_PATH_FIRST_PART + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_ADD_CARD;
+                currentXpathForNaming = BOARD_CARD_X_PATH_FIRST_PART + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_TEXT;
+                currentXpathForSaving = BOARD_CARD_X_PATH_FIRST_PART + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_BUTTON;
                 if (isLogged) System.out.println(currentXpathForAdding);
                 driver.findElement(By.xpath(currentXpathForAdding)).click();
                 if (isLogged) System.out.println(currentXpathForNaming);
