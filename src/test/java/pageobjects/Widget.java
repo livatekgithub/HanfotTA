@@ -92,7 +92,7 @@ public class Widget {
             name = Integer.toString(i - 10) + " " + colorName;
             //Create Idea Widget with Sequential Name 1,2,..
             driver.findElement(By.xpath(IDEA_ADD_XPATH)).click();
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + "Idea " + name);
             driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
 //            driver.findElement(By.xpath(IDEA_SAVE_BUTTON_XPATH)).click(); Old version of code, doesn't work after some update

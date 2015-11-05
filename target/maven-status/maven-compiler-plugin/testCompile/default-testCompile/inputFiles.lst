@@ -3,11 +3,13 @@ C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\new_things\GetPropertyTest.jav
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\WidgetColor.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\utils\AccessData.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\WidgetState.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\IETest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Card.java
-C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\IETestRun.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\WidgetOperation.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Column.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\ChromeTest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\TestData.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\FirefoxTest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\Main.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\utils\Locators.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\CollectionType.java
@@ -16,11 +18,9 @@ C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\utils\Service.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Collection.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Users.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\utils\WindowOperations.java
-C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\ChromeTestRun.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\tests\Run.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\CollectionSharingMode.java
-C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\TestRunner.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Todo.java
-C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\FirefoxTestRun.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\LogType.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\TodoCardStatus.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\Runner.java

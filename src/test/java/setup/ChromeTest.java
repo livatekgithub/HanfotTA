@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
-public class ChromeTestRun {
+public class ChromeTest {
     private WebDriver driver;
     private final String browser = "CHROME";
     private String baseUrl;
@@ -43,45 +43,12 @@ public class ChromeTestRun {
 
     @After
     public void tearDown() throws Exception {
-        Service.takeScreenshot(driver, Service.nowTimeForFileName() + " " + browser + "." + ".screenshot.png");
+        Service.takeScreenshot(driver, Service.nowTimeForFileName() + " " + browser + ".screenshot.png");
 
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
-        }
-    }
-
-    private boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    private boolean isAlertPresent() {
-        try {
-            driver.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-
-    private String closeAlertAndGetItsText() {
-        try {
-            Alert alert = driver.switchTo().alert();
-            String alertText = alert.getText();
-            if (acceptNextAlert) {
-                alert.accept();
-            } else {
-                alert.dismiss();
-            }
-            return alertText;
-        } finally {
-            acceptNextAlert = true;
         }
     }
 }

@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 
 public class Users implements utils.AccessData {
 
-    final static String MAIN_MENU_XPATH="html/body/div[2]/div[1]/div[1]/div[1]/a/div/img";
+    final static String MAIN_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[1]/a/div/img";
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void loginUser(WebDriver driver) throws InterruptedException {
@@ -113,25 +113,32 @@ public class Users implements utils.AccessData {
     public static void usersRemoveAllFromOrganization(WebDriver driver, boolean isLogged) throws InterruptedException {
 
         String userName;
-        final String LAST_USER_NAME = "html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
-        final String SECOND_USER_CAN = "html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[2]/div[2]/div[2]/div";
+        final String USER_MAIN_MENU_MEMBERS_LIST_CSS = "div.app-menu-choice.js-org-admin";
+        final String USER_SECOND_USER_EXIST_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[2]/div[2]/div";
+        final String USER_LAST_USER_NAME_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
+        final String USER_LAST_USER_REMOVE_BUTTON_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]/div";
+        final String USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div";
+        final String USER_ORG_MENU_CLOSE_BUTTON_CSS = ".popup-window-toolbar-button.mod-cancel.js-popup-cancel";
+        final String USER_ORG_MENU_DISMISS_CSS = ".toolpopup-popup-bg";
 
         driver.findElement(By.xpath(MAIN_MENU_XPATH)).click();
-        driver.findElement(By.cssSelector("div.app-menu-choice.js-org-admin")).click();
+        driver.findElement(By.cssSelector(USER_MAIN_MENU_MEMBERS_LIST_CSS)).click();
 
-        while (isElementPresent(By.xpath(SECOND_USER_CAN), driver)) {
-            userName = driver.findElement(By.xpath(LAST_USER_NAME)).getText();
-            if (isLogged)
-                System.out.println(userName + " was removed " + driver.findElement(By.xpath(SECOND_USER_CAN)).isDisplayed());
+        while (isElementPresent(By.xpath(USER_SECOND_USER_EXIST_XPATH), driver)) {
+            userName = driver.findElement(By.xpath(USER_LAST_USER_NAME_XPATH)).getText();
+            if (isLogged) {
+                System.out.println(userName + " was removed " + driver.findElement(By.xpath(USER_LAST_USER_REMOVE_BUTTON_XPATH)).isDisplayed());
+            }
             Thread.sleep(500);
-            driver.findElement(By.xpath("html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div[2]/div")).click();
+            driver.findElement(By.xpath(USER_LAST_USER_REMOVE_BUTTON_XPATH)).click();
             Thread.sleep(500);
-            driver.findElement(By.xpath("html/body/div[4]/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div[1]/div[2]/div")).click();
+            driver.findElement(By.xpath(USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH)).click();
         }
-        driver.findElement(By.cssSelector(".popup-window-toolbar-button.mod-cancel.js-popup-cancel")).click();
-        driver.findElement(By.cssSelector(".toolpopup-popup-bg")).click();
+        driver.findElement(By.cssSelector(USER_ORG_MENU_CLOSE_BUTTON_CSS)).click();
+        driver.findElement(By.cssSelector(USER_ORG_MENU_DISMISS_CSS)).click();
     }
-//-------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     private static boolean isElementPresent(By by, WebDriver driver) {
         try {
             driver.findElement(by);

@@ -15,6 +15,7 @@ public class Collection {
     final static String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[6]";
     //remove
     final static String COLLLECTION_OPEN_PAGEMENU_XPATH = "html/body/div[2]/div[2]/div[2]/div[1]/div/div/div[1]";
+    final static String COLLECTION_GETNAME_XPATH="html/body/div[2]/div[2]/div[2]/div/div/div/div[1]";
     final static String COLLECTION_DELETE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[1]";
     //archive
     final static String COLLLECTION_ARCHIVE_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[2]";
@@ -40,12 +41,12 @@ public class Collection {
     public static void collectionRemoving(WebDriver driver, int number, boolean isLogged) throws InterruptedException {
         String name;
         for (int i = 1; i <= number; i++) {
-            name = "Collection" + Integer.toString(i);
+            name = driver.findElement(By.xpath(COLLECTION_GETNAME_XPATH)).getText();
             Thread.sleep(500);
             driver.findElement(By.xpath(COLLLECTION_OPEN_PAGEMENU_XPATH)).click();
             driver.findElement(By.xpath(COLLECTION_DELETE_BUTTON_XPATH)).click();
             driver.findElement(By.xpath(COLLECTION_DELETE_BUTTON_XPATH)).click();
-            if (isLogged) System.out.println(Service.nowTime() + " Collection " + i + " was removed:");
+            if (isLogged) System.out.println(Service.nowTime() + " Collection " + name + " was removed:");
         }
     }
 

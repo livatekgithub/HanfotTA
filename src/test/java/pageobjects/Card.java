@@ -427,11 +427,12 @@ public class Card {
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
         robot.keyRelease(KeyEvent.VK_V);
+        Thread.sleep(500);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(5000);
         Card.cardSave(driver);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
 
         Card.cardOpenBoardCard(driver, boardCardX, boardCardY, false);
         Card.cardSetName(driver, Run.currentBrowser + ".Board Card with File");
@@ -442,11 +443,12 @@ public class Card {
         robot2.keyPress(KeyEvent.VK_V);
         robot2.keyRelease(KeyEvent.VK_CONTROL);
         robot2.keyRelease(KeyEvent.VK_V);
+        Thread.sleep(500);
         robot2.keyPress(KeyEvent.VK_ENTER);
         robot2.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(5000);
         Card.cardSave(driver);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------

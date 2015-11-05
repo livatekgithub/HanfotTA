@@ -1,13 +1,13 @@
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
-import setup.ChromeTestRun;
-import setup.FirefoxTestRun;
-import setup.IETestRun;
+import setup.ChromeTest;
+import setup.FirefoxTest;
+import setup.IETest;
 
-public class TestRunner {
+public class Runner {
     public static void main(String[] args) {
-        Result result= JUnitCore.runClasses(FirefoxTestRun.class, ChromeTestRun.class, IETestRun.class);
+        Result result= JUnitCore.runClasses(FirefoxTest.class, ChromeTest.class, IETest.class);
         for (Failure failure:result.getFailures()){
             System.out.println(failure.toString());
         }

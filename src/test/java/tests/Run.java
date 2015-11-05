@@ -16,9 +16,8 @@ public class Run {
     public static String currentBrowser;
 
     public static void runShortTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
-
+        System.out.println("*** ShortTest - Luftwaffe ***");
         System.out.println(Service.nowTime() + " : 1. Add and Remove Users to Organization(+1-1+1)");
-        Users.usersAddToOrganization(driver, 1, false);
         Users.usersRemoveAllFromOrganization(driver, false);
         Users.usersAddToOrganization(driver, 1, false);
 
@@ -27,16 +26,15 @@ public class Run {
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PUBLIC, false);
 
         System.out.println(Service.nowTime() + " : 3. Collections Archiving(2)");
-        Collection.collectionCreation(driver, 1, CollectionSharingMode.PRIVATE, false);
-        Collection.collectionCreation(driver, 1, CollectionSharingMode.PUBLIC, false);
         Collection.collectionArchiving(driver, 2, false);
 
         System.out.println(Service.nowTime() + " : 4. Collections Removing(2)");
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PUBLIC, false);
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PRIVATE, false);
-        Collection.collectionRemoving(driver, 2, false);
+        Collection.collectionRemoving(driver, 2, true);
 
         System.out.println(Service.nowTime() + " : 5. Collections Renaming(1)");
+
         System.out.println(Service.nowTime() + " : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color ");
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PRIVATE, false);
         Collection.collectionRenameCurrent(driver, currentBrowser + ".MANY WIDGETS COLLECTION");
@@ -91,7 +89,7 @@ public class Run {
         Card.cardAddFewPeople(driver, users, 3, 3, 1);
 
         System.out.println(Service.nowTime() + " : f. Add dates");
-        Card.cardDatesAddFew(driver, 1,3,"13-10-2015", "20-10-2015", false);
+        Card.cardDatesAddFew(driver, 1, 3, "13-10-2015", "20-10-2015", false);
 
         System.out.println(Service.nowTime() + " : g. Add description");
         Card.cardDescriptionAddtoManyCards(driver, TestData.USUAL_DESCRIPTION_TEXT, 1, 1, 1, false);
@@ -99,11 +97,11 @@ public class Run {
         System.out.println(Service.nowTime() + " : h. Add comments");
         Card.cardCommentAddMany(driver, "Hello There!!!!", 1, 1, 1, 1, false);
 
-        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
-        String filePath = AccessData.GRAPHIC_FILE_PATH;
-        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
-        filePath = AccessData.TEXT_FILE_PATH;
-        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
+//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
+//        String filePath = AccessData.GRAPHIC_FILE_PATH;
+//        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
+//        filePath = AccessData.TEXT_FILE_PATH;
+//        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
 
         System.out.println(Service.nowTime() + " : 10. TODO -Operations Block");
         System.out.println(Service.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
@@ -144,7 +142,7 @@ public class Run {
 
     public static void runTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
-        System.out.println("***France Air Force***");
+        System.out.println("*** Test. UK Air Force***");
         System.out.println(Service.nowTime() + " : 1. Add Users to Organization(20)");
         Users.usersAddToOrganization(driver, 5, false);
 
@@ -224,7 +222,7 @@ public class Run {
         Card.cardAddFewPeople(driver, users1, 7, 7, 1);
 
         System.out.println(Service.nowTime() + " : f. Add dates");
-        Card.cardDatesAddFew(driver, 1,3,"13-10-2015", "20-10-2015", false);
+        Card.cardDatesAddFew(driver, 1, 3, "13-10-2015", "20-10-2015", false);
 
         System.out.println(Service.nowTime() + " : g. Add description");
         Card.cardDescriptionAddtoManyCards(driver, TestData.USUAL_DESCRIPTION_TEXT, 3, 1, 3, false);
@@ -305,8 +303,22 @@ public class Run {
         System.out.println("****** " + browser + " ************************************************************");
         Service service = new Service();
         service.startCount();
-//        runShortTestAllMethods(driver, false);
-        runTestAllMethods(driver, false);
+
+        //**********************************************************************************
+
+        runShortTestAllMethods(driver, false);
+//        runTestAllMethods(driver, false);
+
+
+//        Card.cardsFirstIdeaGeneration(driver, 2, false);
+//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
+//        String filePath = AccessData.GRAPHIC_FILE_PATH;
+//        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
+//        filePath = AccessData.TEXT_FILE_PATH;
+//        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
+
+
+        //**********************************************************************************
         service.stopCount();
         System.out.println("****** Time: " + service.getTimeDuration() + " minutes ************************************************************");
 
