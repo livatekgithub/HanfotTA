@@ -16,7 +16,7 @@ public class Run {
     public static String currentBrowser;
 
     public static void runShortTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
-        System.out.println("*** ShortTest - Luftwaffe ***");
+        System.out.println("*** ShortTest - USS Endeavor3 ***");
         System.out.println(Service.nowTime() + " : 1. Add and Remove Users to Organization(+1-1+1)");
         Users.usersRemoveAllFromOrganization(driver, false);
         Users.usersAddToOrganization(driver, 1, false);
@@ -30,8 +30,9 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 4. Collections Removing(2)");
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PUBLIC, false);
+
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PRIVATE, false);
-        Collection.collectionRemoving(driver, 2, true);
+        Collection.collectionRemoving(driver, 2, false);
 
         System.out.println(Service.nowTime() + " : 5. Collections Renaming(1)");
 
@@ -67,7 +68,7 @@ public class Run {
         Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY CARDS IDEA", WidgetType.IDEA, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY CARDS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 5, 3, false);
-        Card.cardsFirstIdeaGeneration(driver, 5, false);
+        Card.cardsFirstIdeaGeneration(driver, 10, false);
 
         System.out.println(Service.nowTime() + " : 9. Card Pop-Up Operations Block");
 
@@ -85,17 +86,17 @@ public class Run {
         Card.cardAddManyTasks(driver, 2, 2, 2, 1, false);
 
         System.out.println(Service.nowTime() + " : e. Add many users");
-        String[] users = {"Livaten", "13"};
+        String[] users = {"zKir", "13"};
         Card.cardAddFewPeople(driver, users, 3, 3, 1);
 
         System.out.println(Service.nowTime() + " : f. Add dates");
         Card.cardDatesAddFew(driver, 1, 3, "13-10-2015", "20-10-2015", false);
 
         System.out.println(Service.nowTime() + " : g. Add description");
-        Card.cardDescriptionAddtoManyCards(driver, TestData.USUAL_DESCRIPTION_TEXT, 1, 1, 1, false);
+        Card.cardDescriptionAddtoManyCards(driver, TestData.USUAL_DESCRIPTION_TEXT, 4, 4, 1, false);
 
         System.out.println(Service.nowTime() + " : h. Add comments");
-        Card.cardCommentAddMany(driver, "Hello There!!!!", 1, 1, 1, 1, false);
+        Card.cardCommentAddMany(driver, "Hello There!!!!", 2, 5, 5, 1, false);
 
 //        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
 //        String filePath = AccessData.GRAPHIC_FILE_PATH;

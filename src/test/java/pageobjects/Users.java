@@ -1,6 +1,7 @@
 package pageobjects;
 
 import enums.TestData;
+import enums.UserOrgRoles;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
@@ -8,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import utils.AccessData;
 import utils.Service;
 import utils.WindowOperations;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -21,8 +24,8 @@ public class Users implements utils.AccessData {
         driver.get("https://test.hansoftx.com/logout");
 //        driver.manage().window().maximize();
         WindowOperations.resizeWindowforIdea(driver);
-        Thread.sleep(1000);
         driver.get(TESTURL);
+        Thread.sleep(10000);
         driver.findElement(By.id("form-email")).clear();
         driver.findElement(By.id("form-email")).sendKeys(TESTLOGIN);
         driver.findElement(By.id("form-psw")).clear();
@@ -78,7 +81,6 @@ public class Users implements utils.AccessData {
         }
         driver.findElement(By.cssSelector("div.app-menu-choice.js-signout")).click();
     }
-
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void usersAddToOrganization(WebDriver driver, int numberOfUsers, boolean isLogged) throws InterruptedException {
@@ -139,6 +141,21 @@ public class Users implements utils.AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void usersSetupPermission(WebDriver driver, String userName, UserOrgRoles userOrgRoles)throws  InterruptedException{
+
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void usersParticularUserRemoval(WebDriver driver, String userName)throws  InterruptedException{
+
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static ArrayList usersGetListOfUsers(WebDriver driver)throws  InterruptedException{
+        ArrayList listOfOrgUsers=new ArrayList();
+
+        return listOfOrgUsers;
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+
     private static boolean isElementPresent(By by, WebDriver driver) {
         try {
             driver.findElement(by);

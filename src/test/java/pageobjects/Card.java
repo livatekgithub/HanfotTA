@@ -377,14 +377,14 @@ public class Card {
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardAddFewPeople(WebDriver driver, String[] userNames, int ideaCardNum, int boardCardX, int boardCardY) throws InterruptedException {
         cardOpenIdeaCard(driver, ideaCardNum, false);
-        cardSetName(driver, Run.currentBrowser+".Idea card with Assignment");
+        cardSetName(driver, Run.currentBrowser + ".Idea card with Assignment");
         for (String selectedName : userNames) {
             cardAddPeople(driver, selectedName);
         }
         cardSave(driver);
 
         cardOpenBoardCard(driver, boardCardX, boardCardY, false);
-        cardSetName(driver, Run.currentBrowser+".Board card with Assignment");
+        cardSetName(driver, Run.currentBrowser + ".Board card with Assignment");
         for (String selectedName : userNames) {
             cardAddPeople(driver, selectedName);
         }
@@ -450,14 +450,20 @@ public class Card {
         Card.cardSave(driver);
         Thread.sleep(5000);
     }
-
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardBreakDownToIdea(WebDriver driver) {
 
     }
-
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardBreakDownToBoard(WebDriver driver) {
+
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardLanesCreation(WebDriver driver,int number){
+
+    }
+    //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void cardLaneOpen(WebDriver driver,int number){
 
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------

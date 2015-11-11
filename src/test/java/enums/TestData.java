@@ -4,9 +4,9 @@ public class TestData {
     public static String[] testUserNames =
             {
 //                    "livatek.user1@gmail.com",
-                    "livatek.user2@gmail.com",
+//                    "livatek.user2@gmail.com",
 //                    "livatek.user3@ukr.net",
-                    "livatek.user4@gmail.com",
+//                    "livatek.user4@gmail.com",
                     "livatek.user5@ukr.net",
                     "livatek.user6@ukr.net",
                     "livatek.user7@gmail.com",

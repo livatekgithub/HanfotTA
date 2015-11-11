@@ -21,6 +21,9 @@ public class Collection {
     final static String COLLLECTION_ARCHIVE_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[2]";
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
+    Collection(int number){
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void collectionCreation(WebDriver driver, int number, CollectionSharingMode pageSharingMode, boolean isLogged) throws InterruptedException {
         String name;
         String nameTemplate;
@@ -73,7 +76,18 @@ public class Collection {
         driver.findElement(By.cssSelector(COLLECTION_DONE_BUTTON_CSS)).click();
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-
+    public static void collectionRenameChosen(WebDriver driver, String nameOfCollection, String nameForRename) {
+        driver.findElement(By.xpath(COLLLECTION_OPEN_PAGEMENU_XPATH)).click();
+        driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).clear();
+        driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).sendKeys(nameForRename);
+        driver.findElement(By.cssSelector(COLLECTION_DONE_BUTTON_CSS)).click();
+    }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-
+    public static void collectionRenameChosen(WebDriver driver, int number, String nameForRename) {
+        driver.findElement(By.xpath(COLLLECTION_OPEN_PAGEMENU_XPATH)).click();
+        driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).clear();
+        driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).sendKeys(nameForRename);
+        driver.findElement(By.cssSelector(COLLECTION_DONE_BUTTON_CSS)).click();
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
 }
