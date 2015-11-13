@@ -1,25 +1,48 @@
 package tests;
 
 import enums.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import pageobjects.*;
 import utils.AccessData;
 import utils.Service;
 
-import java.awt.*;
+import javax.jws.soap.SOAPBinding;
+import java.awt.AWTException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class Run {
     public static String currentBrowser;
 
+    //----------------------------------------------------------------------------------------------------------------------
     public static void runShortTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
+
         System.out.println("*** ShortTest - USS Endeavor3 ***");
-        System.out.println(Service.nowTime() + " : 1. Add and Remove Users to Organization(+1-1+1)");
+
+        System.out.println(Service.nowTime() + " : 1. Users Block");
+        System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
         Users.usersRemoveAllFromOrganization(driver, false);
-        Users.usersAddToOrganization(driver, 1, false);
+        Users.usersAddToOrganization(driver, 5, TestData.testUserNames, false);
+
+//        BROKEN!!!
+        System.out.println(Service.nowTime() + " : 1b. Delete chosen User");
+        Users.usersOpenMembersList(driver);
+        Users.usersParticularUserRemoval(driver, "livatek.user6@ukr.net");
+
+        System.out.println(Service.nowTime() + " : 1c. Change Users Permissions to Administrator/Full Member and Restricted");
+        Users.usersSetupPermission(driver, "livatek.user9@gmail.com", UserOrgRoles.ADMINISTRATOR);
+        Users.usersSetupPermission(driver, "livatek.user8@ukr.net", UserOrgRoles.FULL_MEMBER);
+        Users.usersSetupPermission(driver, "livatek.user7@gmail.com", UserOrgRoles.RESTRICTED);
+        Users.closeEditOrganizationMenu(driver);
 
         System.out.println(Service.nowTime() + " : 2. Collections Creation(2)");
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PRIVATE, false);
@@ -86,7 +109,7 @@ public class Run {
         Card.cardAddManyTasks(driver, 2, 2, 2, 1, false);
 
         System.out.println(Service.nowTime() + " : e. Add many users");
-        String[] users = {"zKir", "13"};
+        String[] users = {"pent", "13","9","ei","sev"};
         Card.cardAddFewPeople(driver, users, 3, 3, 1);
 
         System.out.println(Service.nowTime() + " : f. Add dates");
@@ -141,15 +164,16 @@ public class Run {
         Todo.todoCardCreation(driver, 3, TodoCardStatus.CREATEUNFINISHED, LogType.NOLOG);
     }
 
+    //----------------------------------------------------------------------------------------------------------------------
     public static void runTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
         System.out.println("*** Test. UK Air Force***");
         System.out.println(Service.nowTime() + " : 1. Add Users to Organization(20)");
-        Users.usersAddToOrganization(driver, 5, false);
+        Users.usersAddToOrganization(driver, 5, TestData.testUserNames, false);
 
         System.out.println(Service.nowTime() + " : 2. Remove Users from Organization(10)");
         Users.usersRemoveAllFromOrganization(driver, false);
-        Users.usersAddToOrganization(driver, 10, false);
+        Users.usersAddToOrganization(driver, 10, TestData.testUserNames, false);
 
         System.out.println(Service.nowTime() + " : 3. Collections Creation(10)");
         Collection.collectionCreation(driver, 5, CollectionSharingMode.PRIVATE, false);
@@ -275,6 +299,7 @@ public class Run {
         Todo.todoCardCreation(driver, 5, TodoCardStatus.CREATEUNFINISHED, LogType.NOLOG);
     }
 
+    //----------------------------------------------------------------------------------------------------------------------
     public static void widgetsCreateBigWidgets(WebDriver driver, int yIdea, int yBoard, int xBoard) throws InterruptedException {
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY CARDS IDEA", WidgetType.IDEA, false);
@@ -290,6 +315,22 @@ public class Run {
         }
     }
 
+    //----------------------------------------------------------------------------------------------------------------------
+    public static void createManyOrganizationsWithManyUsers(WebDriver driver, int numberOfOrgs, int numberofUsers,
+                                                            String[] usersList, String[] adminUsersList, String maskName, boolean isLogged) throws InterruptedException {
+        for (int i = 1; i <= numberOfOrgs; i++) {
+            Users.createNewOrganization(driver, maskName + Integer.toString(i));
+            System.out.println(usersList.length);
+            System.out.println(Arrays.toString(usersList));
+            driver.get(AccessData.TESTURLX);
+            Thread.sleep(5000);
+            Users.usersAddToOrganization(driver, numberofUsers, usersList, isLogged);
+            for (String userChosen:adminUsersList)
+            Users.usersSetupPermission(driver,userChosen,UserOrgRoles.ADMINISTRATOR);
+        }
+    }
+
+    //----------------------------------------------------------------------------------------------------------------------
     public static void Run(WebDriver driver, String browser) throws InterruptedException, IOException, AWTException {
 
 //        Collection.collectionCreation(driver,1,CollectionSharingMode.PUBLIC,false);
@@ -305,11 +346,13 @@ public class Run {
         Service service = new Service();
         service.startCount();
 
+//        createManyOrganizationsWithManyUsers(driver, 1, 10, TestData.testUserNamesBunch, TestData.adminUsersList, "000 000 ManyUsers ORG 0", true);
+//        createManyOrganizationsWithManyUsers(driver, 1, 40, TestData.testUserNamesForPayments, TestData.adminUsersList, "zzz PaymentTesting ORG 0", true);
+
         //**********************************************************************************
 
         runShortTestAllMethods(driver, false);
 //        runTestAllMethods(driver, false);
-
 
 //        Card.cardsFirstIdeaGeneration(driver, 2, false);
 //        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");

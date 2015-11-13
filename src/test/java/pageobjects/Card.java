@@ -283,12 +283,12 @@ public class Card {
         if (startDate != null) {
             driver.findElement(By.xpath(CARD_START_OPEN_XPATH)).click();
             driver.findElement(By.xpath(CARD_START_XPATH)).sendKeys(startDate);
-            Thread.sleep(500);
+            Thread.sleep(1000);
         }
         if (finishDate != null) {
-            driver.findElement(By.xpath(CARD_FINISH_OPEN_XPATH)).click();
+            driver.findElement(By.xpath(CARD_FINISH_OPEN_XPATH)).click(); //***
             driver.findElement(By.xpath(CARD_FINISH_XPATH)).sendKeys(finishDate);
-            Thread.sleep(500);
+            Thread.sleep(1000);
         }
     }
 
@@ -303,7 +303,7 @@ public class Card {
         cardDatesSet(driver, startDate, null, false);
         cardSave(driver);
         cardOpenIdeaCard(driver, firstCard+2, false);
-        cardDatesSet(driver, null, finishDate, false);
+        cardDatesSet(driver, null, finishDate, false); //***
         cardSave(driver);
 
         //Set Dates for Board Cards
@@ -335,7 +335,7 @@ public class Card {
             cardSetName(driver, "Day " + Integer.toString(i));
             dateName = "2015-10-" + Integer.toString(i);
             Thread.sleep(500);
-            cardDatesSet(driver, dateName, null, false);
+            cardDatesSet(driver, null, dateName, false);
             cardSave(driver);
         }
         Thread.sleep(1000);
