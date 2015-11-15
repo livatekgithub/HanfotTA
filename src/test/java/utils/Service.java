@@ -21,8 +21,11 @@ public class Service {
         timeFinish = System.currentTimeMillis();
     }
 
-    public double getTimeDuration() {
+    public double getTimeDurationInMinutes() {
         return (1.00) * ((timeFinish - timeStart) / 60000);
+    }
+    public double getTimeDurationInSeconds() {
+        return (1.00) * ((timeFinish - timeStart) / 1000);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -39,6 +42,13 @@ public class Service {
         dateCurrent = dateCurrent.replace(':', '.');
         dateCurrent = dateCurrent.replace(" ", "_");
         return dateCurrent;
+    }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static String nowTimeForObjectName() {
+        String monthDateAndHour = nowTimeForFileName();
+        monthDateAndHour=monthDateAndHour.substring(4, 14);
+        return monthDateAndHour;
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------

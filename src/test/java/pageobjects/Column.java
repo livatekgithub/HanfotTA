@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import tests.Run;
+import utils.Service;
 
 public class Column {
     //Add column
@@ -35,7 +36,8 @@ public class Column {
             if (isLogged) System.out.println("Log: " + COULMN_ADD_XPATH);
             driver.findElement(By.xpath(COULMN_ADD_XPATH)).click();
             if (isLogged) System.out.println("Log: " + currentXpathForRenaming);
-            driver.findElement(By.xpath(currentXpathForRenaming)).sendKeys(Run.currentBrowser + "Column " + shiftedValue);
+            driver.findElement(By.xpath(currentXpathForRenaming)).sendKeys(Run.currentBrowser + Service.nowTimeForObjectName()+
+                    ".Column " + shiftedValue);
             if (isLogged) System.out.println("Column" + (shiftedValue) + " created. Xpath=" + COULMN_ADD_XPATH);
             driver.findElement(By.xpath(currentXpathForRenaming)).sendKeys(Keys.ENTER);
         }

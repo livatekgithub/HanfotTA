@@ -93,14 +93,16 @@ public class Widget {
             //Create Idea Widget with Sequential Name 1,2,..
             driver.findElement(By.xpath(IDEA_ADD_XPATH)).click();
             Thread.sleep(1000);
-            driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + "Idea " + name);
+            driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + Service.nowTimeForObjectName()
+                    +"Idea " + name);
             driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
 //            driver.findElement(By.xpath(IDEA_SAVE_BUTTON_XPATH)).click(); Old version of code, doesn't work after some update
             if (isLogged) System.out.println(Service.nowTime() + " Idea " + name + " was created:");
 
             //Create Board Widget with Sequential Name 1,2,..
             driver.findElement(By.xpath(BOARD_ADD_XPATH)).click();
-            driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + "Board " + name);
+            driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + Service.nowTimeForObjectName()+
+                    "Board " + name);
             driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
 //            driver.findElement(By.xpath(BOARD_SAVE_BUTTON_XPATH)).click(); Old version of code, doesn't work after some update
             if (isLogged) System.out.println(Service.nowTime() + " Board " + name + " was created:");
@@ -133,7 +135,8 @@ public class Widget {
             driver.findElement(By.xpath(BOARD_MENU_OPTIONS_XPATH)).click();
             driver.findElement(By.xpath(BOARD_RENAME_XPATH)).click();
             driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).clear();
-            driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + "Board " + name);
+            driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser +
+                    Service.nowTimeForObjectName()+" Board " + name);
             driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
 //            driver.findElement(By.xpath(BOARD_SAVE_BUTTON_XPATH)).click(); Old version of code, doesn't work after some update
             if (isLogged)
@@ -144,7 +147,8 @@ public class Widget {
             driver.findElement(By.xpath(IDEA_MENU_OPTIONS_XPATH)).click();
             driver.findElement(By.xpath(IDEA_RENAME_XPATH)).click();
             driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).clear();
-            driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + "Idea " + name);
+            driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + Service.nowTimeForObjectName()
+                    +"Idea " + name);
             driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
 //            driver.findElement(By.xpath(IDEA_SAVE_BUTTON_XPATH)).click(); Old version of code, doesn't work after some update
             if (isLogged)
@@ -164,11 +168,11 @@ public class Widget {
             ideaName = driver.findElement(By.xpath(IDEA_HEADER_XPATH)).getText();
             if (widgetOperation == WidgetOperation.ARCHIVE) {
                 if (isLogged) System.out.println("  " + Service.nowTime() + " Idea:'" + ideaName + "' was archived");
-                widgetsCurrentRename(driver, Run.currentBrowser + "ARCHIVED IDEA" + i, WidgetType.IDEA, false);
+                widgetsCurrentRename(driver, Run.currentBrowser + Service.nowTimeForObjectName()+".ARCHIVED IDEA" + i, WidgetType.IDEA, false);
             }
             if (widgetOperation == WidgetOperation.UNARCHIVE) {
                 if (isLogged) System.out.println("  " + Service.nowTime() + " Idea:'" + ideaName + "' was unarchived");
-                widgetsCurrentRename(driver, Run.currentBrowser + "UNARCHIVED IDEA" + i, WidgetType.IDEA, false);
+                widgetsCurrentRename(driver, Run.currentBrowser + Service.nowTimeForObjectName()+".UNARCHIVED IDEA" + i, WidgetType.IDEA, false);
             }
             driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
             driver.findElement(By.xpath(IDEA_MENU_OPTIONS_XPATH)).click();

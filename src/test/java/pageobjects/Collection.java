@@ -27,8 +27,9 @@ public class Collection {
     public static void collectionCreation(WebDriver driver, int number, CollectionSharingMode pageSharingMode, boolean isLogged) throws InterruptedException {
         String name;
         String nameTemplate;
-        if (pageSharingMode == CollectionSharingMode.PUBLIC) nameTemplate = Run.currentBrowser+"Collection.Public";
-        else nameTemplate = Run.currentBrowser+"Collection.Private";
+        if (pageSharingMode == CollectionSharingMode.PUBLIC) nameTemplate = Run.currentBrowser+
+                Service.nowTimeForObjectName()+".Collection.Public";
+        else nameTemplate = Run.currentBrowser+Service.nowTimeForObjectName()+"Collection.Private";
         for (int i = 1; i <= number; i++) {
             name = nameTemplate + " " + Integer.toString(i);
             driver.findElement(By.xpath(COLLECTION_ADD_XPATH)).click();
@@ -57,7 +58,7 @@ public class Collection {
     public static void collectionArchiving(WebDriver driver, int number, boolean isLogged) {
         String name;
         for (int i = 1; i <= number; i++) {
-            name = Run.currentBrowser+"CollectionArch" + Integer.toString(i);
+            name = Run.currentBrowser+Service.nowTimeForObjectName()+".CollectionArch" + Integer.toString(i);
             driver.findElement(By.xpath(COLLECTION_ADD_XPATH)).click();
             if (isLogged) System.out.println(Service.nowTime() + " CollectionArch " + i + " was created:");
             driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).clear();

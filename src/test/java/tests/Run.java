@@ -1,24 +1,14 @@
 package tests;
 
 import enums.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 import pageobjects.*;
 import utils.AccessData;
 import utils.Service;
 
-import javax.jws.soap.SOAPBinding;
 import java.awt.AWTException;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
 public class Run {
     public static String currentBrowser;
@@ -31,9 +21,8 @@ public class Run {
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
         Users.usersRemoveAllFromOrganization(driver, false);
-        Users.usersAddToOrganization(driver, 5, TestData.testUserNames, false);
 
-//        BROKEN!!!
+        Users.usersAddToOrganization(driver, 5, TestData.testUserNames, false);
         System.out.println(Service.nowTime() + " : 1b. Delete chosen User");
         Users.usersOpenMembersList(driver);
         Users.usersParticularUserRemoval(driver, "livatek.user6@ukr.net");
@@ -46,22 +35,19 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 2. Collections Creation(2)");
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PRIVATE, false);
-        Collection.collectionCreation(driver, 1, CollectionSharingMode.PUBLIC, false);
 
         System.out.println(Service.nowTime() + " : 3. Collections Archiving(2)");
         Collection.collectionArchiving(driver, 2, false);
 
         System.out.println(Service.nowTime() + " : 4. Collections Removing(2)");
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PUBLIC, false);
-
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PRIVATE, false);
         Collection.collectionRemoving(driver, 2, false);
 
         System.out.println(Service.nowTime() + " : 5. Collections Renaming(1)");
-
         System.out.println(Service.nowTime() + " : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color ");
-        Collection.collectionCreation(driver, 1, CollectionSharingMode.PRIVATE, false);
-        Collection.collectionRenameCurrent(driver, currentBrowser + ".MANY WIDGETS COLLECTION");
+        Collection.collectionCreation(driver, 1, CollectionSharingMode.PUBLIC, false);
+        Collection.collectionRenameCurrent(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY WIDGETS COLLECTION");
         Widget.widgetsCreation(driver, 4, WidgetState.COLLAPSED, WidgetColor.EMERALD, false);
         Widget.widgetsRemoval(driver, 1, false);
         Widget.widgetsArchive(driver, 2, WidgetOperation.ARCHIVE, false);
@@ -77,20 +63,20 @@ public class Run {
         System.out.println(Service.nowTime() + " : 6d. Widgets Archiving(2)");
         System.out.println(Service.nowTime() + " : 7. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
+        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 2, 6, false);
         Card.cardsFirstIdeaGeneration(driver, 2, false);
 //        Column.columnsCreation(driver, 8, false);
         Column.columnRemove(driver, 2, false);
-        Column.columnRename(driver, 2, currentBrowser + ".Renamed!", false);
+        Column.columnRename(driver, 2, currentBrowser + Service.nowTimeForObjectName()+".Renamed!", false);
         Column.columnsArchiveAll(driver, 3, false);
         Column.columnSubscribe(driver, 4, false);
 
         System.out.println(Service.nowTime() + " : 8b. Cards Creation(3*5) for Board and Idea");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY CARDS IDEA", WidgetType.IDEA, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY CARDS BOARD", WidgetType.BOARD, false);
-        Card.cardsFirstBoardGeneration(driver, 5, 3, false);
+        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY CARDS IDEA", WidgetType.IDEA, false);
+        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY CARDS BOARD", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 6, 3, false);
         Card.cardsFirstIdeaGeneration(driver, 10, false);
 
         System.out.println(Service.nowTime() + " : 9. Card Pop-Up Operations Block");
@@ -113,7 +99,7 @@ public class Run {
         Card.cardAddFewPeople(driver, users, 3, 3, 1);
 
         System.out.println(Service.nowTime() + " : f. Add dates");
-        Card.cardDatesAddFew(driver, 1, 3, "13-10-2015", "20-10-2015", false);
+        Card.cardDatesAddFew(driver, 4, 1, "13-10-2015", "20-10-2015", false);
 
         System.out.println(Service.nowTime() + " : g. Add description");
         Card.cardDescriptionAddtoManyCards(driver, TestData.USUAL_DESCRIPTION_TEXT, 4, 4, 1, false);
@@ -187,7 +173,7 @@ public class Run {
         Collection.collectionRemoving(driver, 5, false);
 
         System.out.println(Service.nowTime() + " : 5a. Collections Renaming(1)");
-        Collection.collectionRenameCurrent(driver, currentBrowser + ".MANY WIDGETS COLLECTION");
+        Collection.collectionRenameCurrent(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY WIDGETS COLLECTION");
 
         System.out.println(Service.nowTime() + " : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color ");
         Widget.widgetsCreation(driver, 6, WidgetState.COLLAPSED, WidgetColor.EMERALD, false);
@@ -205,13 +191,13 @@ public class Run {
         System.out.println(Service.nowTime() + " : 6d. Widgets Archiving(2)");
         System.out.println(Service.nowTime() + " : 7. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
+        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 3, 8, false);
         Card.cardsFirstIdeaGeneration(driver, 3, false);
 //        Column.columnsCreation(driver, 8, false);
         Column.columnRemove(driver, 2, false);
 
-        Column.columnRename(driver, 2, currentBrowser + ".Renamed!", false);
+        Column.columnRename(driver, 2, currentBrowser + Service.nowTimeForObjectName()+".Renamed!", false);
         Column.columnsArchiveAll(driver, 3, false);
         Column.columnSubscribe(driver, 4, false);
 
@@ -220,8 +206,8 @@ public class Run {
 //
         System.out.println(Service.nowTime() + " : 8b. Cards Creation(4*8) for Board and Idea");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY CARDS IDEA", WidgetType.IDEA, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY CARDS BOARD", WidgetType.BOARD, false);
+        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY CARDS IDEA", WidgetType.IDEA, false);
+        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY CARDS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 15, 3, false);
         Card.cardsFirstIdeaGeneration(driver, 15, false);
 
@@ -302,8 +288,8 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void widgetsCreateBigWidgets(WebDriver driver, int yIdea, int yBoard, int xBoard) throws InterruptedException {
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY CARDS IDEA", WidgetType.IDEA, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + ".MANY CARDS BOARD", WidgetType.BOARD, false);
+        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY CARDS IDEA", WidgetType.IDEA, false);
+        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY CARDS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, yBoard, xBoard, false);
         Card.cardsFirstIdeaGeneration(driver, yIdea, false);
         for (int j = 1; j <= yBoard; j++) {
@@ -364,7 +350,8 @@ public class Run {
 
         //**********************************************************************************
         service.stopCount();
-        System.out.println("****** Time: " + service.getTimeDuration() + " minutes ************************************************************");
+        System.out.println("****** Time: " + service.getTimeDurationInMinutes() + " minutes || "+service.getTimeDurationInSeconds()+
+                " seconds ************************************************************");
 
 //        Service.takeScreenshot(driver, "screenshot1.png");
 

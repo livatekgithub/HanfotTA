@@ -1,12 +1,10 @@
 package pageobjects;
 
-import enums.TestData;
 import enums.UserOrgRoles;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.*;
 import utils.AccessData;
 import utils.Service;
-import utils.WindowOperations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +25,8 @@ public class Users implements utils.AccessData {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void loginUser(WebDriver driver) throws InterruptedException {
         driver.get("https://test.hansoftx.com/logout");
-//        driver.manage().window().maximize();
-        WindowOperations.resizeWindowforIdea(driver);
+        driver.manage().window().maximize();
+//        WindowOperations.resizeWindowforIdea(driver);
         driver.get(TESTURL);
         Thread.sleep(1000);
         driver.findElement(By.id("form-email")).clear();
@@ -101,7 +99,6 @@ public class Users implements utils.AccessData {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void usersAddToOrganization(WebDriver driver, int numberOfUsers, String[] testNamesForTest, boolean isLogged) throws InterruptedException {
-
         final String ADD_USER_FIELD_XPATH_BEGIN = "html/body/div[4]/div/div/div[1]/div/div[2]/div[3]/div[2]/";
         final String ADD_USER_FIELD_XPATH_END = "/div[1]/input";
 
@@ -124,7 +121,10 @@ public class Users implements utils.AccessData {
             driver.findElement(By.cssSelector(".fastcardpopup-taskinput-button.workspaceedit-add-button.js-workspacedit-add-invitation")).click();
         }
         driver.findElement(By.cssSelector(".ui-button-blue.js-workspacedit-sendinvitations")).click();
-        Thread.sleep(numberOfUsers * 1000);
+
+
+//        Thread.sleep(numberOfUsers * 1000);
+
         closeEditOrganizationMenu(driver);
     }
 
@@ -152,32 +152,42 @@ public class Users implements utils.AccessData {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void usersSetupPermission(WebDriver driver, String userEmail, UserOrgRoles userOrgRoles) throws InterruptedException {
-        String userRole="";
-        switch(userOrgRoles){
-            case ADMINISTRATOR:{
-                userRole="Administrator";
-            }break;
-            case FULL_MEMBER:{
-                userRole="Full member";
-            }break;
-            case RESTRICTED:{
-                userRole="Restricted";
-            }break;
-            default:{
-            }break;
+        String userRole = "";
+        switch (userOrgRoles) {
+            case ADMINISTRATOR: {
+                userRole = "Administrator";
+            }
+            break;
+            case FULL_MEMBER: {
+                userRole = "Full member";
+            }
+            break;
+            case RESTRICTED: {
+                userRole = "Restricted";
+            }
+            break;
+            default: {
+            }
+            break;
         }
-        String SELECT_XPATH="//div[text()=\""+userEmail+"\"]/parent::*/parent::*/following-sibling::*/child::div[1]/child::*";
+        String SELECT_XPATH = "//div[text()=\"" + userEmail + "\"]/parent::*/parent::*/following-sibling::*/child::div[1]/child::*";
         new Select(driver.findElement(By.xpath(SELECT_XPATH))).selectByVisibleText(userRole);
         Thread.sleep(2000);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void usersParticularUserRemoval(WebDriver driver, String userEmail) throws InterruptedException {
-        Thread.sleep(2000);
-        String DELETE_XPATH="//div[text()=\""+userEmail+"\"]/parent::*/parent::*/following-sibling::*/child::div[2]/div";
-        String DELETE_CONFIRM_XPATH="//div[text()=\""+userEmail+"\"]/parent::*/parent::*/following-sibling::*/div";
+        String elementXPath = "//div[text()=\"" + userEmail + "\"]";
+        String DELETE_XPATH = "//div[text()=\"" + userEmail + "\"]/parent::*/parent::*/following-sibling::*/child::div[2]/div";
+        Service service = new Service();
+        service.startCount();
+        new WebDriverWait(driver, 120).until(ExpectedConditions.presenceOfElementLocated(By.xpath(DELETE_XPATH)));
+//        Thread.sleep(60000);
+        String DELETE_CONFIRM_XPATH = "//div[text()=\"" + userEmail + "\"]/parent::*/parent::*/following-sibling::*/div";
         driver.findElement(By.xpath(DELETE_XPATH)).click();
         driver.findElement(By.xpath(DELETE_CONFIRM_XPATH)).click();
+        service.stopCount();
+        System.out.println("Waiting..." + service.getTimeDurationInSeconds() + "Seconds");
         Thread.sleep(2000);
     }
 

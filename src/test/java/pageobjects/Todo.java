@@ -94,7 +94,7 @@ public class Todo {
         if ((todoCardStatus == TodoCardStatus.CREATEUNFINISHED) || (todoCardStatus == TodoCardStatus.CREATEFINISHED))
             for (int i = 1; i <= number; i++) {
                 stringNumber = Integer.toString(i);
-                cardName = Run.currentBrowser + ".TODO Card " + stringNumber;
+                cardName = Run.currentBrowser + Service.nowTimeForObjectName()+" .TODO Card " + stringNumber;
                 dynamicPart = "div[" + i + "]";
                 if (i == 1) currentXpathForAdding = TODO_ADDCARD_XPATH + "div" + TODO_ADDCARD_XPATH_LAST;
                 else currentXpathForAdding = TODO_ADDCARD_XPATH + dynamicPart + TODO_ADDCARD_XPATH_LAST;
