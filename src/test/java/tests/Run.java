@@ -16,7 +16,10 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void runShortTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
-        System.out.println("*** ShortTest - USS Endeavor3 ***");
+        System.out.println("*** ShortTest - USS Endeavor4 ***");
+
+        boolean x=true;
+        if (x) return;
 
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
@@ -25,12 +28,12 @@ public class Run {
         Users.usersAddToOrganization(driver, 5, TestData.testUserNames, false);
         System.out.println(Service.nowTime() + " : 1b. Delete chosen User");
         Users.usersOpenMembersList(driver);
-        Users.usersParticularUserRemoval(driver, "livatek.user6@ukr.net");
+        Users.usersParticularUserRemoval(driver, TestData.testUsersForShortRun[0]);
 
         System.out.println(Service.nowTime() + " : 1c. Change Users Permissions to Administrator/Full Member and Restricted");
-        Users.usersSetupPermission(driver, "livatek.user9@gmail.com", UserOrgRoles.ADMINISTRATOR);
-        Users.usersSetupPermission(driver, "livatek.user8@ukr.net", UserOrgRoles.FULL_MEMBER);
-        Users.usersSetupPermission(driver, "livatek.user7@gmail.com", UserOrgRoles.RESTRICTED);
+        Users.usersSetupPermission(driver, TestData.testUsersForShortRun[4], UserOrgRoles.ADMINISTRATOR);
+        Users.usersSetupPermission(driver, TestData.testUsersForShortRun[3], UserOrgRoles.FULL_MEMBER);
+        Users.usersSetupPermission(driver, TestData.testUsersForShortRun[2], UserOrgRoles.RESTRICTED);
         Users.closeEditOrganizationMenu(driver);
 
         System.out.println(Service.nowTime() + " : 2. Collections Creation(2)");
@@ -154,12 +157,25 @@ public class Run {
     public static void runTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
         System.out.println("*** Test. UK Air Force***");
-        System.out.println(Service.nowTime() + " : 1. Add Users to Organization(20)");
-        Users.usersAddToOrganization(driver, 5, TestData.testUserNames, false);
 
-        System.out.println(Service.nowTime() + " : 2. Remove Users from Organization(10)");
+//        STOPSTATEMENT
+//        boolean x=true;
+//        if (x) return;
+
+        System.out.println(Service.nowTime() + " : 1. Users Block");
+        System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
         Users.usersRemoveAllFromOrganization(driver, false);
-        Users.usersAddToOrganization(driver, 10, TestData.testUserNames, false);
+
+        Users.usersAddToOrganization(driver, 15, TestData.testUserNames, false);
+        System.out.println(Service.nowTime() + " : 1b. Delete chosen User");
+        Users.usersOpenMembersList(driver);
+        Users.usersParticularUserRemoval(driver, TestData.testUsersForLongRun[0]);
+
+        System.out.println(Service.nowTime() + " : 1c. Change Users Permissions to Administrator/Full Member and Restricted");
+        Users.usersSetupPermission(driver, TestData.testUsersForLongRun[4], UserOrgRoles.ADMINISTRATOR);
+        Users.usersSetupPermission(driver, TestData.testUsersForLongRun[3], UserOrgRoles.FULL_MEMBER);
+        Users.usersSetupPermission(driver, TestData.testUsersForLongRun[2], UserOrgRoles.RESTRICTED);
+        Users.closeEditOrganizationMenu(driver);
 
         System.out.println(Service.nowTime() + " : 3. Collections Creation(10)");
         Collection.collectionCreation(driver, 5, CollectionSharingMode.PRIVATE, false);
@@ -173,7 +189,7 @@ public class Run {
         Collection.collectionRemoving(driver, 5, false);
 
         System.out.println(Service.nowTime() + " : 5a. Collections Renaming(1)");
-        Collection.collectionRenameCurrent(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY WIDGETS COLLECTION");
+        Collection.collectionRenameCurrent(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY WIDGETS COLLECTION");
 
         System.out.println(Service.nowTime() + " : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color ");
         Widget.widgetsCreation(driver, 6, WidgetState.COLLAPSED, WidgetColor.EMERALD, false);
@@ -191,13 +207,13 @@ public class Run {
         System.out.println(Service.nowTime() + " : 6d. Widgets Archiving(2)");
         System.out.println(Service.nowTime() + " : 7. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
+        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 3, 8, false);
         Card.cardsFirstIdeaGeneration(driver, 3, false);
 //        Column.columnsCreation(driver, 8, false);
         Column.columnRemove(driver, 2, false);
 
-        Column.columnRename(driver, 2, currentBrowser + Service.nowTimeForObjectName()+".Renamed!", false);
+        Column.columnRename(driver, 2, currentBrowser + Service.nowTimeForObjectName() + ".Renamed!", false);
         Column.columnsArchiveAll(driver, 3, false);
         Column.columnSubscribe(driver, 4, false);
 
@@ -206,7 +222,7 @@ public class Run {
 //
         System.out.println(Service.nowTime() + " : 8b. Cards Creation(4*8) for Board and Idea");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY CARDS IDEA", WidgetType.IDEA, false);
+        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS IDEA", WidgetType.IDEA, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName()+".MANY CARDS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 15, 3, false);
         Card.cardsFirstIdeaGeneration(driver, 15, false);
@@ -317,7 +333,26 @@ public class Run {
     }
 
     //----------------------------------------------------------------------------------------------------------------------
-    public static void Run(WebDriver driver, String browser) throws InterruptedException, IOException, AWTException {
+    public static void RunShort(WebDriver driver, String browser) throws InterruptedException, IOException, AWTException {
+        currentBrowser = browser;
+        System.out.println("****** " + browser + " ************************************************************");
+        Service service = new Service();
+        service.startCount();
+        runShortTestAllMethods(driver, false);
+        //**********************************************************************************
+//        Card.cardsFirstIdeaGeneration(driver, 2, false);
+//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
+//        String filePath = AccessData.GRAPHIC_FILE_PATH;
+//        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
+//        filePath = AccessData.TEXT_FILE_PATH;
+//        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
+        //**********************************************************************************
+        service.stopCount();
+        System.out.println("****** Time: " + service.getTimeDurationInMinutes() + " minutes || "+service.getTimeDurationInSeconds()+
+                " seconds ************************************************************");
+    }
+    //----------------------------------------------------------------------------------------------------------------------
+    public static void RunLong(WebDriver driver, String browser) throws InterruptedException, IOException, AWTException {
 
 //        Collection.collectionCreation(driver,1,CollectionSharingMode.PUBLIC,false);
 //        Widget.widgetsCreation(driver,2,WidgetState.EXPANDED,WidgetColor.DARKGREEN,false);
@@ -337,8 +372,7 @@ public class Run {
 
         //**********************************************************************************
 
-        runShortTestAllMethods(driver, false);
-//        runTestAllMethods(driver, false);
+        runTestAllMethods(driver, false);
 
 //        Card.cardsFirstIdeaGeneration(driver, 2, false);
 //        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");

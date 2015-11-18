@@ -23,16 +23,16 @@ public class Users implements utils.AccessData {
     final static String USER_ORG_MENU_DISMISS_CSS = ".toolpopup-popup-bg";
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void loginUser(WebDriver driver) throws InterruptedException {
+    public static void loginUser(WebDriver driver,String testURL,String testLogin,String testPassword) throws InterruptedException {
         driver.get("https://test.hansoftx.com/logout");
         driver.manage().window().maximize();
 //        WindowOperations.resizeWindowforIdea(driver);
-        driver.get(TESTURL);
+        driver.get(testURL);
         Thread.sleep(1000);
         driver.findElement(By.id("form-email")).clear();
-        driver.findElement(By.id("form-email")).sendKeys(TESTLOGIN);
+        driver.findElement(By.id("form-email")).sendKeys(testLogin);
         driver.findElement(By.id("form-psw")).clear();
-        driver.findElement(By.id("form-psw")).sendKeys(TESTPASSWORD);
+        driver.findElement(By.id("form-psw")).sendKeys(testPassword);
         Thread.sleep(3000);
         driver.findElement(By.cssSelector("button.btn-submit.js-tap-indication")).click();
 
@@ -59,9 +59,9 @@ public class Users implements utils.AccessData {
         driver.navigate().to(AccessData.TESTURL);
         Thread.sleep(3000);
 //        driver.findElement(By.id("form-email")).clear();
-//        driver.findElement(By.id("form-email")).sendKeys(TESTLOGIN);
+//        driver.findElement(By.id("form-email")).sendKeys(TESTLOGIN_SHORTTESTS);
 //        driver.findElement(By.id("form-psw")).clear();
-//        driver.findElement(By.id("form-psw")).sendKeys(TESTLOGIN);
+//        driver.findElement(By.id("form-psw")).sendKeys(TESTLOGIN_SHORTTESTS);
 //        Thread.sleep(3000);
         for (int i = 1; i < numberofAttempts; i++) {
             driver.findElement(By.cssSelector("button.btn-submit.js-tap-indication")).click();

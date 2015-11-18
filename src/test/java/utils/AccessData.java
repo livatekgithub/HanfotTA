@@ -1,6 +1,7 @@
 package utils;
 
 public interface AccessData {
+
     String SRC_SOURCE="C:\\Users\\kyak\\IdeaProjects\\HanfotTA\\";
     String GRAPHIC_FILE_PATH = SRC_SOURCE+"src\\test\\resources\\files\\screenshot.png";
     String TEXT_FILE_PATH = SRC_SOURCE+"src\\test\\resources\\files\\file.txt";
@@ -11,6 +12,11 @@ public interface AccessData {
     String TESTURLX = "https://test.hansoftx.com";
     String WRONGTESTLOGIN = "livatek.user12@ukr.net";
     String WRONGTESTPASSWORD = "";
-    String TESTLOGIN = "livatek.user13@gmail.com";
-    String TESTPASSWORD = "";
+
+    String TESTLOGIN_SHORTTESTS = "livatek.user13@gmail.com";
+    String TESTPASSWORD_SHORTTESTS = "2016user03";
+
+    String TESTLOGIN_LONGTESTS = "livatek.user1@gmail.com";
+    String TESTPASSWORD_LONGTESTS = "2015user02";
+
 }

@@ -7,15 +7,14 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pageobjects.Users;
 import utils.*;
-import tests.*;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
-public class FirefoxTest {
+public class FirefoxShortTest {
     private WebDriver driver;
-    private final String browser="FIREFOX";
+    private final String browser="FIREFOX-SHORT";
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
@@ -29,8 +28,8 @@ public class FirefoxTest {
 
     @Test
     public void testLogin() throws Exception {
-        Users.loginUser(driver);
-        tests.Run.Run(driver,browser);
+        Users.loginUser(driver,AccessData.TESTURL,AccessData.TESTLOGIN_SHORTTESTS,AccessData.TESTPASSWORD_SHORTTESTS);
+        tests.Run.RunShort(driver, browser);
         Thread.sleep(3000);
 //        General.userSignOut(driver);
     }
