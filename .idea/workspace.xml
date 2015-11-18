@@ -62,8 +62,8 @@
       <file leaf-file-name="TestData.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/enums/TestData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3518758">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36461127">
+              <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -182,10 +182,10 @@
         <option value="$PROJECT_DIR$/src/test/java/setup/FirefoxShortTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/setup/IEShortTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/setup/FirefoxLong.java" />
-        <option value="$PROJECT_DIR$/src/test/java/enums/TestData.java" />
         <option value="$PROJECT_DIR$/src/test/java/setup/HtmlUnit.java" />
         <option value="$PROJECT_DIR$/src/test/java/tests/Run.java" />
         <option value="$PROJECT_DIR$/src/test/java/utils/AccessData.java" />
+        <option value="$PROJECT_DIR$/src/test/java/enums/TestData.java" />
       </list>
     </option>
   </component>
@@ -1017,7 +1017,7 @@
       <workItem from="1447262645057" duration="29878000" />
       <workItem from="1447674166818" duration="10774000" />
       <workItem from="1447870683828" duration="748000" />
-      <workItem from="1447871453152" duration="58000" />
+      <workItem from="1447871453152" duration="138000" />
     </task>
     <task id="LOCAL-00001" summary="version with short and long run">
       <created>1447870844271</created>
@@ -1049,11 +1049,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447871506393</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="version with short and long run">
+      <created>1447871516521</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1447871516521</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152548000" />
+    <option name="totallyTimeSpent" value="152628000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -1540,8 +1546,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/enums/TestData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3518758">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.36461127">
+          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
           <folding />
         </state>
       </provider>
