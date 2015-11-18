@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76906738-b2e5-441a-8111-49dc4865aff3" name="Default" comment="version with short and long run">
+    <list default="true" id="76906738-b2e5-441a-8111-49dc4865aff3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/utils/AccessData.class" afterPath="$PROJECT_DIR$/target/test-classes/utils/AccessData.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/tests/Run.class" afterPath="$PROJECT_DIR$/target/test-classes/tests/Run.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -39,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccessData.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AccessData.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/utils/AccessData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3518758">
+              <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -59,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestData.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/enums/TestData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36461127">
-              <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+            <state vertical-scroll-proportion="-10.074074">
+              <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -184,8 +184,8 @@
         <option value="$PROJECT_DIR$/src/test/java/setup/FirefoxLong.java" />
         <option value="$PROJECT_DIR$/src/test/java/setup/HtmlUnit.java" />
         <option value="$PROJECT_DIR$/src/test/java/tests/Run.java" />
-        <option value="$PROJECT_DIR$/src/test/java/utils/AccessData.java" />
         <option value="$PROJECT_DIR$/src/test/java/enums/TestData.java" />
+        <option value="$PROJECT_DIR$/src/test/java/utils/AccessData.java" />
       </list>
     </option>
   </component>
@@ -1017,7 +1017,7 @@
       <workItem from="1447262645057" duration="29878000" />
       <workItem from="1447674166818" duration="10774000" />
       <workItem from="1447870683828" duration="748000" />
-      <workItem from="1447871453152" duration="198000" />
+      <workItem from="1447871453152" duration="215000" />
     </task>
     <task id="LOCAL-00001" summary="version with short and long run">
       <created>1447870844271</created>
@@ -1067,11 +1067,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447871601443</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="version with short and long run">
+      <created>1447871654238</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1447871654239</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152688000" />
+    <option name="totallyTimeSpent" value="152705000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -1548,18 +1554,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/utils/AccessData.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/enums/TestData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state vertical-scroll-proportion="-10.074074">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/enums/TestData.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/utils/AccessData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36461127">
-          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.3518758">
+          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
           <folding />
         </state>
       </provider>
