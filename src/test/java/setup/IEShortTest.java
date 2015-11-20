@@ -16,7 +16,7 @@ import static org.junit.Assert.fail;
 public class IEShortTest {
     private WebDriver driver;
     private String baseUrl;
-    private final String browser = "IE11-SHORT";
+    private final String browser = "IE11.sh.";
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 

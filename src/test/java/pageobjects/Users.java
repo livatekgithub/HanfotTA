@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 import utils.AccessData;
 import utils.Service;
+import utils.WindowOperations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +26,8 @@ public class Users implements utils.AccessData {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void loginUser(WebDriver driver,String testURL,String testLogin,String testPassword) throws InterruptedException {
         driver.get("https://test.hansoftx.com/logout");
-        driver.manage().window().maximize();
-//        WindowOperations.resizeWindowforIdea(driver);
+//        driver.manage().window().maximize();
+        WindowOperations.resizeWindowforIdea(driver);
         driver.get(testURL);
         Thread.sleep(1000);
         driver.findElement(By.id("form-email")).clear();

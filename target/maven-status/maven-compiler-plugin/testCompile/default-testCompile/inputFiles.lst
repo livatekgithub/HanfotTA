@@ -11,6 +11,7 @@ C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Card.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\FirefoxShortTest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Organization.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\WidgetOperation.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\ChromeLongTest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Column.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\HtmlUnit.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\TestData.java
@@ -20,6 +21,7 @@ C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\CollectionType.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\WidgetType.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\utils\Service.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Collection.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\IELongTest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Users.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\ParametrizedJUnit.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\utils\WindowOperations.java

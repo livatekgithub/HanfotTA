@@ -14,7 +14,7 @@ import static org.junit.Assert.fail;
 
 public class FirefoxLongTest {
     private WebDriver driver;
-    private final String browser="FIREFOX-LONG";
+    private final String browser="FIREFOX.ln";
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();

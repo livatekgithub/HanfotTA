@@ -17,7 +17,7 @@ import static org.junit.Assert.fail;
 
 public class ChromeShortTest {
     private WebDriver driver;
-    private final String browser = "CHROME-SHORT";
+    private final String browser = "CHROME.sh.";
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();

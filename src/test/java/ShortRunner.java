@@ -5,7 +5,7 @@ import setup.ChromeShortTest;
 import setup.FirefoxShortTest;
 import setup.IEShortTest;
 
-public class Runner {
+public class ShortRunner {
     public static void main(String[] args) {
         Result result= JUnitCore.runClasses(FirefoxShortTest.class, ChromeShortTest.class, IEShortTest.class);
         for (Failure failure:result.getFailures()){

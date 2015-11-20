@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class Card {
     //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void cardsFirstIdeaGeneration(WebDriver driver, int number, boolean isLogged) {
+    public static void cardsFirstIdeaGeneration(WebDriver driver, int number, boolean isLogged) throws InterruptedException {
         String name;
         String dynamicPart;
         final String IDEA_CARD_X_PATH_FIRST_PART = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/";
@@ -26,7 +26,7 @@ public class Card {
 
         driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/div/div")).click();
         driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/div[1]/div[1]/div[1]/div[1]/textarea")).sendKeys(Run.currentBrowser +
-                Service.nowTimeForObjectName()+"Idea Card 1");
+                Service.nowTimeForObjectName() + "Idea Card 1");
         driver.findElement(By.xpath("html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/div[1]/div[1]/div[1]/div/button")).click();
 
         for (int i = 2; i <= number; i++) {
@@ -42,11 +42,12 @@ public class Card {
 
             if (isLogged) System.out.println(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_BUTTON);
             driver.findElement(By.xpath(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_BUTTON)).click();
+            Thread.sleep(300);
         }
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void cardsFirstBoardGeneration(WebDriver driver, int numberX, int numberY, boolean isLogged) throws InterruptedException {
+    public static void cardsFirstBoardGeneration(WebDriver driver, int numberY, int numberX, boolean isLogged) throws InterruptedException {
         String stringCounterX;
         String stringCounterY;
         String dynamicPartX;
@@ -61,17 +62,13 @@ public class Card {
         final String BOARD_CARD_X_PATH_BUTTON =   "/div/div[1]/div/button";
         final String BOARD_CARD_X_PATH_MEDIUM =   "/div[2]/";
 
-//        html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/div[1]/div[2]/div/div
-//        html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/div[1]/div[2]/div[1]/div/div[1]/div[1]/textarea
-//        html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/div[1]/div[2]/div[1]/div/div[1]/div[2]/button
-
-        if (numberY > 2) Column.columnsCreation(driver, numberY - 2, isLogged);
-        for (int i = 1; i <= numberX; i++) {
+        if (numberX > 2) Column.columnsCreation(driver, numberX - 2, isLogged);
+        for (int i = 1; i <= numberY; i++) {
             stringCounterX = Integer.toString(i);
             if (i == 1) dynamicPartX = "div";
             else dynamicPartX = "div[" + stringCounterX + "]";
 
-            for (int j = 1; j <= numberY; j++) {
+            for (int j = 1; j <= numberX; j++) {
                 stringCounterY = Integer.toString(j);
                 dynamicPartY = "div[" + stringCounterY + "]";
                 currentXpathForAdding = BOARD_CARD_X_PATH_FIRST_PART + dynamicPartY + BOARD_CARD_X_PATH_MEDIUM + dynamicPartX + BOARD_CARD_X_PATH_ADD_CARD;
@@ -84,7 +81,7 @@ public class Card {
                         Service.nowTimeForObjectName()+" Board Card " + stringCounterX + stringCounterY);
                 if (isLogged) System.out.println(currentXpathForSaving);
                 driver.findElement(By.xpath(currentXpathForSaving)).click();
-
+                Thread.sleep(200);
             }
         }
     }

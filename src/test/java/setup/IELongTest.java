@@ -4,39 +4,39 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import pageobjects.Users;
 import utils.*;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public class FirefoxShortTest {
+public class IELongTest {
     private WebDriver driver;
-    private final String browser="FIREFOX.sh";
     private String baseUrl;
+    private final String browser = "IE11.ln.";
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
     @Before
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
+        System.setProperty("webdriver.ie.driver", AccessData.IE_DRIVER__PATH + "IEDriverServer.exe");
+        driver = new InternetExplorerDriver();
         baseUrl = AccessData.TESTURL;
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
     public void testLogin() throws Exception {
-        Users.loginUser(driver,AccessData.TESTURL,AccessData.TESTLOGIN_SHORTTESTS,AccessData.TESTPASSWORD_SHORTTESTS);
-        tests.Run.RunShort(driver, browser);
-        Thread.sleep(3000);
-//        General.userSignOut(driver);
+        Users.loginUser(driver,AccessData.TESTURL,AccessData.TESTLOGIN_LONGTESTS,AccessData.TESTPASSWORD_LONGTESTS);
+        tests.Run.RunLong(driver, browser);
     }
 
     @After
     public void tearDown() throws Exception {
-        Service.takeScreenshot(driver,Service.nowTimeForFileName()+" "+browser+".screenshot.png");
+        Service.takeScreenshot(driver, Service.nowTimeForFileName() + browser+ ".screenshot.png");
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
@@ -44,4 +44,5 @@ public class FirefoxShortTest {
         }
     }
 }
+
 
