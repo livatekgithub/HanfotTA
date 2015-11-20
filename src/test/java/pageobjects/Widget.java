@@ -240,16 +240,18 @@ public class Widget {
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
 //    Widget.widgetsCreateBigWidgets(driver, 80, 80, 4);
-    public static void widgetsCreateBigWidgets(WebDriver driver, int yIdea, int xBoard, int yBoard,int numberOfTags) throws InterruptedException {
+    public static void widgetsCreateBigWidgets(WebDriver driver, int yIdea, int yBoard, int xBoard) throws InterruptedException {
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
-        Widget.widgetsCurrentRename(driver, ".MANY CARDS IDEA", WidgetType.IDEA, false);
-        Widget.widgetsCurrentRename(driver, ".MANY CARDS BOARD", WidgetType.BOARD, false);
-        Card.cardsFirstBoardGeneration(driver, xBoard, yBoard, false);
+        Widget.widgetsCurrentRename(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS IDEA", WidgetType.IDEA, false);
+        Widget.widgetsCurrentRename(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS BOARD", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, yBoard, xBoard, false);
         Card.cardsFirstIdeaGeneration(driver, yIdea, false);
         for (int j = 1; j <= yBoard; j++) {
-            Card.cardAddManyNewTagsToCard(driver, numberOfTags, j, 1, j);
-            String[] users = {"war", "Nine", "ei", "onc"};
-            Card.cardAddFewPeople(driver, users, j, j, 1);
+            for (int i = 1; i <= xBoard; i++) {
+                Card.cardAddManyNewTagsToCard(driver, 3, j, j, i);
+                String[] users = {"war", "Nine", "ei", "onc"};
+                Card.cardAddFewPeople(driver, users, j, j, i);
+            }
         }
     }
 

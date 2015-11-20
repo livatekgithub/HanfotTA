@@ -224,7 +224,7 @@ public class Run {
         Column.columnSubscribe(driver, 4, false);
 
         System.out.println(Service.nowTime() + " : 8a. Create BoardWithManyTags and Avatars");
-        Widget.widgetsCreateBigWidgets(driver, 5, 5, 2, 2);
+        Widget.widgetsCreateBigWidgets(driver, 3, 3, 3);
 
         System.out.println(Service.nowTime() + " : 8b. Add calendar board");
         Card.cardDatesAddCalendar(driver, "10", false);
@@ -310,22 +310,6 @@ public class Run {
         Todo.todoCardCreation(driver, 5, TodoCardStatus.CREATEUNFINISHED, LogType.NOLOG);
 
 
-    }
-
-    //----------------------------------------------------------------------------------------------------------------------
-    public static void widgetsCreateBigWidgets(WebDriver driver, int yIdea, int yBoard, int xBoard) throws InterruptedException {
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS IDEA", WidgetType.IDEA, false);
-        Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS BOARD", WidgetType.BOARD, false);
-        Card.cardsFirstBoardGeneration(driver, yBoard, xBoard, false);
-        Card.cardsFirstIdeaGeneration(driver, yIdea, false);
-        for (int j = 1; j <= yBoard; j++) {
-            for (int i = 1; i <= xBoard; i++) {
-                Card.cardAddManyNewTagsToCard(driver, 3, j, j, i);
-                String[] users = {"war", "Nine", "ei", "onc"};
-                Card.cardAddFewPeople(driver, users, j, j, i);
-            }
-        }
     }
 
     //----------------------------------------------------------------------------------------------------------------------
