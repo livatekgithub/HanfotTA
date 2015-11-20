@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76906738-b2e5-441a-8111-49dc4865aff3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/setup/ChromeLongTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/setup/IELongTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/LongRunner.java" />
+    <list default="true" id="76906738-b2e5-441a-8111-49dc4865aff3" name="Default" comment="version with short and long run">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/enums/TestData.java" />
-      <change type="MOVED" beforePath="C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\Runner.java" afterPath="$PROJECT_DIR$/src/test/java/ShortRunner.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/utils/AccessData.class" afterPath="$PROJECT_DIR$/target/test-classes/utils/AccessData.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/tests/Run.class" afterPath="$PROJECT_DIR$/target/test-classes/tests/Run.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/enums/TestData.class" afterPath="$PROJECT_DIR$/target/test-classes/enums/TestData.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/pageobjects/Users.class" afterPath="$PROJECT_DIR$/target/test-classes/pageobjects/Users.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/utils/WindowOperations.class" afterPath="$PROJECT_DIR$/target/test-classes/utils/WindowOperations.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/pageobjects/Card.java" afterPath="$PROJECT_DIR$/src/test/java/pageobjects/Card.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/setup/ChromeShortTest.java" afterPath="$PROJECT_DIR$/src/test/java/setup/ChromeShortTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/setup/FirefoxLongTest.java" afterPath="$PROJECT_DIR$/src/test/java/setup/FirefoxLongTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/setup/FirefoxShortTest.java" afterPath="$PROJECT_DIR$/src/test/java/setup/FirefoxShortTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/setup/IEShortTest.java" afterPath="$PROJECT_DIR$/src/test/java/setup/IEShortTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/tests/Run.java" afterPath="$PROJECT_DIR$/src/test/java/tests/Run.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/pageobjects/Users.java" afterPath="$PROJECT_DIR$/src/test/java/pageobjects/Users.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/pageobjects/Widget.java" afterPath="$PROJECT_DIR$/src/test/java/pageobjects/Widget.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/utils/WindowOperations.java" afterPath="$PROJECT_DIR$/src/test/java/utils/WindowOperations.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -48,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Run.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Run.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/tests/Run.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28449503">
-              <caret line="222" column="51" selection-start-line="222" selection-start-column="51" selection-end-line="222" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="240" column="68" selection-start-line="240" selection-start-column="68" selection-end-line="240" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -73,6 +60,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestData.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/enums/TestData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.29018492">
+              <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -136,7 +133,6 @@
         <option value="$PROJECT_DIR$/src/test/java/setup/FirefoxShortTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/setup/IEShortTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/utils/AccessData.java" />
-        <option value="$PROJECT_DIR$/src/test/java/enums/TestData.java" />
         <option value="$PROJECT_DIR$/src/test/java/utils/WindowOperations.java" />
         <option value="$PROJECT_DIR$/src/test/java/setup/FirefoxLongTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/setup/ChromeLongTest.java" />
@@ -146,6 +142,7 @@
         <option value="$PROJECT_DIR$/src/test/java/pageobjects/Card.java" />
         <option value="$PROJECT_DIR$/src/test/java/pageobjects/Widget.java" />
         <option value="$PROJECT_DIR$/src/test/java/tests/Run.java" />
+        <option value="$PROJECT_DIR$/src/test/java/enums/TestData.java" />
       </list>
     </option>
   </component>
@@ -1031,7 +1028,7 @@
       <workItem from="1447262645057" duration="29878000" />
       <workItem from="1447674166818" duration="10774000" />
       <workItem from="1447870683828" duration="748000" />
-      <workItem from="1447871453152" duration="18656000" />
+      <workItem from="1447871453152" duration="18885000" />
     </task>
     <task id="LOCAL-00001" summary="version with short and long run">
       <created>1447870844271</created>
@@ -1093,11 +1090,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447871673456</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="version with short and long run">
+      <created>1448045132211</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1448045132211</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171146000" />
+    <option name="totallyTimeSpent" value="171375000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -1434,14 +1437,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/enums/TestData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8221906">
-          <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/utils/WindowOperations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1566,8 +1561,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/tests/Run.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28449503">
-          <caret line="222" column="51" selection-start-line="222" selection-start-column="51" selection-end-line="222" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="240" column="68" selection-start-line="240" selection-start-column="68" selection-end-line="240" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/enums/TestData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29018492">
+          <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
           <folding />
         </state>
       </provider>
