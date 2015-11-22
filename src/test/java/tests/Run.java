@@ -344,11 +344,11 @@ public class Run {
 
 //      NEW METHOD - Create Widget with Constant tags and Users
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
-        Card.cardsFirstBoardGeneration(driver, 3, 2, false);
-        Card.cardsFirstIdeaGeneration(driver, 3, false);
-        String[] tags = {"Munich", "Berlin", "Hamburg", "Vienna", "Shtutgart", "Cologne", "Essen", "Dortmund", "Duisburg"};
-        String[] peoples={"pent", "13", "9", "ei","hex"};
-        Card.cardAddElementsToWidget(driver,tags,peoples,30,30,4);
+        Card.cardsFirstBoardGeneration(driver, 30, 4, false);
+        Card.cardsFirstIdeaGeneration(driver, 30, false);
+        String[] tags = {"UK", "USA", "GER", "POL", "SPA", "ITA", "FRA", "SWE", "UKR"};
+        String[] peoples = {"pent", "13", "9", "ei", "hex"};
+        Card.cardAddElementsToWidget(driver, tags, peoples, 30, 30, 4);
 
 
         service.stopCount();
