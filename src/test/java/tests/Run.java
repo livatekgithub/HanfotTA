@@ -163,6 +163,10 @@ public class Run {
 //        STOPSTATEMENT
 //        boolean x=true;
 //        if (x) return;
+//        CreateManyBigOrganizations
+//        createManyOrganizationsWithManyUsers(driver, 1, 10, TestData.testUserNamesBunch, TestData.adminUsersList, "000 000 ManyUsers ORG 0", true);
+//        createManyOrganizationsWithManyUsers(driver, 1, 40, TestData.testUserNamesForPayments, TestData.adminUsersList, "zzz PaymentTesting ORG 0", true);
+
 
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
@@ -333,15 +337,17 @@ public class Run {
         System.out.println("****** " + browser + " ************************************************************");
         Service service = new Service();
         service.startCount();
-        runShortTestAllMethods(driver, false);
-        //**********************************************************************************
-//        Card.cardsFirstIdeaGeneration(driver, 2, false);
-//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
-//        String filePath = AccessData.GRAPHIC_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
-//        filePath = AccessData.TEXT_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
-        //**********************************************************************************
+
+//       createManyOrganizationsWithManyUsers(driver, 1, 40, TestData.testUserNamesForPayments, TestData.adminUsersList, "zzz PaymentTesting ORG 0", true);
+
+//        runShortTestAllMethods(driver, false);
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
+        Card.cardsFirstBoardGeneration(driver, 3, 2, false);
+        Card.cardsFirstIdeaGeneration(driver, 3, false);
+        String[] tags = {"Munich", "Berlin", "Hamburg", "Vienna", "Shtutgart", "Cologne", "Essen", "Dortmund", "Duisburg"};
+        String[] peoples={"pent", "13", "9", "ei","hex"};
+        Card.cardAddElementsToWidget(driver,tags,peoples,30,30,4);
+
         service.stopCount();
         System.out.println("****** Time: " + service.getTimeDurationInMinutes() + " minutes || " + service.getTimeDurationInSeconds() +
                 " seconds ************************************************************");
@@ -350,11 +356,6 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void RunLong(WebDriver driver, String browser) throws InterruptedException, IOException, AWTException {
 
-//        Collection.collectionCreation(driver,1,CollectionSharingMode.PUBLIC,false);
-//        Widget.widgetsCreation(driver,2,WidgetState.EXPANDED,WidgetColor.DARKGREEN,false);
-//        Collection.collectionCreation(driver,1,CollectionSharingMode.PRIVATE,false);
-//        Widget.widgetsCreation(driver,2,WidgetState.EXPANDED,WidgetColor.DARKGREEN,false);
-
 //        old logs version
 //        System.setOut(new PrintStream(new FileOutputStream(Service.nowTimeForFileName()+"_"+browser+".txt")));
 
@@ -362,9 +363,6 @@ public class Run {
         System.out.println("****** " + browser + " ************************************************************");
         Service service = new Service();
         service.startCount();
-
-//        createManyOrganizationsWithManyUsers(driver, 1, 10, TestData.testUserNamesBunch, TestData.adminUsersList, "000 000 ManyUsers ORG 0", true);
-//        createManyOrganizationsWithManyUsers(driver, 1, 40, TestData.testUserNamesForPayments, TestData.adminUsersList, "zzz PaymentTesting ORG 0", true);
 
         //**********************************************************************************
 
@@ -376,7 +374,6 @@ public class Run {
 //        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
 //        filePath = AccessData.TEXT_FILE_PATH;
 //        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
-
 
         //**********************************************************************************
         service.stopCount();
