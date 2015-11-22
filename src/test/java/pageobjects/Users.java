@@ -26,9 +26,9 @@ public class Users implements utils.AccessData {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void loginUser(WebDriver driver,String testURL,String testLogin,String testPassword) throws InterruptedException {
         driver.get("https://test.hansoftx.com/logout");
-//        driver.manage().window().maximize();
-        WindowOperations.resizeWindowforIdea(driver);
-        driver.get(testURL);
+        driver.manage().window().maximize();
+//        WindowOperations.resizeWindowforIdea(driver);
+        driver.get(AccessData.TESTURL);
         Thread.sleep(1000);
         driver.findElement(By.id("form-email")).clear();
         driver.findElement(By.id("form-email")).sendKeys(testLogin);
@@ -48,9 +48,9 @@ public class Users implements utils.AccessData {
     public static void userNotFound(WebDriver driver) {
         driver.get(AccessData.TESTURL);
         driver.findElement(By.id("form-email")).clear();
-        driver.findElement(By.id("form-email")).sendKeys(WRONGTESTLOGIN);
+        driver.findElement(By.id("form-email")).sendKeys(AccessData.WRONGTESTLOGIN);
         driver.findElement(By.id("form-psw")).clear();
-        driver.findElement(By.id("form-psw")).sendKeys(WRONGTESTPASSWORD);
+        driver.findElement(By.id("form-psw")).sendKeys(AccessData.WRONGTESTPASSWORD);
         driver.findElement(By.cssSelector("button.btn-submit.js-tap-indication")).click();
         assertEquals("User not found", driver.findElement(By.cssSelector("div.form-message.firepath-matching-node")).getText());
     }
@@ -137,7 +137,7 @@ public class Users implements utils.AccessData {
         final String USER_LAST_USER_NAME_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
         final String USER_LAST_USER_REMOVE_BUTTON_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]/div";
         final String USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div";
-        usersOpenMembersList(driver);
+         usersOpenMembersList(driver);
         while (isElementPresent(By.xpath(USER_SECOND_USER_EXIST_XPATH), driver)) {
             userName = driver.findElement(By.xpath(USER_LAST_USER_NAME_XPATH)).getText();
             if (isLogged) {
@@ -188,7 +188,7 @@ public class Users implements utils.AccessData {
         driver.findElement(By.xpath(DELETE_XPATH)).click();
         driver.findElement(By.xpath(DELETE_CONFIRM_XPATH)).click();
         service.stopCount();
-        System.out.println("Waiting..." + service.getTimeDurationInSeconds() + "Seconds");
+        System.out.println("Waiting... " + service.getTimeDurationInSeconds() + "Seconds");
         Thread.sleep(2000);
     }
 
