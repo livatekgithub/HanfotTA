@@ -18,18 +18,12 @@ public class Run {
 
         System.out.println("*** ShortTest - USS Endeavor5 ***");
 
-        // STOPSTATEMENT
-        // boolean x=true;
-        // if (x) return;
-
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
         Users.usersRemoveAllFromOrganization(driver, false);
-
         Users.usersAddToOrganization(driver, 5, TestData.testUsersForShortRun, false);
         System.out.println(Service.nowTime() + " : 1b. Delete chosen User");
         Users.usersOpenMembersList(driver);
-        Thread.sleep(7000);
         Users.usersParticularUserRemoval(driver, TestData.testUsersForShortRun[0]);
 
         System.out.println(Service.nowTime() + " : 1c. Change Users Permissions to Administrator/Full Member and Restricted");
@@ -112,11 +106,11 @@ public class Run {
         System.out.println(Service.nowTime() + " : h. Add comments");
         Card.cardCommentAddMany(driver, "Hello There!!!!", 2, 5, 5, 1, false);
 
-//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
-//        String filePath = AccessData.GRAPHIC_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
-//        filePath = AccessData.TEXT_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
+        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
+        String filePath = AccessData.GRAPHIC_FILE_PATH;
+        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
+        filePath = AccessData.TEXT_FILE_PATH;
+        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
 
         System.out.println(Service.nowTime() + " : 10. TODO -Operations Block");
         System.out.println(Service.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
@@ -153,6 +147,10 @@ public class Run {
         //Testing of creation of unfinished cards
         System.out.println(Service.nowTime() + " : g. TODO Create Unfinished Cards(3)");
         Todo.todoCardCreation(driver, 2, TodoCardStatus.CREATEUNFINISHED, LogType.NOLOG);
+
+        //STOPSTATEMENT
+        boolean x=true;
+        if (x) return;
     }
 
     //----------------------------------------------------------------------------------------------------------------------
@@ -176,15 +174,11 @@ public class Run {
         System.out.println(Service.nowTime() + " : 1b. Delete chosen User");
         Users.usersOpenMembersList(driver);
         Users.usersParticularUserRemoval(driver, TestData.testUsersForLongRun[0]);
-        System.out.println(TestData.testUsersForLongRun[0]);
 
         System.out.println(Service.nowTime() + " : 1c. Change Users Permissions to Administrator/Full Member and Restricted");
         Users.usersSetupPermission(driver, TestData.testUsersForLongRun[1], UserOrgRoles.RESTRICTED);
-        System.out.println(TestData.testUsersForLongRun[1]);
         Users.usersSetupPermission(driver, TestData.testUsersForLongRun[2], UserOrgRoles.FULL_MEMBER);
-        System.out.println(TestData.testUsersForLongRun[2]);
         Users.usersSetupPermission(driver, TestData.testUsersForLongRun[3], UserOrgRoles.ADMINISTRATOR);
-        System.out.println(TestData.testUsersForLongRun[3]);
         Users.closeEditOrganizationMenu(driver);
 
         System.out.println(Service.nowTime() + " : 3. Collections Creation(10)");
@@ -232,8 +226,16 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 8b. Add calendar board");
         Card.cardDatesAddCalendar(driver, "10", false);
-//
-        System.out.println(Service.nowTime() + " : 8c. Cards Creation(4*8) for Board and Idea");
+
+        System.out.println(Service.nowTime() + " : 8c.  Create Widget with Constant tags and Users");
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
+        Card.cardsFirstBoardGeneration(driver,6 , 3, false);
+        Card.cardsFirstIdeaGeneration(driver, 6, false);
+        String[] tags = {"UK", "USA", "GER", "POL", "SPA", "ITA", "FRA", "SWE", "UKR"};
+        String[] peoples = {"once", "14", "doce", "sevent", "21"};
+        Card.cardAddElementsToWidget(driver, tags, peoples, 6, 6, 3);
+
+        System.out.println(Service.nowTime() + " : 8d. Cards Creation(4*8) for Board and Idea");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS IDEA", WidgetType.IDEA, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS BOARD", WidgetType.BOARD, false);
@@ -271,11 +273,11 @@ public class Run {
         System.out.println(Service.nowTime() + " : h. Add comments");
         Card.cardCommentAddMany(driver, "Hello There!!!!", 10, 4, 4, 1, false);
 
-//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
-//        String filePath = AccessData.GRAPHIC_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
-//        filePath = AccessData.TEXT_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
+        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
+        String filePath = AccessData.GRAPHIC_FILE_PATH;
+        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
+        filePath = AccessData.TEXT_FILE_PATH;
+        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
 
         System.out.println(Service.nowTime() + " : 10. TODO -Operations Block");
         System.out.println(Service.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
@@ -340,16 +342,7 @@ public class Run {
 
 //       createManyOrganizationsWithManyUsers(driver, 1, 40, TestData.testUserNamesForPayments, TestData.adminUsersList, "zzz PaymentTesting ORG 0", true);
 
-//        runShortTestAllMethods(driver, false);
-
-//      NEW METHOD - Create Widget with Constant tags and Users
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
-        Card.cardsFirstBoardGeneration(driver, 30, 4, false);
-        Card.cardsFirstIdeaGeneration(driver, 30, false);
-        String[] tags = {"UK", "USA", "GER", "POL", "SPA", "ITA", "FRA", "SWE", "UKR"};
-        String[] peoples = {"pent", "13", "9", "ei", "hex"};
-        Card.cardAddElementsToWidget(driver, tags, peoples, 30, 30, 4);
-
+        runShortTestAllMethods(driver, false);
 
         service.stopCount();
         System.out.println("****** Time: " + service.getTimeDurationInMinutes() + " minutes || " + service.getTimeDurationInSeconds() +

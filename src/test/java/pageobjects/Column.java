@@ -8,12 +8,12 @@ import utils.Service;
 
 public class Column {
     //Add column
-    final static String COULMN_ADD_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[2]/div";
+    final static String COULMN_ADD_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[2]/div";
     //Open column menu
-    final static String COLUMN_MENU_FIRSTPART_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/";
+    final static String COLUMN_MENU_FIRSTPART_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/";
     final static String COLUMN_MENU_SECONDPART_XPATH = "/div[1]/div";
     //Rename column
-    final static String COLUMN_RENAME_FIRST_PART_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/";
+    final static String COLUMN_RENAME_FIRST_PART_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/";
     final static String COLUMN_RENAME_SECOND_PART_XPATH = "/div[1]/div/div/input";
 
     //------------------------------------------------------------------------------------------------------------------------------------------------

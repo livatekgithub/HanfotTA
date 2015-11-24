@@ -51,10 +51,15 @@ public class Users implements utils.AccessData {
     }
 
     public static void openMainMenu(WebDriver driver) {
-        if (isElementPresent(By.cssSelector(MAIN_MENU_INITIALS_CSS), driver))
-            driver.findElement(By.cssSelector(MAIN_MENU_INITIALS_CSS)).click();
-        else if (isElementPresent(By.cssSelector(MAIN_MENU_IMAGE_CSS), driver))
-            driver.findElement(By.cssSelector(MAIN_MENU_IMAGE_CSS)).click();
+        final String MAIN_MENU_INITIALS="html/body/div[3]/div[1]/div[1]/div[1]/a/div/span";
+        final String MAIN_MENU_IMAGE="html/body/div[3]/div[1]/div[1]/div[1]/a/div/img";
+
+        if (isElementPresent(By.xpath(MAIN_MENU_INITIALS), driver)){
+            driver.findElement(By.xpath(MAIN_MENU_INITIALS)).click();
+        }
+        else if (isElementPresent(By.xpath(MAIN_MENU_IMAGE), driver)){
+            driver.findElement(By.xpath(MAIN_MENU_IMAGE)).click();
+        }
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -77,7 +82,7 @@ public class Users implements utils.AccessData {
         driver.findElement(By.cssSelector("div.app-menu-choice.js-signout")).click();
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void usersOpenMembersList(WebDriver driver) {
+    public static void usersOpenMembersList(WebDriver driver) throws InterruptedException {
         openMainMenu(driver);
         driver.findElement(By.cssSelector(USER_MAIN_MENU_MEMBERS_LIST_CSS)).click();
     }
@@ -90,7 +95,7 @@ public class Users implements utils.AccessData {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void usersAddToOrganization(WebDriver driver, int numberOfUsers, String[] testNamesForTest, boolean isLogged) throws InterruptedException {
-        final String ADD_USER_FIELD_XPATH_BEGIN = "html/body/div[4]/div/div/div[1]/div/div[2]/div[3]/div[2]/";
+        final String ADD_USER_FIELD_XPATH_BEGIN = "html/body/div[5]/div/div/div[1]/div/div[2]/div[3]/div[2]/";
         final String ADD_USER_FIELD_XPATH_END = "/div[1]/input";
 
         String name;
@@ -123,10 +128,10 @@ public class Users implements utils.AccessData {
     public static void usersRemoveAllFromOrganization(WebDriver driver, boolean isLogged) throws InterruptedException {
 
         String userName;
-        final String USER_SECOND_USER_EXIST_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[2]/div[2]/div";
-        final String USER_LAST_USER_NAME_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
-        final String USER_LAST_USER_REMOVE_BUTTON_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]/div";
-        final String USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div";
+        final String USER_SECOND_USER_EXIST_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[2]/div[2]/div";
+        final String USER_LAST_USER_NAME_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
+        final String USER_LAST_USER_REMOVE_BUTTON_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]/div";
+        final String USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div";
         usersOpenMembersList(driver);
         while (isElementPresent(By.xpath(USER_SECOND_USER_EXIST_XPATH), driver)) {
             userName = driver.findElement(By.xpath(USER_LAST_USER_NAME_XPATH)).getText();

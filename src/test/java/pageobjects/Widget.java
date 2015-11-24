@@ -37,36 +37,36 @@ public class Widget {
      */
     //basics and creation
 //    final static String IDEA_ADD_CSS = "img.xaddbutton-icon"; cannot be used
-    final static String IDEA_ADD_XPATH= "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[2]/div[1]/div/div[1]";
-    final static String IDEA_NAME_FIELD_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div[1]/input";
-    final static String IDEA_SAVE_BUTTON_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/button";
-    final static String IDEA_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]";
-    final static String IDEA_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div/div[3]/div/img";
+    final static String IDEA_ADD_XPATH= "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[2]/div[1]/div/div[1]";
+    final static String IDEA_NAME_FIELD_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div[1]/input";
+    final static String IDEA_SAVE_BUTTON_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/button";
+    final static String IDEA_HEADER_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]";
+    final static String IDEA_MENU_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div/div[3]/div/img";
     //    final static String BOARD_ADD_CSS = "div.xaddbutton-maindiv.js-workspace-tracking-add-board > img.xaddbutton-icon"; cannot be used
-    final static String BOARD_NAME_FIELD_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div[1]/input";
-    final static String BOARD_ADD_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[1]/div/div[2]/div/div/div[1]";
-    final static String BOARD_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div/div[3]/div/img";
-    final static String BOARD_HEADER_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div";
-    final static String BOARD_SAVE_BUTTON_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/button";
+    final static String BOARD_NAME_FIELD_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div[1]/input";
+    final static String BOARD_ADD_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[1]/div/div[2]/div[1]/div/div[1]";
+    final static String BOARD_MENU_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div/div[3]/div/img";
+    final static String BOARD_HEADER_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div";
+    final static String BOARD_SAVE_BUTTON_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/button";
     final static String WIDGET_BOARD_OPTIONS_CSS = ".widget-menu-choice.js-widget-showboardoptionsmenu.js-tap-indication";
     //rename
-    final static String IDEA_MENU_OPTIONS_XPATH = "html/body/div[3]/div/div[3]/div/div[7]/div[2]";
-    final static String IDEA_RENAME_XPATH = "html/body/div[4]/div/div/div/div[2]/div[2]";
-    final static String BOARD_MENU_OPTIONS_XPATH = "html/body/div[3]/div/div[3]/div/div[9]";
-    final static String BOARD_RENAME_XPATH = "html/body/div[4]/div/div/div/div[2]/div[2]";
+    final static String IDEA_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[7]/div[2]";
+    final static String IDEA_RENAME_XPATH = "html/body/div[5]/div/div/div/div[2]/div[2]";
+    final static String BOARD_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[9]";
+    final static String BOARD_RENAME_XPATH = "html/body/div[5]/div/div/div/div[2]/div[2]";
     //archive
-    final static String IDEA_MENU_ARCHIVE_XPATH = "html/body/div[4]/div/div/div/div[3]/div[2]";
-    final static String BOARD_MENU_ARCHIVE_XPATH = "html/body/div[4]/div/div/div/div[3]/div[2]";
+    final static String IDEA_MENU_ARCHIVE_XPATH = "html/body/div[5]/div/div/div/div[3]/div[2]";
+    final static String BOARD_MENU_ARCHIVE_XPATH = "html/body/div[5]/div/div/div/div[3]/div[2]";
     //removal
-    final static String IDEA_MENU_DELETE_XPATH = "html/body/div[4]/div/div/div/div[4]/div[2]";
-    final static String IDEA_MENU_CONFIRM_DELETE_XPATH = "html/body/div[4]/div/div/div/div[5]/div[1]";
-    final static String BOARD_MENU_DELETE_XPATH = "html/body/div[4]/div/div/div/div[4]/div[2]";
-    final static String BOARD_MENU_CONFIRM_DELETE_XPATH = "html/body/div[4]/div/div/div/div[5]/div[1]";
+    final static String IDEA_MENU_DELETE_XPATH = "html/body/div[5]/div/div/div/div[4]/div[2]";
+    final static String IDEA_MENU_CONFIRM_DELETE_XPATH = "html/body/div[5]/div/div/div/div[5]/div[1]";
+    final static String BOARD_MENU_DELETE_XPATH = "html/body/div[5]/div/div/div/div[4]/div[2]";
+    final static String BOARD_MENU_CONFIRM_DELETE_XPATH = "html/body/div[5]/div/div/div/div[5]/div[1]";
     //show archived
-    final static String IDEA_CHECKBOX_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[1]/img";
-    final static String IDEA_CHECKBOX_SHOWARCHIVED_XPATH = "html/body/div[3]/div/div/div/div/div[1]/div";
-    final static String BOARD_CHECKBOX_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[3]/div/div[1]/div/div[1]/img";
-    final static String BOARD_CHECKBOX_SHOWARCHIVED_XPATH = "html/body/div[3]/div/div/div/div/div[1]/div";
+    final static String IDEA_CHECKBOX_MENU_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[1]/img";
+    final static String IDEA_CHECKBOX_SHOWARCHIVED_XPATH = "html/body/div[4]/div/div/div/div/div[1]/div";
+    final static String BOARD_CHECKBOX_MENU_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[1]/div/div[1]/img";
+    final static String BOARD_CHECKBOX_SHOWARCHIVED_XPATH = "html/body/div[4]/div/div/div/div/div[1]/div";
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetsCreation(WebDriver driver, int number, WidgetState widgetState, WidgetColor widgetColor, boolean isLogged) throws InterruptedException {
@@ -229,13 +229,13 @@ public class Widget {
         driver.findElement(By.xpath(IDEA_CHECKBOX_SHOWARCHIVED_XPATH)).click();
         Thread.sleep(1000);
         if (isLogged) System.out.println("  " + Service.nowTime() + " Archived Ideas are / arent shown");
-        driver.findElement(By.xpath("html/body/div[3]")).click();
+        driver.findElement(By.xpath("html/body/div[4]")).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath(BOARD_CHECKBOX_MENU_XPATH)).click();
         Thread.sleep(1000);
         driver.findElement(By.xpath(BOARD_CHECKBOX_SHOWARCHIVED_XPATH)).click();
         Thread.sleep(1000);
-        driver.findElement(By.xpath("html/body/div[3]")).click();
+        driver.findElement(By.xpath("html/body/div[4]")).click();
         if (isLogged) System.out.println("  " + Service.nowTime() + " Archived Boards are / arent shown");
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
