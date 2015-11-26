@@ -1,0 +1,26 @@
+****** FIREFOX ************************************************************
+2015/11/11 13:27:11 : i. Add files (PNG,TXT)
+****** Time: 0.0 minutes ************************************************************
+*** Save Screenshot ***
+Starting ChromeDriver 2.19.346078 (6f1f0cde889532d48ce8242342d0b84f94b114a1) on port 6849
+Only local connections are allowed.
+****** CHROME ************************************************************
+2015/11/11 13:28:45 : i. Add files (PNG,TXT)
+****** Time: 0.0 minutes ************************************************************
+*** Save Screenshot ***
+Started InternetExplorerDriver server (32-bit)
+2.47.0.0
+Listening on port 23560
+****** IE11 ************************************************************
+2015/11/11 13:30:18 : i. Add files (PNG,TXT)
+*** Save Screenshot ***
+testLogin(setup.IETest): Unable to find element with css selector == .popup-window-toolbar-button.mod-done.js-popup-done (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 30.16 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.47.1', revision: 'unknown', time: '2015-07-30 11:02:44'
+System info: host: 'pc-qa', ip: '192.168.1.16', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_51'
+Driver info: org.openqa.selenium.ie.InternetExplorerDriver
+Capabilities [{browserAttachTimeout=0, enablePersistentHover=true, ie.forceCreateProcessApi=false, pageLoadStrategy=normal, ie.usePerProcessProxy=false, ignoreZoomSetting=false, handlesAlerts=true, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:23560/, takesScreenshot=true, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: 51907b8b-403b-47d0-a3ab-574b9627b1ca
+*** Element info: {Using=css selector, value=.popup-window-toolbar-button.mod-done.js-popup-done}
+Overall Tests Result = false

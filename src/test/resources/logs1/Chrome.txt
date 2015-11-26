@@ -1,0 +1,18 @@
+Starting ChromeDriver 2.19.346078 (6f1f0cde889532d48ce8242342d0b84f94b114a1) on port 21167
+Only local connections are allowed.
+****** CHROME.sh. ************************************************************
+*** ShortTest - USS Endeavor5 ***
+2015/11/18 21:35:00 : 1. Users Block
+2015/11/18 21:35:00 : 1a. Remove All users and Add Four Users to Organization(R+4)
+2015/11/18 21:35:11 : 1b. Delete chosen User
+Waiting...0.0Seconds
+livatek.user4@gmail.com
+2015/11/18 21:35:20 : 1c. Change Users Permissions to Administrator/Full Member and Restricted
+livatek.user5@ukr.net
+livatek.user6@ukr.net
+livatek.user9@gmail.com
+2015/11/18 21:35:27 : 2. Collections Creation(2)
+2015/11/18 21:35:27 : 3. Collections Archiving(2)
+2015/11/18 21:35:29 : 4. Collections Removing(2)
+2015/11/18 21:35:31 : 5. Collections Renaming(1)
+2015/11/18 21:35:31 : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color 

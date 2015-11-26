@@ -1,0 +1,10 @@
+Started InternetExplorerDriver server (32-bit)
+2.47.0.0
+Listening on port 18325
+****** IE11 ************************************************************
+*** ShortTest - USS Endeavor3 ***
+2015/11/13 18:31:44 : 1. Users Block
+2015/11/13 18:31:44 : 1a. Remove All users and Add Four Users to Organization(R+4)
+2015/11/13 18:32:33 : 2. Collections Creation(2)
+2015/11/13 18:32:36 : 3. Collections Archiving(2)
+2015/11/13 18:32:41 : 4. Collections Removing(2)
