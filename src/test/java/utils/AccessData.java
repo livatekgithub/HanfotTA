@@ -12,6 +12,8 @@ public interface AccessData {
     String WRONGTESTLOGIN = "livatek.user12@ukr.net";
     String WRONGTESTPASSWORD = "";
 
+//    String TESTLOGIN_SHORTTESTS = "livatek.user13@gmail.com";
+//    String TESTPASSWORD_SHORTTESTS = "2016user03";
     String TESTLOGIN_SHORTTESTS = "livatek.user40@ukr.net";
     String TESTPASSWORD_SHORTTESTS = "2015user02";
 

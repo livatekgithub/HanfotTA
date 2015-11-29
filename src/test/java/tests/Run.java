@@ -1,6 +1,7 @@
 package tests;
 
 import enums.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageobjects.*;
 import utils.AccessData;
@@ -17,6 +18,25 @@ public class Run {
     public static void runShortTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
         System.out.println("*** ShortTest - USS Endeavor9 ***");
+
+        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetEnableAllIntegrationsYN(driver, false);
+        Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.VIOLET, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
+        Widget.lanesCreate(driver, 1, 3, false);
+
+        Thread.sleep(10000);
+//        STOPSTATEMENT
+        boolean x = true;
+        if (x) return;
 
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
@@ -60,7 +80,21 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 6c. Widgets Renaming");
         System.out.println(Service.nowTime() + " : 6d. Widgets Archiving(2)");
-        System.out.println(Service.nowTime() + " : 7. Columns Creation(3)");
+        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetEnableAllIntegrationsYN(driver, false);
+        Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.ORANGE, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
+        Widget.lanesCreate(driver, 1, 3, false);
+
+        System.out.println(Service.nowTime() + " : 7b. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
         Widget.widgetsCurrentRename(driver, ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 2, 6, false);
@@ -147,10 +181,6 @@ public class Run {
         //Testing of creation of unfinished cards
         System.out.println(Service.nowTime() + " : g. TODO Create Unfinished Cards(3)");
         Todo.todoCardCreation(driver, 2, TodoCardStatus.CREATEUNFINISHED, LogType.NOLOG);
-
-        //STOPSTATEMENT
-//        boolean x=true;
-//        if (x) return;
     }
 
     //----------------------------------------------------------------------------------------------------------------------
@@ -209,14 +239,27 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 6c. Widgets Renaming");
         System.out.println(Service.nowTime() + " : 6d. Widgets Archiving(2)");
-        System.out.println(Service.nowTime() + " : 7. Columns Creation(3)");
+
+        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetEnableAllIntegrationsYN(driver, false);
+        Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.ORANGE, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
+        Widget.lanesCreate(driver, 1, 3, false);
+
+        System.out.println(Service.nowTime() + " : 7b. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 3, 8, false);
         Card.cardsFirstIdeaGeneration(driver, 3, false);
-//        Column.columnsCreation(driver, 8, false);
         Column.columnRemove(driver, 2, false);
-
         Column.columnRename(driver, 2, currentBrowser + Service.nowTimeForObjectName() + ".Renamed!", false);
         Column.columnsArchiveAll(driver, 3, false);
         Column.columnSubscribe(driver, 4, false);
@@ -229,7 +272,7 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 8c.  Create Widget with Constant tags and Users");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
-        Card.cardsFirstBoardGeneration(driver,6 , 3, false);
+        Card.cardsFirstBoardGeneration(driver, 6, 3, false);
         Card.cardsFirstIdeaGeneration(driver, 6, false);
         String[] tags = {"UK", "USA", "GER", "POL", "SPA", "ITA", "FRA", "SWE", "UKR"};
         String[] peoples = {"once", "14", "doce", "sevent", "21"};

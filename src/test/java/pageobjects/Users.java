@@ -118,7 +118,6 @@ public class Users implements utils.AccessData {
         }
         driver.findElement(By.cssSelector(".ui-button-blue.js-workspacedit-sendinvitations")).click();
 
-
 //        Thread.sleep(numberOfUsers * 1000);
 
         closeEditOrganizationMenu(driver);
@@ -178,7 +177,6 @@ public class Users implements utils.AccessData {
         Service service = new Service();
         service.startCount();
         new WebDriverWait(driver, 120).until(ExpectedConditions.presenceOfElementLocated(By.xpath(DELETE_XPATH)));
-//        Thread.sleep(60000);
         String DELETE_CONFIRM_XPATH = "//div[text()=\"" + userEmail + "\"]/parent::*/parent::*/following-sibling::*/div";
         driver.findElement(By.xpath(DELETE_XPATH)).click();
         driver.findElement(By.xpath(DELETE_CONFIRM_XPATH)).click();
