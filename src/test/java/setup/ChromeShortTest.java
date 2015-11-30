@@ -27,7 +27,7 @@ public class ChromeShortTest {
         System.setProperty("webdriver.chrome.driver", AccessData.CHROME_DRIVER__PATH + "chromedriver.exe");
         driver = new ChromeDriver();
         baseUrl = AccessData.TESTURL;
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);//20
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);//20
     }
 
     @Test

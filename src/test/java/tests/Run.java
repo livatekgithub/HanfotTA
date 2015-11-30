@@ -1,6 +1,7 @@
 package tests;
 
 import enums.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pageobjects.*;
 import utils.AccessData;
@@ -16,20 +17,33 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void runShortTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
-        System.out.println("*** ShortTest - USS Endeavor5 ***");
+        System.out.println("*** ShortTest - USS Endeavor9 ***");
 
-        // STOPSTATEMENT
-        // boolean x=true;
-        // if (x) return;
+        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetEnableAllIntegrationsYN(driver, false);
+        Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.VIOLET, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
+        Widget.lanesCreate(driver, 1, 3, false);
+
+        Thread.sleep(10000);
+//        STOPSTATEMENT
+        boolean x = true;
+        if (x) return;
 
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
         Users.usersRemoveAllFromOrganization(driver, false);
-
         Users.usersAddToOrganization(driver, 5, TestData.testUsersForShortRun, false);
         System.out.println(Service.nowTime() + " : 1b. Delete chosen User");
         Users.usersOpenMembersList(driver);
-        Thread.sleep(7000);
         Users.usersParticularUserRemoval(driver, TestData.testUsersForShortRun[0]);
 
         System.out.println(Service.nowTime() + " : 1c. Change Users Permissions to Administrator/Full Member and Restricted");
@@ -66,7 +80,21 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 6c. Widgets Renaming");
         System.out.println(Service.nowTime() + " : 6d. Widgets Archiving(2)");
-        System.out.println(Service.nowTime() + " : 7. Columns Creation(3)");
+        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetEnableAllIntegrationsYN(driver, false);
+        Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.ORANGE, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
+        Widget.lanesCreate(driver, 1, 3, false);
+
+        System.out.println(Service.nowTime() + " : 7b. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
         Widget.widgetsCurrentRename(driver, ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 2, 6, false);
@@ -112,11 +140,11 @@ public class Run {
         System.out.println(Service.nowTime() + " : h. Add comments");
         Card.cardCommentAddMany(driver, "Hello There!!!!", 2, 5, 5, 1, false);
 
-//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
-//        String filePath = AccessData.GRAPHIC_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
-//        filePath = AccessData.TEXT_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
+        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
+        String filePath = AccessData.GRAPHIC_FILE_PATH;
+        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
+        filePath = AccessData.TEXT_FILE_PATH;
+        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
 
         System.out.println(Service.nowTime() + " : 10. TODO -Operations Block");
         System.out.println(Service.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
@@ -163,6 +191,10 @@ public class Run {
 //        STOPSTATEMENT
 //        boolean x=true;
 //        if (x) return;
+//        CreateManyBigOrganizations
+//        createManyOrganizationsWithManyUsers(driver, 1, 10, TestData.testUserNamesBunch, TestData.adminUsersList, "000 000 ManyUsers ORG 0", true);
+//        createManyOrganizationsWithManyUsers(driver, 1, 40, TestData.testUserNamesForPayments, TestData.adminUsersList, "zzz PaymentTesting ORG 0", true);
+
 
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
@@ -172,15 +204,11 @@ public class Run {
         System.out.println(Service.nowTime() + " : 1b. Delete chosen User");
         Users.usersOpenMembersList(driver);
         Users.usersParticularUserRemoval(driver, TestData.testUsersForLongRun[0]);
-        System.out.println(TestData.testUsersForLongRun[0]);
 
         System.out.println(Service.nowTime() + " : 1c. Change Users Permissions to Administrator/Full Member and Restricted");
         Users.usersSetupPermission(driver, TestData.testUsersForLongRun[1], UserOrgRoles.RESTRICTED);
-        System.out.println(TestData.testUsersForLongRun[1]);
         Users.usersSetupPermission(driver, TestData.testUsersForLongRun[2], UserOrgRoles.FULL_MEMBER);
-        System.out.println(TestData.testUsersForLongRun[2]);
         Users.usersSetupPermission(driver, TestData.testUsersForLongRun[3], UserOrgRoles.ADMINISTRATOR);
-        System.out.println(TestData.testUsersForLongRun[3]);
         Users.closeEditOrganizationMenu(driver);
 
         System.out.println(Service.nowTime() + " : 3. Collections Creation(10)");
@@ -211,14 +239,27 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 6c. Widgets Renaming");
         System.out.println(Service.nowTime() + " : 6d. Widgets Archiving(2)");
-        System.out.println(Service.nowTime() + " : 7. Columns Creation(3)");
+
+        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetEnableAllIntegrationsYN(driver, false);
+        Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetEnableAllIntegrationsYN(driver, true);
+        Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
+
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.ORANGE, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
+        Widget.lanesCreate(driver, 1, 3, false);
+
+        System.out.println(Service.nowTime() + " : 7b. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 3, 8, false);
         Card.cardsFirstIdeaGeneration(driver, 3, false);
-//        Column.columnsCreation(driver, 8, false);
         Column.columnRemove(driver, 2, false);
-
         Column.columnRename(driver, 2, currentBrowser + Service.nowTimeForObjectName() + ".Renamed!", false);
         Column.columnsArchiveAll(driver, 3, false);
         Column.columnSubscribe(driver, 4, false);
@@ -228,8 +269,16 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 8b. Add calendar board");
         Card.cardDatesAddCalendar(driver, "10", false);
-//
-        System.out.println(Service.nowTime() + " : 8c. Cards Creation(4*8) for Board and Idea");
+
+        System.out.println(Service.nowTime() + " : 8c.  Create Widget with Constant tags and Users");
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
+        Card.cardsFirstBoardGeneration(driver, 6, 3, false);
+        Card.cardsFirstIdeaGeneration(driver, 6, false);
+        String[] tags = {"UK", "USA", "GER", "POL", "SPA", "ITA", "FRA", "SWE", "UKR"};
+        String[] peoples = {"once", "14", "doce", "sevent", "21"};
+        Card.cardAddElementsToWidget(driver, tags, peoples, 6, 6, 3);
+
+        System.out.println(Service.nowTime() + " : 8d. Cards Creation(4*8) for Board and Idea");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS IDEA", WidgetType.IDEA, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS BOARD", WidgetType.BOARD, false);
@@ -267,11 +316,11 @@ public class Run {
         System.out.println(Service.nowTime() + " : h. Add comments");
         Card.cardCommentAddMany(driver, "Hello There!!!!", 10, 4, 4, 1, false);
 
-//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
-//        String filePath = AccessData.GRAPHIC_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
-//        filePath = AccessData.TEXT_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
+        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
+        String filePath = AccessData.GRAPHIC_FILE_PATH;
+        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
+        filePath = AccessData.TEXT_FILE_PATH;
+        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
 
         System.out.println(Service.nowTime() + " : 10. TODO -Operations Block");
         System.out.println(Service.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
@@ -333,15 +382,11 @@ public class Run {
         System.out.println("****** " + browser + " ************************************************************");
         Service service = new Service();
         service.startCount();
+
+//       createManyOrganizationsWithManyUsers(driver, 1, 40, TestData.testUserNamesForPayments, TestData.adminUsersList, "zzz PaymentTesting ORG 0", true);
+
         runShortTestAllMethods(driver, false);
-        //**********************************************************************************
-//        Card.cardsFirstIdeaGeneration(driver, 2, false);
-//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
-//        String filePath = AccessData.GRAPHIC_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
-//        filePath = AccessData.TEXT_FILE_PATH;
-//        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
-        //**********************************************************************************
+
         service.stopCount();
         System.out.println("****** Time: " + service.getTimeDurationInMinutes() + " minutes || " + service.getTimeDurationInSeconds() +
                 " seconds ************************************************************");
@@ -350,11 +395,6 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void RunLong(WebDriver driver, String browser) throws InterruptedException, IOException, AWTException {
 
-//        Collection.collectionCreation(driver,1,CollectionSharingMode.PUBLIC,false);
-//        Widget.widgetsCreation(driver,2,WidgetState.EXPANDED,WidgetColor.DARKGREEN,false);
-//        Collection.collectionCreation(driver,1,CollectionSharingMode.PRIVATE,false);
-//        Widget.widgetsCreation(driver,2,WidgetState.EXPANDED,WidgetColor.DARKGREEN,false);
-
 //        old logs version
 //        System.setOut(new PrintStream(new FileOutputStream(Service.nowTimeForFileName()+"_"+browser+".txt")));
 
@@ -362,9 +402,6 @@ public class Run {
         System.out.println("****** " + browser + " ************************************************************");
         Service service = new Service();
         service.startCount();
-
-//        createManyOrganizationsWithManyUsers(driver, 1, 10, TestData.testUserNamesBunch, TestData.adminUsersList, "000 000 ManyUsers ORG 0", true);
-//        createManyOrganizationsWithManyUsers(driver, 1, 40, TestData.testUserNamesForPayments, TestData.adminUsersList, "zzz PaymentTesting ORG 0", true);
 
         //**********************************************************************************
 
@@ -376,7 +413,6 @@ public class Run {
 //        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
 //        filePath = AccessData.TEXT_FILE_PATH;
 //        Card.cardFileAdd(driver, filePath, 1, 2, 1, false);
-
 
         //**********************************************************************************
         service.stopCount();

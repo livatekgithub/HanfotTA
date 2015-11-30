@@ -11,20 +11,20 @@ import utils.Service;
 public class Todo {
     final static String TODO_ICON_BUTTON_XPATH = "//div/div/div[3]";
     final static String TODO_PANEL_HEADER_CSS=".workspace-sidepanel-title-content";
-    final static String TODO_SHOWALL_LINK_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[1]/div[2]/div[2]";
+    final static String TODO_SHOWALL_LINK_XPATH = "html/body/div[3]/div[1]/div[2]/div/div[1]/div[2]/div[2]";
     final static String TODO_SHOWUNFINISHED_CSS = ".todo-filter-box.js-todo-notdone.js-tap-indication.js-tap-direct.todo-checked";
     final static String TODO_SHOWALL_LINK_CSS = ".todo-filter-box.js-todo-all.js-tap-indication.js-tap-direct.todo-checked";
-    final static String TODO_MENU_UNFINISHED_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[1]/div[2]/div[1]";
-    final static String TODO_FIRST_UNFINISHED_CARD_CIRCLE_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/div/div[1]/div/div[1]/div";
+    final static String TODO_MENU_UNFINISHED_XPATH = "html/body/div[3]/div[1]/div[2]/div/div[1]/div[2]/div[1]";
+    final static String TODO_FIRST_UNFINISHED_CARD_CIRCLE_XPATH = "html/body/div[3]/div[1]/div[2]/div/div[2]/div/div[1]/div/div[1]/div/div[1]/div";
     //adding block
-    final static String TODO_ADDCARD_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/div/";
+    final static String TODO_ADDCARD_XPATH = "html/body/div[3]/div[1]/div[2]/div/div[2]/div/div[1]/div/";
     final static String TODO_ADDCARD_XPATH_LAST = "/div";
     final static String TODO_ENTERCARD_XPATH_LAST = "/div/div[1]/div[1]/textarea";
     final static String TODO_SAVECARD_XPATH_LAST = "/div/div[1]/div/button";
     //Removal block
-    final static String TODO_FIRST_UNFINISHED_CARD_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[2]/div/div[1]/div/div[1]/div/div[3]";
-    final static String TODO_FIRST_FINISHED_CARD_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div[1]/div/div[3]";
-    final static String TODO_FIRST_FINISHED_CARD_CIRCLE_XPATH = "html/body/div[2]/div[1]/div[2]/div/div[2]/div/div[2]/div/div[1]/div/div[1]/div";
+    final static String TODO_FIRST_UNFINISHED_CARD_XPATH = "html/body/div[3]/div[1]/div[2]/div/div[2]/div/div[1]/div/div[1]/div/div[3]";
+    final static String TODO_FIRST_FINISHED_CARD_XPATH = "html/body/div[3]/div[1]/div[2]/div/div[2]/div/div[2]/div/div[1]/div/div[3]";
+    final static String TODO_FIRST_FINISHED_CARD_CIRCLE_XPATH = "html/body/div[3]/div[1]/div[2]/div/div[2]/div/div[2]/div/div[1]/div/div[1]/div";
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void todoCardRemoval(WebDriver driver, TodoCardStatus todoCardStatus, LogType logType) throws InterruptedException {

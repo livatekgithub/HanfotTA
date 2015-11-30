@@ -8,17 +8,18 @@ import utils.Service;
 
 public class Collection {
     //creation
-    final static String COLLECTION_ADD_XPATH = "html/body/div[2]/div[2]/div[1]/div[1]";
-    final static String COLLECTION_ENTER_NAME_XPATH = "html/body/div[3]/div[2]/div/div[1]/div[1]/div[1]/div[2]/input";
-    final static String COLLECTION_SHARE_WITHORG_XPATH = "html/body/div[3]/div[2]/div/div[1]/div[1]/div[3]/div[6]/div/img";
+
+    final static String COLLECTION_ADD_XPATH = "html/body/div[3]/div[2]/div[1]/div[1]";
+    final static String COLLECTION_ENTER_NAME_XPATH = "html/body/div[4]/div[2]/div/div[1]/div[1]/div[1]/div[2]/input";
+    final static String COLLECTION_SHARE_WITHORG_XPATH = "html/body/div[4]/div[2]/div/div[1]/div[1]/div[3]/div[6]/div/img";
     final static String COLLECTION_DONE_BUTTON_CSS = ".popup-window-toolbar-button.mod-done.js-popup-done";
-    final static String DONE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[6]";
+    final static String DONE_BUTTON_XPATH = "html/body/div[4]/div/div/div[1]/div[2]/div/div[6]";
     //remove
-    final static String COLLLECTION_OPEN_PAGEMENU_XPATH = "html/body/div[2]/div[2]/div[2]/div[1]/div/div/div[1]";
-    final static String COLLECTION_GETNAME_XPATH="html/body/div[2]/div[2]/div[2]/div/div/div/div[1]";
-    final static String COLLECTION_DELETE_BUTTON_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[1]";
+    final static String COLLLECTION_OPEN_PAGEMENU_XPATH = "html/body/div[3]/div[2]/div[2]/div[1]/div/div/div[1]";
+    final static String COLLECTION_GETNAME_XPATH="html/body/div[3]/div[2]/div[2]/div/div/div/div[1]";
+    final static String COLLECTION_DELETE_BUTTON_XPATH = "html/body/div[4]/div/div/div[1]/div[2]/div/div[1]";
     //archive
-    final static String COLLLECTION_ARCHIVE_XPATH = "html/body/div[3]/div/div/div[1]/div[2]/div/div[2]";
+    final static String COLLLECTION_ARCHIVE_XPATH = "html/body/div[4]/div/div/div[1]/div[2]/div/div[2]";
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     Collection(int number){

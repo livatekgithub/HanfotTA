@@ -18,17 +18,18 @@ public class Users implements utils.AccessData {
     //div[text()="HX 5"]/parent::*/parent::*/following-sibling::*/child::div[2]
     //div[text()="hansoftxtest5@gmail.com"]/parent::*/parent::*/following-sibling::*/child::div[1]/child::*/child::option[1]
 
-    final static String MAIN_MENU_XPATH = "html/body/div[2]/div[1]/div[1]/div[1]/a/div/img";
+    final static String MAIN_MENU_INITIALS_CSS = ".avatar-initials";
+    final static String MAIN_MENU_IMAGE_CSS = ".avatar-image";
     final static String USER_MAIN_MENU_MEMBERS_LIST_CSS = "div.app-menu-choice.js-org-admin";
     final static String USER_ORG_MENU_CLOSE_BUTTON_CSS = ".popup-window-toolbar-button.mod-cancel.js-popup-cancel";
     final static String USER_ORG_MENU_DISMISS_CSS = ".toolpopup-popup-bg";
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void loginUser(WebDriver driver,String testURL,String testLogin,String testPassword) throws InterruptedException {
+    public static void loginUser(WebDriver driver, String testURL, String testLogin, String testPassword) throws InterruptedException {
         driver.get("https://test.hansoftx.com/logout");
-//        driver.manage().window().maximize();
-        WindowOperations.resizeWindowforIdea(driver);
-        driver.get(testURL);
+        driver.manage().window().maximize();
+//        WindowOperations.resizeWindowforIdea(driver);
+        driver.get(AccessData.TESTURL);
         Thread.sleep(1000);
         driver.findElement(By.id("form-email")).clear();
         driver.findElement(By.id("form-email")).sendKeys(testLogin);
@@ -37,10 +38,27 @@ public class Users implements utils.AccessData {
         Thread.sleep(3000);
         driver.findElement(By.cssSelector("button.btn-submit.js-tap-indication")).click();
 
-        try {
-            assertTrue(isElementPresent(By.cssSelector(".avatar-initials"), driver));
-        } catch (AssertionError e) {
-            assertTrue(isElementPresent(By.cssSelector(".avatar-image"), driver));
+        if (isElementPresent(By.cssSelector(MAIN_MENU_INITIALS_CSS), driver))
+            assertTrue(isElementPresent(By.cssSelector(MAIN_MENU_INITIALS_CSS), driver));
+        else if (isElementPresent(By.cssSelector(MAIN_MENU_IMAGE_CSS), driver))
+            assertTrue(isElementPresent(By.cssSelector(MAIN_MENU_IMAGE_CSS), driver));
+
+//        try {
+//            assertTrue(isElementPresent(By.cssSelector(MAIN_MENU_INITIALS_CSS), driver));
+//        } catch (AssertionError e) {
+//            assertTrue(isElementPresent(By.cssSelector(MAIN_MENU_IMAGE_CSS), driver));
+//        }
+    }
+
+    public static void openMainMenu(WebDriver driver) {
+        final String MAIN_MENU_INITIALS="html/body/div[3]/div[1]/div[1]/div[1]/a/div/span";
+        final String MAIN_MENU_IMAGE="html/body/div[3]/div[1]/div[1]/div[1]/a/div/img";
+
+        if (isElementPresent(By.xpath(MAIN_MENU_INITIALS), driver)){
+            driver.findElement(By.xpath(MAIN_MENU_INITIALS)).click();
+        }
+        else if (isElementPresent(By.xpath(MAIN_MENU_IMAGE), driver)){
+            driver.findElement(By.xpath(MAIN_MENU_IMAGE)).click();
         }
     }
 
@@ -48,34 +66,12 @@ public class Users implements utils.AccessData {
     public static void userNotFound(WebDriver driver) {
         driver.get(AccessData.TESTURL);
         driver.findElement(By.id("form-email")).clear();
-        driver.findElement(By.id("form-email")).sendKeys(WRONGTESTLOGIN);
+        driver.findElement(By.id("form-email")).sendKeys(AccessData.WRONGTESTLOGIN);
         driver.findElement(By.id("form-psw")).clear();
-        driver.findElement(By.id("form-psw")).sendKeys(WRONGTESTPASSWORD);
+        driver.findElement(By.id("form-psw")).sendKeys(AccessData.WRONGTESTPASSWORD);
         driver.findElement(By.cssSelector("button.btn-submit.js-tap-indication")).click();
         assertEquals("User not found", driver.findElement(By.cssSelector("div.form-message.firepath-matching-node")).getText());
     }
-
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void loginUserWithCash(WebDriver driver, int numberofAttempts) throws InterruptedException {
-        driver.navigate().to(AccessData.TESTURL);
-        Thread.sleep(3000);
-//        driver.findElement(By.id("form-email")).clear();
-//        driver.findElement(By.id("form-email")).sendKeys(TESTLOGIN_SHORTTESTS);
-//        driver.findElement(By.id("form-psw")).clear();
-//        driver.findElement(By.id("form-psw")).sendKeys(TESTLOGIN_SHORTTESTS);
-//        Thread.sleep(3000);
-        for (int i = 1; i < numberofAttempts; i++) {
-            driver.findElement(By.cssSelector("button.btn-submit.js-tap-indication")).click();
-            Thread.sleep(3000);
-            assertTrue(isElementPresent(By.cssSelector("span.avatar-initials"), driver));
-            if (isElementPresent(By.cssSelector("span.avatar-initials"), driver))
-                System.out.println("Attempt " + i + " was successful");
-            else System.out.println("Attempt " + i + " was NOT successful");
-            driver.findElement(By.cssSelector("span.avatar-initials")).click();
-            driver.findElement(By.cssSelector("div.app-menu-choice.js-signout")).click();
-        }
-    }
-
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void userSignOut(WebDriver driver) {
         try {
@@ -85,10 +81,9 @@ public class Users implements utils.AccessData {
         }
         driver.findElement(By.cssSelector("div.app-menu-choice.js-signout")).click();
     }
-
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void usersOpenMembersList(WebDriver driver) {
-        driver.findElement(By.xpath(MAIN_MENU_XPATH)).click();
+    public static void usersOpenMembersList(WebDriver driver) throws InterruptedException {
+        openMainMenu(driver);
         driver.findElement(By.cssSelector(USER_MAIN_MENU_MEMBERS_LIST_CSS)).click();
     }
 
@@ -100,13 +95,13 @@ public class Users implements utils.AccessData {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void usersAddToOrganization(WebDriver driver, int numberOfUsers, String[] testNamesForTest, boolean isLogged) throws InterruptedException {
-        final String ADD_USER_FIELD_XPATH_BEGIN = "html/body/div[4]/div/div/div[1]/div/div[2]/div[3]/div[2]/";
+        final String ADD_USER_FIELD_XPATH_BEGIN = "html/body/div[5]/div/div/div[1]/div/div[2]/div[3]/div[2]/";
         final String ADD_USER_FIELD_XPATH_END = "/div[1]/input";
 
         String name;
         String dynamicPart;
 
-        driver.findElement(By.xpath(MAIN_MENU_XPATH)).click();
+        openMainMenu(driver);
         driver.findElement(By.cssSelector("div.app-menu-choice.js-org-invite")).click();
         driver.findElement(By.id("invitations")).click();
 
@@ -123,7 +118,6 @@ public class Users implements utils.AccessData {
         }
         driver.findElement(By.cssSelector(".ui-button-blue.js-workspacedit-sendinvitations")).click();
 
-
 //        Thread.sleep(numberOfUsers * 1000);
 
         closeEditOrganizationMenu(driver);
@@ -133,10 +127,10 @@ public class Users implements utils.AccessData {
     public static void usersRemoveAllFromOrganization(WebDriver driver, boolean isLogged) throws InterruptedException {
 
         String userName;
-        final String USER_SECOND_USER_EXIST_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[2]/div[2]/div";
-        final String USER_LAST_USER_NAME_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
-        final String USER_LAST_USER_REMOVE_BUTTON_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]/div";
-        final String USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH = "html/body/div[4]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div";
+        final String USER_SECOND_USER_EXIST_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[2]/div[2]/div";
+        final String USER_LAST_USER_NAME_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
+        final String USER_LAST_USER_REMOVE_BUTTON_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]/div";
+        final String USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div";
         usersOpenMembersList(driver);
         while (isElementPresent(By.xpath(USER_SECOND_USER_EXIST_XPATH), driver)) {
             userName = driver.findElement(By.xpath(USER_LAST_USER_NAME_XPATH)).getText();
@@ -183,12 +177,11 @@ public class Users implements utils.AccessData {
         Service service = new Service();
         service.startCount();
         new WebDriverWait(driver, 120).until(ExpectedConditions.presenceOfElementLocated(By.xpath(DELETE_XPATH)));
-//        Thread.sleep(60000);
         String DELETE_CONFIRM_XPATH = "//div[text()=\"" + userEmail + "\"]/parent::*/parent::*/following-sibling::*/div";
         driver.findElement(By.xpath(DELETE_XPATH)).click();
         driver.findElement(By.xpath(DELETE_CONFIRM_XPATH)).click();
         service.stopCount();
-        System.out.println("Waiting..." + service.getTimeDurationInSeconds() + "Seconds");
+        System.out.println("Waiting... " + service.getTimeDurationInSeconds() + "Seconds");
         Thread.sleep(2000);
     }
 
@@ -212,7 +205,7 @@ public class Users implements utils.AccessData {
         final String ORGANIZATION_CREATE_AGREE_CHECKBOX_CSS = ".createorganization-checkbox.createorganization-checkbox-disagree";
         final String ORGANIZATION_CREATE_NEXT_BUTTON_CSS = ".popup-window-toolbar-button.mod-done.js-createorganization-next";
 
-        driver.findElement(By.xpath(MAIN_MENU_XPATH)).click();
+        openMainMenu(driver);
         driver.findElement(By.xpath(ORGANIZATION_SELECT_XPATH)).click();
         driver.findElement(By.cssSelector(ORGANIZATION_CREATE_BUTTON_CSS)).click();
         driver.findElement(By.cssSelector(ORGANIZATION_CREATE_ENTER_NAME_CSS)).sendKeys(orgName);
