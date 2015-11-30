@@ -17,26 +17,26 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void runShortTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
-        System.out.println("*** ShortTest - USS Endeavor9 ***");
+        System.out.println("*** ShortTest - USS Endeavor10 ***");
 
-        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
-        Widget.widgetEnableAllIntegrationsYN(driver, true);
-        Widget.widgetEnableAllIntegrationsYN(driver, false);
-        Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
-
-        Widget.widgetEnableAllIntegrationsYN(driver, true);
-        Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
-
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.VIOLET, false);
-        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
-        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
-        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
-        Widget.lanesCreate(driver, 1, 3, false);
-
-        Thread.sleep(10000);
-//        STOPSTATEMENT
-        boolean x = true;
-        if (x) return;
+//        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
+//        Widget.widgetEnableAllIntegrationsYN(driver, true);
+//        Widget.widgetEnableAllIntegrationsYN(driver, false);
+//        Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
+//
+//        Widget.widgetEnableAllIntegrationsYN(driver, true);
+//        Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
+//
+//        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.VIOLET, false);
+//        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
+//        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+//        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
+//        Widget.lanesCreate(driver, 1, 3, false);
+//
+//        Thread.sleep(10000);
+////        STOPSTATEMENT
+//        boolean x = true;
+//        if (x) return;
 
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
@@ -140,11 +140,11 @@ public class Run {
         System.out.println(Service.nowTime() + " : h. Add comments");
         Card.cardCommentAddMany(driver, "Hello There!!!!", 2, 5, 5, 1, false);
 
-        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
-        String filePath = AccessData.GRAPHIC_FILE_PATH;
-        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
-        filePath = AccessData.TEXT_FILE_PATH;
-        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
+//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
+//        String filePath = AccessData.GRAPHIC_FILE_PATH;
+//        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
+//        filePath = AccessData.TEXT_FILE_PATH;
+//        Card.cardFileAdd(driver, filePath, 1, 1, 1, false);
 
         System.out.println(Service.nowTime() + " : 10. TODO -Operations Block");
         System.out.println(Service.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
@@ -186,7 +186,7 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void runTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
-        System.out.println("*** Test. UK Air Force***");
+        System.out.println("*** Test. UK Air Force 3***");
 
 //        STOPSTATEMENT
 //        boolean x=true;
@@ -316,11 +316,11 @@ public class Run {
         System.out.println(Service.nowTime() + " : h. Add comments");
         Card.cardCommentAddMany(driver, "Hello There!!!!", 10, 4, 4, 1, false);
 
-        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
-        String filePath = AccessData.GRAPHIC_FILE_PATH;
-        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
-        filePath = AccessData.TEXT_FILE_PATH;
-        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
+//        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
+//        String filePath = AccessData.GRAPHIC_FILE_PATH;
+//        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
+//        filePath = AccessData.TEXT_FILE_PATH;
+//        Card.cardFileAdd(driver, filePath, 5, 3, 2, false);
 
         System.out.println(Service.nowTime() + " : 10. TODO -Operations Block");
         System.out.println(Service.nowTime() + " : a. Clearing - TODO Remove all Unfinished Cards");
@@ -357,8 +357,6 @@ public class Run {
         //Testing of creation of unfinished cards
         System.out.println(Service.nowTime() + " : g. TODO Create Unfinished Cards(20)");
         Todo.todoCardCreation(driver, 5, TodoCardStatus.CREATEUNFINISHED, LogType.NOLOG);
-
-
     }
 
     //----------------------------------------------------------------------------------------------------------------------

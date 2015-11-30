@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="setup.IEShortTest" time="72.941" errors="1" skipped="0">
+<testsuite tests="1" failures="0" name="setup.IEShortTest" time="39.043" errors="1" skipped="0">
   <properties>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="JOB_NAME" value="ShortTestsRun (EveryDay EveryHour 3-23)"/>
@@ -28,7 +28,7 @@
     <property name="PROMPT" value="$P$G"/>
     <property name="user.language" value="en"/>
     <property name="M2" value="D:\Java\apache-maven-3.3.1\bin"/>
-    <property name="BUILD_DISPLAY_NAME" value="#360"/>
+    <property name="BUILD_DISPLAY_NAME" value="#437"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_51\jre\bin"/>
     <property name="LOCALAPPDATA" value="C:\Users\kyak\AppData\Local"/>
     <property name="java.version" value="1.8.0_51"/>
@@ -38,7 +38,7 @@
     <property name="sun.arch.data.model" value="64"/>
     <property name="NODE_NAME" value="master"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_51\jre\lib\endorsed"/>
-    <property name="BUILD_ID" value="360"/>
+    <property name="BUILD_ID" value="437"/>
     <property name="CLIENTNAME" value="DELL-ПК"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1251"/>
@@ -75,7 +75,7 @@
     <property name="POM_GROUPID" value="com.hansoftx"/>
     <property name="user.home" value="C:\Users\kyak"/>
     <property name="PUBLIC" value="C:\Users\Public"/>
-    <property name="BUILD_TAG" value="jenkins-ShortTestsRun (EveryDay EveryHour 3-23)-360"/>
+    <property name="BUILD_TAG" value="jenkins-ShortTestsRun (EveryDay EveryHour 3-23)-437"/>
     <property name="JENKINS_SERVER_COOKIE" value="d6fc054f763858a5"/>
     <property name="HUDSON_URL" value="http://localhost:8080/"/>
     <property name="ProgramData" value="C:\ProgramData"/>
@@ -90,7 +90,7 @@
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="maven.home" value="D:\Java\apache-maven-3.3.1"/>
     <property name="java.class.path" value="C:\Users\kyak\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven31-agent-1.5.jar;D:\Java\apache-maven-3.3.1\boot\plexus-classworlds-2.5.2.jar;D:\Java\apache-maven-3.3.1/conf/logging"/>
-    <property name="sun.java.command" value="jenkins.maven3.agent.Maven31Main D:\Java\apache-maven-3.3.1 C:\Users\kyak\.jenkins\war\WEB-INF\lib\remoting-2.52.jar C:\Users\kyak\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven31-interceptor-1.5.jar C:\Users\kyak\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.5.jar 50411"/>
+    <property name="sun.java.command" value="jenkins.maven3.agent.Maven31Main D:\Java\apache-maven-3.3.1 C:\Users\kyak\.jenkins\war\WEB-INF\lib\remoting-2.52.jar C:\Users\kyak\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven31-interceptor-1.5.jar C:\Users\kyak\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.5.jar 64482"/>
     <property name="Path" value="C:\Program Files\Java\jdk1.8.0_51/bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Java\jdk1.8.0_51\bin;D:\Java\apache-maven-3.3.1\bin"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="PROCESSOR_ARCHITECTURE" value="AMD64"/>
@@ -107,7 +107,7 @@
     <property name="HUDSON_HOME" value="C:\Users\kyak\.jenkins"/>
     <property name="PATH+MAVEN" value="D:\Java\apache-maven-3.3.1/bin"/>
     <property name="ProgramFiles(x86)" value="C:\Program Files (x86)"/>
-    <property name="BUILD_URL" value="http://localhost:8080/job/ShortTestsRun%20(EveryDay%20EveryHour%203-23)/360/"/>
+    <property name="BUILD_URL" value="http://localhost:8080/job/ShortTestsRun%20(EveryDay%20EveryHour%203-23)/437/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="os.arch" value="amd64"/>
@@ -121,7 +121,7 @@
 "/>
     <property name="MAVEN_HOME" value="D:\Java\apache-maven-3.3.1"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="BUILD_NUMBER" value="360"/>
+    <property name="BUILD_NUMBER" value="437"/>
     <property name="JENKINS_URL" value="http://localhost:8080/"/>
     <property name="PROCESSOR_REVISION" value="3a09"/>
     <property name="ProgramW6432" value="C:\Program Files"/>
@@ -134,24 +134,24 @@
     <property name="java.specification.version" value="1.8"/>
     <property name="PSModulePath" value="C:\Windows\system32\WindowsPowerShell\v1.0\Modules\"/>
   </properties>
-  <testcase classname="setup.IEShortTest" name="testLogin" time="72.941">
-    <error message="Unable to find element with xpath == html/body/div[2]/div[1]/div[1]/div[1]/a/div/img (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 30.27 seconds
+  <testcase classname="setup.IEShortTest" name="testLogin" time="39.043">
+    <error message="Unable to find element with id == form-email (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 30.14 seconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.47.1&apos;, revision: &apos;unknown&apos;, time: &apos;2015-07-30 11:02:44&apos;
 System info: host: &apos;pc-qa&apos;, ip: &apos;192.168.1.16&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_51&apos;
 Driver info: org.openqa.selenium.ie.InternetExplorerDriver
-Capabilities [{browserAttachTimeout=0, enablePersistentHover=true, ie.forceCreateProcessApi=false, pageLoadStrategy=normal, ie.usePerProcessProxy=false, ignoreZoomSetting=false, handlesAlerts=true, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:36831/, takesScreenshot=true, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=dismiss}]
-Session ID: 1223cc1a-cc12-43b6-ac64-d69f2915f6c6
-*** Element info: {Using=xpath, value=html/body/div[2]/div[1]/div[1]/div[1]/a/div/img}" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: Unable to find element with xpath == html/body/div[2]/div[1]/div[1]/div[1]/a/div/img (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 30.27 seconds
+Capabilities [{browserAttachTimeout=0, enablePersistentHover=true, ie.forceCreateProcessApi=false, pageLoadStrategy=normal, ie.usePerProcessProxy=false, ignoreZoomSetting=false, handlesAlerts=true, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:38112/, takesScreenshot=true, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: 3ea7036a-ff65-4709-ad61-cab3d676b286
+*** Element info: {Using=id, value=form-email}" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: Unable to find element with id == form-email (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 30.14 seconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.47.1&apos;, revision: &apos;unknown&apos;, time: &apos;2015-07-30 11:02:44&apos;
 System info: host: &apos;pc-qa&apos;, ip: &apos;192.168.1.16&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_51&apos;
 Driver info: org.openqa.selenium.ie.InternetExplorerDriver
-Capabilities [{browserAttachTimeout=0, enablePersistentHover=true, ie.forceCreateProcessApi=false, pageLoadStrategy=normal, ie.usePerProcessProxy=false, ignoreZoomSetting=false, handlesAlerts=true, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:36831/, takesScreenshot=true, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=dismiss}]
-Session ID: 1223cc1a-cc12-43b6-ac64-d69f2915f6c6
-*** Element info: {Using=xpath, value=html/body/div[2]/div[1]/div[1]/div[1]/a/div/img}
+Capabilities [{browserAttachTimeout=0, enablePersistentHover=true, ie.forceCreateProcessApi=false, pageLoadStrategy=normal, ie.usePerProcessProxy=false, ignoreZoomSetting=false, handlesAlerts=true, version=11, platform=WINDOWS, nativeEvents=true, ie.ensureCleanSession=false, elementScrollBehavior=0, ie.browserCommandLineSwitches=, requireWindowFocus=false, browserName=internet explorer, initialBrowserUrl=http://localhost:38112/, takesScreenshot=true, javascriptEnabled=true, ignoreProtectedModeSettings=false, enableElementCacheCleanup=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=dismiss}]
+Session ID: 3ea7036a-ff65-4709-ad61-cab3d676b286
+*** Element info: {Using=id, value=form-email}
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -160,14 +160,11 @@ Session ID: 1223cc1a-cc12-43b6-ac64-d69f2915f6c6
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:595)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:348)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:445)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:358)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:389)
+	at org.openqa.selenium.By$ById.findElement(By.java:215)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:340)
-	at pageobjects.Users.usersOpenMembersList(Users.java:91)
-	at pageobjects.Users.usersRemoveAllFromOrganization(Users.java:140)
-	at tests.Run.runShortTestAllMethods(Run.java:27)
-	at tests.Run.RunShort(Run.java:347)
-	at setup.IEShortTest.testLogin(IEShortTest.java:34)
+	at pageobjects.Users.loginUser(Users.java:34)
+	at setup.IEShortTest.testLogin(IEShortTest.java:33)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -200,15 +197,11 @@ Session ID: 1223cc1a-cc12-43b6-ac64-d69f2915f6c6
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
 </error>
-    <system-out>****** IE11.sh. ************************************************************
-*** ShortTest - USS Endeavor5 ***
-2015/11/26 20:02:43 : 1. Users Block
-2015/11/26 20:02:43 : 1a. Remove All users and Add Four Users to Organization(R+4)
-*** Save Screenshot ***
+    <system-out>*** Save Screenshot ***
 </system-out>
     <system-err>Started InternetExplorerDriver server (32-bit)
 2.47.0.0
-Listening on port 36831
+Listening on port 38112
 </system-err>
   </testcase>
 </testsuite>

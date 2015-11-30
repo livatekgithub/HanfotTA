@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="setup.FirefoxLongTest" time="61.391" errors="1" skipped="0">
+<testsuite tests="1" failures="0" name="setup.FirefoxLongTest" time="2,643.921" errors="0" skipped="0">
   <properties>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="JOB_NAME" value="LongTestRun (EveryDay Night 00)"/>
@@ -28,7 +28,7 @@
     <property name="PROMPT" value="$P$G"/>
     <property name="user.language" value="en"/>
     <property name="M2" value="D:\Java\apache-maven-3.3.1\bin"/>
-    <property name="BUILD_DISPLAY_NAME" value="#9"/>
+    <property name="BUILD_DISPLAY_NAME" value="#15"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_51\jre\bin"/>
     <property name="LOCALAPPDATA" value="C:\Users\kyak\AppData\Local"/>
     <property name="java.version" value="1.8.0_51"/>
@@ -38,8 +38,8 @@
     <property name="sun.arch.data.model" value="64"/>
     <property name="NODE_NAME" value="master"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_51\jre\lib\endorsed"/>
-    <property name="BUILD_ID" value="9"/>
-    <property name="CLIENTNAME" value="PC-KYAK"/>
+    <property name="BUILD_ID" value="15"/>
+    <property name="CLIENTNAME" value="DELL-ПК"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1251"/>
     <property name="file.encoding.pkg" value="sun.io"/>
@@ -47,7 +47,6 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="HOMEDRIVE" value="C:"/>
     <property name="java.class.version" value="52.0"/>
-    <property name="=::" value="::\"/>
     <property name="org.slf4j.simpleLogger.defaultLogLevel" value="info"/>
     <property name="user.country" value="US"/>
     <property name="ALLUSERSPROFILE" value="C:\ProgramData"/>
@@ -71,12 +70,12 @@
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="USERDNSDOMAIN" value="LIVATEK.COM"/>
     <property name="POM_PACKAGING" value="jar"/>
-    <property name="user.script" value=""/>
     <property name="COMPUTERNAME" value="PC-QA"/>
+    <property name="user.script" value=""/>
     <property name="POM_GROUPID" value="com.hansoftx"/>
     <property name="user.home" value="C:\Users\kyak"/>
     <property name="PUBLIC" value="C:\Users\Public"/>
-    <property name="BUILD_TAG" value="jenkins-LongTestRun (EveryDay Night 00)-9"/>
+    <property name="BUILD_TAG" value="jenkins-LongTestRun (EveryDay Night 00)-15"/>
     <property name="JENKINS_SERVER_COOKIE" value="d6fc054f763858a5"/>
     <property name="HUDSON_URL" value="http://localhost:8080/"/>
     <property name="ProgramData" value="C:\ProgramData"/>
@@ -91,13 +90,13 @@
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="maven.home" value="D:\Java\apache-maven-3.3.1"/>
     <property name="java.class.path" value="C:\Users\kyak\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven31-agent-1.5.jar;D:\Java\apache-maven-3.3.1\boot\plexus-classworlds-2.5.2.jar;D:\Java\apache-maven-3.3.1/conf/logging"/>
-    <property name="sun.java.command" value="jenkins.maven3.agent.Maven31Main D:\Java\apache-maven-3.3.1 C:\Users\kyak\.jenkins\war\WEB-INF\lib\remoting-2.52.jar C:\Users\kyak\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven31-interceptor-1.5.jar C:\Users\kyak\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.5.jar 55811"/>
+    <property name="sun.java.command" value="jenkins.maven3.agent.Maven31Main D:\Java\apache-maven-3.3.1 C:\Users\kyak\.jenkins\war\WEB-INF\lib\remoting-2.52.jar C:\Users\kyak\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven31-interceptor-1.5.jar C:\Users\kyak\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.5.jar 61717"/>
     <property name="Path" value="C:\Program Files\Java\jdk1.8.0_51/bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Java\jdk1.8.0_51\bin;D:\Java\apache-maven-3.3.1\bin"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="PROCESSOR_ARCHITECTURE" value="AMD64"/>
     <property name="PATH+JDK" value="C:\Program Files\Java\jdk1.8.0_51/bin"/>
     <property name="PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 58 Stepping 9, GenuineIntel"/>
-    <property name="SESSIONNAME" value="RDP-Tcp#1"/>
+    <property name="SESSIONNAME" value="RDP-Tcp#5"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="sun.cpu.endian" value="little"/>
@@ -108,7 +107,7 @@
     <property name="HUDSON_HOME" value="C:\Users\kyak\.jenkins"/>
     <property name="PATH+MAVEN" value="D:\Java\apache-maven-3.3.1/bin"/>
     <property name="ProgramFiles(x86)" value="C:\Program Files (x86)"/>
-    <property name="BUILD_URL" value="http://localhost:8080/job/LongTestRun%20(EveryDay%20Night%2000)/9/"/>
+    <property name="BUILD_URL" value="http://localhost:8080/job/LongTestRun%20(EveryDay%20Night%2000)/15/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="os.arch" value="amd64"/>
@@ -116,13 +115,13 @@
     <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_51\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
     <property name="user.dir" value="C:\Users\kyak\IdeaProjects\HanfotTA"/>
     <property name="JOB_URL" value="http://localhost:8080/job/LongTestRun%20(EveryDay%20Night%2000)/"/>
-    <property name="LOGONSERVER" value="\\SRV-DC01"/>
+    <property name="LOGONSERVER" value="\\SRV-DC02"/>
     <property name="USERDOMAIN" value="LIVATEK"/>
     <property name="line.separator" value="
 "/>
     <property name="MAVEN_HOME" value="D:\Java\apache-maven-3.3.1"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="BUILD_NUMBER" value="9"/>
+    <property name="BUILD_NUMBER" value="15"/>
     <property name="JENKINS_URL" value="http://localhost:8080/"/>
     <property name="PROCESSOR_REVISION" value="3a09"/>
     <property name="ProgramW6432" value="C:\Program Files"/>
@@ -135,84 +134,5 @@
     <property name="java.specification.version" value="1.8"/>
     <property name="PSModulePath" value="C:\Windows\system32\WindowsPowerShell\v1.0\Modules\"/>
   </properties>
-  <testcase classname="setup.FirefoxLongTest" name="testLogin" time="61.391">
-    <error message="Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;html/body/div[2]/div[1]/div[1]/div[1]/a/div/img&quot;}
-Command duration or timeout: 30.14 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;2.47.1&apos;, revision: &apos;unknown&apos;, time: &apos;2015-07-30 11:02:44&apos;
-System info: host: &apos;pc-qa&apos;, ip: &apos;192.168.1.16&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_51&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=42.0, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: 42742fda-6e4e-408d-a87c-617e0ad3f5d7
-*** Element info: {Using=xpath, value=html/body/div[2]/div[1]/div[1]/div[1]/a/div/img}" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;html/body/div[2]/div[1]/div[1]/div[1]/a/div/img&quot;}
-Command duration or timeout: 30.14 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;2.47.1&apos;, revision: &apos;unknown&apos;, time: &apos;2015-07-30 11:02:44&apos;
-System info: host: &apos;pc-qa&apos;, ip: &apos;192.168.1.16&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_51&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=42.0, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: 42742fda-6e4e-408d-a87c-617e0ad3f5d7
-*** Element info: {Using=xpath, value=html/body/div[2]/div[1]/div[1]/div[1]/a/div/img}
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:595)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:348)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:445)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:358)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:340)
-	at pageobjects.Users.usersOpenMembersList(Users.java:91)
-	at pageobjects.Users.usersRemoveAllFromOrganization(Users.java:140)
-	at tests.Run.runTestAllMethods(Run.java:169)
-	at tests.Run.RunLong(Run.java:371)
-	at setup.FirefoxLongTest.testLogin(FirefoxLongTest.java:32)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;html/body/div[2]/div[1]/div[1]/div[1]/a/div/img&quot;}
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;2.47.1&apos;, revision: &apos;unknown&apos;, time: &apos;2015-07-30 11:02:44&apos;
-System info: host: &apos;pc-qa&apos;, ip: &apos;192.168.1.16&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_51&apos;
-Driver info: driver.version: unknown
-	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/kyak/AppData/Local/Temp/anonymous1706005917528845768webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10667)
-	at &lt;anonymous class&gt;.fxdriver.Timer.prototype.setTimeout/&lt;.notify(file:///C:/Users/kyak/AppData/Local/Temp/anonymous1706005917528845768webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:623)
-</error>
-    <system-out>****** FIREFOX.ln ************************************************************
-*** Test. UK Air Force***
-2015/11/24 00:01:05 : 1. Users Block
-2015/11/24 00:01:05 : 1a. Remove All users and Add Four Users to Organization(R+4)
-*** Save Screenshot ***
-</system-out>
-  </testcase>
+  <testcase classname="setup.FirefoxLongTest" name="testLogin" time="2,643.921"/>
 </testsuite>
