@@ -27,8 +27,8 @@ public class Users implements utils.AccessData {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void loginUser(WebDriver driver, String testURL, String testLogin, String testPassword) throws InterruptedException {
         driver.get("https://test.hansoftx.com/logout");
-        driver.manage().window().maximize();
-//        WindowOperations.resizeWindowforIdea(driver);
+//        driver.manage().window().maximize();
+        WindowOperations.resizeWindowforIdea(driver);
         driver.get(AccessData.TESTURL);
         Thread.sleep(3000);
         driver.findElement(By.id("form-email")).clear();
@@ -195,18 +195,16 @@ public class Users implements utils.AccessData {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void createNewOrganization(WebDriver driver, String orgName) throws InterruptedException {
-        final String ORGANIZATION_SELECT_XPATH = "html/body/div[3]/div[2]/div/div/div[11]/div";
+        final String ORGANIZATION_SELECT_XPATH = "html/body/div[4]/div[2]/div/div/div[12]/div";
         final String ORGANIZATION_CREATE_BUTTON_CSS = ".workspace-popup-button.workspace-popup-action.workspace-popup-action-create." +
                 "js-createorganization.js-tap-indication.js-tap-indication-onwhite.js-tap-direct";
         final String ORGANIZATION_CREATE_ENTER_NAME_CSS = ".menu-popup-userfield.createorganization-input.js-createorganization-name";
-        final String ORGANIZATION_CREATE_AGREE_CHECKBOX_CSS = ".createorganization-checkbox.createorganization-checkbox-disagree";
         final String ORGANIZATION_CREATE_NEXT_BUTTON_CSS = ".popup-window-toolbar-button.mod-done.js-createorganization-next";
 
         openMainMenu(driver);
         driver.findElement(By.xpath(ORGANIZATION_SELECT_XPATH)).click();
         driver.findElement(By.cssSelector(ORGANIZATION_CREATE_BUTTON_CSS)).click();
         driver.findElement(By.cssSelector(ORGANIZATION_CREATE_ENTER_NAME_CSS)).sendKeys(orgName);
-        driver.findElement(By.cssSelector(ORGANIZATION_CREATE_AGREE_CHECKBOX_CSS)).click();
         driver.findElement(By.cssSelector(ORGANIZATION_CREATE_NEXT_BUTTON_CSS)).click();
         driver.findElement(By.cssSelector(ORGANIZATION_CREATE_NEXT_BUTTON_CSS)).click();
         Thread.sleep(5000);

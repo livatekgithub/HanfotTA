@@ -17,7 +17,7 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void runShortTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
-        System.out.println("*** ShortTest - USS Endeavor11 ***");
+        System.out.println("*** ShortTest - USS Endeavor13 ***");
 
 ////        STOPSTATEMENT
 //        boolean x = true;
@@ -184,7 +184,7 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void runTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
-        System.out.println("*** Test. UK Air Force 3***");
+        System.out.println("*** Test. UK Air Force 1***");
 
 //        STOPSTATEMENT
 //        boolean x=true;

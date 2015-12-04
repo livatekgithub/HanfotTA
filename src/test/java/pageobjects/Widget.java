@@ -398,9 +398,10 @@ public class Widget {
         final String WIDGET_COLUMN_AXIS = "//*[@class=\"js-paged-list-end mod-not-draggable\"])";
         String addCardXPath = "";
         addCardXPath = WIDGET_BOARD_AXIS + "[" + boardNumberX + "]" + WIDGET_LANE_AXIS + "[" + lanesNumberY + "]" + WIDGET_COLUMN_AXIS + "[" + columnNumberZ + "]";
-        Thread.sleep(1000);
+        Thread.sleep(3000);
+        System.out.println(addCardXPath);
         driver.findElement(By.xpath(addCardXPath)).click();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         driver.findElement(By.xpath("//textarea")).sendKeys(cardName);
         Thread.sleep(1000);
         driver.findElement(By.xpath("//button[@class=\"board-title-save js-textfield-save\"]")).click();
