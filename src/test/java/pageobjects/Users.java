@@ -30,7 +30,7 @@ public class Users implements utils.AccessData {
         driver.manage().window().maximize();
 //        WindowOperations.resizeWindowforIdea(driver);
         driver.get(AccessData.TESTURL);
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         driver.findElement(By.id("form-email")).clear();
         driver.findElement(By.id("form-email")).sendKeys(testLogin);
         driver.findElement(By.id("form-psw")).clear();
@@ -114,12 +114,9 @@ public class Users implements utils.AccessData {
             driver.findElement(By.xpath(ADD_USER_FIELD_XPATH_BEGIN + dynamicPart + ADD_USER_FIELD_XPATH_END)).sendKeys(testNamesForTest[i]);
             if (isLogged)
                 System.out.println(Service.nowTime() + " User" + (i + 1) + ": " + testNamesForTest[i] + " was added:");
-            driver.findElement(By.cssSelector(".fastcardpopup-taskinput-button.workspaceedit-add-button.js-workspacedit-add-invitation")).click();
+            driver.findElement(By.cssSelector(".workspaceedit-add-button.js-workspacedit-add-invitation")).click();
         }
         driver.findElement(By.cssSelector(".ui-button-blue.js-workspacedit-sendinvitations")).click();
-
-//        Thread.sleep(numberOfUsers * 1000);
-
         closeEditOrganizationMenu(driver);
     }
 

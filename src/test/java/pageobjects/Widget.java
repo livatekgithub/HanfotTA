@@ -98,7 +98,7 @@ public class Widget {
     final static String WIDGET_MENU_SHOW_RELATIONS = "//div[contains(text(),'Relations')]";
     final static String WIDGET_MENU_SHOW_LEADTIME = "//div[contains(text(),'Lead time')]";
     //lanes
-    final static String WIDGET_ADD_LANE="(//div[contains(text(),'Add lane')])";
+    final static String WIDGET_ADD_LANE = "(//div[contains(text(),'Add lane')])";
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetsCreation(WebDriver driver, int number, WidgetState widgetState, WidgetColor widgetColor, boolean isLogged) throws InterruptedException {
@@ -307,7 +307,7 @@ public class Widget {
         switch (widgetSettings) {
             case VALUES: {
                 driver.findElement(By.xpath(WIDGET_MENU_APPS_VALUES)).click();
-                enableDisableIntegrations(driver,enableYesNo);
+                enableDisableIntegrations(driver, enableYesNo);
                 driver.findElement(By.xpath(WIDGET_MENU_APPS_VALUES)).click();
             }
             break;
@@ -319,7 +319,7 @@ public class Widget {
             break;
             case LANES: {
                 driver.findElement(By.xpath(WIDGET_MENU_APPS_LANES)).click();
-                enableDisableIntegrations(driver,enableYesNo);
+                enableDisableIntegrations(driver, enableYesNo);
                 driver.findElement(By.xpath(WIDGET_MENU_APPS_LANES)).click();
             }
             break;
@@ -331,7 +331,7 @@ public class Widget {
             break;
             case WIP: {
                 driver.findElement(By.xpath(WIDGET_MENU_APPS_WIP)).click();
-                enableDisableIntegrations(driver,enableYesNo);
+                enableDisableIntegrations(driver, enableYesNo);
                 driver.findElement(By.xpath(WIDGET_MENU_APPS_WIP)).click();
             }
             break;
@@ -344,7 +344,7 @@ public class Widget {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetEnableAllIntegrationsYN(WebDriver driver, boolean enableYesNo) throws InterruptedException {
-        if (enableYesNo) widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.VIOLET, false);
+        if (enableYesNo) widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREEN, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.VALUES, enableYesNo, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.WORKFLOW, enableYesNo, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, enableYesNo, false);
@@ -364,30 +364,65 @@ public class Widget {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void lanesCreate(WebDriver driver, int widgetNumber, int lanesNumber, boolean isLogged) {
-         String addLaneXpath;
-        for (int i=1;i<=lanesNumber;i++){
-            addLaneXpath=WIDGET_ADD_LANE+"["+Integer.toString(widgetNumber)+"]";
+        String addLaneXpath;
+        for (int i = 1; i < lanesNumber; i++) {
+            addLaneXpath = WIDGET_ADD_LANE + "[" + Integer.toString(widgetNumber) + "]";
             driver.findElement(By.xpath(addLaneXpath)).click();
-            driver.findElement(By.xpath("//textarea")).sendKeys("Lane " + Integer.toString(i));
+            driver.findElement(By.xpath("//textarea")).sendKeys("Lane " + Integer.toString(i+1));
             driver.findElement(By.xpath("//textarea")).sendKeys(Keys.ENTER);
         }
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void lanesCreate(WebDriver driver, String[] listOfLanes, boolean isLogged) {
-
+    public static void lanesCreate(WebDriver driver, int widgetNumber, String[] listOfLanes, boolean isLogged) {
+        String addLaneXpath;
+        for (String laneElement : listOfLanes) {
+            addLaneXpath = WIDGET_ADD_LANE + "[" + Integer.toString(widgetNumber) + "]";
+            driver.findElement(By.xpath(addLaneXpath)).click();
+            driver.findElement(By.xpath("//textarea")).sendKeys(laneElement);
+            driver.findElement(By.xpath("//textarea")).sendKeys(Keys.ENTER);
+        }
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void lanesRemove(WebDriver driver, int lanesNumber, boolean isLogged) {
-
+        final String WIDGET_CHOOSE_LANE = "(//div[@class=\"board-title-text-lanes\"])";
+        driver.findElement(By.xpath(WIDGET_CHOOSE_LANE + "[" + lanesNumber + "]")).click();
+        Card.cardDelete(driver, false);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void createCardsWithinLane(WebDriver driver, int columnNumber, int lanesNumber, boolean isLogged) {
-
+    public static void createCardsWithinLane(WebDriver driver, int boardNumberX, int lanesNumberY, int columnNumberZ, String cardName, boolean isLogged) throws InterruptedException {
+        final String WIDGET_BOARD_AXIS = "(//div[@class=\"workspace-content workspace-content-tracking mod-scrollable-y\"]/div/div";
+        final String WIDGET_LANE_AXIS = "//*[@class=\"widget-board-lane js-widgetlane-main\"]";
+        final String WIDGET_COLUMN_AXIS = "//*[@class=\"js-paged-list-end mod-not-draggable\"])";
+        String addCardXPath = "";
+        addCardXPath = WIDGET_BOARD_AXIS + "[" + boardNumberX + "]" + WIDGET_LANE_AXIS + "[" + lanesNumberY + "]" + WIDGET_COLUMN_AXIS + "[" + columnNumberZ + "]";
+        Thread.sleep(1000);
+        driver.findElement(By.xpath(addCardXPath)).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//textarea")).sendKeys(cardName);
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//button[@class=\"board-title-save js-textfield-save\"]")).click();
     }
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void createLanesWithManyCards(WebDriver driver, int numberOfColumnsX, int numberOfLanesY, int numberOfCardsZ, boolean isLogged) throws InterruptedException {
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.VIOLET, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD" + numberOfColumnsX + "x" + numberOfLanesY + "x" + numberOfCardsZ, WidgetType.BOARD, false);
+        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
+        if (numberOfColumnsX > 2) Column.columnsCreation(driver, numberOfColumnsX - 2, false);
+        Widget.lanesCreate(driver, 1, numberOfLanesY, false);
+        String cardName;
+        for (int i = 1; i <= numberOfLanesY; i++) {
+            for (int j = 1; j <= numberOfColumnsX; j++) {
+                for (int k = 1; k <= numberOfCardsZ; k++) {
+                    cardName = Integer.toString(j) + Integer.toString(i) + Integer.toString(k);
+                    createCardsWithinLane(driver, 1, i, j, "Card " + cardName, false);
+                }
+            }
+        }
+    }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -17,23 +17,8 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void runShortTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
-        System.out.println("*** ShortTest - USS Endeavor10 ***");
+        System.out.println("*** ShortTest - USS Endeavor11 ***");
 
-//        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
-//        Widget.widgetEnableAllIntegrationsYN(driver, true);
-//        Widget.widgetEnableAllIntegrationsYN(driver, false);
-//        Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
-//
-//        Widget.widgetEnableAllIntegrationsYN(driver, true);
-//        Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
-//
-//        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.VIOLET, false);
-//        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
-//        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
-//        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
-//        Widget.lanesCreate(driver, 1, 3, false);
-//
-//        Thread.sleep(10000);
 ////        STOPSTATEMENT
 //        boolean x = true;
 //        if (x) return;
@@ -80,7 +65,7 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 6c. Widgets Renaming");
         System.out.println(Service.nowTime() + " : 6d. Widgets Archiving(2)");
-        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
+        System.out.println(Service.nowTime() + " : 7a. Integrations / Disabled / All Enabled");
         Widget.widgetEnableAllIntegrationsYN(driver, true);
         Widget.widgetEnableAllIntegrationsYN(driver, false);
         Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
@@ -88,13 +73,26 @@ public class Run {
         Widget.widgetEnableAllIntegrationsYN(driver, true);
         Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
 
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.ORANGE, false);
-        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
-        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+        System.out.println(Service.nowTime() + " : 7b. Lanes / Create from the List / Create with Numbers / Create Board with Cards and Lanes");
+        // Create with Names from the List
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREY, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD (Names from the List)", WidgetType.BOARD, false);
+        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
+        String[] lanesNames = {"United Kingdom", "Germany", "France", "Italy", "Spain"};
+        Widget.lanesCreate(driver, 1, lanesNames, false);
+        Widget.lanesRemove(driver, 1, false);
+
+        // Create with Numbers in Names
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREY, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD (names with Numbers)", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 3, 3, false);
         Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
         Widget.lanesCreate(driver, 1, 3, false);
 
-        System.out.println(Service.nowTime() + " : 7b. Columns Creation(3)");
+        // Create Board with Cards and Lanes
+        Widget.createLanesWithManyCards(driver, 2, 2, 2, false);
+
+        System.out.println(Service.nowTime() + " : 7c. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
         Widget.widgetsCurrentRename(driver, ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 2, 6, false);
@@ -240,7 +238,7 @@ public class Run {
         System.out.println(Service.nowTime() + " : 6c. Widgets Renaming");
         System.out.println(Service.nowTime() + " : 6d. Widgets Archiving(2)");
 
-        System.out.println(Service.nowTime() + " : 7a. Lanes and Integrations / Disabled / All Enabled / Lanes Create ");
+        System.out.println(Service.nowTime() + " : 7a. Integrations / Disabled / All Enabled");
         Widget.widgetEnableAllIntegrationsYN(driver, true);
         Widget.widgetEnableAllIntegrationsYN(driver, false);
         Widget.widgetsCurrentRename(driver, "ENABLED and DISABLED Apps_Integrations", WidgetType.BOARD, false);
@@ -248,13 +246,26 @@ public class Run {
         Widget.widgetEnableAllIntegrationsYN(driver, true);
         Widget.widgetsCurrentRename(driver, "ENABLED ALL Apps_Integrations", WidgetType.BOARD, false);
 
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.ORANGE, false);
-        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD", WidgetType.BOARD, false);
-        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+        System.out.println(Service.nowTime() + " : 7b. Lanes / Create from the List / Remove / Create with Numbers / Create Board with Cards and Lanes");
+        // Create with Names from the List
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREY, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD (Names from the List)", WidgetType.BOARD, false);
         Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
-        Widget.lanesCreate(driver, 1, 3, false);
+        String[] lanesNames = {"United Kingdom", "Germany", "France", "Italy", "Spain"};
+        Widget.lanesCreate(driver, 1, lanesNames, false);
+        Widget.lanesRemove(driver, 1, false);
 
-        System.out.println(Service.nowTime() + " : 7b. Columns Creation(3)");
+        // Create with Numbers in Names
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREY, false);
+        Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD (names with Numbers)", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 3, 3, false);
+        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
+        Widget.lanesCreate(driver, 1, 7, false);
+
+        // Create Board with Cards and Lanes
+        Widget.createLanesWithManyCards(driver, 4, 5, 3, false);
+
+        System.out.println(Service.nowTime() + " : 7c. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 3, 8, false);
