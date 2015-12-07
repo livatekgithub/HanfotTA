@@ -19,9 +19,17 @@ public class Run {
 
         System.out.println("*** ShortTest - USS Endeavor13 ***");
 
-////        STOPSTATEMENT
-//        boolean x = true;
-//        if (x) return;
+        System.out.println(Service.nowTime() + " : 8c.  Create Widget with Constant tags and Users");
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
+        Card.cardsFirstBoardGeneration(driver, 6, 3, false);
+        Card.cardsFirstIdeaGeneration(driver, 6, false);
+        String[] tags = {"UK", "USA", "GER", "POL", "SPA", "ITA", "FRA", "SWE", "UKR"};
+        String[] peoples = {"once", "14", "doce", "sevent", "21"};
+        Card.cardAddElementsToWidget(driver, tags, peoples, 6, 6, 3);
+
+//        STOPSTATEMENT
+        boolean x = true;
+        if (x) return;
 
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");

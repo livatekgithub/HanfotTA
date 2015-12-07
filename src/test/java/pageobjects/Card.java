@@ -348,12 +348,15 @@ public class Card {
         cardOpenBoardCard(driver, firstCard, columnNum, false);
         cardDatesSet(driver, startDate, finishDate, false);
         cardSave(driver);
+        Thread.sleep(1000);
         cardOpenBoardCard(driver, firstCard + 1, columnNum, false);
         cardDatesSet(driver, startDate, null, false);
         cardSave(driver);
+        Thread.sleep(1000);
         cardOpenBoardCard(driver, firstCard + 2, columnNum, false);
         cardDatesSet(driver, null, finishDate, false);
         cardSave(driver);
+        Thread.sleep(1000);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
@@ -372,9 +375,11 @@ public class Card {
             cardOpenBoardCard(driver, xCardIndex, yCardIndex, false);
             cardSetName(driver, "Day " + Integer.toString(i));
             dateName = "2015-10-" + Integer.toString(i);
-            Thread.sleep(500);
+            Thread.sleep(1000);
             cardDatesSet(driver, null, dateName, false);
+            Thread.sleep(1000);
             cardSave(driver);
+            Thread.sleep(1000);
         }
         Thread.sleep(1000);
     }
