@@ -50,7 +50,18 @@ public class Service {
         monthDateAndHour=monthDateAndHour.substring(4, 14);
         return monthDateAndHour;
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static String nowTimeForOrgName() {
+        String monthAndDate = nowTimeForObjectName();
+        monthAndDate=monthAndDate.substring(0, 4);
+        return monthAndDate;
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static String hourForOrg() {
+        String hour = nowTimeForObjectName();
+        hour=hour.substring(5, 7);
+        return hour;
+    }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void takeScreenshot(WebDriver driver, String fileName) throws IOException {
         System.out.println("*** Save Screenshot ***");

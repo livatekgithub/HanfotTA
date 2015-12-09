@@ -195,21 +195,45 @@ public class Users implements utils.AccessData {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void createNewOrganization(WebDriver driver, String orgName) throws InterruptedException {
-        final String ORGANIZATION_SELECT_XPATH = "html/body/div[4]/div[2]/div/div/div[12]/div";
+        final String ORGANIZATION_SELECT_AXPATH = "html/body/div[4]/div[2]/div/div/div[14]/div";
+        final String ORGANIZATION_SELECT_XPATH = "//div[contains(text(),'Select Organization')]";
+
         final String ORGANIZATION_CREATE_BUTTON_CSS = ".workspace-popup-button.workspace-popup-action.workspace-popup-action-create." +
                 "js-createorganization.js-tap-indication.js-tap-indication-onwhite.js-tap-direct";
         final String ORGANIZATION_CREATE_ENTER_NAME_CSS = ".menu-popup-userfield.createorganization-input.js-createorganization-name";
         final String ORGANIZATION_CREATE_NEXT_BUTTON_CSS = ".popup-window-toolbar-button.mod-done.js-createorganization-next";
 
         openMainMenu(driver);
+        Thread.sleep(5000);
         driver.findElement(By.xpath(ORGANIZATION_SELECT_XPATH)).click();
+        Thread.sleep(5000);
         driver.findElement(By.cssSelector(ORGANIZATION_CREATE_BUTTON_CSS)).click();
         driver.findElement(By.cssSelector(ORGANIZATION_CREATE_ENTER_NAME_CSS)).sendKeys(orgName);
         driver.findElement(By.cssSelector(ORGANIZATION_CREATE_NEXT_BUTTON_CSS)).click();
         driver.findElement(By.cssSelector(ORGANIZATION_CREATE_NEXT_BUTTON_CSS)).click();
         Thread.sleep(5000);
     }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void makeCurrentOrgStandard(WebDriver driver) throws InterruptedException {
+        final String ORGANIZATION_BILLING_UPGRADE_TO_STANDARD_BUTTON_CSS = ".ui-button-green.mod-full-width.js-workspacedit-billing";
 
+        openMainMenu(driver);
+        driver.findElement(By.cssSelector(USER_MAIN_MENU_MEMBERS_LIST_CSS)).click();
+        driver.findElement(By.id("billing")).click();
+        driver.findElement(By.cssSelector(ORGANIZATION_BILLING_UPGRADE_TO_STANDARD_BUTTON_CSS)).click();
+        driver.findElement(By.xpath("//input[@id='customer-business']")).sendKeys("1");
+        driver.findElement(By.cssSelector(".popup-userfield.workspaceedit-customer-input.js-workspacedit-customer-address1")).sendKeys("1");
+        driver.findElement(By.cssSelector(".popup-userfield.workspaceedit-customer-input.js-workspacedit-customer-zip")).sendKeys("1");
+        driver.findElement(By.cssSelector(".popup-userfield.workspaceedit-customer-input.js-workspacedit-customer-city")).sendKeys("1");
+        new Select(driver.findElement(By.cssSelector(".ui-dropdown-select.mod-full-width.js-ui-dropdown." +
+                "js-tap-indication.js-tap-direct.js-select-customer-country-option"))).selectByVisibleText("Ukraine");
+        driver.findElement(By.cssSelector(".ui-button-green.mod-full-width.workspaceedit-customer.js-workspacedit-customer")).click();
+        Thread.sleep(10000);
+//        driver.findElement(By.xpath())
+        driver.findElement(By.xpath("html/body/div[1]/div[1]/div/div[2]/div/form/label/input")).sendKeys("1");
+        driver.findElement(By.id("expiration")).sendKeys("1");
+
+    }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     private static boolean isElementPresent(By by, WebDriver driver) {
         try {

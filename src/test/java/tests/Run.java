@@ -19,17 +19,9 @@ public class Run {
 
         System.out.println("*** ShortTest - USS Endeavor13 ***");
 
-        System.out.println(Service.nowTime() + " : 8c.  Create Widget with Constant tags and Users");
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
-        Card.cardsFirstBoardGeneration(driver, 6, 3, false);
-        Card.cardsFirstIdeaGeneration(driver, 6, false);
-        String[] tags = {"UK", "USA", "GER", "POL", "SPA", "ITA", "FRA", "SWE", "UKR"};
-        String[] peoples = {"once", "14", "doce", "sevent", "21"};
-        Card.cardAddElementsToWidget(driver, tags, peoples, 6, 6, 3);
-
-//        STOPSTATEMENT
-        boolean x = true;
-        if (x) return;
+////        STOPSTATEMENT
+//        boolean x = true;
+//        if (x) return;
 
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
@@ -40,7 +32,8 @@ public class Run {
         Users.usersParticularUserRemoval(driver, TestData.testUsersForShortRun[0]);
 
         System.out.println(Service.nowTime() + " : 1c. Change Users Permissions to Administrator/Full Member and Restricted");
-        Users.usersSetupPermission(driver, TestData.testUsersForShortRun[1], UserOrgRoles.RESTRICTED);
+//        !!!! This block will be activated after automation of Standard plan [makeCurrentOrgStandard]
+//        Users.usersSetupPermission(driver, TestData.testUsersForShortRun[1], UserOrgRoles.RESTRICTED);
         Users.usersSetupPermission(driver, TestData.testUsersForShortRun[2], UserOrgRoles.FULL_MEMBER);
         Users.usersSetupPermission(driver, TestData.testUsersForShortRun[3], UserOrgRoles.ADMINISTRATOR);
         Users.closeEditOrganizationMenu(driver);
@@ -60,7 +53,7 @@ public class Run {
         System.out.println(Service.nowTime() + " : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color ");
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PUBLIC, false);
         Collection.collectionRenameCurrent(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY WIDGETS COLLECTION");
-        Widget.widgetsCreation(driver, 4, WidgetState.COLLAPSED, WidgetColor.EMERALD, false);
+        Widget.widgetsCreation(driver, 4, WidgetState.COLLAPSED, WidgetColor.GREEN, false);
         Widget.widgetsRemoval(driver, 1, false);
         Widget.widgetsArchive(driver, 2, WidgetOperation.ARCHIVE, false);
         Widget.widgetsArchive(driver, 1, WidgetOperation.UNARCHIVE, false);
@@ -98,7 +91,7 @@ public class Run {
         Widget.lanesCreate(driver, 1, 3, false);
 
         // Create Board with Cards and Lanes
-        Widget.createLanesWithManyCards(driver, 2, 2, 2, false);
+        if (!currentBrowser.contains("FIREFOX")) Widget.createLanesWithManyCards(driver, 2, 2, 2, false);
 
         System.out.println(Service.nowTime() + " : 7c. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
@@ -143,8 +136,10 @@ public class Run {
         System.out.println(Service.nowTime() + " : g. Add description");
         Card.cardDescriptionAddtoManyCards(driver, TestData.USUAL_DESCRIPTION_TEXT, 4, 4, 1, false);
 
-        System.out.println(Service.nowTime() + " : h. Add comments");
-        Card.cardCommentAddMany(driver, "Hello There!!!!", 2, 5, 5, 1, false);
+        if (!currentBrowser.contains("IE11")){
+            System.out.println(Service.nowTime() + " : h. Add comments");
+            Card.cardCommentAddMany(driver, "Hello There!!!!", 2, 5, 5, 1, false);
+        }
 
 //        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
 //        String filePath = AccessData.GRAPHIC_FILE_PATH;
@@ -212,7 +207,8 @@ public class Run {
         Users.usersParticularUserRemoval(driver, TestData.testUsersForLongRun[0]);
 
         System.out.println(Service.nowTime() + " : 1c. Change Users Permissions to Administrator/Full Member and Restricted");
-        Users.usersSetupPermission(driver, TestData.testUsersForLongRun[1], UserOrgRoles.RESTRICTED);
+//        !!!! This block will be activated after automation of Standard plan [makeCurrentOrgStandard]
+//        Users.usersSetupPermission(driver, TestData.testUsersForLongRun[1], UserOrgRoles.RESTRICTED);
         Users.usersSetupPermission(driver, TestData.testUsersForLongRun[2], UserOrgRoles.FULL_MEMBER);
         Users.usersSetupPermission(driver, TestData.testUsersForLongRun[3], UserOrgRoles.ADMINISTRATOR);
         Users.closeEditOrganizationMenu(driver);

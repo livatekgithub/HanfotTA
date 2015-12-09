@@ -285,9 +285,10 @@ public class Card {
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardAddComment(WebDriver driver, String commentText) throws InterruptedException, IOException {
-        final String CARD_ADD_COMMENT_XPATH = "html/body/div[4]/div/div/div[1]/div[2]/div[6]/div/div[2]/div/div[1]/div";
-        final String CARD_ENTER_COMMENT_XPATH = "html/body/div[4]/div/div/div[1]/div[2]/div[6]/div/div[2]/div/div[1]/div";
-        final String CARD_POST_COMMENT_CSS = ".ui-button.mod-strong.js-tap-indication.js-postcomment";
+
+        final String CARD_ADD_COMMENT_XPATH =   "html/body/div[4]/div/div/div[1]/div[2]/div[6]/div/div[2]/div[1]";
+        final String CARD_ENTER_COMMENT_XPATH = "html/body/div[4]/div/div/div[1]/div[2]/div[6]/div/div[2]/textarea";
+        final String CARD_POST_COMMENT_CSS = ".click-to-edit-save.js-click-to-edit-save-button.js-tap-indication";
 
         driver.findElement(By.xpath(CARD_ADD_COMMENT_XPATH)).click();
         driver.findElement(By.xpath(CARD_ENTER_COMMENT_XPATH)).sendKeys(commentText);
@@ -387,7 +388,8 @@ public class Card {
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardAddDescription(WebDriver driver, String descriptionText) throws InterruptedException {
         final String CARD_DESCRIPTION_CLICK_CSS = ".fastcardpopup-button.fastcardpopup-description-button.js-fastcardpopup-show.js-tap-indication";
-        final String CARD_DESCRIPTION_CSS = ".redactor-editor.redactor-placeholder";
+        final String CARD_DESCRIPTION_CSS = ".click-to-edit.click-to-edit-styling.fastcardpopup-description-click-to-edit." +
+                "js-click-to-edit-card-description.js-click-to-edit-input";
         driver.findElement(By.cssSelector(CARD_DESCRIPTION_CLICK_CSS)).click();
         driver.findElement(By.cssSelector(CARD_DESCRIPTION_CSS)).sendKeys(descriptionText);
     }

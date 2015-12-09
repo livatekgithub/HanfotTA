@@ -47,8 +47,10 @@ public class Widget {
     final static String BOARD_SAVE_BUTTON_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/button";
     final static String WIDGET_BOARD_OPTIONS_CSS = ".widget-menu-choice.js-widget-showboardoptionsmenu.js-tap-indication";
     //rename
+//    final static String IDEA_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[8]/div[2]";
     final static String IDEA_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[7]/div[2]";
     final static String IDEA_RENAME_XPATH = "html/body/div[5]/div/div/div/div[2]/div[2]";
+//    final static String BOARD_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[9]/div[2]";
     final static String BOARD_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[9]";
     final static String BOARD_RENAME_XPATH = "html/body/div[5]/div/div/div/div[2]/div[2]";
     //archive

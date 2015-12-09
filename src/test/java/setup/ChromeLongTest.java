@@ -33,6 +33,10 @@ public class ChromeLongTest {
     @Test
     public void testLogin() throws Exception {
         Users.loginUser(driver, AccessData.TESTURL, AccessData.TESTLOGIN_LONGTESTS, AccessData.TESTPASSWORD_LONGTESTS);
+//        Users.makeCurrentOrgStandard(driver);
+        Users.createNewOrganization(driver,"000 000 - zAutoTests_"+Service.nowTimeForOrgName()+"_User1(LongRun)");
+        driver.get(AccessData.TESTURLX);
+        Thread.sleep(5000);
         tests.Run.RunLong(driver, browser);
 //        General.userSignOut(driver);
 //        General.loginUserWithCash(driver,10);

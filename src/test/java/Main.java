@@ -8,5 +8,7 @@ public class Main {
         System.out.println(Service.nowTime());
         System.out.println(Service.nowTimeForFileName());
         System.out.println(Service.nowTimeForObjectName());
+        System.out.println(Service.nowTimeForOrgName());
+        System.out.println(Service.hourForOrg());
     }
 }
