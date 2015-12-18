@@ -33,8 +33,8 @@ public class ChromeShortTest {
     @Test
     public void testLogin() throws Exception {
         Users.loginUser(driver, AccessData.TESTURL, AccessData.TESTLOGIN_SHORTTESTS, AccessData.TESTPASSWORD_SHORTTESTS);
-        if (Service.hourForOrg().equals("06"))
-            Users.createNewOrganization(driver, "000 000 - zAutoTests_" + Service.nowTimeForOrgName() + "_User13(ShortRun)");
+        if (Service.hourForOrg().equals("09"))
+            Users.createNewOrganization(driver, "000 000 - zAutoTests_" + Service.nowTimeForObjectName() + "_User13(ShortRun)");
         driver.get(AccessData.TESTURLX);
         Thread.sleep(5000);
         tests.Run.RunShort(driver, browser);

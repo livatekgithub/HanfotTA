@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.security.PublicKey;
 
 public class Card {
+
+
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardsFirstIdeaGeneration(WebDriver driver, int number, boolean isLogged) throws InterruptedException {
         String name;
@@ -87,7 +89,7 @@ public class Card {
         }
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
+    //--NCP----------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardOpenIdeaCard(WebDriver driver, int numberX, boolean isLogged) {
         final String IDEA_CARD_X_PATH_FIRST_PART = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[2]/div/div/";
         final String IDEA_CARD_X_PATH_ADD_CARD = "/div";
@@ -100,26 +102,21 @@ public class Card {
         driver.findElement(By.xpath(IDEA_CARD_X_PATH_FIRST_PART + dynamicPart + IDEA_CARD_X_PATH_ADD_CARD)).click();
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
+    //--NCP----------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardCancel(WebDriver driver) {
-        final String CARD_CANCEL_CSS = ".popup-window-toolbar-button.mod-cancel.js-popup-cancel";
+        final String CARD_CANCEL_CSS = ".cardpopup-close.js-close-cardpopup.js-tap-indication";
         driver.findElement(By.cssSelector(CARD_CANCEL_CSS)).click();
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void cardSave(WebDriver driver) {
-        final String CARD_SAVE_CSS = ".popup-window-toolbar-button.mod-done.js-popup-done";
-        driver.findElement(By.cssSelector(CARD_SAVE_CSS)).click();
-    }
-
-    //------------------------------------------------------------------------------------------------------------------------------------------------
+    //--NCP----------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardDelete(WebDriver driver, boolean isLogged) {
-        final String CARD_DELETE_CSS = ".popup-window-toolbar-button.mod-remove.js-tap-indication.js-popup-remove";
+        final String CARD_DELETE_CSS = ".ui-button-text";
+        driver.findElement(By.cssSelector(CARD_DELETE_CSS)).click();
         driver.findElement(By.cssSelector(CARD_DELETE_CSS)).click();
         if (isLogged) System.out.println("Card was removed");
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
+    //--NCP----------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardDeleteMany(WebDriver driver, int number, int boardRow, boolean isLogged) throws InterruptedException {
         for (int i = 1; i <= number; i++) {
             cardOpenIdeaCard(driver, 1, isLogged);
@@ -169,22 +166,22 @@ public class Card {
             for (String tagElement : listOfTags) {
                 cardOpenIdeaCard(driver, i, false);
                 cardAddTag(driver, tagElement, false);
-                cardSave(driver);
+                cardCancel(driver);
             }
             cardOpenIdeaCard(driver, i, false);
             cardAddListOfPeople(driver, listOfUsers, false);
-            cardSave(driver);
+            cardCancel(driver);
         }
         for (int j = 1; j <= boardCardX; j++) {
             for (int k = 1; k <= boardCardY; k++) {
                 for (String tagElement : listOfTags) {
                     cardOpenBoardCard(driver, j, k, false);
                     cardAddTag(driver, tagElement, false);
-                    cardSave(driver);
+                    cardCancel(driver);
                 }
                 cardOpenBoardCard(driver, j, k, false);
                 cardAddListOfPeople(driver, listOfUsers, false);
-                cardSave(driver);
+                cardCancel(driver);
             }
         }
     }
@@ -224,22 +221,22 @@ public class Card {
         int randomNumber = (int) (Math.random() * 1000000);
         cardOpenIdeaCard(driver, ideaCardNum, false);
         cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".Idea card with Many Tags");
-        cardSave(driver);
+        cardCancel(driver);
 
         cardOpenBoardCard(driver, boardCardX, boardCardY, false);
         cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".Board card with Many Tags");
-        cardSave(driver);
+        cardCancel(driver);
         for (int i = 1; i <= number; i++) {
             cardOpenIdeaCard(driver, ideaCardNum, false);
             cardAddTag(driver, Integer.toString(randomNumber) + "Idea_Tag" + Integer.toString(i), false);
             Thread.sleep(300);
-            cardSave(driver);
+            cardCancel(driver);
         }
         for (int i = 1; i <= number; i++) {
             cardOpenBoardCard(driver, boardCardX, boardCardY, false);
             cardAddTag(driver, Integer.toString(randomNumber) + "Board_Tag" + Integer.toString(i), false);
             Thread.sleep(300);
-            cardSave(driver);
+            cardCancel(driver);
         }
         Thread.sleep(1000);
     }
@@ -266,19 +263,19 @@ public class Card {
     public static void cardAddManyTasks(WebDriver driver, int numberOfTasks, int ideaCardNum, int boardCardX, int boardCardY, boolean isLogged) throws InterruptedException {
         cardOpenIdeaCard(driver, ideaCardNum, false);
         cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".Idea card with Many Tasks");
-        cardSave(driver);
+        cardCancel(driver);
         cardOpenBoardCard(driver, boardCardX, boardCardY, false);
         cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".Board card with Many Tasks");
-        cardSave(driver);
+        cardCancel(driver);
         for (int i = 1; i <= numberOfTasks; i++) {
             cardOpenIdeaCard(driver, ideaCardNum, false);
             cardAddTask(driver, "IdeaTask" + Integer.toString(i), false);
-            cardSave(driver);
+            cardCancel(driver);
         }
         for (int i = 1; i <= numberOfTasks; i++) {
             cardOpenBoardCard(driver, boardCardX, boardCardY, false);
             cardAddTask(driver, "BoardTask" + Integer.toString(i), false);
-            cardSave(driver);
+            cardCancel(driver);
         }
         Thread.sleep(1000);
     }
@@ -286,7 +283,7 @@ public class Card {
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardAddComment(WebDriver driver, String commentText) throws InterruptedException, IOException {
 
-        final String CARD_ADD_COMMENT_XPATH =   "html/body/div[4]/div/div/div[1]/div[2]/div[6]/div/div[2]/div[1]";
+        final String CARD_ADD_COMMENT_XPATH = "html/body/div[4]/div/div/div[1]/div[2]/div[6]/div/div[2]/div[1]";
         final String CARD_ENTER_COMMENT_XPATH = "html/body/div[4]/div/div/div[1]/div[2]/div[6]/div/div[2]/textarea";
         final String CARD_POST_COMMENT_CSS = ".click-to-edit-save.js-click-to-edit-save-button.js-tap-indication";
 
@@ -302,13 +299,13 @@ public class Card {
             cardOpenIdeaCard(driver, ideaCardNum, false);
             cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".Idea Card with Comments");
             cardAddComment(driver, commentText);
-            cardSave(driver);
+            cardCancel(driver);
         }
         for (int i = 1; i <= occurenceNumber; i++) {
             cardOpenBoardCard(driver, boardCardX, boardCardY, false);
             cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".Board Card with Comments");
             cardAddComment(driver, commentText);
-            cardSave(driver);
+            cardCancel(driver);
         }
     }
 
@@ -337,26 +334,26 @@ public class Card {
         //Set Dates for Ideas Cards
         cardOpenIdeaCard(driver, firstCard, false);
         cardDatesSet(driver, startDate, finishDate, false);
-        cardSave(driver);
+        cardCancel(driver);
         cardOpenIdeaCard(driver, firstCard + 1, false);
         cardDatesSet(driver, startDate, null, false);
-        cardSave(driver);
+        cardCancel(driver);
         cardOpenIdeaCard(driver, firstCard + 2, false);
         cardDatesSet(driver, null, finishDate, false); //***
-        cardSave(driver);
+        cardCancel(driver);
 
         //Set Dates for Board Cards
         cardOpenBoardCard(driver, firstCard, columnNum, false);
         cardDatesSet(driver, startDate, finishDate, false);
-        cardSave(driver);
+        cardCancel(driver);
         Thread.sleep(1000);
         cardOpenBoardCard(driver, firstCard + 1, columnNum, false);
         cardDatesSet(driver, startDate, null, false);
-        cardSave(driver);
+        cardCancel(driver);
         Thread.sleep(1000);
         cardOpenBoardCard(driver, firstCard + 2, columnNum, false);
         cardDatesSet(driver, null, finishDate, false);
-        cardSave(driver);
+        cardCancel(driver);
         Thread.sleep(1000);
     }
 
@@ -379,7 +376,7 @@ public class Card {
             Thread.sleep(1000);
             cardDatesSet(driver, null, dateName, false);
             Thread.sleep(1000);
-            cardSave(driver);
+            cardCancel(driver);
             Thread.sleep(1000);
         }
         Thread.sleep(1000);
@@ -399,11 +396,11 @@ public class Card {
         Card.cardOpenIdeaCard(driver, ideaCardNum, false);
         Card.cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + " Idea Card with Big Description");
         Card.cardAddDescription(driver, descriptionText);
-        Card.cardSave(driver);
+        cardCancel(driver);
         Card.cardOpenBoardCard(driver, boardCardX, boardCardY, false);
         Card.cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + " Board Card with Big Description");
         Card.cardAddDescription(driver, descriptionText);
-        Card.cardSave(driver);
+        cardCancel(driver);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
@@ -426,14 +423,14 @@ public class Card {
         for (String selectedName : userNames) {
             cardAddPeople(driver, selectedName, false);
         }
-        cardSave(driver);
+        cardCancel(driver);
 
         cardOpenBoardCard(driver, boardCardX, boardCardY, false);
         cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".Board card with Assignment");
         for (String selectedName : userNames) {
             cardAddPeople(driver, selectedName, false);
         }
-        cardSave(driver);
+        cardCancel(driver);
 //        Thread.sleep(500);
     }
 
@@ -476,7 +473,7 @@ public class Card {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(5000);
-        Card.cardSave(driver);
+        cardCancel(driver);
         Thread.sleep(5000);
 
         Card.cardOpenBoardCard(driver, boardCardX, boardCardY, false);
@@ -492,7 +489,7 @@ public class Card {
         robot2.keyPress(KeyEvent.VK_ENTER);
         robot2.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(5000);
-        Card.cardSave(driver);
+        cardCancel(driver);
         Thread.sleep(5000);
     }
 

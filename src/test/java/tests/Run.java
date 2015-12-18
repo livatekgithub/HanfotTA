@@ -19,9 +19,33 @@ public class Run {
 
         System.out.println("*** ShortTest - USS Endeavor13 ***");
 
-////        STOPSTATEMENT
-//        boolean x = true;
-//        if (x) return;
+//        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREEN, false);
+//        Card.cardsFirstBoardGeneration(driver, 5, 3, false);
+//        Card.cardsFirstIdeaGeneration(driver, 5, false);
+
+        Card.cardOpenIdeaCard(driver, 1, false);
+        Thread.sleep(2000);
+        Card.cardCancel(driver);
+        Card.cardOpenBoardCard(driver, 2, 2, false);
+        Thread.sleep(2000);
+        Card.cardCancel(driver);
+
+//        Card.cardOpenIdeaCard(driver, 1, false);
+//        Thread.sleep(2000);
+//        Card.cardDelete(driver, false);
+//        Card.cardOpenBoardCard(driver, 2, 2, false);
+//        Thread.sleep(2000);
+//        Card.cardDelete(driver, false);
+//        Thread.sleep(2000);
+
+
+
+
+
+
+//        STOPSTATEMENT
+        boolean x = true;
+        if (x) return;
 
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
@@ -104,7 +128,15 @@ public class Run {
         Column.columnsArchiveAll(driver, 3, false);
         Column.columnSubscribe(driver, 4, false);
 
-        System.out.println(Service.nowTime() + " : 8b. Cards Creation(3*5) for Board and Idea");
+        System.out.println(Service.nowTime() + " : 8c.  Create Widget with Constant tags and Users");
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
+        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+        Card.cardsFirstIdeaGeneration(driver, 2, false);
+        String[] tags = {"UK", "USA", "GER", "POL", "SPA", "ITA", "FRA", "SWE", "UKR"};
+        String[] peoples = {"8", "Hexus", "99", "pentagon"};
+        Card.cardAddElementsToWidget(driver, tags, peoples, 2, 2, 2);
+
+        System.out.println(Service.nowTime() + " : 8d. Cards Creation(3*5) for Board and Idea");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
         Widget.widgetsCurrentRename(driver, ".MANY CARDS IDEA", WidgetType.IDEA, false);
         Widget.widgetsCurrentRename(driver, ".MANY CARDS BOARD", WidgetType.BOARD, false);
@@ -136,10 +168,9 @@ public class Run {
         System.out.println(Service.nowTime() + " : g. Add description");
         Card.cardDescriptionAddtoManyCards(driver, TestData.USUAL_DESCRIPTION_TEXT, 4, 4, 1, false);
 
-        if (!currentBrowser.contains("IE11")){
+//        if (!currentBrowser.contains("IE11")) {
             System.out.println(Service.nowTime() + " : h. Add comments");
             Card.cardCommentAddMany(driver, "Hello There!!!!", 2, 5, 5, 1, false);
-        }
 
 //        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
 //        String filePath = AccessData.GRAPHIC_FILE_PATH;
@@ -187,7 +218,7 @@ public class Run {
     //----------------------------------------------------------------------------------------------------------------------
     public static void runTestAllMethods(WebDriver driver, boolean logMode) throws InterruptedException, IOException, AWTException {
 
-        System.out.println("*** Test. UK Air Force 1***");
+        System.out.println("*** Test. UK Air Force 10***");
 
 //        STOPSTATEMENT
 //        boolean x=true;
@@ -267,7 +298,7 @@ public class Run {
         Widget.lanesCreate(driver, 1, 7, false);
 
         // Create Board with Cards and Lanes
-        Widget.createLanesWithManyCards(driver, 4, 5, 3, false);
+        if (!currentBrowser.contains("FIREFOX")) Widget.createLanesWithManyCards(driver, 4, 5, 3, false);
 
         System.out.println(Service.nowTime() + " : 7c. Columns Creation(3)");
         Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, false);
@@ -328,6 +359,7 @@ public class Run {
         Card.cardDescriptionAddtoManyCards(driver, TestData.USUAL_DESCRIPTION_TEXT, 3, 1, 3, false);
 //        Card.cardDescriptionAddtoManyCards(driver, TestData.DESCRIPTION_TEXT, 1, 1, 3, false);
 
+//        if (!currentBrowser.contains("IE11")) {
         System.out.println(Service.nowTime() + " : h. Add comments");
         Card.cardCommentAddMany(driver, "Hello There!!!!", 10, 4, 4, 1, false);
 

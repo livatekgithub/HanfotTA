@@ -27,8 +27,8 @@ public class Users implements utils.AccessData {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void loginUser(WebDriver driver, String testURL, String testLogin, String testPassword) throws InterruptedException {
         driver.get("https://test.hansoftx.com/logout");
-        driver.manage().window().maximize();
-//        WindowOperations.resizeWindowforIdea(driver);
+//        driver.manage().window().maximize();
+        WindowOperations.resizeWindowforIdea(driver);
         driver.get(AccessData.TESTURL);
         Thread.sleep(3000);
         driver.findElement(By.id("form-email")).clear();
