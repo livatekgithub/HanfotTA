@@ -19,29 +19,40 @@ public class Run {
 
         System.out.println("*** ShortTest - USS Endeavor13 ***");
 
-//        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREEN, false);
-//        Card.cardsFirstBoardGeneration(driver, 5, 3, false);
-//        Card.cardsFirstIdeaGeneration(driver, 5, false);
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.YELLOW, false);
+        Card.cardsFirstBoardGeneration(driver, 2, 2, false);
+        Card.cardsFirstIdeaGeneration(driver, 2, false);
 
-        Card.cardOpenIdeaCard(driver, 1, false);
-        Thread.sleep(2000);
-        Card.cardCancel(driver);
-        Card.cardOpenBoardCard(driver, 2, 2, false);
-        Thread.sleep(2000);
-        Card.cardCancel(driver);
+        String[] users1 = {"13", "8", "99", "Hex", "Pent"};
+        String[] tags1 = {"13", "8", "99", "Hex", "Pent"};
+        String[] tasks1 = {"13", "8", "99", "Hex", "Pent"};
+
+        Card.cardDescriptionAddtoManyCards(driver,TestData.DESCRIPTION_TEXT,1,1,1,false);
 
 //        Card.cardOpenIdeaCard(driver, 1, false);
-//        Thread.sleep(2000);
-//        Card.cardDelete(driver, false);
-//        Card.cardOpenBoardCard(driver, 2, 2, false);
-//        Thread.sleep(2000);
-//        Card.cardDelete(driver, false);
-//        Thread.sleep(2000);
-
-
-
-
-
+//        Card.cardAddDescription(driver,TestData.DESCRIPTION_TEXT);
+//        Card.cardAddTag(driver,"Description",false);
+//        Card.cardCancel(driver);
+//
+//        Card.cardOpenBoardCard(driver, 1, 1, false);
+//        Card.cardAddDescription(driver, TestData.USUAL_DESCRIPTION_TEXT);
+//        Card.cardAddTag(driver,"Description",false);
+//        Card.cardCancel(driver);
+//
+//        Card.cardOpenBoardCard(driver, 2, 1, false);
+//        Card.cardAddDescription(driver, TestData.USUAL_DESCRIPTION_TEXT2);
+//        Card.cardAddTag(driver,"Description",false);
+//        Card.cardCancel(driver);
+//
+//        Card.cardOpenBoardCard(driver, 4, 2, false);
+//        Card.cardDatesSet(driver, "2015/12/21", null, false);
+//        Card.cardAddTag(driver,"Dates",false);
+//        Card.cardCancel(driver);
+//
+//        Card.cardOpenBoardCard(driver, 4, 3, false);
+//        Card.cardDatesSet(driver, null, "2015/12/24", false);
+//        Card.cardAddTag(driver,"Dates",false);
+//        Card.cardCancel(driver);
 
 //        STOPSTATEMENT
         boolean x = true;
@@ -156,7 +167,7 @@ public class Run {
         Card.cardAddManyNewTagsToCard(driver, 2, 1, 1, 1);
 
         System.out.println(Service.nowTime() + " : d. Add many tasks");
-        Card.cardAddManyTasks(driver, 2, 2, 2, 1, false);
+//        Card.cardAddManyTasks(driver, 2, 2, 2, 1, false);
 
         System.out.println(Service.nowTime() + " : e. Add many users");
         String[] users = {"pent", "13", "9", "ei"};
@@ -169,8 +180,8 @@ public class Run {
         Card.cardDescriptionAddtoManyCards(driver, TestData.USUAL_DESCRIPTION_TEXT, 4, 4, 1, false);
 
 //        if (!currentBrowser.contains("IE11")) {
-            System.out.println(Service.nowTime() + " : h. Add comments");
-            Card.cardCommentAddMany(driver, "Hello There!!!!", 2, 5, 5, 1, false);
+        System.out.println(Service.nowTime() + " : h. Add comments");
+        Card.cardCommentAddMany(driver, "Hello There!!!!", 2, 5, 5, 1, false);
 
 //        System.out.println(Service.nowTime() + " : i. Add files (PNG,TXT)");
 //        String filePath = AccessData.GRAPHIC_FILE_PATH;
@@ -344,7 +355,7 @@ public class Run {
         Card.cardAddManyNewTagsToCard(driver, 10, 1, 1, 1);
 
         System.out.println(Service.nowTime() + " : d. Add many tasks");
-        Card.cardAddManyTasks(driver, 10, 2, 2, 1, false);
+//        Card.cardAddManyTasks(driver, 10, 2, 2, 1, false);
 
         System.out.println(Service.nowTime() + " : e. Add many users");
         String[] users = {"17", "once", "diaz", "livatenko", "fourth", "kirill", "14", "doce", "fifteen"};
