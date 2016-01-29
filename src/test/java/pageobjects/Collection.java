@@ -8,12 +8,12 @@ import utils.Service;
 
 public class Collection {
     //creation
-
     final static String COLLECTION_ADD_XPATH = "html/body/div[3]/div[2]/div[1]/div[1]";
-    final static String COLLECTION_ENTER_NAME_XPATH = "html/body/div[4]/div[2]/div/div[1]/div[1]/div[1]/div[2]/input";
-    final static String COLLECTION_SHARE_WITHORG_XPATH = "html/body/div[4]/div[2]/div/div[1]/div[1]/div[3]/div[6]/div/img";
+    final static String COLLECTION_ENTER_NAME_XPATH = "html/body/div[4]/div/div[1]/div[1]/div[1]/div[1]/div[2]/input";
+    final static String COLLECTION_CONFIGURE_PUBLIC_XPATH = "html/body/div[4]/div/div[1]/div[1]/div[1]/div[3]/div[6]/div[2]/div[1]/div[2]";
+    final static String COLLECTION_SHARE_WITH_ORG_XPATH = "html/body/div[4]/div/div[1]/div[1]/div[1]/div[3]/div[6]/div[2]/div[2]/div[2]/div/div[1]";
+    final static String COLLECTION_SHARE_WITH_EVERYONE_XPATH = "html/body/div[4]/div/div[1]/div[1]/div[1]/div[3]/div[6]/div[2]/div[2]/div[3]/div/div[1]";
     final static String COLLECTION_DONE_BUTTON_CSS = ".popup-window-toolbar-button.mod-done.js-popup-done";
-    final static String DONE_BUTTON_XPATH = "html/body/div[4]/div/div/div[1]/div[2]/div/div[6]";
     //remove
     final static String COLLLECTION_OPEN_PAGEMENU_XPATH = "html/body/div[3]/div[2]/div[2]/div[1]/div/div/div[1]";
     final static String COLLECTION_GETNAME_XPATH="html/body/div[3]/div[2]/div[2]/div/div/div/div[1]";
@@ -25,19 +25,29 @@ public class Collection {
     Collection(int number){
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void collectionCreation(WebDriver driver, int number, CollectionSharingMode pageSharingMode, boolean isLogged) throws InterruptedException {
+    public static void collectionCreation(WebDriver driver, int number,CollectionSharingMode pageSharingMode, boolean isLogged) throws InterruptedException {
         String name;
         String nameTemplate;
         if (pageSharingMode == CollectionSharingMode.PUBLIC) nameTemplate = Run.currentBrowser+
                 Service.nowTimeForObjectName()+".Collection.Public";
-        else nameTemplate = Run.currentBrowser+Service.nowTimeForObjectName()+"Collection.Private";
+        else if (pageSharingMode == CollectionSharingMode.EVERYONE) nameTemplate = Run.currentBrowser+
+                Service.nowTimeForObjectName()+".Collection.EveryOne";
+        else nameTemplate = Run.currentBrowser+
+                Service.nowTimeForObjectName()+"Collection.Private";
         for (int i = 1; i <= number; i++) {
             name = nameTemplate + " " + Integer.toString(i);
             driver.findElement(By.xpath(COLLECTION_ADD_XPATH)).click();
             if (isLogged) System.out.println(Service.nowTime() + name + " was created:");
             driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).clear();
             driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).sendKeys(name);
-            if (pageSharingMode == CollectionSharingMode.PUBLIC) driver.findElement(By.xpath(COLLECTION_SHARE_WITHORG_XPATH)).click();
+            if (pageSharingMode == CollectionSharingMode.PUBLIC) {
+                driver.findElement(By.xpath(COLLECTION_CONFIGURE_PUBLIC_XPATH)).click();
+                driver.findElement(By.xpath(COLLECTION_SHARE_WITH_ORG_XPATH)).click();
+            }
+            if (pageSharingMode == CollectionSharingMode.EVERYONE) {
+                driver.findElement(By.xpath(COLLECTION_CONFIGURE_PUBLIC_XPATH)).click();
+                driver.findElement(By.xpath(COLLECTION_SHARE_WITH_EVERYONE_XPATH)).click();
+            }
             driver.findElement(By.cssSelector(COLLECTION_DONE_BUTTON_CSS)).click();
         }
     }

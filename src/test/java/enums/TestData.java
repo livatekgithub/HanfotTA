@@ -4,28 +4,34 @@ public class TestData {
 
     public static String[] testUsersForShortRun = {
             "livatek.user4@gmail.com",
-            "livatek.user5@ukr.net",
-            "livatek.user6@ukr.net",
+            "livatek.user11@gmail.com",
+            "livatek.user7@gmail.com",
             "livatek.user9@gmail.com",
-            " LIVATEK.user8@ukr.net  ",
+            "   LIvatek.user10@gmail.com"
     };
     public static String[] testUsersForLongRun = {
-            "livatek.user14@ukr.net",
-            "livatek.user17@ukr.net",
-            "livatek.user21@ukr.net",
-            "livatek.user12@ukr.net",
-            "livatek.user15@ukr.net",
-            "LIVATEK.user2@gmail.com  ",
-            "   livatek.user10@gmail.com",
-            "livatek.user11@gmail.com",
-            "livatek.user16@ukr.net",
-            "livatek.user18@gmail.com",
-            "livatek.user19@ukr.net",
+            "hansoftxtest11@gmail.com",
+            " LIVATEK.user2@gmail.com  ",
             "livatek.user20@gmail.com",
             "livatek.user22@gmail.com",
             "livatek.github@gmail.com",
-            "livatek.github3@ukr.net",
-            "livatek.github4@gmail.com"
+            "livatek.github4@gmail.com",
+            "hansoftxtest1@gmail.com",
+            "hansoftxtest2@gmail.com",
+            "hansoftxtest3@gmail.com",
+            "hansoftxtest4@gmail.com",
+            "hansoftxtest5@gmail.com",
+            "hansoftxtest6@gmail.com",
+            "hansoftxtest7@gmail.com",
+            "hansoftxtest9@gmail.com",
+            "hansoftxtest13@gmail.com",
+            "hansoftxtest14@gmail.com",
+            "hansoftxtest15@gmail.com",
+            "hansoftxtest16@gmail.com",
+            "hansoftxtest17@gmail.com",
+            "hansoftxtest18@gmail.com",
+            "hansoftxtest19@gmail.com",
+            "hansoftxtest20@gmail.com"
     };
     public static String[] testUserNames =
             {

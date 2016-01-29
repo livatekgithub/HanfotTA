@@ -1,0 +1,7 @@
+--Add-Task--------------------------------------------------------------------------------------------------------------
+(//div[@class='card-task-list-container js-card-task-list js-tap-hold-drag js-tap-indication ui-sortable-handle']/
+child::div[2]/child::div/child::div/child::textarea)[last()]
+------------------------------------------------------------------------------------------------------------------------
+(//div[@class='click-to-edit-cancel js-click-to-edit-cancel-button js-tap-indication'])[last()-1]
+------------------------------------------------------------------------------------------------------------------------
+//div[@class='.app-menu-choice-title'][contains(text(),"Run Tutorial")]

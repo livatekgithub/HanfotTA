@@ -363,7 +363,7 @@ public class OldCard {
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardDatesAddCalendar(WebDriver driver, String month, boolean isLogged) throws InterruptedException {
         String dateField;
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, false);
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, true, false);
         cardsFirstBoardGeneration(driver, 7, 5, false);
 
         String dateName = "";

@@ -103,12 +103,12 @@ public class Widget {
     final static String WIDGET_ADD_LANE = "(//div[contains(text(),'Add lane')])";
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void widgetsCreation(WebDriver driver, int number, WidgetState widgetState, WidgetColor widgetColor, boolean isLogged) throws InterruptedException {
+    public static void widgetsCreation(WebDriver driver, int number, WidgetState widgetState, WidgetColor widgetColor, boolean refreshBefore, boolean isLogged) throws InterruptedException {
         String name;
         String colorId;
         String colorName = "";
         int colorCode = 0;
-        driver.navigate().refresh(); //to get constant xpath links
+        if (refreshBefore) driver.navigate().refresh(); //to get constant xpath links
         Thread.sleep(3000);
         for (int i = 11; i < 11 + number; i++) {
             if (widgetColor == WidgetColor.RANDOM) {
@@ -276,7 +276,7 @@ public class Widget {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
 //    Widget.widgetsCreateBigWidgets(driver, 80, 80, 4);
     public static void widgetsCreateBigWidgets(WebDriver driver, int yIdea, int yBoard, int xBoard) throws InterruptedException {
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, false);
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, true, false);
         Widget.widgetsCurrentRename(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS IDEA", WidgetType.IDEA, false);
         Widget.widgetsCurrentRename(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, yBoard, xBoard, false);
@@ -284,7 +284,7 @@ public class Widget {
         for (int j = 1; j <= yBoard; j++) {
             for (int i = 1; i <= xBoard; i++) {
                 Card.cardAddManyNewTagsToCard(driver, 3, j, j, i);
-                String[] users = {"war", "Nine", "ei", "onc"};
+                String[] users = {"zKirill", "livatekgithub4", "livatekgithub", "6","1"};
                 Card.cardAddFewPeople(driver, users, j, j, i);
             }
         }
@@ -305,7 +305,7 @@ public class Widget {
         if (widgetType == WidgetType.BOARD) driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
         if (widgetType == WidgetType.IDEA) driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
         driver.findElement(By.xpath(WIDGET_MENU_APPS_INTEGRATIONS)).click();
-        driver.findElement(By.cssSelector(WIDGET_MENU_APPS_POPUP)).click();
+//        driver.findElement(By.cssSelector(WIDGET_MENU_APPS_POPUP)).click();
         switch (widgetSettings) {
             case VALUES: {
                 driver.findElement(By.xpath(WIDGET_MENU_APPS_VALUES)).click();
@@ -342,11 +342,12 @@ public class Widget {
             break;
         }
         driver.findElement(By.cssSelector(WIDGET_MENU_APPS_CLOSE)).click();
+        driver.findElement(By.cssSelector(".popup-bg.mod-transparent.js-workspace-popup-bg")).click();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetEnableAllIntegrationsYN(WebDriver driver, boolean enableYesNo) throws InterruptedException {
-        if (enableYesNo) widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREEN, false);
+        if (enableYesNo) widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREEN, true, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.VALUES, enableYesNo, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.WORKFLOW, enableYesNo, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, enableYesNo, false);
@@ -411,7 +412,7 @@ public class Widget {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void createLanesWithManyCards(WebDriver driver, int numberOfColumnsX, int numberOfLanesY, int numberOfCardsZ, boolean isLogged) throws InterruptedException {
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.VIOLET, false);
+        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.VIOLET, true, false);
         Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD" + numberOfColumnsX + "x" + numberOfLanesY + "x" + numberOfCardsZ, WidgetType.BOARD, false);
         Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
         if (numberOfColumnsX > 2) Column.columnsCreation(driver, numberOfColumnsX - 2, false);

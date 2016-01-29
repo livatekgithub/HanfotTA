@@ -46,7 +46,7 @@ public class Todo {
                         Thread.sleep(3000);
                         cardName = driver.findElement(By.xpath(TODO_FIRST_UNFINISHED_CARD_XPATH)).getText();
                         driver.findElement(By.xpath(TODO_FIRST_UNFINISHED_CARD_XPATH)).click();
-                        driver.findElement(By.cssSelector(".popup-window-toolbar-button.mod-remove.js-tap-indication.js-popup-remove")).click();
+                        Card.cardDelete(driver,false);
                         Thread.sleep(300);
                         if ((logType == LogType.ACTIONLOG) || (logType == LogType.XPATHLOG))
                             System.out.println("Log: " + Service.nowTime() + " UnFinished TODO Card [ " + cardName + " ]were removed");
@@ -68,7 +68,7 @@ public class Todo {
                     cardName = driver.findElement(By.xpath(TODO_FIRST_FINISHED_CARD_XPATH)).getText();
                     driver.findElement(By.xpath(TODO_FIRST_FINISHED_CARD_XPATH)).click();
                     Thread.sleep(300);
-                    driver.findElement(By.cssSelector(".popup-window-toolbar-button.mod-remove.js-tap-indication.js-popup-remove")).click();
+                    Card.cardDelete(driver, false);
                     Thread.sleep(300);
                     if ((logType == LogType.ACTIONLOG) || (logType == LogType.XPATHLOG))
                         System.out.println("Log: " + Service.nowTime() + " Finished TODO Card [ " + cardName + " ]were removed");

@@ -88,9 +88,10 @@ public class Users implements utils.AccessData {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void closeEditOrganizationMenu(WebDriver driver) {
+    public static void closeEditOrganizationMenu(WebDriver driver) throws InterruptedException {
         driver.findElement(By.cssSelector(USER_ORG_MENU_CLOSE_BUTTON_CSS)).click();
         driver.findElement(By.cssSelector(USER_ORG_MENU_DISMISS_CSS)).click();
+        Thread.sleep(3000);
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -124,10 +125,11 @@ public class Users implements utils.AccessData {
     public static void usersRemoveAllFromOrganization(WebDriver driver, boolean isLogged) throws InterruptedException {
 
         String userName;
-        final String USER_SECOND_USER_EXIST_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[2]/div[2]/div";
-        final String USER_LAST_USER_NAME_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
-        final String USER_LAST_USER_REMOVE_BUTTON_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]/div";
-        final String USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH = "html/body/div[5]/div[2]/div/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div";
+        final String USER_SECOND_USER_EXIST_XPATH = "html/body/div[5]/div/div[1]/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[1]/div[2]/div[1]";
+        final String USER_LAST_USER_NAME_XPATH = "html/body/div[5]/div/div[1]/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
+        final String USER_LAST_USER_REMOVE_BUTTON_XPATH = "html/body/div[5]/div/div[1]/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]/div";
+        final String USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH = "html/body/div[5]/div/div[1]/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div";
+
         usersOpenMembersList(driver);
         while (isElementPresent(By.xpath(USER_SECOND_USER_EXIST_XPATH), driver)) {
             userName = driver.findElement(By.xpath(USER_LAST_USER_NAME_XPATH)).getText();
@@ -176,6 +178,7 @@ public class Users implements utils.AccessData {
         new WebDriverWait(driver, 120).until(ExpectedConditions.presenceOfElementLocated(By.xpath(DELETE_XPATH)));
         String DELETE_CONFIRM_XPATH = "//div[text()=\"" + userEmail + "\"]/parent::*/parent::*/following-sibling::*/div";
         driver.findElement(By.xpath(DELETE_XPATH)).click();
+        Thread.sleep(1000);
         driver.findElement(By.xpath(DELETE_CONFIRM_XPATH)).click();
         service.stopCount();
         System.out.println("Waiting... " + service.getTimeDurationInSeconds() + "Seconds");
