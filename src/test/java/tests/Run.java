@@ -4,6 +4,8 @@ import enums.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import pageobjects.*;
 import utils.AccessData;
 import utils.Service;
@@ -30,12 +32,23 @@ public class Run {
 //        Card.cardsFirstIdeaGeneration(driver, 4, false);
 //        Card.cardsFirstBoardGeneration(driver, 4, 3, false);
 
+//        Widget.moveCardFromIdeaToIdea(driver,2,1,1,1,false);
+//        Widget.moveCardFromIdeaToIdea(driver,2,1,1,1,false);
+
 //        Tutorial.runTutorial(driver,false);
 
+//        Card.openIdeaCardByWebelement(driver,1,1);
+        Card.openBoardCardByWebelement(driver,1,2,1);
+        Thread.sleep(5000);
+        Card.cardCancel(driver);
 
-//        // STOPSTATEMENT
-//        boolean x = true;
-//        if (x) return;
+//        Widget.moveCardFromIdeaToIdea(driver,1,2,2,2,false);
+        Thread.sleep(5000);
+
+
+        // STOPSTATEMENT
+        boolean x = true;
+        if (x) return;
 
         System.out.println(Service.nowTime() + " : 1. Users Block");
         System.out.println(Service.nowTime() + " : 1a. Remove All users and Add Four Users to Organization(R+4)");
@@ -69,13 +82,13 @@ public class Run {
         System.out.println(Service.nowTime() + " : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color ");
         Collection.collectionCreation(driver, 1, CollectionSharingMode.PUBLIC, false);
         Collection.collectionRenameCurrent(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY WIDGETS COLLECTION");
-        Widget.widgetsCreation(driver, 4, WidgetState.COLLAPSED, WidgetColor.GREEN, true, false);
+        Widget.widgetsCreation(driver, 4, "", WidgetState.COLLAPSED, WidgetColor.GREEN, true, false);
         Widget.widgetsRemoval(driver, 1, false);
         Widget.widgetsArchive(driver, 2, WidgetOperation.ARCHIVE, false);
         Widget.widgetsArchive(driver, 1, WidgetOperation.UNARCHIVE, false);
 
         System.out.println(Service.nowTime() + " : 6b. Widgets Expanded Creation(10)/Removal(4)/Archive(2)/Unarchive(1). Random ");
-        Widget.widgetsCreation(driver, 4, WidgetState.EXPANDED, WidgetColor.RANDOM, true, false);
+        Widget.widgetsCreation(driver, 4, "", WidgetState.EXPANDED, WidgetColor.RANDOM, true, false);
         Widget.widgetsRemoval(driver, 1, false);
         Widget.widgetsArchive(driver, 2, WidgetOperation.ARCHIVE, false);
         Widget.widgetsArchive(driver, 1, WidgetOperation.UNARCHIVE, false);
@@ -92,7 +105,7 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 7b. Lanes / Create from the List / Create with Numbers / Create Board with Cards and Lanes");
         // Create with Names from the List
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREY, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.GREY, true, false);
         Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD (Names from the List)", WidgetType.BOARD, false);
         Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
         String[] lanesNames = {"United Kingdom", "Germany", "France", "Italy", "Spain"};
@@ -100,7 +113,7 @@ public class Run {
         Widget.lanesRemove(driver, 1, false);
 
         // Create with Numbers in Names
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREY, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.GREY, true, false);
         Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD (names with Numbers)", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 3, 3, false);
         Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
@@ -110,9 +123,9 @@ public class Run {
         if (!currentBrowser.contains("FIREFOX")) Widget.createLanesWithManyCards(driver, 2, 2, 2, false);
 
         System.out.println(Service.nowTime() + " : 7c. Columns Creation(3)");
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.RANDOM, true, false);
         Widget.widgetsCurrentRename(driver, ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
-        Card.cardsFirstBoardGeneration(driver, 2, 6, false);
+        Card.cardsFirstBoardGeneration(driver, 2, 10, false);
         Card.cardsFirstIdeaGeneration(driver, 2, false);
 //        Column.columnsCreation(driver, 8, false);
         Column.columnRemove(driver, 2, false);
@@ -124,7 +137,7 @@ public class Run {
         Card.cardBreakDownToWidgets(driver);
 
         System.out.println(Service.nowTime() + " : 8c.  Create Widget with Constant tags and Users");
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.DARKGREEN, true, false);
         Card.cardsFirstBoardGeneration(driver, 2, 2, false);
         Card.cardsFirstIdeaGeneration(driver, 2, false);
         String[] tags = {"UK", "USA", "GER", "POL", "SPA", "ITA", "FRA", "SWE", "UKR"};
@@ -132,7 +145,7 @@ public class Run {
         Card.cardAddElementsToWidget(driver, tags, peoples, 2, 2, 2);
 
         System.out.println(Service.nowTime() + " : 8d. Cards Creation(3*5) for Board and Idea");
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.RED, true, false);
         Widget.widgetsCurrentRename(driver, ".MANY CARDS IDEA", WidgetType.IDEA, false);
         Widget.widgetsCurrentRename(driver, ".MANY CARDS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 6, 3, false);
@@ -241,8 +254,9 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 3. Collections Creation(10)");
         Collection.collectionCreation(driver, 3, CollectionSharingMode.EVERYONE, false);
-        Collection.collectionCreation(driver, 5, CollectionSharingMode.PRIVATE, false);
-        Collection.collectionCreation(driver, 10, CollectionSharingMode.PUBLIC, false);
+        Collection.collectionCreation(driver, 5, CollectionSharingMode.PUBLIC, false);
+        Collection.collectionCreateManyWithWidgets(driver, 5, 5);
+        Collection.collectionCreation(driver, 15, CollectionSharingMode.PRIVATE, false);
 
         System.out.println(Service.nowTime() + " : 4. Collections Archiving(10)");
 
@@ -255,13 +269,13 @@ public class Run {
         Collection.collectionRenameCurrent(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY WIDGETS COLLECTION");
 
         System.out.println(Service.nowTime() + " : 6a. Widgets Collapsed Creation(5)/Removal(1)/Archive(2)/Unarchive(1). Fixed Color ");
-        Widget.widgetsCreation(driver, 6, WidgetState.COLLAPSED, WidgetColor.EMERALD, true, false);
+        Widget.widgetsCreation(driver, 6, "", WidgetState.COLLAPSED, WidgetColor.EMERALD, true, false);
         Widget.widgetsRemoval(driver, 1, false);
         Widget.widgetsArchive(driver, 2, WidgetOperation.ARCHIVE, false);
         Widget.widgetsArchive(driver, 1, WidgetOperation.UNARCHIVE, false);
 
         System.out.println(Service.nowTime() + " : 6b. Widgets Expanded Creation(10)/Removal(4)/Archive(2)/Unarchive(1). Random ");
-        Widget.widgetsCreation(driver, 10, WidgetState.EXPANDED, WidgetColor.RANDOM, true, false);
+        Widget.widgetsCreation(driver, 10, "", WidgetState.EXPANDED, WidgetColor.RANDOM, true, false);
         Widget.widgetsRemoval(driver, 4, false);
         Widget.widgetsArchive(driver, 2, WidgetOperation.ARCHIVE, false);
         Widget.widgetsArchive(driver, 1, WidgetOperation.UNARCHIVE, false);
@@ -279,7 +293,7 @@ public class Run {
 
         System.out.println(Service.nowTime() + " : 7b. Lanes / Create from the List / Remove / Create with Numbers / Create Board with Cards and Lanes");
         // Create with Names from the List
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREY, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.GREY, true, false);
         Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD (Names from the List)", WidgetType.BOARD, false);
         Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
         String[] lanesNames = {"United Kingdom", "Germany", "France", "Italy", "Spain"};
@@ -287,7 +301,7 @@ public class Run {
         Widget.lanesRemove(driver, 1, false);
 
         // Create with Numbers in Names
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREY, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.GREY, true, false);
         Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD (names with Numbers)", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 3, 3, false);
         Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
@@ -297,7 +311,7 @@ public class Run {
         if (!currentBrowser.contains("FIREFOX")) Widget.createLanesWithManyCards(driver, 4, 5, 3, false);
 
         System.out.println(Service.nowTime() + " : 7c. Columns Creation(3)");
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RANDOM, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.RANDOM, true, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY СOLUMNS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, 3, 8, false);
         Card.cardsFirstIdeaGeneration(driver, 3, false);
@@ -316,7 +330,7 @@ public class Run {
         Card.cardDatesAddCalendar(driver, "10", false);
 
         System.out.println(Service.nowTime() + " : 8c.  Create Widget with Constant tags and Users");
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.DARKGREEN, true, false);
         Card.cardsFirstBoardGeneration(driver, 6, 3, false);
         Card.cardsFirstIdeaGeneration(driver, 6, false);
         String[] tags = {"UK", "USA", "GER", "POL", "SPA", "ITA", "FRA", "SWE", "UKR"};
@@ -324,7 +338,7 @@ public class Run {
         Card.cardAddElementsToWidget(driver, tags, peoples, 6, 6, 3);
 
         System.out.println(Service.nowTime() + " : 8d. Cards Creation(4*8) for Board and Idea");
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.RED, true, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS IDEA", WidgetType.IDEA, false);
         Widget.widgetsCurrentRename(driver, currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstIdeaGeneration(driver, 20, false);

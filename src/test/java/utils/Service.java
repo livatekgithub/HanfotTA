@@ -2,6 +2,8 @@ package utils;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +28,11 @@ public class Service {
     }
     public double getTimeDurationInSeconds() {
         return (1.00) * ((timeFinish - timeStart) / 1000);
+    }
+
+    public static void waitFor(WebDriver driver, By elementBy){
+        new WebDriverWait(driver, 120).
+                until(ExpectedConditions.presenceOfElementLocated(elementBy));
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------

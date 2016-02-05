@@ -2,6 +2,8 @@ package pageobjects;
 
 import enums.*;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import tests.Run;
 import utils.Service;
 import org.openqa.selenium.By;
@@ -50,7 +52,7 @@ public class Widget {
 //    final static String IDEA_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[8]/div[2]";
     final static String IDEA_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[7]/div[2]";
     final static String IDEA_RENAME_XPATH = "html/body/div[5]/div/div/div/div[2]/div[2]";
-//    final static String BOARD_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[9]/div[2]";
+    //    final static String BOARD_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[9]/div[2]";
     final static String BOARD_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[9]";
     final static String BOARD_RENAME_XPATH = "html/body/div[5]/div/div/div/div[2]/div[2]";
     //archive
@@ -103,7 +105,7 @@ public class Widget {
     final static String WIDGET_ADD_LANE = "(//div[contains(text(),'Add lane')])";
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void widgetsCreation(WebDriver driver, int number, WidgetState widgetState, WidgetColor widgetColor, boolean refreshBefore, boolean isLogged) throws InterruptedException {
+    public static void widgetsCreation(WebDriver driver, int number, String additionalName, WidgetState widgetState, WidgetColor widgetColor, boolean refreshBefore, boolean isLogged) throws InterruptedException {
         String name;
         String colorId;
         String colorName = "";
@@ -123,22 +125,25 @@ public class Widget {
                 colorId = Integer.toString(widgetColor.ordinal());
                 colorName = widgetColor.toString();
             }
-            name = Integer.toString(i - 10) + " " + colorName;
+            if (!additionalName.equals("")) name = Integer.toString(i - 10) + " " + colorName;
+            else name = Integer.toString(i) + " " + colorName;
             //Create Idea Widget with Sequential Name 1,2,..
             driver.findElement(By.xpath(IDEA_ADD_XPATH)).click();
             Thread.sleep(1000);
-            driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + Service.nowTimeForObjectName()
-                    + "Idea " + name);
+            if (!additionalName.equals(""))
+                driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(additionalName + name);
+            else
+                driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(name + " " + Run.currentBrowser + Service.nowTimeForObjectName() + "Idea " + name);
             driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
-//            driver.findElement(By.xpath(IDEA_SAVE_BUTTON_XPATH)).click(); Old version of code, doesn't work after some update
             if (isLogged) System.out.println(Service.nowTime() + " Idea " + name + " was created:");
 
             //Create Board Widget with Sequential Name 1,2,..
             driver.findElement(By.xpath(BOARD_ADD_XPATH)).click();
-            driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + Service.nowTimeForObjectName() +
-                    "Board " + name);
+            if (!additionalName.equals(""))
+                driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(additionalName + name);
+            else
+                driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(name + " " + Run.currentBrowser + Service.nowTimeForObjectName() + "Board " + name);
             driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
-//            driver.findElement(By.xpath(BOARD_SAVE_BUTTON_XPATH)).click(); Old version of code, doesn't work after some update
             if (isLogged) System.out.println(Service.nowTime() + " Board " + name + " was created:");
             if (widgetState == WidgetState.COLLAPSED) {
                 driver.findElement(By.xpath(IDEA_HEADER_XPATH)).click();
@@ -276,7 +281,7 @@ public class Widget {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
 //    Widget.widgetsCreateBigWidgets(driver, 80, 80, 4);
     public static void widgetsCreateBigWidgets(WebDriver driver, int yIdea, int yBoard, int xBoard) throws InterruptedException {
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.RED, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.RED, true, false);
         Widget.widgetsCurrentRename(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS IDEA", WidgetType.IDEA, false);
         Widget.widgetsCurrentRename(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".MANY CARDS BOARD", WidgetType.BOARD, false);
         Card.cardsFirstBoardGeneration(driver, yBoard, xBoard, false);
@@ -284,7 +289,7 @@ public class Widget {
         for (int j = 1; j <= yBoard; j++) {
             for (int i = 1; i <= xBoard; i++) {
                 Card.cardAddManyNewTagsToCard(driver, 3, j, j, i);
-                String[] users = {"zKirill", "livatekgithub4", "livatekgithub", "6","1"};
+                String[] users = {"zKirill", "livatekgithub4", "livatekgithub", "6", "1"};
                 Card.cardAddFewPeople(driver, users, j, j, i);
             }
         }
@@ -347,7 +352,7 @@ public class Widget {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetEnableAllIntegrationsYN(WebDriver driver, boolean enableYesNo) throws InterruptedException {
-        if (enableYesNo) widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREEN, true, false);
+        if (enableYesNo) widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.GREEN, true, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.VALUES, enableYesNo, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.WORKFLOW, enableYesNo, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, enableYesNo, false);
@@ -356,22 +361,12 @@ public class Widget {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void widgetEnableShowSetting(WebDriver driver, WidgetShowSettings widgetShowSettings, boolean isLogged) {
-
-    }
-
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void widgetSetupWIPLimit(WebDriver driver, int columnNumber, int wiplimitNumber) {
-
-    }
-
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void lanesCreate(WebDriver driver, int widgetNumber, int lanesNumber, boolean isLogged) {
         String addLaneXpath;
         for (int i = 1; i < lanesNumber; i++) {
             addLaneXpath = WIDGET_ADD_LANE + "[" + Integer.toString(widgetNumber) + "]";
             driver.findElement(By.xpath(addLaneXpath)).click();
-            driver.findElement(By.xpath("//textarea")).sendKeys("Lane " + Integer.toString(i+1));
+            driver.findElement(By.xpath("//textarea")).sendKeys("Lane " + Integer.toString(i + 1));
             driver.findElement(By.xpath("//textarea")).sendKeys(Keys.ENTER);
         }
     }
@@ -389,7 +384,7 @@ public class Widget {
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void lanesRemove(WebDriver driver, int lanesNumber, boolean isLogged) {
-        final String WIDGET_CHOOSE_LANE = "(//div[@class=\"board-title-text-lanes\"])";
+        final String WIDGET_CHOOSE_LANE = "(//div[@class=\"card-as-lane card js-boarditem ui-sortable-handle\"])";
         driver.findElement(By.xpath(WIDGET_CHOOSE_LANE + "[" + lanesNumber + "]")).click();
         Card.cardDelete(driver, false);
     }
@@ -412,7 +407,7 @@ public class Widget {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void createLanesWithManyCards(WebDriver driver, int numberOfColumnsX, int numberOfLanesY, int numberOfCardsZ, boolean isLogged) throws InterruptedException {
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.VIOLET, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.VIOLET, true, false);
         Widget.widgetsCurrentRename(driver, ".MANY LANES BOARD" + numberOfColumnsX + "x" + numberOfLanesY + "x" + numberOfCardsZ, WidgetType.BOARD, false);
         Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, true, false);
         if (numberOfColumnsX > 2) Column.columnsCreation(driver, numberOfColumnsX - 2, false);
@@ -429,6 +424,35 @@ public class Widget {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void widgetSetupWIPLimit(WebDriver driver, int columnNumber, int wiplimitNumber) {
 
+    }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void widgetEnableShowSetting(WebDriver driver, WidgetShowSettings widgetShowSettings, boolean isLogged) {
+
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void moveCardFromIdeaToIdea(WebDriver driver,int ideaWidgetFrom,int ideaCardFrom, int ideaWidgetTo,int ideaCardTo,boolean isLogged){
+        WebElement elementCardFrom =Card.takeIdeaCardWebElement(driver,ideaWidgetFrom,ideaCardFrom);
+        WebElement elementCardTo = Card.takeIdeaCardWebElement(driver,ideaWidgetTo,ideaCardTo);
+        (new Actions(driver)).dragAndDrop(elementCardFrom, elementCardTo).perform();
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+//    public static void moveCardFromIdeaToBoard(WebDriver driver,int ideaWidgetFrom,int ideaCardFrom, int boardWidgetTo,int boardColumnTo,int boardCardTo,boolean isLogged){
+//        WebElement elementCardFrom = driver.findElement(By.xpath("((//div[@class='widget-backlog'])["+Integer.toString(ideaWidgetFrom)+"]//*[@class='card-title-text'])["+Integer.toString(ideaCardFrom)+"]"));
+//        if (isLogged) System.out.println("((//div[@class='widget-backlog'])["+Integer.toString(ideaWidgetFrom)+"]//*[@class='card-title-text'])["+Integer.toString(ideaCardFrom)+"]");
+//        WebElement elementCardTo = driver.findElement(By.xpath("((//div[@class='widget-backlog'])["+Integer.toString(ideaWidgetTo)+"]//*[@class='card-title-text'])["+Integer.toString(ideaCardTo)+"]"));
+//        if (isLogged) System.out.println("((//div[@class='widget-backlog'])["+Integer.toString(ideaWidgetTo)+"]//*[@class='card-title-text'])["+Integer.toString(ideaCardTo)+"]");
+//        (new Actions(driver)).dragAndDrop(elementCardFrom, elementCardTo).perform();
+//    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void method3(WebDriver driver){
+
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void method4(WebDriver driver){
+
+    }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
 }

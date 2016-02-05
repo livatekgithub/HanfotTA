@@ -1,6 +1,8 @@
 package pageobjects;
 
 import enums.CollectionSharingMode;
+import enums.WidgetColor;
+import enums.WidgetState;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import tests.Run;
@@ -38,6 +40,7 @@ public class Collection {
             name = nameTemplate + " " + Integer.toString(i);
             driver.findElement(By.xpath(COLLECTION_ADD_XPATH)).click();
             if (isLogged) System.out.println(Service.nowTime() + name + " was created:");
+            Thread.sleep(2000);
             driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).clear();
             driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).sendKeys(name);
             if (pageSharingMode == CollectionSharingMode.PUBLIC) {
@@ -66,11 +69,12 @@ public class Collection {
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void collectionArchiving(WebDriver driver, int number, boolean isLogged) {
+    public static void collectionArchiving(WebDriver driver, int number, boolean isLogged) throws InterruptedException {
         String name;
         for (int i = 1; i <= number; i++) {
             name = Run.currentBrowser+Service.nowTimeForObjectName()+".CollectionArch" + Integer.toString(i);
             driver.findElement(By.xpath(COLLECTION_ADD_XPATH)).click();
+            Thread.sleep(2000);
             if (isLogged) System.out.println(Service.nowTime() + " CollectionArch " + i + " was created:");
             driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).clear();
             driver.findElement(By.xpath(COLLECTION_ENTER_NAME_XPATH)).sendKeys(name);
@@ -102,4 +106,10 @@ public class Collection {
         driver.findElement(By.cssSelector(COLLECTION_DONE_BUTTON_CSS)).click();
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void collectionCreateManyWithWidgets(WebDriver driver, int numberOfCollections,int numberOfWidgets)throws InterruptedException{
+        for (int i = 1; i <= numberOfCollections;i++){
+            Collection.collectionCreation(driver,1,CollectionSharingMode.PUBLIC,false);
+            Widget.widgetsCreation(driver, numberOfWidgets,Integer.toString(i), WidgetState.EXPANDED, WidgetColor.RANDOM, true, false);
+        }
+    }
 }

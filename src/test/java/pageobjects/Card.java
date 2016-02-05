@@ -6,6 +6,8 @@ import enums.WidgetState;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import tests.Run;
 import utils.Service;
 
@@ -388,7 +390,7 @@ public class Card {
     //--NCP----------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardDatesAddCalendar(WebDriver driver, String month, boolean isLogged) throws InterruptedException {
         String dateField;
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.DARKGREEN, true, false);
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.DARKGREEN, true, false);
         cardsFirstBoardGeneration(driver, 7, 5, false);
 
         String dateName = "";
@@ -500,7 +502,7 @@ public class Card {
     }
     //--NCP----------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardBreakDownToWidgets(WebDriver driver) throws InterruptedException {
-        Widget.widgetsCreation(driver, 1, WidgetState.EXPANDED, WidgetColor.GREEN, true, false);
+        Widget.widgetsCreation(driver, 1,"", WidgetState.EXPANDED, WidgetColor.GREEN, true, false);
         Card.cardsFirstIdeaGeneration(driver, 2, false);
         Card.cardsFirstBoardGeneration(driver, 2, 2, false);
 
@@ -508,7 +510,7 @@ public class Card {
         Card.cardSetName(driver, "Breakdown to IdeaList Card");
         Card.cardBreakDownToIdea(driver);
         Card.cardOpenBoardCard(driver,1,1,false);
-        Card.cardSetName(driver,"Breakdown to Board Card");
+        Card.cardSetName(driver, "Breakdown to Board Card");
         Card.cardBreakDownToBoard(driver);
     }
 
@@ -549,16 +551,26 @@ public class Card {
         cardCancel(driver);
         Thread.sleep(5000);
     }
-
-
-    //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void cardLanesCreation(WebDriver driver, int number) {
-
+    //--NCP----------------------------------------------------------------------------------------------------------------------------------------------
+    public static WebElement takeIdeaCardWebElement(WebDriver driver,int ideaWidgetNum,int ideaCardNum){
+        /* (//div[@class='widget-backlog'])[X]/div/div[Y] */
+        return driver.findElement(By.xpath("(//div[@class='widget-backlog'])["+Integer.toString(ideaWidgetNum)+"]" +
+                "/div/div["+Integer.toString(ideaCardNum)+"]"));
+    }
+    //--NCP----------------------------------------------------------------------------------------------------------------------------------------------
+    public static void openIdeaCardByWebelement(WebDriver driver,int ideaWidgetNum,int ideaCardNum){
+        takeIdeaCardWebElement(driver,ideaWidgetNum,ideaCardNum).click();
+    }
+    //--NCP-----------------------------------------------------------------------------------------------------------------------------------------------
+    public static WebElement takeBoardCardWebElement(WebDriver driver,int boardWidgetNum,int boardColumnTo,int boardCardTo){
+        /* (//div[@class='widget-board-content'])[X] //*[@class='board-column js-board-column'][Y]/div[2]/div[Z] */
+        return driver.findElement(By.xpath("(//div[@class='widget-board-content'])["+Integer.toString(boardWidgetNum)+"]" +
+                " //*[@class='board-column js-board-column']["+Integer.toString(boardColumnTo)+"]" +
+                "/div[2]/div["+Integer.toString(boardCardTo)+"]"));
+    }
+    //--NCP----------------------------------------------------------------------------------------------------------------------------------------------
+    public static void openBoardCardByWebelement(WebDriver driver,int boardWidgetNum,int boardColumnTo,int boardCardTo){
+        takeBoardCardWebElement(driver, boardWidgetNum, boardColumnTo,boardCardTo).click();
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void cardLaneOpen(WebDriver driver, int number) {
-
-    }
-    //------------------------------------------------------------------------------------------------------------------------------------------------
 }
