@@ -396,11 +396,11 @@ public class OldCard {
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void cardDescriptionAddtoManyCards(WebDriver driver, String descriptionText, int ideaCardNum, int boardCardX, int boardCardY, boolean isLogged) throws InterruptedException {
-        Card.cardOpenIdeaCard(driver, ideaCardNum, false);
+        Card.cardOpenIdeaCard(driver, 1, ideaCardNum, false);
         Card.cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + " Idea Card with Big Description");
         Card.cardAddDescription(driver, descriptionText);
         cardSave(driver);
-        Card.cardOpenBoardCard(driver, boardCardX, boardCardY, false);
+        Card.cardOpenBoardCard(driver, 1, boardCardX, boardCardY, false);
         Card.cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + " Board Card with Big Description");
         Card.cardAddDescription(driver, descriptionText);
         cardSave(driver);
@@ -463,7 +463,7 @@ public class OldCard {
         StringSelection stringSelection = new StringSelection(filepath);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 
-        Card.cardOpenIdeaCard(driver, ideaCardNum, false);
+        Card.cardOpenIdeaCard(driver, 1, ideaCardNum, false);
         Card.cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".Idea Card with File");
         driver.findElement(By.cssSelector(".fastcardpopup-button.js-addfile")).click();
         Thread.sleep(2000);
@@ -479,7 +479,7 @@ public class OldCard {
         cardSave(driver);
         Thread.sleep(5000);
 
-        Card.cardOpenBoardCard(driver, boardCardX, boardCardY, false);
+        Card.cardOpenBoardCard(driver, 1, boardCardX, boardCardY, false);
         Card.cardSetName(driver, Run.currentBrowser + Service.nowTimeForObjectName() + ".Board Card with File");
         driver.findElement(By.cssSelector(".fastcardpopup-button.js-addfile")).click();
         Thread.sleep(2000);

@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pageobjects.Tutorial;
 import pageobjects.Users;
 import utils.AccessData;
 import utils.Service;
@@ -32,14 +33,15 @@ public class ChromeLongTest {
 
     @Test
     public void testLogin() throws Exception {
-        Users.loginUser(driver, AccessData.TESTURL, AccessData.TESTLOGIN_LONGTESTS, AccessData.TESTPASSWORD_LONGTESTS);
+        Users.loginUser(driver, AccessData.TESTURL, AccessData.TESTLOGIN_LONGTESTS, AccessData.TESTPASSWORD_LONGTESTS,"Chrome");
 //        Users.makeCurrentOrgStandard(driver);
-        Users.createNewOrganization(driver,"000 000 - zAutoTests_"+Service.nowTimeForObjectName()+"_User1(LongRun)");
+//        Users.createNewOrganization(driver,"000 000 - zAutoTests_"+Service.nowTimeForObjectName()+"_User1(LongRun)");
         driver.get(AccessData.TESTURLX);
         Thread.sleep(5000);
         tests.Run.RunLong(driver, browser);
-//        General.userSignOut(driver);
-//        General.loginUserWithCash(driver,10);
+        Thread.sleep(3000);
+        Tutorial.runTutorial(driver, false);
+        Thread.sleep(3000);
     }
 
     @After

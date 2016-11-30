@@ -7,8 +7,8 @@ public interface AccessData {
     String SCREENSHOTS_PATH = "src\\test\\resources\\logs1\\screenshots\\";
     String CHROME_DRIVER__PATH = "src\\test\\resources\\drivers\\";
     String IE_DRIVER__PATH = "src\\test\\resources\\drivers\\";
-    String TESTURL = "https://test.hansoftx.com/login";
-    String TESTURLX = "https://test.hansoftx.com";
+    String TESTURL = "https://test.favro.com/login";
+    String TESTURLX = "https://test.favro.com";
     String WRONGTESTLOGIN = "livatek.user12@ukr.net";
     String WRONGTESTPASSWORD = "";
     String TESTLOGIN_SHORTTESTS = "livatek.user13@gmail.com";

@@ -35,39 +35,30 @@ public class Widget {
      * >* 19.widgetAppsEnableLanes
      */
     //basics and creation
-//    final static String IDEA_ADD_CSS = "img.xaddbutton-icon"; cannot be used
-    final static String IDEA_ADD_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[2]/div[1]/div/div[1]";
-    final static String IDEA_NAME_FIELD_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div[1]/input";
-    final static String IDEA_SAVE_BUTTON_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]/button";
-    final static String IDEA_HEADER_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div[1]/div[2]";
-    final static String IDEA_MENU_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[2]/div/div[1]/div/div[3]/div/img";
-    //    final static String BOARD_ADD_CSS = "div.xaddbutton-maindiv.js-workspace-tracking-add-board > img.xaddbutton-icon"; cannot be used
-    final static String BOARD_NAME_FIELD_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div[1]/input";
-    final static String BOARD_ADD_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[1]/div/div[2]/div[1]/div/div[1]";
-    final static String BOARD_MENU_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div/div[3]/div/img";
-    final static String BOARD_HEADER_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/div";
-    final static String BOARD_SAVE_BUTTON_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[1]/div[2]/button";
-    final static String WIDGET_BOARD_OPTIONS_CSS = ".widget-menu-choice.js-widget-showboardoptionsmenu.js-tap-indication";
+    //new visual design
+    final static String WIDGET_CREATE_CSS = ".img.workspacelink-icon.workspacelink-addicon.js-collection-add";
+    final static String BOARD_CREATE_XPATH = "//div[@class='widget-menu-choice-text'][contains(text(),'Create Board')]";
+    final static String IDEA_CREATE_XPATH = "//div[@class='widget-menu-choice-text'][contains(text(),'Create Backlog')]";
+    final static String TRELLO_IMPORT_XPATH = "//div[@class='widget-menu-choice-text'][contains(text(),'Import board from Trello')]";
+    final static String WIDGET_ENTER_XPATH = "//input[@class='widget-title-edit js-textfield-textarea']";
+    final static String WIDGET_SAVE_XPATH = "//button[@class='widget-title-save js-textfield-save']";
+    final static String IDEA_HEADER_XPATH = "(//div[@class='workspace-widgetpane widgetpane-backlogs js-backlogs ui-resizable']//*[@class='widget-title-name'])[1]";
+    final static String BOARD_HEADER_XPATH = "(//div[@class='workspace-widgetpane widgetpane-tracking js-tracking']//*[@class='widget-title-name'])[1]";
+    final static String IDEA_MENU_XPATH = "(//div[@class='workspace-widgetpane widgetpane-backlogs js-backlogs ui-resizable']//*[@class='widget-buttons'])[1]";
+    final static String BOARD_MENU_XPATH = "(//div[@class='workspace-widgetpane widgetpane-tracking js-tracking']//*[@class='widget-buttons'])[1]";
+    final static String IDEA_MENU_OPTIONS_XPATH = "//div[@class='widget-menu-choice-text'][contains(text(),'Options')]";
+    final static String BOARD_MENU_OPTIONS_XPATH = "//div[@class='widget-menu-choice-text'][contains(text(),'Options')]";
     //rename
-//    final static String IDEA_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[8]/div[2]";
-    final static String IDEA_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[7]/div[2]";
-    final static String IDEA_RENAME_XPATH = "html/body/div[5]/div/div/div/div[2]/div[2]";
-    //    final static String BOARD_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[9]/div[2]";
-    final static String BOARD_MENU_OPTIONS_XPATH = "html/body/div[4]/div/div[3]/div/div[9]";
-    final static String BOARD_RENAME_XPATH = "html/body/div[5]/div/div/div/div[2]/div[2]";
+    final static String WIDGET_RENAME_XPATH = "//div[@class='widget-menu-choice-text'][contains(text(),'Rename')]";
     //archive
-    final static String IDEA_MENU_ARCHIVE_XPATH = "html/body/div[5]/div/div/div/div[3]/div[2]";
-    final static String BOARD_MENU_ARCHIVE_XPATH = "html/body/div[5]/div/div/div/div[3]/div[2]";
+    final static String WIDGET_ARCHIVE_XPATH = "//div[@class='widget-menu-choice-text'][contains(text(),'Archive')]";
+    final static String WIDGET_UNARCHIVE_XPATH = "//div[@class='widget-menu-choice-text'][contains(text(),'Unarchive')]";
     //removal
-    final static String IDEA_MENU_DELETE_XPATH = "html/body/div[5]/div/div/div/div[4]/div[2]";
-    final static String IDEA_MENU_CONFIRM_DELETE_XPATH = "html/body/div[5]/div/div/div/div[5]/div[1]";
-    final static String BOARD_MENU_DELETE_XPATH = "html/body/div[5]/div/div/div/div[4]/div[2]";
-    final static String BOARD_MENU_CONFIRM_DELETE_XPATH = "html/body/div[5]/div/div/div/div[5]/div[1]";
+    final static String WIDGET_DELETE_XPATH = "//div[@class='widget-menu-choice-text'][contains(text(),'Delete')]";
+    final static String WIDGET_CONFIRM_DELETE_XPATH = "//div[@class='ui-button-red ui-button-popup-menu js-tap-indication js-widget-delete-confirmed']";
     //show archived
-    final static String IDEA_CHECKBOX_MENU_XPATH = "html/body/div[3]/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[1]/img";
-    final static String IDEA_CHECKBOX_SHOWARCHIVED_XPATH = "html/body/div[4]/div/div/div/div/div[1]/div";
-    final static String BOARD_CHECKBOX_MENU_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[1]/div/div[1]/img";
-    final static String BOARD_CHECKBOX_SHOWARCHIVED_XPATH = "html/body/div[4]/div/div/div/div/div[1]/div";
+    final static String COLLECTION_MENU_XPATH = "//div[@class='workspace-collection-title-text']";
+    final static String WIDGET_CHECKBOX_SHOWARCHIVED_XPATH="//div[@class='widget-menu-choice-text'][contains(text(),'Show Archived')]";
     //board and idea menu. sharing
     final static String WIDGET_MENU_SHARE = "//div[contains(text(),'Share')]";
     final static String WIDGET_MENU_SHARING_OPTIONS = "//div[contains(text(),'Configure public access')]";
@@ -84,17 +75,17 @@ public class Widget {
     final static String WIDGET_MENU_REPORTS = "//div[contains(text(),'Reports')]";
     final static String WIDGET_MENU_ADDTOCOLLECTION = "//div[contains(text(),'Add to collection')]";
     //board and idea menu. apps & integrations
-    final static String WIDGET_MENU_APPS_INTEGRATIONS = "//div[contains(text(),'Apps & Integrations')]";
+    final static String WIDGET_MENU_APPS_INTEGRATIONS = "//div[contains(text(),'App Store')]";
     final static String WIDGET_MENU_APPS_POPUP = ".popup-bg.mod-transparent.js-workspace-popup-bg";
     final static String WIDGET_MENU_APPS_VALUES = "//div[@class='expandable-title-text'][contains(text(),'Default values')]";
     final static String WIDGET_MENU_APPS_WORKFLOW = "//div[@class='expandable-title-text'][contains(text(),'Defined workflow')]";
     final static String WIDGET_MENU_APPS_LANES = "//div[@class='expandable-title-text'][contains(text(),'Lanes')]";
     final static String WIDGET_MENU_APPS_LEADTIME = "//div[@class='expandable-title-text'][contains(text(),'Lead time')]";
     final static String WIDGET_MENU_APPS_WIP = "//div[@class='expandable-title-text'][contains(text(),'WIP limit')]";
-    final static String WIDGET_MENU_APPS_ENABLE = ".ui-button-green.js-app-toggle";
+    final static String WIDGET_MENU_APPS_ENABLE = ".ui-button-green.js-app-enable";
     final static String WIDGET_MENU_APPS_DISABLE = ".ui-button-red.js-tap-indication.js-ui-button-delete";
-    final static String WIDGET_MENU_APPS_DISABLE_CONFIRMATION = ".ui-button-red-confirmation.js-tap-indication.js-app-toggle";
-    final static String WIDGET_MENU_APPS_CLOSE = ".popup-window-toolbar-button.mod-cancel.js-popup-cancel";
+    final static String WIDGET_MENU_APPS_DISABLE_CONFIRMATION = ".ui-button-red-confirmation.js-tap-indication.js-app-disable";
+    final static String WIDGET_MENU_APPS_CLOSE = ".js-close-popup";
     final static String WIDGET_MENU_FILTER_CARDS = "//div[contains(text(),'Filter cards')]";
     final static String WIDGET_MENU_FILTER_SHOW_ARCHIVED = "//div[contains(text(),'Show archived cards')]";
     final static String WIDGET_MENU_FILTER_SHOW_ASSIGNED = "//div[contains(text(),'Show assigned to me only')]";
@@ -104,7 +95,7 @@ public class Widget {
     //lanes
     final static String WIDGET_ADD_LANE = "(//div[contains(text(),'Add lane')])";
 
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    //--NVD2-----------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetsCreation(WebDriver driver, int number, String additionalName, WidgetState widgetState, WidgetColor widgetColor, boolean refreshBefore, boolean isLogged) throws InterruptedException {
         String name;
         String colorId;
@@ -128,22 +119,23 @@ public class Widget {
             if (!additionalName.equals("")) name = Integer.toString(i - 10) + " " + colorName;
             else name = Integer.toString(i) + " " + colorName;
             //Create Idea Widget with Sequential Name 1,2,..
-            driver.findElement(By.xpath(IDEA_ADD_XPATH)).click();
+            driver.findElement(By.cssSelector(WIDGET_CREATE_CSS)).click();
+            driver.findElement(By.xpath(IDEA_CREATE_XPATH)).click();
             Thread.sleep(1000);
             if (!additionalName.equals(""))
-                driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(additionalName + name);
+                driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).sendKeys(additionalName + name);
             else
-                driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(name + " " + Run.currentBrowser + Service.nowTimeForObjectName() + "Idea " + name);
-            driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
+                driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).sendKeys(name + " " + Run.currentBrowser + Service.nowTimeForObjectName() + "Idea " + name);
+            driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).sendKeys(Keys.ENTER);
             if (isLogged) System.out.println(Service.nowTime() + " Idea " + name + " was created:");
-
             //Create Board Widget with Sequential Name 1,2,..
-            driver.findElement(By.xpath(BOARD_ADD_XPATH)).click();
+            driver.findElement(By.cssSelector(WIDGET_CREATE_CSS)).click();
+            driver.findElement(By.xpath(BOARD_CREATE_XPATH)).click();
             if (!additionalName.equals(""))
-                driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(additionalName + name);
+                driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).sendKeys(additionalName + name);
             else
-                driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(name + " " + Run.currentBrowser + Service.nowTimeForObjectName() + "Board " + name);
-            driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
+                driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).sendKeys(name + " " + Run.currentBrowser + Service.nowTimeForObjectName() + "Board " + name);
+            driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).sendKeys(Keys.ENTER);
             if (isLogged) System.out.println(Service.nowTime() + " Board " + name + " was created:");
             if (widgetState == WidgetState.COLLAPSED) {
                 driver.findElement(By.xpath(IDEA_HEADER_XPATH)).click();
@@ -154,42 +146,40 @@ public class Widget {
             if (isLogged)
                 System.out.println(Service.nowTime() + " Color=" + WidgetColor.values()[colorCode] + " Set up for Board" + colorId);
             driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
-            driver.findElement(By.cssSelector(WIDGET_BOARD_OPTIONS_CSS)).click();
+            driver.findElement(By.xpath(BOARD_MENU_OPTIONS_XPATH)).click();
             driver.findElement(By.id(colorId)).click();
-
-            if (isLogged)
+            if (isLogged) {
                 System.out.println(Service.nowTime() + " Color=" + WidgetColor.values()[colorCode] + " Set up for Idea");
+            }
             driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
-            driver.findElement(By.cssSelector(WIDGET_BOARD_OPTIONS_CSS)).click();
+            driver.findElement(By.xpath(IDEA_MENU_OPTIONS_XPATH)).click();
             driver.findElement(By.id(colorId)).click();
         }
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    //--NVD2-----------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetsCurrentRename(WebDriver driver, String name, WidgetType widgetType, boolean isLogged) throws InterruptedException {
         String widgetName;
         if (widgetType == WidgetType.BOARD) {
             widgetName = driver.findElement(By.xpath(BOARD_HEADER_XPATH)).getText();
             driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
             driver.findElement(By.xpath(BOARD_MENU_OPTIONS_XPATH)).click();
-            driver.findElement(By.xpath(BOARD_RENAME_XPATH)).click();
-            driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).clear();
-            driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser +
+            driver.findElement(By.xpath(WIDGET_RENAME_XPATH)).click();
+            driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).clear();
+            driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).sendKeys(Run.currentBrowser +
                     Service.nowTimeForObjectName() + " Board " + name);
-            driver.findElement(By.xpath(BOARD_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
-//            driver.findElement(By.xpath(BOARD_SAVE_BUTTON_XPATH)).click(); Old version of code, doesn't work after some update
+            driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).sendKeys(Keys.ENTER);
             if (isLogged)
                 System.out.println("  " + Service.nowTime() + "  Board:'" + widgetName + "' was renamed to 'Board " + name);
         } else {
             widgetName = driver.findElement(By.xpath(IDEA_HEADER_XPATH)).getText();
             driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
             driver.findElement(By.xpath(IDEA_MENU_OPTIONS_XPATH)).click();
-            driver.findElement(By.xpath(IDEA_RENAME_XPATH)).click();
-            driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).clear();
-            driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Run.currentBrowser + Service.nowTimeForObjectName()
+            driver.findElement(By.xpath(WIDGET_RENAME_XPATH)).click();
+            driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).clear();
+            driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).sendKeys(Run.currentBrowser + Service.nowTimeForObjectName()
                     + "Idea " + name);
-            driver.findElement(By.xpath(IDEA_NAME_FIELD_XPATH)).sendKeys(Keys.ENTER);
-//            driver.findElement(By.xpath(IDEA_SAVE_BUTTON_XPATH)).click(); Old version of code, doesn't work after some update
+            driver.findElement(By.xpath(WIDGET_ENTER_XPATH)).sendKeys(Keys.ENTER);
             if (isLogged)
                 System.out.println("  " + Service.nowTime() + "  Idea:'" + widgetName + "' was renamed to 'Idea " + name);
         }
@@ -216,7 +206,11 @@ public class Widget {
             driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
             driver.findElement(By.xpath(IDEA_MENU_OPTIONS_XPATH)).click();
             Thread.sleep(500);
-            driver.findElement(By.xpath(IDEA_MENU_ARCHIVE_XPATH)).click();
+            if (widgetOperation == WidgetOperation.ARCHIVE){
+                driver.findElement(By.xpath(WIDGET_ARCHIVE_XPATH)).click();
+            }else {
+                driver.findElement(By.xpath(WIDGET_UNARCHIVE_XPATH)).click();
+            }
             //Board Archiving- Unarchiving
             boardName = driver.findElement(By.xpath(BOARD_HEADER_XPATH)).getText();
             if (widgetOperation == WidgetOperation.ARCHIVE) {
@@ -231,7 +225,11 @@ public class Widget {
             driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
             driver.findElement(By.xpath(BOARD_MENU_OPTIONS_XPATH)).click();
             Thread.sleep(500);
-            driver.findElement(By.xpath(BOARD_MENU_ARCHIVE_XPATH)).click();
+            if (widgetOperation == WidgetOperation.ARCHIVE){
+                driver.findElement(By.xpath(WIDGET_ARCHIVE_XPATH)).click();
+            }else {
+                driver.findElement(By.xpath(WIDGET_UNARCHIVE_XPATH)).click();
+            }
         }
         if (widgetOperation == WidgetOperation.UNARCHIVE) {
             widgetsShowArchived(driver, false);
@@ -247,35 +245,27 @@ public class Widget {
             driver.findElement(By.xpath(IDEA_MENU_XPATH)).click();
             Thread.sleep(1000);
             driver.findElement(By.xpath(IDEA_MENU_OPTIONS_XPATH)).click();
-            driver.findElement(By.xpath(IDEA_MENU_DELETE_XPATH)).click();
-            driver.findElement(By.xpath(IDEA_MENU_CONFIRM_DELETE_XPATH)).click();
+            driver.findElement(By.xpath(WIDGET_DELETE_XPATH)).click();
+            driver.findElement(By.xpath(WIDGET_CONFIRM_DELETE_XPATH)).click();
             if (isLogged) System.out.println("  " + Service.nowTime() + " Idea:'" + ideaName + "' was removed");
 
             boardName = driver.findElement(By.xpath(BOARD_HEADER_XPATH)).getText();
             driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
             Thread.sleep(1000);
             driver.findElement(By.xpath(BOARD_MENU_OPTIONS_XPATH)).click();
-            driver.findElement(By.xpath(BOARD_MENU_DELETE_XPATH)).click();
-            driver.findElement(By.xpath(BOARD_MENU_CONFIRM_DELETE_XPATH)).click();
+            driver.findElement(By.xpath(WIDGET_DELETE_XPATH)).click();
+            driver.findElement(By.xpath(WIDGET_CONFIRM_DELETE_XPATH)).click();
             if (isLogged) System.out.println("  " + Service.nowTime() + " Board:'" + boardName + "' was removed");
         }
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetsShowArchived(WebDriver driver, boolean isLogged) throws InterruptedException {
-        driver.findElement(By.xpath(IDEA_CHECKBOX_MENU_XPATH)).click();
+        driver.findElement(By.xpath(COLLECTION_MENU_XPATH)).click();
         Thread.sleep(1000);
-        driver.findElement(By.xpath(IDEA_CHECKBOX_SHOWARCHIVED_XPATH)).click();
+        driver.findElement(By.xpath(WIDGET_CHECKBOX_SHOWARCHIVED_XPATH)).click();
         Thread.sleep(1000);
         if (isLogged) System.out.println("  " + Service.nowTime() + " Archived Ideas are / arent shown");
-        driver.findElement(By.xpath("html/body/div[4]")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath(BOARD_CHECKBOX_MENU_XPATH)).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath(BOARD_CHECKBOX_SHOWARCHIVED_XPATH)).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("html/body/div[4]")).click();
-        if (isLogged) System.out.println("  " + Service.nowTime() + " Archived Boards are / arent shown");
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -295,6 +285,16 @@ public class Widget {
         }
     }
 
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void startTrialMode(WebDriver driver){
+        driver.findElement(By.xpath(BOARD_MENU_XPATH)).click();
+        driver.findElement(By.xpath(WIDGET_MENU_APPS_INTEGRATIONS)).click();
+        driver.findElement(By.xpath(WIDGET_MENU_APPS_VALUES)).click();
+        driver.findElement(By.cssSelector(WIDGET_MENU_APPS_ENABLE)).click();
+        driver.findElement(By.cssSelector(".js-trial-now")).click();
+        driver.findElement(By.cssSelector(".workspacedit-billing-free-close")).click();
+        driver.findElement(By.cssSelector(".popup-window-topbar-close")).click();
+    }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void enableDisableIntegrations(WebDriver driver, boolean enableYN) {
         if (enableYN) driver.findElement(By.cssSelector(WIDGET_MENU_APPS_ENABLE)).click();
@@ -347,12 +347,16 @@ public class Widget {
             break;
         }
         driver.findElement(By.cssSelector(WIDGET_MENU_APPS_CLOSE)).click();
-        driver.findElement(By.cssSelector(".popup-bg.mod-transparent.js-workspace-popup-bg")).click();
+//        driver.findElement(By.cssSelector(".popup-bg.mod-transparent.js-workspace-popup-bg")).click();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetEnableAllIntegrationsYN(WebDriver driver, boolean enableYesNo) throws InterruptedException {
         if (enableYesNo) widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.GREEN, true, false);
+        if (!Users.isElementPresent(By.cssSelector(".js-trial-badge"), driver)) {
+            Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.GREEN, true, false);
+            Widget.startTrialMode(driver);
+        }
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.VALUES, enableYesNo, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.WORKFLOW, enableYesNo, false);
         widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.LANES, enableYesNo, false);
@@ -384,7 +388,7 @@ public class Widget {
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void lanesRemove(WebDriver driver, int lanesNumber, boolean isLogged) {
-        final String WIDGET_CHOOSE_LANE = "(//div[@class=\"card-as-lane card js-boarditem ui-sortable-handle\"])";
+        final String WIDGET_CHOOSE_LANE = "(//div[@class='card-title-text card-title-text-lanes'])";
         driver.findElement(By.xpath(WIDGET_CHOOSE_LANE + "[" + lanesNumber + "]")).click();
         Card.cardDelete(driver, false);
     }
@@ -422,37 +426,89 @@ public class Widget {
             }
         }
     }
-
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void widgetSetupWIPLimit(WebDriver driver, int columnNumber, int wiplimitNumber) {
+    public static void moveCardFromIdeaToIdea(WebDriver driver,int ideaWidgetFrom,int ideaCardFrom, int ideaWidgetTo,int ideaCardTo,boolean isLogged){
+        WebElement elementCardFrom =Card.takeIdeaCardWebElement(driver,ideaWidgetFrom,ideaCardFrom,false);
+        WebElement elementCardTo = Card.takeIdeaCardWebElement(driver,ideaWidgetTo,ideaCardTo,false);
+        (new Actions(driver)).dragAndDrop(elementCardFrom, elementCardTo).perform();
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void moveCardFromIdeaToBoard(WebDriver driver,int ideaWidgetFrom,int ideaCardFrom, int boardWidgetTo,int boardColumnTo,int boardCardTo,boolean isLogged){
+        WebElement elementCardFrom = Card.takeIdeaCardWebElement(driver,ideaWidgetFrom,ideaCardFrom,false);
+        WebElement elementCardTo = Card.takeBoardCardWebElement(driver, boardWidgetTo, boardColumnTo, boardCardTo,false);
+        (new Actions(driver)).dragAndDrop(elementCardFrom, elementCardTo).perform();
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void moveCardFromBoardToBoard(WebDriver driver,int boardWidgetFrom,int boardColumnFrom,int boardCardFrom,
+                                                int boardWidgetTo,int boardColumnTo,int boardCardTo,boolean isLogged){
+        WebElement elementCardFrom = Card.takeBoardCardWebElement(driver, boardWidgetFrom, boardColumnFrom, boardCardFrom,false);
+        WebElement elementCardTo = Card.takeBoardCardWebElement(driver, boardWidgetTo, boardColumnTo, boardCardTo,false);
+        (new Actions(driver)).dragAndDrop(elementCardFrom, elementCardTo).perform();
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void moveCardFromBoardToIdea(WebDriver driver,int boardWidgetFrom,int boardColumnFrom,int boardCardFrom,
+                                               int ideaWidgetTo,int ideaCardTo,boolean isLogged){
+        WebElement elementCardFrom = Card.takeBoardCardWebElement(driver, boardWidgetFrom, boardColumnFrom, boardCardFrom,false);
+        WebElement elementCardTo = Card.takeIdeaCardWebElement(driver, ideaWidgetTo, ideaCardTo,false);
+        (new Actions(driver)).dragAndDrop(elementCardFrom, elementCardTo).perform();
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void relationsStaticTest(WebDriver driver) throws InterruptedException {
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.GREEN, false, false);
+        Widget.widgetsCurrentRename(driver, ".RELATIONS IDEA1", WidgetType.IDEA, false);
+        Widget.widgetsCurrentRename(driver, ".RELATIONS BOARD1", WidgetType.BOARD, false);
+
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.RED, false, false);
+        Widget.widgetsCurrentRename(driver, ".RELATIONS IDEA2", WidgetType.IDEA, false);
+        Widget.widgetsCurrentRename(driver, ".RELATIONS BOARD2", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 2, 3, false);
+        Card.cardsFirstIdeaGeneration(driver, 2, false);
+        Card.openIdeaCardByWebelement(driver, 1, 1);
+        Card.cardAddTag(driver, "USA", false);
+        Card.cardCancel(driver);
+        Card.openBoardCardByWebelement(driver, 1, 1, 1);
+        Card.cardAddTag(driver, "USA", false);
+        Card.cardCancel(driver);
+
+        Widget.widgetsCreation(driver, 1, "", WidgetState.EXPANDED, WidgetColor.DARKGREEN, false, false);
+        Widget.widgetsCurrentRename(driver, ".RELATIONS IDEA3", WidgetType.IDEA, false);
+        Widget.widgetsCurrentRename(driver, ".RELATIONS BOARD3", WidgetType.BOARD, false);
+        Card.cardsFirstBoardGeneration(driver, 3, 3, false);
+        Card.cardsFirstIdeaGeneration(driver, 3, false);
+        Card.openIdeaCardByWebelement(driver, 1, 1);
+        Card.cardAddTag(driver, "USA", false);
+        Card.cardCancel(driver);
+        Card.openBoardCardByWebelement(driver, 1, 1, 1);
+        Card.cardAddTag(driver, "USA", false);
+        Card.cardCancel(driver);
+
+        Widget.moveCardFromIdeaToIdea(driver, 1, 1, 2, 1, false);
+        Widget.moveCardFromIdeaToBoard(driver, 1, 1, 1, 3, 1, false);
+        Widget.moveCardFromBoardToBoard(driver, 1, 3, 1, 2, 3, 1, false);
+        Widget.moveCardFromIdeaToIdea(driver, 1, 1, 1, 3, false);
+        Widget.moveCardFromBoardToBoard(driver, 2, 1, 1, 2, 2, 1, false);
+        Widget.moveCardFromIdeaToIdea(driver, 1, 1, 3, 1, false);
+        Widget.moveCardFromBoardToBoard(driver, 1, 1, 1, 3, 1, 1, false);
+        Widget.moveCardFromBoardToIdea(driver, 3, 1, 1, 3, 1, false);
 
     }
+
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void widgetEnableShowSetting(WebDriver driver, WidgetShowSettings widgetShowSettings, boolean isLogged) {
 
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void moveCardFromIdeaToIdea(WebDriver driver,int ideaWidgetFrom,int ideaCardFrom, int ideaWidgetTo,int ideaCardTo,boolean isLogged){
-        WebElement elementCardFrom =Card.takeIdeaCardWebElement(driver,ideaWidgetFrom,ideaCardFrom);
-        WebElement elementCardTo = Card.takeIdeaCardWebElement(driver,ideaWidgetTo,ideaCardTo);
-        (new Actions(driver)).dragAndDrop(elementCardFrom, elementCardTo).perform();
+    public static void movingCardsFast(WebDriver driver,int numOfCards)throws InterruptedException{
+        Widget.widgetsCreation(driver,1,"",WidgetState.EXPANDED,WidgetColor.YELLOW,false,false);
+        Column.columnsCreation(driver, 1, false);
+        Widget.widgetEnableSettings(driver, WidgetType.BOARD, WidgetSettings.WIP, true, false);
+        Column.columnSetupWIPLimit(driver, 1, 1, 2*numOfCards);
+        Column.columnSetupWIPLimit(driver, 1, 2, 2*numOfCards);
+        Card.cardsFirstBoardGeneration(driver, numOfCards, 1, false);
+        for (int i=1;i<=numOfCards;i++){
+            Widget.moveCardFromBoardToBoard(driver,1,1,1,1,2,1,false);
+        }
     }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
-//    public static void moveCardFromIdeaToBoard(WebDriver driver,int ideaWidgetFrom,int ideaCardFrom, int boardWidgetTo,int boardColumnTo,int boardCardTo,boolean isLogged){
-//        WebElement elementCardFrom = driver.findElement(By.xpath("((//div[@class='widget-backlog'])["+Integer.toString(ideaWidgetFrom)+"]//*[@class='card-title-text'])["+Integer.toString(ideaCardFrom)+"]"));
-//        if (isLogged) System.out.println("((//div[@class='widget-backlog'])["+Integer.toString(ideaWidgetFrom)+"]//*[@class='card-title-text'])["+Integer.toString(ideaCardFrom)+"]");
-//        WebElement elementCardTo = driver.findElement(By.xpath("((//div[@class='widget-backlog'])["+Integer.toString(ideaWidgetTo)+"]//*[@class='card-title-text'])["+Integer.toString(ideaCardTo)+"]"));
-//        if (isLogged) System.out.println("((//div[@class='widget-backlog'])["+Integer.toString(ideaWidgetTo)+"]//*[@class='card-title-text'])["+Integer.toString(ideaCardTo)+"]");
-//        (new Actions(driver)).dragAndDrop(elementCardFrom, elementCardTo).perform();
-//    }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void method3(WebDriver driver){
 
-    }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void method4(WebDriver driver){
-
-    }
-    //-------------------------------------------------------------------------------------------------------------------------------------------------
 }

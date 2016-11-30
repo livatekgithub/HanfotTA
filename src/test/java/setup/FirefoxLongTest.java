@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import pageobjects.Tutorial;
 import pageobjects.Users;
 import utils.*;
 
@@ -28,8 +29,10 @@ public class FirefoxLongTest {
 
     @Test
     public void testLogin() throws Exception {
-        Users.loginUser(driver,AccessData.TESTURL,AccessData.TESTLOGIN_LONGTESTS,AccessData.TESTPASSWORD_LONGTESTS);
+        Users.loginUser(driver,AccessData.TESTURL,AccessData.TESTLOGIN_LONGTESTS,AccessData.TESTPASSWORD_LONGTESTS,"Firefox");
         tests.Run.RunLong(driver, browser);
+        Thread.sleep(3000);
+        Tutorial.runTutorial(driver, false);
         Thread.sleep(3000);
 //        General.userSignOut(driver);
     }

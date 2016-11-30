@@ -22,38 +22,50 @@ public class Users implements utils.AccessData {
     final static String MAIN_MENU_IMAGE_CSS = ".avatar-image";
     final static String USER_MAIN_MENU_MEMBERS_LIST_CSS = "div.app-menu-choice.js-org-admin";
     final static String USER_ORG_MENU_CLOSE_BUTTON_CSS = ".popup-window-toolbar-button.mod-cancel.js-popup-cancel";
-    final static String USER_ORG_MENU_DISMISS_CSS = ".toolpopup-popup-bg";
+    final static String USER_ORG_MENU_DISMISS_CSS = ".popupmanager-background";
+
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void loginUser(WebDriver driver, String testURL, String testLogin, String testPassword) throws InterruptedException {
-        driver.get("https://test.hansoftx.com/logout");
+    public static void loginUser(WebDriver driver, String testURL, String testLogin, String testPassword,String browser) throws InterruptedException {
+        if (!browser.equals("IE11")) driver.get("https://test.favro.com/home/index.html");
+        else driver.get("https://test.favro.com/anything");
+        String commandText="document.cookie='FavroTest=319f6866774e89cfc78d23a1;' + 'expires='+(new Date(new Date().getTime() + (10*365*24*60*60*1000))).toUTCString() + ';path=/'";
+        ((JavascriptExecutor) driver).executeScript(commandText);
+        Thread.sleep(3000);
 //        driver.manage().window().maximize();
+//        Thread.sleep(3000);
         WindowOperations.resizeWindowforIdea(driver);
         driver.get(AccessData.TESTURL);
         Thread.sleep(3000);
-        driver.findElement(By.id("form-email")).clear();
-        driver.findElement(By.id("form-email")).sendKeys(testLogin);
-        driver.findElement(By.id("form-psw")).clear();
-        driver.findElement(By.id("form-psw")).sendKeys(testPassword);
+//        if (!Service.isElementPresent(By.id("form-email"),driver)){
+//            System.out.println(Service.isElementPresent(By.id("form-email"),driver));
+//            openMainMenu(driver);
+//            userSignOut(driver);
+//            driver.findElement(By.xpath("html/body/div[1]/header/nav/div/div[2]/ul[2]/li[1]/a")).click();
+//            Thread.sleep(3000);
+//        };
         Thread.sleep(3000);
+        driver.findElement(By.cssSelector(".js-email .js-input")).clear();
+        driver.findElement(By.cssSelector(".js-email .js-input")).sendKeys(testLogin);
+        driver.findElement(By.cssSelector(".js-password .js-input")).clear();
+        driver.findElement(By.cssSelector(".js-password .js-input")).sendKeys(testPassword);
+
+//        driver.findElement(By.id("form-email")).clear();
+//        driver.findElement(By.id("form-email")).sendKeys(testLogin);
+//        driver.findElement(By.id("form-psw")).clear();
+//        driver.findElement(By.id("form-psw")).sendKeys(testPassword);
         driver.findElement(By.cssSelector("button.btn-submit.js-tap-indication")).click();
+        Thread.sleep(3000);
 
         if (isElementPresent(By.cssSelector(MAIN_MENU_INITIALS_CSS), driver))
             assertTrue(isElementPresent(By.cssSelector(MAIN_MENU_INITIALS_CSS), driver));
         else if (isElementPresent(By.cssSelector(MAIN_MENU_IMAGE_CSS), driver))
             assertTrue(isElementPresent(By.cssSelector(MAIN_MENU_IMAGE_CSS), driver));
-
-//        try {
-//            assertTrue(isElementPresent(By.cssSelector(MAIN_MENU_INITIALS_CSS), driver));
-//        } catch (AssertionError e) {
-//            assertTrue(isElementPresent(By.cssSelector(MAIN_MENU_IMAGE_CSS), driver));
-//        }
     }
 
     public static void openMainMenu(WebDriver driver) {
-        final String MAIN_MENU_INITIALS="html/body/div[3]/div[1]/div[1]/div[1]/a/div/span";
-        final String MAIN_MENU_IMAGE="html/body/div[3]/div[1]/div[1]/div[1]/a/div/img";
-
+        final String MAIN_MENU_INITIALS="//div[@class='avatar size-large shape-circle workspace-avatar']/div";
+        final String MAIN_MENU_IMAGE="//div[@class='avatar size-large shape-circle workspace-avatar']/img";
         if (isElementPresent(By.xpath(MAIN_MENU_INITIALS), driver)){
             driver.findElement(By.xpath(MAIN_MENU_INITIALS)).click();
         }
@@ -74,17 +86,16 @@ public class Users implements utils.AccessData {
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void userSignOut(WebDriver driver) {
-        try {
-            driver.findElement(By.cssSelector(".avatar-initials")).click();
-        } catch (NoSuchElementException e) {
-            driver.findElement(By.cssSelector(".avatar-image")).click();
-        }
         driver.findElement(By.cssSelector("div.app-menu-choice.js-signout")).click();
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void usersOpenMembersList(WebDriver driver) throws InterruptedException {
         openMainMenu(driver);
-        driver.findElement(By.cssSelector(USER_MAIN_MENU_MEMBERS_LIST_CSS)).click();
+        //.js-org-invite>.app-menu-choice-title
+
+        driver.findElement(By.xpath("//div[@class='app-menu-choice-title'][contains(text(),'Invite People')]")).click();
+//        driver.findElement(By.cssSelector(USER_MAIN_MENU_MEMBERS_LIST_CSS)).click();
+        driver.findElement(By.id("teamdirectory")).click();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
@@ -99,20 +110,15 @@ public class Users implements utils.AccessData {
         final String ADD_USER_FIELD_XPATH_BEGIN = "html/body/div[5]/div/div/div[1]/div/div[2]/div[3]/div[2]/";
         final String ADD_USER_FIELD_XPATH_END = "/div[1]/input";
 
-        String name;
-        String dynamicPart;
-
         openMainMenu(driver);
         driver.findElement(By.cssSelector("div.app-menu-choice.js-org-invite")).click();
         driver.findElement(By.id("invitations")).click();
 
         for (int i = 0; i < numberOfUsers; i++) {
-            name = Integer.toString(i + 1);
-            if (i == 0) dynamicPart = "div";
-            else dynamicPart = "div[" + name + "]";
             if (isLogged) System.out.println(testNamesForTest[i]);
-            if (isLogged) System.out.println(ADD_USER_FIELD_XPATH_BEGIN + dynamicPart + ADD_USER_FIELD_XPATH_END);
-            driver.findElement(By.xpath(ADD_USER_FIELD_XPATH_BEGIN + dynamicPart + ADD_USER_FIELD_XPATH_END)).sendKeys(testNamesForTest[i]);
+
+            driver.findElement(By.xpath("(//input[@class='popup-userfield workspaceedit-invitation-input js-workspacedit-invitation'])[last()]"))
+                    .sendKeys(testNamesForTest[i]);
             if (isLogged)
                 System.out.println(Service.nowTime() + " User" + (i + 1) + ": " + testNamesForTest[i] + " was added:");
             driver.findElement(By.cssSelector(".workspaceedit-add-button.js-workspacedit-add-invitation")).click();
@@ -123,14 +129,13 @@ public class Users implements utils.AccessData {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public static void usersRemoveAllFromOrganization(WebDriver driver, boolean isLogged) throws InterruptedException {
-
         String userName;
-        final String USER_SECOND_USER_EXIST_XPATH = "html/body/div[5]/div/div[1]/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[2]/div[1]/div[2]/div[1]";
-        final String USER_LAST_USER_NAME_XPATH = "html/body/div[5]/div/div[1]/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[1]/div[2]/div[1]";
-        final String USER_LAST_USER_REMOVE_BUTTON_XPATH = "html/body/div[5]/div/div[1]/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div[2]/div";
-        final String USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH = "html/body/div[5]/div/div[1]/div[1]/div/div[2]/div[2]/div/div[3]/div[2]/div[1]/div[2]/div";
-
+        final String USER_SECOND_USER_EXIST_XPATH = "(//div[contains(@class,'workspacedit-share-title')])[2]";
+        final String USER_LAST_USER_NAME_XPATH = "(//div[contains(@class,'workspacedit-share-title')])[1]";
+        final String USER_LAST_USER_REMOVE_BUTTON_XPATH = "(//div[contains(@class,'js-share-user-delete-icon')])[1]";
+        final String USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH = "//div[contains(@class,'js-share-user-confirmdeleteuser')]";
         usersOpenMembersList(driver);
+//        System.out.println(driver.findElements(By.xpath("//div[@class='workspacedit-share-title']")).size());
         while (isElementPresent(By.xpath(USER_SECOND_USER_EXIST_XPATH), driver)) {
             userName = driver.findElement(By.xpath(USER_LAST_USER_NAME_XPATH)).getText();
             if (isLogged) {
@@ -138,7 +143,7 @@ public class Users implements utils.AccessData {
             }
             Thread.sleep(500);
             driver.findElement(By.xpath(USER_LAST_USER_REMOVE_BUTTON_XPATH)).click();
-            Thread.sleep(500);
+            Thread.sleep(1000);
             driver.findElement(By.xpath(USER_LAST_USER_REMOVE_CONFIRM_BUTTON_XPATH)).click();
         }
         closeEditOrganizationMenu(driver);
@@ -156,8 +161,8 @@ public class Users implements utils.AccessData {
                 userRole = "Full member";
             }
             break;
-            case RESTRICTED: {
-                userRole = "Restricted";
+            case GUEST: {
+                userRole = "Guest";
             }
             break;
             default: {
@@ -238,7 +243,7 @@ public class Users implements utils.AccessData {
 
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
-    private static boolean isElementPresent(By by, WebDriver driver) {
+    public static boolean isElementPresent(By by, WebDriver driver) {
         try {
             driver.findElement(by);
             return true;

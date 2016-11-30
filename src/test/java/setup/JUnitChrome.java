@@ -28,7 +28,7 @@ public class JUnitChrome {
         driver = new ChromeDriver();
         baseUrl = AccessData.TESTURL;
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);//20
-        Users.loginUser(driver, AccessData.TESTURL, AccessData.TESTLOGIN_SHORTTESTS, AccessData.TESTPASSWORD_SHORTTESTS);
+        Users.loginUser(driver, AccessData.TESTURL, AccessData.TESTLOGIN_SHORTTESTS, AccessData.TESTPASSWORD_SHORTTESTS,"Chrome");
 //        driver.get(AccessData.TESTURLX);
         Thread.sleep(5000);
     }

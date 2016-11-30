@@ -8,25 +8,25 @@ import utils.Service;
 
 public class Column {
     //Add column
-    final static String COULMN_ADD_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[2]/div";
+    final static String COULMN_ADD_XPATH = "//div[@class='workspace-content workspace-content-tracking mod-scrollable-y']/div/div[1]" +
+            "//*[@class='widget-board-add js-widget-board-add-list js-tap-indication']";
     //Open column menu
-    final static String COLUMN_MENU_FIRSTPART_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/";
-    final static String COLUMN_MENU_SECONDPART_XPATH = "/div[1]/div";
+    final static String COLUMN_MENU_FIRSTPART_XPATH ="(//div[@class='workspace-content workspace-content-tracking mod-scrollable-y']/div/div[1]" +
+            "//*[@class='board-column-title-text'])";
     //Rename column
-    final static String COLUMN_RENAME_FIRST_PART_XPATH = "html/body/div[3]/div[1]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/div[1]/div/";
-    final static String COLUMN_RENAME_SECOND_PART_XPATH = "/div[1]/div/div/input";
+    final static String COLUMN_RENAME_XPATH = "//input[@class='board-column-title-edit js-textfield-textarea']";
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
+    //--NVD2----------------------------------------------------------------------------------------------------------------------------------------------
     public static String getOpenColumnMenuXpathByNumber(int number) {
-        return COLUMN_MENU_FIRSTPART_XPATH + "div[" + Integer.toString(number) + "]" + COLUMN_MENU_SECONDPART_XPATH;
+        return COLUMN_MENU_FIRSTPART_XPATH + "[" + Integer.toString(number) + "]";
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
+    //--NVD2----------------------------------------------------------------------------------------------------------------------------------------------
     public static String getRenameColumnXpathByNumber(int number) {
-        return COLUMN_RENAME_FIRST_PART_XPATH + "div[" + Integer.toString(number) + "]" + COLUMN_RENAME_SECOND_PART_XPATH;
+        return COLUMN_RENAME_XPATH;
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
+    //--NVD2----------------------------------------------------------------------------------------------------------------------------------------------
     public static void columnsCreation(WebDriver driver, int number, boolean isLogged) {
         String currentXpathForRenaming;
         int shiftedValue;
@@ -43,14 +43,15 @@ public class Column {
         }
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
-    public static void columnRemove(WebDriver driver, int columnNumber, boolean isLogged) {
+    //--NVD2----------------------------------------------------------------------------------------------------------------------------------------------
+    public static void columnRemove(WebDriver driver, int columnNumber, boolean isLogged) throws InterruptedException {
         final String COLUMN_MENU_REMOVE_CSS = ".widget-menu-choice.editboardcolumn-delete-text.js-boardcolumn-delete.js-tap-indication";
         driver.findElement(By.xpath(getOpenColumnMenuXpathByNumber(columnNumber))).click();
         driver.findElement(By.cssSelector(COLUMN_MENU_REMOVE_CSS)).click();
+        driver.findElement(By.cssSelector(COLUMN_MENU_REMOVE_CSS)).click();
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------------
+    //--NVD2----------------------------------------------------------------------------------------------------------------------------------------------
     public static void columnRename(WebDriver driver, int columnNumber, String newName, boolean isLogged) {
         final String COLUMN_MENU_RENAME_CSS = ".widget-menu-choice.js-boardcolumn-rename.js-tap-indication";
         driver.findElement(By.xpath(getOpenColumnMenuXpathByNumber(columnNumber))).click();
@@ -65,15 +66,28 @@ public class Column {
         final String COLUMN_MENU_ARCHIVEALL_CSS = ".widget-menu-choice.js-boardcolumn-archiveall.js-tap-indication";
         driver.findElement(By.xpath(getOpenColumnMenuXpathByNumber(columnNumber))).click();
         driver.findElement(By.cssSelector(COLUMN_MENU_ARCHIVEALL_CSS)).click();
-        columnRename(driver,columnNumber,"ArchivedAll",false);
+        columnRename(driver, columnNumber, "ArchivedAll", false);
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------------
     public static void columnSubscribe(WebDriver driver, int columnNumber, boolean isLogged) {
-        final String COLUMN_MENU_SUBSCRIBE_CSS = ".widget-menu-choice-icon.widget-menu-icon-unselected";
+        final String COLUMN_MENU_SUBSCRIBE_XPATH = "//div[@class='editboardcolumn-menu']/div[1]";
         driver.findElement(By.xpath(getOpenColumnMenuXpathByNumber(columnNumber))).click();
-        driver.findElement(By.cssSelector(COLUMN_MENU_SUBSCRIBE_CSS)).click();
+        driver.findElement(By.xpath(COLUMN_MENU_SUBSCRIBE_XPATH)).click();
         columnRename(driver,columnNumber,"Subscribed",false);
     }
     //------------------------------------------------------------------------------------------------------------------------------------------------
+    public static void columnSetupWIPLimit(WebDriver driver, int boardNumber, int columnNumber, int wiplimitNumber) throws InterruptedException {
+        final String COLUMN_MENU_WIP_LIMIT="//div[@class='editboardcolumn-menu']/div[2]";
+        final String COLUMN_WIP_LIMIT_FIELD="//input[@class='widget-menu-choice-input js-boardcolumn-wip-limit-input']";
+        driver.findElement(By.xpath(getOpenColumnMenuXpathByNumber(columnNumber))).click();
+        driver.findElement(By.xpath(COLUMN_MENU_WIP_LIMIT)).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath(COLUMN_WIP_LIMIT_FIELD)).clear();
+        driver.findElement(By.xpath(COLUMN_WIP_LIMIT_FIELD)).sendKeys(Integer.toString(wiplimitNumber));
+        driver.findElement(By.xpath(COLUMN_WIP_LIMIT_FIELD)).sendKeys(Keys.ENTER);
+        Thread.sleep(2000);
+        columnRename(driver, columnNumber, "Wip Limit" + columnNumber, false);
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
 }

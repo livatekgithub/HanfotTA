@@ -1,10 +1,10 @@
 package setup;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import pageobjects.Tutorial;
 import pageobjects.Users;
 import utils.*;
 
@@ -13,29 +13,38 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.fail;
 
 public class FirefoxShortTest {
-    private WebDriver driver;
-    private final String browser="FIREFOX.sh";
-    private String baseUrl;
+    private static WebDriver driver;
+    private static final String browser="FIREFOX.sh";
+    private static String baseUrl;
     private boolean acceptNextAlert = true;
-    private StringBuffer verificationErrors = new StringBuffer();
+    private static StringBuffer verificationErrors = new StringBuffer();
+
+    @BeforeClass
+    public static void settingUp()throws Exception{
+        driver = new FirefoxDriver();
+        baseUrl = AccessData.TESTURL;
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);//20
+        Users.loginUser(driver, AccessData.TESTURL, AccessData.TESTLOGIN_SHORTTESTS, AccessData.TESTPASSWORD_SHORTTESTS,"Firefox");
+    }
 
     @Before
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
-        baseUrl = AccessData.TESTURL;
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.get(AccessData.TESTURLX);
+        Thread.sleep(5000);
     }
 
     @Test
-    public void testLogin() throws Exception {
-        Users.loginUser(driver,AccessData.TESTURL,AccessData.TESTLOGIN_SHORTTESTS,AccessData.TESTPASSWORD_SHORTTESTS);
+    public void testMain() throws Exception {
         tests.Run.RunShort(driver, browser);
-        Thread.sleep(3000);
-//        General.userSignOut(driver);
     }
 
-    @After
-    public void tearDown() throws Exception {
+//    @Test
+//    public void testTutorial() throws Exception {
+//        Tutorial.runTutorial(driver, false);
+//    }
+
+    @AfterClass
+    public static void tearDown() throws Exception {
         Service.takeScreenshot(driver,Service.nowTimeForFileName()+" "+browser+".screenshot.png");
         driver.quit();
         String verificationErrorString = verificationErrors.toString();

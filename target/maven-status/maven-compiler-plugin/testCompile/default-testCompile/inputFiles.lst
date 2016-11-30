@@ -2,11 +2,15 @@ C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Widget.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\FirefoxLongTest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\new_things\GetPropertyTest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\ChromeShortTest.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\JUnitChrome.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\WidgetColor.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\utils\AccessData.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\IEShortTest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\WidgetState.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\ChromeCombinedTest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\CardPopUp.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\OldCard.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Tutorial.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Card.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\setup\FirefoxShortTest.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Organization.java
@@ -31,6 +35,7 @@ C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\utils\WindowOperations.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\UserOrgRoles.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\tests\Run.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\CollectionSharingMode.java
+C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\CollectionColor.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\pageobjects\Todo.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\WidgetShowSettings.java
 C:\Users\kyak\IdeaProjects\HanfotTA\src\test\java\enums\LogType.java

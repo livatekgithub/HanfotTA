@@ -1,5 +1,5 @@
 package enums;
 
 public enum UserOrgRoles {
-    ADMINISTRATOR,FULL_MEMBER,RESTRICTED;
+    ADMINISTRATOR,FULL_MEMBER, GUEST;
 }

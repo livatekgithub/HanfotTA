@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 public class WindowOperations {
 
     public static void resizeWindowforIdea(WebDriver driver) {
-        Point point = new Point(10, 10);
+        Point point = new Point(5, 5);
         Dimension dimension = new Dimension(1900, 800);
         driver.manage().window().setPosition(point);
         driver.manage().window().setSize(dimension);

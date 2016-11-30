@@ -30,8 +30,9 @@ public class IELongTest {
 
     @Test
     public void testLogin() throws Exception {
-        Users.loginUser(driver,AccessData.TESTURL,AccessData.TESTLOGIN_LONGTESTS,AccessData.TESTPASSWORD_LONGTESTS);
+        Users.loginUser(driver,AccessData.TESTURL,AccessData.TESTLOGIN_LONGTESTS,AccessData.TESTPASSWORD_LONGTESTS,"IE11");
         tests.Run.RunLong(driver, browser);
+
     }
 
     @After
